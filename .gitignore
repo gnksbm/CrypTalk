@@ -1,0 +1,11 @@
+# Secret #
+Secret.xcconfig
+
+# MacOS #
+.DS_Store
+
+# User settings
+xcuserdata/
+
+# Swift Package Manager
+.build/
