@@ -15,6 +15,18 @@
 		8EA517982C6DB99E0029A356 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 8EA517972C6DB99E0029A356 /* .gitignore */; };
 		8EA5179A2C6DBA550029A356 /* .gitmessage.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8EA517992C6DBA550029A356 /* .gitmessage.txt */; };
 		8EA5179E2C6DBEEA0029A356 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA5179D2C6DBEEA0029A356 /* Secret.swift */; };
+		8EA517A12C6DD04F0029A356 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 8EA517A02C6DD04F0029A356 /* RxMoya */; };
+		8EA517A42C6DDA680029A356 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8EA517A32C6DDA680029A356 /* Kingfisher */; };
+		8EA517A72C6DDAB50029A356 /* Neat in Frameworks */ = {isa = PBXBuildFile; productRef = 8EA517A62C6DDAB50029A356 /* Neat */; };
+		8EA517AA2C6DEF7C0029A356 /* AuthTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA517A92C6DEF7C0029A356 /* AuthTarget.swift */; };
+		8EA517AC2C6DEFF90029A356 /* TargetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA517AB2C6DEFF90029A356 /* TargetProvider.swift */; };
+		BE98C0902C6F4B610058D3FA /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C08F2C6F4B610058D3FA /* LoginRequest.swift */; };
+		BE98C0922C6F4C4C0058D3FA /* RequestProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C0912C6F4C4C0058D3FA /* RequestProvider.swift */; };
+		BE98C0942C6F4C620058D3FA /* JoinRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C0932C6F4C620058D3FA /* JoinRequest.swift */; };
+		BE98C0962C6F4EB80058D3FA /* BackEndTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C0952C6F4EB80058D3FA /* BackEndTargetType.swift */; };
+		BE98C0982C6F4F2B0058D3FA /* EmailRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C0972C6F4F2B0058D3FA /* EmailRequest.swift */; };
+		BE98C09A2C6F50120058D3FA /* RefreshTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C0992C6F50120058D3FA /* RefreshTokenRequest.swift */; };
+		BE98C09C2C6F55C00058D3FA /* WithDrawRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C09B2C6F55BF0058D3FA /* WithDrawRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +41,15 @@
 		8EA517992C6DBA550029A356 /* .gitmessage.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitmessage.txt; sourceTree = "<group>"; };
 		8EA5179B2C6DBBE90029A356 /* Secret.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secret.xcconfig; sourceTree = "<group>"; };
 		8EA5179D2C6DBEEA0029A356 /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
+		8EA517A92C6DEF7C0029A356 /* AuthTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTarget.swift; sourceTree = "<group>"; };
+		8EA517AB2C6DEFF90029A356 /* TargetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetProvider.swift; sourceTree = "<group>"; };
+		BE98C08F2C6F4B610058D3FA /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
+		BE98C0912C6F4C4C0058D3FA /* RequestProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProvider.swift; sourceTree = "<group>"; };
+		BE98C0932C6F4C620058D3FA /* JoinRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRequest.swift; sourceTree = "<group>"; };
+		BE98C0952C6F4EB80058D3FA /* BackEndTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackEndTargetType.swift; sourceTree = "<group>"; };
+		BE98C0972C6F4F2B0058D3FA /* EmailRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailRequest.swift; sourceTree = "<group>"; };
+		BE98C0992C6F50120058D3FA /* RefreshTokenRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshTokenRequest.swift; sourceTree = "<group>"; };
+		BE98C09B2C6F55BF0058D3FA /* WithDrawRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithDrawRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +57,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EA517A72C6DDAB50029A356 /* Neat in Frameworks */,
+				8EA517A42C6DDA680029A356 /* Kingfisher in Frameworks */,
+				8EA517A12C6DD04F0029A356 /* RxMoya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +97,8 @@
 			isa = PBXGroup;
 			children = (
 				8EA517952C6DB7D50029A356 /* App */,
+				BE98C08C2C6F4A870058D3FA /* Data */,
+				BE98C08D2C6F4B540058D3FA /* Domain */,
 				8EA5179C2C6DBEDC0029A356 /* Foundation */,
 				8EA517962C6DB7EB0029A356 /* Presentation */,
 			);
@@ -115,6 +141,53 @@
 			path = Foundation;
 			sourceTree = "<group>";
 		};
+		8EA517A82C6DE3E40029A356 /* Target */ = {
+			isa = PBXGroup;
+			children = (
+				8EA517A92C6DEF7C0029A356 /* AuthTarget.swift */,
+				8EA517AB2C6DEFF90029A356 /* TargetProvider.swift */,
+				BE98C0952C6F4EB80058D3FA /* BackEndTargetType.swift */,
+			);
+			path = Target;
+			sourceTree = "<group>";
+		};
+		BE98C08B2C6F4A7F0058D3FA /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				8EA517A82C6DE3E40029A356 /* Target */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		BE98C08C2C6F4A870058D3FA /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				BE98C08B2C6F4A7F0058D3FA /* Network */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		BE98C08D2C6F4B540058D3FA /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				BE98C0912C6F4C4C0058D3FA /* RequestProvider.swift */,
+				BE98C08E2C6F4B560058D3FA /* Request */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		BE98C08E2C6F4B560058D3FA /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				BE98C08F2C6F4B610058D3FA /* LoginRequest.swift */,
+				BE98C0932C6F4C620058D3FA /* JoinRequest.swift */,
+				BE98C0972C6F4F2B0058D3FA /* EmailRequest.swift */,
+				BE98C0992C6F50120058D3FA /* RefreshTokenRequest.swift */,
+				BE98C09B2C6F55BF0058D3FA /* WithDrawRequest.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -131,6 +204,11 @@
 			dependencies = (
 			);
 			name = Coin;
+			packageProductDependencies = (
+				8EA517A02C6DD04F0029A356 /* RxMoya */,
+				8EA517A32C6DDA680029A356 /* Kingfisher */,
+				8EA517A62C6DDAB50029A356 /* Neat */,
+			);
 			productName = Coin;
 			productReference = 8EA5177C2C6DB0FB0029A356 /* Coin.app */;
 			productType = "com.apple.product-type.application";
@@ -159,6 +237,11 @@
 				Base,
 			);
 			mainGroup = 8EA517732C6DB0FB0029A356;
+			packageReferences = (
+				8EA5179F2C6DD04F0029A356 /* XCRemoteSwiftPackageReference "Moya" */,
+				8EA517A22C6DDA680029A356 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				8EA517A52C6DDAB50029A356 /* XCRemoteSwiftPackageReference "Neat" */,
+			);
 			productRefGroup = 8EA5177D2C6DB0FB0029A356 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -188,9 +271,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				8EA517842C6DB0FB0029A356 /* ViewController.swift in Sources */,
+				8EA517AC2C6DEFF90029A356 /* TargetProvider.swift in Sources */,
+				BE98C0982C6F4F2B0058D3FA /* EmailRequest.swift in Sources */,
+				BE98C0962C6F4EB80058D3FA /* BackEndTargetType.swift in Sources */,
 				8EA5179E2C6DBEEA0029A356 /* Secret.swift in Sources */,
 				8EA517802C6DB0FB0029A356 /* AppDelegate.swift in Sources */,
+				BE98C09A2C6F50120058D3FA /* RefreshTokenRequest.swift in Sources */,
+				8EA517AA2C6DEF7C0029A356 /* AuthTarget.swift in Sources */,
+				BE98C09C2C6F55C00058D3FA /* WithDrawRequest.swift in Sources */,
+				BE98C0922C6F4C4C0058D3FA /* RequestProvider.swift in Sources */,
+				BE98C0942C6F4C620058D3FA /* JoinRequest.swift in Sources */,
 				8EA517822C6DB0FB0029A356 /* SceneDelegate.swift in Sources */,
+				BE98C0902C6F4B610058D3FA /* LoginRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +507,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8EA5179F2C6DD04F0029A356 /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.0.3;
+			};
+		};
+		8EA517A22C6DDA680029A356 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.12.0;
+			};
+		};
+		8EA517A52C6DDAB50029A356 /* XCRemoteSwiftPackageReference "Neat" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/gnksbm/Neat.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8EA517A02C6DD04F0029A356 /* RxMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8EA5179F2C6DD04F0029A356 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = RxMoya;
+		};
+		8EA517A32C6DDA680029A356 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8EA517A22C6DDA680029A356 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		8EA517A62C6DDAB50029A356 /* Neat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8EA517A52C6DDAB50029A356 /* XCRemoteSwiftPackageReference "Neat" */;
+			productName = Neat;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8EA517742C6DB0FB0029A356 /* Project object */;
 }
