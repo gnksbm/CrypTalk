@@ -42,20 +42,11 @@ extension AuthTarget: BackEndTargetType {
     var task: Task {
         switch self {
         case .login(let request):
-            .requestParameters(
-                parameters: request.toParameter(),
-                encoding: URLEncoding.httpBody
-            )
+            .requestJSONEncodable(request.parameter)
         case .join(let request):
-            .requestParameters(
-                parameters: request.toParameter(),
-                encoding: URLEncoding.httpBody
-            )
+            .requestJSONEncodable(request.parameter)
         case .validationEmail(let request):
-            .requestParameters(
-                parameters: request.toParameter(),
-                encoding: URLEncoding.httpBody
-            )
+            .requestJSONEncodable(request.parameter)
         case .refreshToken, .withdraw:
             .requestPlain
         }
