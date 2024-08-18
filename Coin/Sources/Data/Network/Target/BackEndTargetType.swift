@@ -21,4 +21,7 @@ extension BackEndTargetType {
     var host: String { Secret.baseURL }
     var port: Int? { Int(Secret.port) }
     var path: String { "/v\(version)\(targetPath)" }
+    var commonHeaders: [String : String] {
+        [Secret.apiKeyHeader: Secret.apiKey]
+    }
 }

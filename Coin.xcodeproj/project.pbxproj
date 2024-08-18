@@ -20,6 +20,8 @@
 		8EA517A72C6DDAB50029A356 /* Neat in Frameworks */ = {isa = PBXBuildFile; productRef = 8EA517A62C6DDAB50029A356 /* Neat */; };
 		8EA517AA2C6DEF7C0029A356 /* AuthTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA517A92C6DEF7C0029A356 /* AuthTarget.swift */; };
 		8EA517AC2C6DEFF90029A356 /* TargetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA517AB2C6DEFF90029A356 /* TargetProvider.swift */; };
+		8ED3DDEB2C720C1200126BD4 /* PostTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DDEA2C720C1200126BD4 /* PostTarget.swift */; };
+		8ED3DDEF2C720E1400126BD4 /* CreatePostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DDEE2C720E1400126BD4 /* CreatePostRequest.swift */; };
 		BE98C0902C6F4B610058D3FA /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C08F2C6F4B610058D3FA /* LoginRequest.swift */; };
 		BE98C0922C6F4C4C0058D3FA /* RequestProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C0912C6F4C4C0058D3FA /* RequestProvider.swift */; };
 		BE98C0942C6F4C620058D3FA /* JoinRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C0932C6F4C620058D3FA /* JoinRequest.swift */; };
@@ -67,6 +69,8 @@
 		8EA5179D2C6DBEEA0029A356 /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
 		8EA517A92C6DEF7C0029A356 /* AuthTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTarget.swift; sourceTree = "<group>"; };
 		8EA517AB2C6DEFF90029A356 /* TargetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetProvider.swift; sourceTree = "<group>"; };
+		8ED3DDEA2C720C1200126BD4 /* PostTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTarget.swift; sourceTree = "<group>"; };
+		8ED3DDEE2C720E1400126BD4 /* CreatePostRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostRequest.swift; sourceTree = "<group>"; };
 		BE98C08F2C6F4B610058D3FA /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		BE98C0912C6F4C4C0058D3FA /* RequestProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProvider.swift; sourceTree = "<group>"; };
 		BE98C0932C6F4C620058D3FA /* JoinRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRequest.swift; sourceTree = "<group>"; };
@@ -180,10 +184,31 @@
 			isa = PBXGroup;
 			children = (
 				8EA517A92C6DEF7C0029A356 /* AuthTarget.swift */,
+				8ED3DDEA2C720C1200126BD4 /* PostTarget.swift */,
 				8EA517AB2C6DEFF90029A356 /* TargetProvider.swift */,
 				BE98C0952C6F4EB80058D3FA /* BackEndTargetType.swift */,
 			);
 			path = Target;
+			sourceTree = "<group>";
+		};
+		8ED3DDEC2C720E0A00126BD4 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				BE98C08F2C6F4B610058D3FA /* LoginRequest.swift */,
+				BE98C0932C6F4C620058D3FA /* JoinRequest.swift */,
+				BE98C0972C6F4F2B0058D3FA /* EmailRequest.swift */,
+				BE98C0992C6F50120058D3FA /* RefreshTokenRequest.swift */,
+				BE98C09B2C6F55BF0058D3FA /* WithDrawRequest.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		8ED3DDED2C720E1000126BD4 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				8ED3DDEE2C720E1400126BD4 /* CreatePostRequest.swift */,
+			);
+			path = Post;
 			sourceTree = "<group>";
 		};
 		BE98C08B2C6F4A7F0058D3FA /* Network */ = {
@@ -214,11 +239,8 @@
 		BE98C08E2C6F4B560058D3FA /* Request */ = {
 			isa = PBXGroup;
 			children = (
-				BE98C08F2C6F4B610058D3FA /* LoginRequest.swift */,
-				BE98C0932C6F4C620058D3FA /* JoinRequest.swift */,
-				BE98C0972C6F4F2B0058D3FA /* EmailRequest.swift */,
-				BE98C0992C6F50120058D3FA /* RefreshTokenRequest.swift */,
-				BE98C09B2C6F55BF0058D3FA /* WithDrawRequest.swift */,
+				8ED3DDED2C720E1000126BD4 /* Post */,
+				8ED3DDEC2C720E0A00126BD4 /* Auth */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -346,8 +368,10 @@
 			files = (
 				8EA517842C6DB0FB0029A356 /* ViewController.swift in Sources */,
 				8EA517AC2C6DEFF90029A356 /* TargetProvider.swift in Sources */,
+				8ED3DDEB2C720C1200126BD4 /* PostTarget.swift in Sources */,
 				BE98C0982C6F4F2B0058D3FA /* EmailRequest.swift in Sources */,
 				BE98C0962C6F4EB80058D3FA /* BackEndTargetType.swift in Sources */,
+				8ED3DDEF2C720E1400126BD4 /* CreatePostRequest.swift in Sources */,
 				8EA5179E2C6DBEEA0029A356 /* Secret.swift in Sources */,
 				8EA517802C6DB0FB0029A356 /* AppDelegate.swift in Sources */,
 				BE98C09A2C6F50120058D3FA /* RefreshTokenRequest.swift in Sources */,

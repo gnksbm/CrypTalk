@@ -52,10 +52,6 @@ extension AuthTarget: BackEndTargetType {
         }
     }
     
-    var commonHeaders: [String : String] {
-        [Secret.apiKeyHeader: Secret.apiKey]
-    }
-    
     var httpHeaders: [String : String] {
         switch self {
         case .login, .join, .validationEmail:

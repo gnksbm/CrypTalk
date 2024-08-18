@@ -32,19 +32,4 @@ protocol ParameterProvider {
     associatedtype Parameter: Encodable
     
     var parameter: Parameter { get }
-    
-    func toParameter() -> [String: Any]
-}
-
-extension ParameterProvider {
-    func toParameter() -> [String: Any] {
-        do {
-            let data = try JSONEncoder().encode(parameter)
-            let jsonObject = try JSONSerialization.jsonObject(with: data)
-            guard let dic = jsonObject as? [String: Any] else { return [:] }
-            return dic
-        } catch {
-            return [:]
-        }
-    }
 }
