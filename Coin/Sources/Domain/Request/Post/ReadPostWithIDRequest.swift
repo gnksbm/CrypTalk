@@ -1,5 +1,5 @@
 //
-//  ViewPostWithIDRequest.swift
+//  ReadPostWithIDRequest.swift
 //  Coin
 //
 //  Created by gnksbm on 8/19/24.
@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct ViewPostWithIDRequest {
+struct ReadPostWithIDRequest {
     let accessToken: String
     let postID: String
 }
 
-extension ViewPostWithIDRequest: HeaderProvider {
+extension ReadPostWithIDRequest: HeaderProvider {
     var header: AccessTokenHeader {
         AccessTokenHeader(accessToken: accessToken)
     }

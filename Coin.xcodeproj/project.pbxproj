@@ -24,11 +24,11 @@
 		8ED3DDEF2C720E1400126BD4 /* CreatePostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DDEE2C720E1400126BD4 /* CreatePostRequest.swift */; };
 		8ED3DDF12C720F3D00126BD4 /* UploadImageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DDF02C720F3D00126BD4 /* UploadImageRequest.swift */; };
 		8ED3DDF32C720F8300126BD4 /* AccessTokenHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DDF22C720F8300126BD4 /* AccessTokenHeader.swift */; };
-		8ED3DDFE2C72DBFE00126BD4 /* ViewPostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DDFD2C72DBFE00126BD4 /* ViewPostRequest.swift */; };
-		8ED3DE012C72DF0800126BD4 /* ViewPostWithIDRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE002C72DF0800126BD4 /* ViewPostWithIDRequest.swift */; };
+		8ED3DDFE2C72DBFE00126BD4 /* ReadPostsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DDFD2C72DBFE00126BD4 /* ReadPostsRequest.swift */; };
+		8ED3DE012C72DF0800126BD4 /* ReadPostWithIDRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE002C72DF0800126BD4 /* ReadPostWithIDRequest.swift */; };
 		8ED3DE032C72E1B200126BD4 /* UpdatePostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE022C72E1B200126BD4 /* UpdatePostRequest.swift */; };
 		8ED3DE052C72E2EF00126BD4 /* DeletePostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE042C72E2EF00126BD4 /* DeletePostRequest.swift */; };
-		8ED3DE0A2C72EE7600126BD4 /* ViewPostByUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE092C72EE7600126BD4 /* ViewPostByUserRequest.swift */; };
+		8ED3DE0A2C72EE7600126BD4 /* ReadPostsByUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE092C72EE7600126BD4 /* ReadPostsByUserRequest.swift */; };
 		8ED3DE0C2C73202C00126BD4 /* PostTargetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE0B2C73202C00126BD4 /* PostTargetTests.swift */; };
 		8ED3DE112C73253200126BD4 /* CommentTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE102C73253200126BD4 /* CommentTarget.swift */; };
 		8ED3DE142C73257E00126BD4 /* CreateCommentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE132C73257E00126BD4 /* CreateCommentRequest.swift */; };
@@ -89,11 +89,11 @@
 		8ED3DDEE2C720E1400126BD4 /* CreatePostRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostRequest.swift; sourceTree = "<group>"; };
 		8ED3DDF02C720F3D00126BD4 /* UploadImageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageRequest.swift; sourceTree = "<group>"; };
 		8ED3DDF22C720F8300126BD4 /* AccessTokenHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenHeader.swift; sourceTree = "<group>"; };
-		8ED3DDFD2C72DBFE00126BD4 /* ViewPostRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPostRequest.swift; sourceTree = "<group>"; };
-		8ED3DE002C72DF0800126BD4 /* ViewPostWithIDRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPostWithIDRequest.swift; sourceTree = "<group>"; };
+		8ED3DDFD2C72DBFE00126BD4 /* ReadPostsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadPostsRequest.swift; sourceTree = "<group>"; };
+		8ED3DE002C72DF0800126BD4 /* ReadPostWithIDRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadPostWithIDRequest.swift; sourceTree = "<group>"; };
 		8ED3DE022C72E1B200126BD4 /* UpdatePostRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePostRequest.swift; sourceTree = "<group>"; };
 		8ED3DE042C72E2EF00126BD4 /* DeletePostRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletePostRequest.swift; sourceTree = "<group>"; };
-		8ED3DE092C72EE7600126BD4 /* ViewPostByUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPostByUserRequest.swift; sourceTree = "<group>"; };
+		8ED3DE092C72EE7600126BD4 /* ReadPostsByUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadPostsByUserRequest.swift; sourceTree = "<group>"; };
 		8ED3DE0B2C73202C00126BD4 /* PostTargetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTargetTests.swift; sourceTree = "<group>"; };
 		8ED3DE102C73253200126BD4 /* CommentTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTarget.swift; sourceTree = "<group>"; };
 		8ED3DE132C73257E00126BD4 /* CreateCommentRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCommentRequest.swift; sourceTree = "<group>"; };
@@ -242,9 +242,9 @@
 				8ED3DE042C72E2EF00126BD4 /* DeletePostRequest.swift */,
 				8ED3DE022C72E1B200126BD4 /* UpdatePostRequest.swift */,
 				8ED3DDF02C720F3D00126BD4 /* UploadImageRequest.swift */,
-				8ED3DDFD2C72DBFE00126BD4 /* ViewPostRequest.swift */,
-				8ED3DE002C72DF0800126BD4 /* ViewPostWithIDRequest.swift */,
-				8ED3DE092C72EE7600126BD4 /* ViewPostByUserRequest.swift */,
+				8ED3DDFD2C72DBFE00126BD4 /* ReadPostsRequest.swift */,
+				8ED3DE002C72DF0800126BD4 /* ReadPostWithIDRequest.swift */,
+				8ED3DE092C72EE7600126BD4 /* ReadPostsByUserRequest.swift */,
 			);
 			path = Post;
 			sourceTree = "<group>";
@@ -442,9 +442,9 @@
 				8EA517AC2C6DEFF90029A356 /* TargetProvider.swift in Sources */,
 				8ED3DDEB2C720C1200126BD4 /* PostTarget.swift in Sources */,
 				BE98C0982C6F4F2B0058D3FA /* EmailRequest.swift in Sources */,
-				8ED3DDFE2C72DBFE00126BD4 /* ViewPostRequest.swift in Sources */,
+				8ED3DDFE2C72DBFE00126BD4 /* ReadPostsRequest.swift in Sources */,
 				8ED3DE142C73257E00126BD4 /* CreateCommentRequest.swift in Sources */,
-				8ED3DE012C72DF0800126BD4 /* ViewPostWithIDRequest.swift in Sources */,
+				8ED3DE012C72DF0800126BD4 /* ReadPostWithIDRequest.swift in Sources */,
 				8ED3DE112C73253200126BD4 /* CommentTarget.swift in Sources */,
 				8ED3DE162C73269800126BD4 /* UpdateCommentRequest.swift in Sources */,
 				8ED3DDF12C720F3D00126BD4 /* UploadImageRequest.swift in Sources */,
@@ -463,7 +463,7 @@
 				BE98C0922C6F4C4C0058D3FA /* RequestProvider.swift in Sources */,
 				BE98C0942C6F4C620058D3FA /* JoinRequest.swift in Sources */,
 				8ED3DDF32C720F8300126BD4 /* AccessTokenHeader.swift in Sources */,
-				8ED3DE0A2C72EE7600126BD4 /* ViewPostByUserRequest.swift in Sources */,
+				8ED3DE0A2C72EE7600126BD4 /* ReadPostsByUserRequest.swift in Sources */,
 				8EA517822C6DB0FB0029A356 /* SceneDelegate.swift in Sources */,
 				BE98C0902C6F4B610058D3FA /* LoginRequest.swift in Sources */,
 				8ED3DE1F2C732A7200126BD4 /* UpdateLikeRequest.swift in Sources */,

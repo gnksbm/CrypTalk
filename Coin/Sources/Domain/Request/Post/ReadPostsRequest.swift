@@ -1,5 +1,5 @@
 //
-//  ViewPostByUserRequest.swift
+//  ReadPostsRequest.swift
 //  Coin
 //
 //  Created by gnksbm on 8/19/24.
@@ -7,15 +7,14 @@
 
 import Foundation
 
-struct ViewPostByUserRequest {
+struct ReadPostsRequest {
     let accessToken: String
-    let userID: String
     let next: String?
     let limit: String?
     let productID: String?
 }
 
-extension ViewPostByUserRequest: QueryProvider {
+extension ReadPostsRequest: QueryProvider {
     var query: Query {
         Query(
             next: next,
@@ -37,7 +36,7 @@ extension ViewPostByUserRequest: QueryProvider {
     }
 }
 
-extension ViewPostByUserRequest: HeaderProvider {
+extension ReadPostsRequest: HeaderProvider {
     var header: AccessTokenHeader {
         AccessTokenHeader(accessToken: accessToken)
     }

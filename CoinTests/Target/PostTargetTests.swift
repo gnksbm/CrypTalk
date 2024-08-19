@@ -55,10 +55,10 @@ final class PostTargetTests: XCTestCase {
         )
     }
     
-    func testViewPost() { 
+    func testReadPosts() {
         testTarget(
-            .viewPost(
-                ViewPostRequest(
+            .readPosts(
+                ReadPostsRequest(
                     accessToken: accessToken,
                     next: nil,
                     limit: nil,
@@ -69,10 +69,10 @@ final class PostTargetTests: XCTestCase {
         )
     }
     
-    func testViewPostWithID() { 
+    func testReadPostWithID() {
         testTarget(
-            .viewPostWithID(
-                ViewPostWithIDRequest(
+            .readPostWithID(
+                ReadPostWithIDRequest(
                     accessToken: accessToken,
                     postID: accessToken
                 )
@@ -114,10 +114,10 @@ final class PostTargetTests: XCTestCase {
         )
     }
     
-    func testViewPostByUser() { 
+    func testReadPostsByUser() { 
         testTarget(
-            .viewPostByUser(
-                ViewPostByUserRequest(
+            .readPostsByUser(
+                ReadPostsByUserRequest(
                     accessToken: accessToken,
                     userID: accessToken,
                     next: nil,

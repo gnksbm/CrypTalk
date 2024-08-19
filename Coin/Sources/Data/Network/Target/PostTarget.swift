@@ -12,11 +12,11 @@ import Moya
 enum PostTarget {
     case uploadImage(UploadImageRequest)
     case createPost(CreatePostRequest)
-    case viewPost(ViewPostRequest)
-    case viewPostWithID(ViewPostWithIDRequest)
+    case readPosts(ReadPostsRequest)
+    case readPostWithID(ReadPostWithIDRequest)
     case updatePost(UpdatePostRequest)
     case deletePost(DeletePostRequest)
-    case viewPostByUser(ViewPostByUserRequest)
+    case readPostsByUser(ReadPostsByUserRequest)
 }
 
 extension PostTarget: BackEndTargetType {
@@ -24,15 +24,15 @@ extension PostTarget: BackEndTargetType {
         switch self {
         case .uploadImage:
             "/posts/files"
-        case .createPost, .viewPost:
+        case .createPost, .readPosts:
             "/posts"
-        case .viewPostWithID(let request):
+        case .readPostWithID(let request):
             "/posts/\(request.postID)"
         case .updatePost(let request):
             "/posts/\(request.postID)"
         case .deletePost(let request):
             "/posts/\(request.postID)"
-        case .viewPostByUser(let request):
+        case .readPostsByUser(let request):
             "/posts/users/\(request.userID)"
         }
     }
@@ -41,7 +41,7 @@ extension PostTarget: BackEndTargetType {
         switch self {
         case .uploadImage, .createPost:
             .post
-        case .viewPost, .viewPostWithID, .viewPostByUser:
+        case .readPosts, .readPostWithID, .readPostsByUser:
             .get
         case .updatePost:
             .put
@@ -56,16 +56,16 @@ extension PostTarget: BackEndTargetType {
             .uploadMultipart(request.toMultipartFormData())
         case .createPost(let request):
             .requestJSONEncodable(request.body)
-        case .viewPost(let request):
+        case .readPosts(let request):
             .requestParameters(
                 parameters: request.toQuery(),
                 encoding: URLEncoding.queryString
             )
-        case .viewPostWithID, .deletePost:
+        case .readPostWithID, .deletePost:
             .requestPlain
         case .updatePost(let request):
             .requestJSONEncodable(request.body)
-        case .viewPostByUser(let request):
+        case .readPostsByUser(let request):
             .requestParameters(
                 parameters: request.toQuery(),
                 encoding: URLEncoding.queryString
@@ -79,15 +79,15 @@ extension PostTarget: BackEndTargetType {
             request.toHeader()
         case .createPost(let request):
             request.toHeader()
-        case .viewPost(let request):
+        case .readPosts(let request):
             request.toHeader()
-        case .viewPostWithID(let request):
+        case .readPostWithID(let request):
             request.toHeader()
         case .updatePost(let request):
             request.toHeader()
         case .deletePost(let request):
             request.toHeader()
-        case .viewPostByUser(let request):
+        case .readPostsByUser(let request):
             request.toHeader()
         }
     }
@@ -98,7 +98,7 @@ extension PostTarget: BackEndTargetType {
             .multipartFormData
         case .createPost, .updatePost:
             .json
-        case .viewPost, .viewPostWithID, .deletePost, .viewPostByUser:
+        case .readPosts, .readPostWithID, .deletePost, .readPostsByUser:
             nil
         }
     }
