@@ -30,6 +30,10 @@
 		8ED3DE052C72E2EF00126BD4 /* DeletePostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE042C72E2EF00126BD4 /* DeletePostRequest.swift */; };
 		8ED3DE0A2C72EE7600126BD4 /* ViewPostByUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE092C72EE7600126BD4 /* ViewPostByUserRequest.swift */; };
 		8ED3DE0C2C73202C00126BD4 /* PostTargetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE0B2C73202C00126BD4 /* PostTargetTests.swift */; };
+		8ED3DE112C73253200126BD4 /* CommentTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE102C73253200126BD4 /* CommentTarget.swift */; };
+		8ED3DE142C73257E00126BD4 /* CreateCommentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE132C73257E00126BD4 /* CreateCommentRequest.swift */; };
+		8ED3DE162C73269800126BD4 /* UpdateCommentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE152C73269800126BD4 /* UpdateCommentRequest.swift */; };
+		8ED3DE182C7327AD00126BD4 /* DeleteCommentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE172C7327AD00126BD4 /* DeleteCommentRequest.swift */; };
 		BE98C0902C6F4B610058D3FA /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C08F2C6F4B610058D3FA /* LoginRequest.swift */; };
 		BE98C0922C6F4C4C0058D3FA /* RequestProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C0912C6F4C4C0058D3FA /* RequestProvider.swift */; };
 		BE98C0942C6F4C620058D3FA /* JoinRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C0932C6F4C620058D3FA /* JoinRequest.swift */; };
@@ -87,6 +91,10 @@
 		8ED3DE042C72E2EF00126BD4 /* DeletePostRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletePostRequest.swift; sourceTree = "<group>"; };
 		8ED3DE092C72EE7600126BD4 /* ViewPostByUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPostByUserRequest.swift; sourceTree = "<group>"; };
 		8ED3DE0B2C73202C00126BD4 /* PostTargetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTargetTests.swift; sourceTree = "<group>"; };
+		8ED3DE102C73253200126BD4 /* CommentTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTarget.swift; sourceTree = "<group>"; };
+		8ED3DE132C73257E00126BD4 /* CreateCommentRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCommentRequest.swift; sourceTree = "<group>"; };
+		8ED3DE152C73269800126BD4 /* UpdateCommentRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCommentRequest.swift; sourceTree = "<group>"; };
+		8ED3DE172C7327AD00126BD4 /* DeleteCommentRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteCommentRequest.swift; sourceTree = "<group>"; };
 		BE98C08F2C6F4B610058D3FA /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		BE98C0912C6F4C4C0058D3FA /* RequestProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProvider.swift; sourceTree = "<group>"; };
 		BE98C0932C6F4C620058D3FA /* JoinRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRequest.swift; sourceTree = "<group>"; };
@@ -201,6 +209,7 @@
 			children = (
 				8EA517A92C6DEF7C0029A356 /* AuthTarget.swift */,
 				8ED3DDEA2C720C1200126BD4 /* PostTarget.swift */,
+				8ED3DE102C73253200126BD4 /* CommentTarget.swift */,
 			);
 			path = Target;
 			sourceTree = "<group>";
@@ -240,6 +249,16 @@
 			path = Target;
 			sourceTree = "<group>";
 		};
+		8ED3DE122C73257600126BD4 /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				8ED3DE132C73257E00126BD4 /* CreateCommentRequest.swift */,
+				8ED3DE152C73269800126BD4 /* UpdateCommentRequest.swift */,
+				8ED3DE172C7327AD00126BD4 /* DeleteCommentRequest.swift */,
+			);
+			path = Comment;
+			sourceTree = "<group>";
+		};
 		BE98C08B2C6F4A7F0058D3FA /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -271,6 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				8ED3DDF22C720F8300126BD4 /* AccessTokenHeader.swift */,
+				8ED3DE122C73257600126BD4 /* Comment */,
 				8ED3DDED2C720E1000126BD4 /* Post */,
 				8ED3DDEC2C720E0A00126BD4 /* Auth */,
 			);
@@ -403,10 +423,14 @@
 				8ED3DDEB2C720C1200126BD4 /* PostTarget.swift in Sources */,
 				BE98C0982C6F4F2B0058D3FA /* EmailRequest.swift in Sources */,
 				8ED3DDFE2C72DBFE00126BD4 /* ViewPostRequest.swift in Sources */,
+				8ED3DE142C73257E00126BD4 /* CreateCommentRequest.swift in Sources */,
 				8ED3DE012C72DF0800126BD4 /* ViewPostWithIDRequest.swift in Sources */,
+				8ED3DE112C73253200126BD4 /* CommentTarget.swift in Sources */,
+				8ED3DE162C73269800126BD4 /* UpdateCommentRequest.swift in Sources */,
 				8ED3DDF12C720F3D00126BD4 /* UploadImageRequest.swift in Sources */,
 				BE98C0962C6F4EB80058D3FA /* BackEndTargetType.swift in Sources */,
 				8ED3DDEF2C720E1400126BD4 /* CreatePostRequest.swift in Sources */,
+				8ED3DE182C7327AD00126BD4 /* DeleteCommentRequest.swift in Sources */,
 				8EA5179E2C6DBEEA0029A356 /* Secret.swift in Sources */,
 				8EA517802C6DB0FB0029A356 /* AppDelegate.swift in Sources */,
 				BE98C09A2C6F50120058D3FA /* RefreshTokenRequest.swift in Sources */,

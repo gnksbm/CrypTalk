@@ -21,10 +21,6 @@ struct UpdatePostRequest {
     let files: [String]?
 }
 
-extension UpdatePostRequest: PathProvider {
-    var additionalPath: String { "/\(postID)" }
-}
-
 extension UpdatePostRequest: HeaderProvider {
     var header: AccessTokenHeader {
         AccessTokenHeader(accessToken: accessToken)

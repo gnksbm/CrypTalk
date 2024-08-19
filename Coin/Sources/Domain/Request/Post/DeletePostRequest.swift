@@ -17,7 +17,3 @@ extension DeletePostRequest: HeaderProvider {
         AccessTokenHeader(accessToken: accessToken)
     }
 }
-
-extension DeletePostRequest: PathProvider {
-    var additionalPath: String { "/\(postID)" }
-}

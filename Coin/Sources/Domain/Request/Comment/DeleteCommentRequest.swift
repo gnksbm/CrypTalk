@@ -1,5 +1,5 @@
 //
-//  ViewPostWithIDRequest.swift
+//  DeleteCommentRequest.swift
 //  Coin
 //
 //  Created by gnksbm on 8/19/24.
@@ -7,12 +7,14 @@
 
 import Foundation
 
-struct ViewPostWithIDRequest {
+struct DeleteCommentRequest {
     let accessToken: String
     let postID: String
+    let commentID: String
+    let content: String
 }
 
-extension ViewPostWithIDRequest: HeaderProvider {
+extension DeleteCommentRequest: HeaderProvider {
     var header: AccessTokenHeader {
         AccessTokenHeader(accessToken: accessToken)
     }

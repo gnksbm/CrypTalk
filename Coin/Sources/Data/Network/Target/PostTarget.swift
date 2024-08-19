@@ -27,13 +27,13 @@ extension PostTarget: BackEndTargetType {
         case .createPost, .viewPost:
             "/posts"
         case .viewPostWithID(let request):
-            "/posts\(request.additionalPath)"
+            "/posts\(request.postID)"
         case .updatePost(let request):
-            "/posts\(request.additionalPath)"
+            "/posts\(request.postID)"
         case .deletePost(let request):
-            "/posts\(request.additionalPath)"
+            "/posts\(request.postID)"
         case .viewPostByUser(let request):
-            "/posts/users\(request.additionalPath)"
+            "/posts/users\(request.userID)"
         }
     }
     

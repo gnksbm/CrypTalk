@@ -15,10 +15,6 @@ struct ViewPostByUserRequest {
     let productID: String?
 }
 
-extension ViewPostByUserRequest: PathProvider {
-    var additionalPath: String { "/\(userID)" }
-}
-
 extension ViewPostByUserRequest: QueryProvider {
     var query: Query {
         Query(

@@ -9,10 +9,6 @@ import Foundation
 
 import Moya
 
-protocol PathProvider {
-    var additionalPath: String { get }
-}
-
 protocol QueryProvider {
     associatedtype Query: Encodable
     
