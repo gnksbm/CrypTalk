@@ -44,6 +44,8 @@
 		8ED3DE2A2C7331D600126BD4 /* ReadProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE292C7331D600126BD4 /* ReadProfileRequest.swift */; };
 		8ED3DE2C2C7331DC00126BD4 /* UpdateProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE2B2C7331DC00126BD4 /* UpdateProfileRequest.swift */; };
 		8ED3DE2E2C7336BE00126BD4 /* ProfileTargetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE2D2C7336BE00126BD4 /* ProfileTargetTests.swift */; };
+		8ED3DE312C73376E00126BD4 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE302C73376E00126BD4 /* DIContainer.swift */; };
+		8ED3DE332C73393C00126BD4 /* Injected.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE322C73393C00126BD4 /* Injected.swift */; };
 		BE98C0902C6F4B610058D3FA /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C08F2C6F4B610058D3FA /* LoginRequest.swift */; };
 		BE98C0922C6F4C4C0058D3FA /* RequestProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C0912C6F4C4C0058D3FA /* RequestProvider.swift */; };
 		BE98C0942C6F4C620058D3FA /* JoinRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C0932C6F4C620058D3FA /* JoinRequest.swift */; };
@@ -115,6 +117,8 @@
 		8ED3DE292C7331D600126BD4 /* ReadProfileRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadProfileRequest.swift; sourceTree = "<group>"; };
 		8ED3DE2B2C7331DC00126BD4 /* UpdateProfileRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileRequest.swift; sourceTree = "<group>"; };
 		8ED3DE2D2C7336BE00126BD4 /* ProfileTargetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTargetTests.swift; sourceTree = "<group>"; };
+		8ED3DE302C73376E00126BD4 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
+		8ED3DE322C73393C00126BD4 /* Injected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injected.swift; sourceTree = "<group>"; };
 		BE98C08F2C6F4B610058D3FA /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		BE98C0912C6F4C4C0058D3FA /* RequestProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProvider.swift; sourceTree = "<group>"; };
 		BE98C0932C6F4C620058D3FA /* JoinRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRequest.swift; sourceTree = "<group>"; };
@@ -220,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				8EA5179D2C6DBEEA0029A356 /* Secret.swift */,
+				8ED3DE2F2C73376600126BD4 /* DependencyInjection */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -232,6 +237,8 @@
 				8ED3DE102C73253200126BD4 /* CommentTarget.swift */,
 				8ED3DE1B2C7329FF00126BD4 /* LikeTarget.swift */,
 				8ED3DE262C7330C800126BD4 /* ProfileTarget.swift */,
+				8EA517AB2C6DEFF90029A356 /* TargetProvider.swift */,
+				BE98C0952C6F4EB80058D3FA /* BackEndTargetType.swift */,
 			);
 			path = Target;
 			sourceTree = "<group>";
@@ -303,11 +310,18 @@
 			path = User;
 			sourceTree = "<group>";
 		};
+		8ED3DE2F2C73376600126BD4 /* DependencyInjection */ = {
+			isa = PBXGroup;
+			children = (
+				8ED3DE302C73376E00126BD4 /* DIContainer.swift */,
+				8ED3DE322C73393C00126BD4 /* Injected.swift */,
+			);
+			path = DependencyInjection;
+			sourceTree = "<group>";
+		};
 		BE98C08B2C6F4A7F0058D3FA /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				8EA517AB2C6DEFF90029A356 /* TargetProvider.swift */,
-				BE98C0952C6F4EB80058D3FA /* BackEndTargetType.swift */,
 				8EA517A82C6DE3E40029A356 /* Target */,
 			);
 			path = Network;
@@ -486,6 +500,7 @@
 				8EA5179E2C6DBEEA0029A356 /* Secret.swift in Sources */,
 				8EA517802C6DB0FB0029A356 /* AppDelegate.swift in Sources */,
 				BE98C09A2C6F50120058D3FA /* RefreshTokenRequest.swift in Sources */,
+				8ED3DE312C73376E00126BD4 /* DIContainer.swift in Sources */,
 				8ED3DE032C72E1B200126BD4 /* UpdatePostRequest.swift in Sources */,
 				8EA517AA2C6DEF7C0029A356 /* AuthTarget.swift in Sources */,
 				8ED3DE052C72E2EF00126BD4 /* DeletePostRequest.swift in Sources */,
@@ -493,6 +508,7 @@
 				BE98C0922C6F4C4C0058D3FA /* RequestProvider.swift in Sources */,
 				BE98C0942C6F4C620058D3FA /* JoinRequest.swift in Sources */,
 				8ED3DDF32C720F8300126BD4 /* AccessTokenHeader.swift in Sources */,
+				8ED3DE332C73393C00126BD4 /* Injected.swift in Sources */,
 				8ED3DE0A2C72EE7600126BD4 /* ReadPostsByUserRequest.swift in Sources */,
 				8EA517822C6DB0FB0029A356 /* SceneDelegate.swift in Sources */,
 				BE98C0902C6F4B610058D3FA /* LoginRequest.swift in Sources */,
