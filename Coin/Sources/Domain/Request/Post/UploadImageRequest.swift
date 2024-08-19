@@ -7,18 +7,19 @@
 
 import Foundation
 
+import Moya
+
 struct UploadImageRequest {
     let accessToken: String
     let data: [Data]
-    let fileType: FileType
 }
 
-extension UploadImageRequest: HeaderProvider {
-    var header: AccessTokenHeader {
-        AccessTokenHeader(accessToken: accessToken)
-    }
-}
+extension UploadImageRequest: AccessTokenProvider { }
 
 extension UploadImageRequest: MultipartFormDataProvider {
     var key: String { "files" }
+    
+    func toMultipartFormData() -> [MultipartFormData] {
+        imageToMultipartFormData()
+    }
 }

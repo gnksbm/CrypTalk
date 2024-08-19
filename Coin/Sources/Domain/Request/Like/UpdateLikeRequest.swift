@@ -13,11 +13,7 @@ struct UpdateLikeRequest {
     let likeStatus: Bool
 }
 
-extension UpdateLikeRequest: HeaderProvider {
-    var header: AccessTokenHeader {
-        AccessTokenHeader(accessToken: accessToken)
-    }
-}
+extension UpdateLikeRequest: AccessTokenProvider { }
 
 extension UpdateLikeRequest: BodyProvider {
     var body: Body { Body(likeStatus: likeStatus) }

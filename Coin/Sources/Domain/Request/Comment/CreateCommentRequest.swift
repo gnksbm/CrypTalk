@@ -13,11 +13,7 @@ struct CreateCommentRequest {
     let content: String
 }
 
-extension CreateCommentRequest: HeaderProvider {
-    var header: AccessTokenHeader {
-        AccessTokenHeader(accessToken: accessToken)
-    }
-}
+extension CreateCommentRequest: AccessTokenProvider { }
 
 extension CreateCommentRequest: BodyProvider {
     var body: Body { Body(content: content) }

@@ -37,8 +37,4 @@ extension ReadPostsByUserRequest: QueryProvider {
     }
 }
 
-extension ReadPostsByUserRequest: HeaderProvider {
-    var header: AccessTokenHeader {
-        AccessTokenHeader(accessToken: accessToken)
-    }
-}
+extension ReadPostsByUserRequest: AccessTokenProvider { }

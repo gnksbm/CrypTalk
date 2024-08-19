@@ -11,8 +11,4 @@ struct ReadPostsByHashtagRequest {
     let accessToken: String
 }
 
-extension ReadPostsByHashtagRequest: HeaderProvider {
-    var header: AccessTokenHeader {
-        AccessTokenHeader(accessToken: accessToken)
-    }
-}
+extension ReadPostsByHashtagRequest: AccessTokenProvider { }

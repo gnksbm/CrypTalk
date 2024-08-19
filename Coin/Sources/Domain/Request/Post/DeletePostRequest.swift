@@ -12,8 +12,4 @@ struct DeletePostRequest {
     let postID: String
 }
 
-extension DeletePostRequest: HeaderProvider {
-    var header: AccessTokenHeader {
-        AccessTokenHeader(accessToken: accessToken)
-    }
-}
+extension DeletePostRequest: AccessTokenProvider { }

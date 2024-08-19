@@ -21,11 +21,7 @@ struct UpdatePostRequest {
     let files: [String]?
 }
 
-extension UpdatePostRequest: HeaderProvider {
-    var header: AccessTokenHeader {
-        AccessTokenHeader(accessToken: accessToken)
-    }
-}
+extension UpdatePostRequest: AccessTokenProvider { }
 
 extension UpdatePostRequest: BodyProvider {
     var body: Body {

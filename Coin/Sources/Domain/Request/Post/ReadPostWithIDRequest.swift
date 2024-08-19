@@ -12,8 +12,4 @@ struct ReadPostWithIDRequest {
     let postID: String
 }
 
-extension ReadPostWithIDRequest: HeaderProvider {
-    var header: AccessTokenHeader {
-        AccessTokenHeader(accessToken: accessToken)
-    }
-}
+extension ReadPostWithIDRequest: AccessTokenProvider { }

@@ -14,11 +14,7 @@ struct UpdateCommentRequest {
     let content: String
 }
 
-extension UpdateCommentRequest: HeaderProvider {
-    var header: AccessTokenHeader {
-        AccessTokenHeader(accessToken: accessToken)
-    }
-}
+extension UpdateCommentRequest: AccessTokenProvider { }
 
 extension UpdateCommentRequest: BodyProvider {
     var body: Body { Body(content: content) }

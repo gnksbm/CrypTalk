@@ -14,8 +14,4 @@ struct DeleteCommentRequest {
     let content: String
 }
 
-extension DeleteCommentRequest: HeaderProvider {
-    var header: AccessTokenHeader {
-        AccessTokenHeader(accessToken: accessToken)
-    }
-}
+extension DeleteCommentRequest: AccessTokenProvider { }

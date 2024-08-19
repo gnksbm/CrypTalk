@@ -11,8 +11,4 @@ struct WithDrawRequest {
     let accessToken: String
 }
 
-extension WithDrawRequest: HeaderProvider {
-    var header: AccessTokenHeader {
-        AccessTokenHeader(accessToken: accessToken)
-    }
-}
+extension WithDrawRequest: AccessTokenProvider { }

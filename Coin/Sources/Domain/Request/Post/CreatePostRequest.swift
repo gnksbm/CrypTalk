@@ -20,11 +20,7 @@ struct CreatePostRequest {
     let files: [String]?
 }
 
-extension CreatePostRequest: HeaderProvider {
-    var header: AccessTokenHeader {
-        AccessTokenHeader(accessToken: accessToken)
-    }
-}
+extension CreatePostRequest: AccessTokenProvider { }
 
 extension CreatePostRequest: BodyProvider {
     var body: Body {
