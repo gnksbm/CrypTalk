@@ -17,6 +17,7 @@ enum PostTarget {
     case updatePost(UpdatePostRequest)
     case deletePost(DeletePostRequest)
     case readPostsByUser(ReadPostsByUserRequest)
+    case readPostsByHashtag(ReadPostsByHashtagRequest)
 }
 
 extension PostTarget: BackEndTargetType {
@@ -34,6 +35,8 @@ extension PostTarget: BackEndTargetType {
             "/posts/\(request.postID)"
         case .readPostsByUser(let request):
             "/posts/users/\(request.userID)"
+        case .readPostsByHashtag(let request):
+            "/posts/hashtags"
         }
     }
     
@@ -41,7 +44,7 @@ extension PostTarget: BackEndTargetType {
         switch self {
         case .uploadImage, .createPost:
             .post
-        case .readPosts, .readPostWithID, .readPostsByUser:
+        case .readPosts, .readPostWithID, .readPostsByUser, .readPostsByHashtag:
             .get
         case .updatePost:
             .put
@@ -61,7 +64,7 @@ extension PostTarget: BackEndTargetType {
                 parameters: request.toQuery(),
                 encoding: URLEncoding.queryString
             )
-        case .readPostWithID, .deletePost:
+        case .readPostWithID, .deletePost, .readPostsByHashtag:
             .requestPlain
         case .updatePost(let request):
             .requestJSONEncodable(request.body)
@@ -89,6 +92,8 @@ extension PostTarget: BackEndTargetType {
             request.toHeader()
         case .readPostsByUser(let request):
             request.toHeader()
+        case .readPostsByHashtag(let request):
+            request.toHeader()
         }
     }
     
@@ -98,7 +103,8 @@ extension PostTarget: BackEndTargetType {
             .multipartFormData
         case .createPost, .updatePost:
             .json
-        case .readPosts, .readPostWithID, .deletePost, .readPostsByUser:
+        case .readPosts, .readPostWithID, .deletePost, .readPostsByUser,
+                .readPostsByHashtag:
             nil
         }
     }
