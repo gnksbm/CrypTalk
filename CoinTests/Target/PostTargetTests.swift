@@ -27,8 +27,7 @@ final class PostTargetTests: XCTestCase {
                     accessToken: accessToken,
                     data: [
                         data
-                    ],
-                    fileType: .gif
+                    ]
                 )
             ),
             successStatusCode: 401
