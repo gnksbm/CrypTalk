@@ -37,9 +37,12 @@
 		8ED3DE1A2C73283B00126BD4 /* CommentTargetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE192C73283B00126BD4 /* CommentTargetTests.swift */; };
 		8ED3DE1C2C7329FF00126BD4 /* LikeTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE1B2C7329FF00126BD4 /* LikeTarget.swift */; };
 		8ED3DE1F2C732A7200126BD4 /* UpdateLikeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE1E2C732A7200126BD4 /* UpdateLikeRequest.swift */; };
-		8ED3DE212C732BAE00126BD4 /* ReadLikedPosts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE202C732BAE00126BD4 /* ReadLikedPosts.swift */; };
+		8ED3DE212C732BAE00126BD4 /* ReadLikedPostsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE202C732BAE00126BD4 /* ReadLikedPostsRequest.swift */; };
 		8ED3DE232C732CBD00126BD4 /* LikeTargetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE222C732CBD00126BD4 /* LikeTargetTests.swift */; };
 		8ED3DE252C732F7100126BD4 /* ReadPostsByHashtagRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE242C732F7100126BD4 /* ReadPostsByHashtagRequest.swift */; };
+		8ED3DE272C7330C800126BD4 /* ProfileTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE262C7330C800126BD4 /* ProfileTarget.swift */; };
+		8ED3DE2A2C7331D600126BD4 /* ReadProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE292C7331D600126BD4 /* ReadProfileRequest.swift */; };
+		8ED3DE2C2C7331DC00126BD4 /* UpdateProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE2B2C7331DC00126BD4 /* UpdateProfileRequest.swift */; };
 		BE98C0902C6F4B610058D3FA /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C08F2C6F4B610058D3FA /* LoginRequest.swift */; };
 		BE98C0922C6F4C4C0058D3FA /* RequestProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C0912C6F4C4C0058D3FA /* RequestProvider.swift */; };
 		BE98C0942C6F4C620058D3FA /* JoinRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C0932C6F4C620058D3FA /* JoinRequest.swift */; };
@@ -104,9 +107,12 @@
 		8ED3DE192C73283B00126BD4 /* CommentTargetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTargetTests.swift; sourceTree = "<group>"; };
 		8ED3DE1B2C7329FF00126BD4 /* LikeTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeTarget.swift; sourceTree = "<group>"; };
 		8ED3DE1E2C732A7200126BD4 /* UpdateLikeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateLikeRequest.swift; sourceTree = "<group>"; };
-		8ED3DE202C732BAE00126BD4 /* ReadLikedPosts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadLikedPosts.swift; sourceTree = "<group>"; };
+		8ED3DE202C732BAE00126BD4 /* ReadLikedPostsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadLikedPostsRequest.swift; sourceTree = "<group>"; };
 		8ED3DE222C732CBD00126BD4 /* LikeTargetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeTargetTests.swift; sourceTree = "<group>"; };
 		8ED3DE242C732F7100126BD4 /* ReadPostsByHashtagRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadPostsByHashtagRequest.swift; sourceTree = "<group>"; };
+		8ED3DE262C7330C800126BD4 /* ProfileTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTarget.swift; sourceTree = "<group>"; };
+		8ED3DE292C7331D600126BD4 /* ReadProfileRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadProfileRequest.swift; sourceTree = "<group>"; };
+		8ED3DE2B2C7331DC00126BD4 /* UpdateProfileRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileRequest.swift; sourceTree = "<group>"; };
 		BE98C08F2C6F4B610058D3FA /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		BE98C0912C6F4C4C0058D3FA /* RequestProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProvider.swift; sourceTree = "<group>"; };
 		BE98C0932C6F4C620058D3FA /* JoinRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRequest.swift; sourceTree = "<group>"; };
@@ -223,6 +229,7 @@
 				8ED3DDEA2C720C1200126BD4 /* PostTarget.swift */,
 				8ED3DE102C73253200126BD4 /* CommentTarget.swift */,
 				8ED3DE1B2C7329FF00126BD4 /* LikeTarget.swift */,
+				8ED3DE262C7330C800126BD4 /* ProfileTarget.swift */,
 			);
 			path = Target;
 			sourceTree = "<group>";
@@ -279,9 +286,18 @@
 			isa = PBXGroup;
 			children = (
 				8ED3DE1E2C732A7200126BD4 /* UpdateLikeRequest.swift */,
-				8ED3DE202C732BAE00126BD4 /* ReadLikedPosts.swift */,
+				8ED3DE202C732BAE00126BD4 /* ReadLikedPostsRequest.swift */,
 			);
 			path = Like;
+			sourceTree = "<group>";
+		};
+		8ED3DE282C7331D300126BD4 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				8ED3DE292C7331D600126BD4 /* ReadProfileRequest.swift */,
+				8ED3DE2B2C7331DC00126BD4 /* UpdateProfileRequest.swift */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 		BE98C08B2C6F4A7F0058D3FA /* Network */ = {
@@ -315,6 +331,7 @@
 			isa = PBXGroup;
 			children = (
 				8ED3DDF22C720F8300126BD4 /* AccessTokenHeader.swift */,
+				8ED3DE282C7331D300126BD4 /* User */,
 				8ED3DE1D2C732A6F00126BD4 /* Like */,
 				8ED3DE122C73257600126BD4 /* Comment */,
 				8ED3DDED2C720E1000126BD4 /* Post */,
@@ -452,14 +469,17 @@
 				8ED3DDFE2C72DBFE00126BD4 /* ReadPostsRequest.swift in Sources */,
 				8ED3DE142C73257E00126BD4 /* CreateCommentRequest.swift in Sources */,
 				8ED3DE012C72DF0800126BD4 /* ReadPostWithIDRequest.swift in Sources */,
+				8ED3DE272C7330C800126BD4 /* ProfileTarget.swift in Sources */,
+				8ED3DE2A2C7331D600126BD4 /* ReadProfileRequest.swift in Sources */,
 				8ED3DE112C73253200126BD4 /* CommentTarget.swift in Sources */,
+				8ED3DE2C2C7331DC00126BD4 /* UpdateProfileRequest.swift in Sources */,
 				8ED3DE162C73269800126BD4 /* UpdateCommentRequest.swift in Sources */,
 				8ED3DDF12C720F3D00126BD4 /* UploadImageRequest.swift in Sources */,
 				BE98C0962C6F4EB80058D3FA /* BackEndTargetType.swift in Sources */,
 				8ED3DDEF2C720E1400126BD4 /* CreatePostRequest.swift in Sources */,
 				8ED3DE182C7327AD00126BD4 /* DeleteCommentRequest.swift in Sources */,
 				8ED3DE1C2C7329FF00126BD4 /* LikeTarget.swift in Sources */,
-				8ED3DE212C732BAE00126BD4 /* ReadLikedPosts.swift in Sources */,
+				8ED3DE212C732BAE00126BD4 /* ReadLikedPostsRequest.swift in Sources */,
 				8EA5179E2C6DBEEA0029A356 /* Secret.swift in Sources */,
 				8EA517802C6DB0FB0029A356 /* AppDelegate.swift in Sources */,
 				BE98C09A2C6F50120058D3FA /* RefreshTokenRequest.swift in Sources */,

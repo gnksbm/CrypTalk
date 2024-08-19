@@ -34,7 +34,7 @@ final class LikeTargetTests: XCTestCase {
     func testReadLikedPosts() {
         testTarget(
             .readLikedPosts(
-                ReadLikedPosts(
+                ReadLikedPostsRequest(
                     accessToken: accessToken
                 )
             ),

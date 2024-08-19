@@ -56,20 +56,16 @@ protocol BodyProvider {
 protocol MultipartFormDataProvider {
     var key: String { get }
     var data: [Data] { get }
-    var fileType: FileType { get }
-}
-
-enum FileType: String {
-    case jpg, png, jpeg, gif, pdf
+    
+    func toMultipartFormData() -> [MultipartFormData]
 }
 
 extension MultipartFormDataProvider {
-    func toMultipartFormData() -> [MultipartFormData] {
+    func imageToMultipartFormData() -> [MultipartFormData] {
         data.map {
             MultipartFormData(
                 provider: .data($0),
-                name: key,
-                fileName: "\(fileType).\(fileType)"
+                name: key
             )
         }
     }

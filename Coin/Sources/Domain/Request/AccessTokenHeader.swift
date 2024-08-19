@@ -7,6 +7,16 @@
 
 import Foundation
 
+protocol AccessTokenProvider: HeaderProvider {
+    var accessToken: String { get }
+}
+
+extension AccessTokenProvider {
+    var header: AccessTokenHeader {
+        AccessTokenHeader(accessToken: accessToken)
+    }
+}
+
 struct AccessTokenHeader: Encodable {
     let accessToken: String
     

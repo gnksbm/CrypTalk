@@ -11,7 +11,7 @@ import Moya
 
 enum LikeTarget { 
     case updateLike(UpdateLikeRequest)
-    case readLikedPosts(ReadLikedPosts)
+    case readLikedPosts(ReadLikedPostsRequest)
 }
 
 extension LikeTarget: BackEndTargetType {
