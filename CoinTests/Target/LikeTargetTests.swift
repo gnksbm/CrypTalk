@@ -1,5 +1,5 @@
 //
-//  CommentTargetTests.swift
+//  LikeTargetTests.swift
 //  CoinTests
 //
 //  Created by gnksbm on 8/19/24.
@@ -12,54 +12,37 @@ import XCTest
 @testable import RxMoya
 @testable import RxSwift
 
-final class CommentTargetTests: XCTestCase {
-    private let provider = MoyaProvider<CommentTarget>()
+final class LikeTargetTests: XCTestCase {
+    private let provider = MoyaProvider<LikeTarget>()
     private var disposeBag = DisposeBag()
     
     private var accessToken = "1"
     
-    func testCreateComment() { 
+    func testUpdateLike() {
         testTarget(
-            .createComment(
-                CreateCommentRequest(
+            .updateLike(
+                UpdateLikeRequest(
                     accessToken: accessToken,
                     postID: "",
-                    content: ""
+                    likeStatus: true
                 )
             ),
             successStatusCode: 401
         )
     }
     
-    func testUpdateComment() {
+    func testReadLikedPosts() {
         testTarget(
-            .updateComment(
-                UpdateCommentRequest(
-                    accessToken: accessToken,
-                    postID: "",
-                    commentID: "",
-                    content: ""
+            .readLikedPosts(
+                ReadLikedPosts(
+                    accessToken: accessToken
                 )
             ),
             successStatusCode: 401
         )
     }
     
-    func testDeleteComment() {
-        testTarget(
-            .deleteComment(
-                DeleteCommentRequest(
-                    accessToken: accessToken,
-                    postID: "",
-                    commentID: "",
-                    content: ""
-                )
-            ),
-            successStatusCode: 401
-        )
-    }
-    
-    private func testTarget(_ target: CommentTarget, successStatusCode: Int) {
+    private func testTarget(_ target: LikeTarget, successStatusCode: Int) {
         let expectation = XCTestExpectation(description: "\(target) 통신 성공")
         var statusCode: Int?
         provider.rx.request(target)
@@ -81,3 +64,4 @@ final class CommentTargetTests: XCTestCase {
         disposeBag = DisposeBag()
     }
 }
+

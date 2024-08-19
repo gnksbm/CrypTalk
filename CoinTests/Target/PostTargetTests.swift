@@ -130,7 +130,7 @@ final class PostTargetTests: XCTestCase {
     }
     
     private func testTarget(_ target: PostTarget, successStatusCode: Int) {
-        let expectation = XCTestExpectation(description: "회원가입 통신 성공")
+        let expectation = XCTestExpectation(description: "\(target) 통신 성공")
         var statusCode: Int?
         var failureStatusCode: Int?
         provider.rx.request(target)
