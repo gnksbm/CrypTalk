@@ -12,13 +12,7 @@ struct WithDrawRequest {
 }
 
 extension WithDrawRequest: HeaderProvider {
-    var header: Header { Header(accessToken: accessToken) }
-    
-    struct Header: Encodable {
-        let accessToken: String
-        
-        enum CodingKeys: String, CodingKey {
-            case accessToken = "Authorization"
-        }
+    var header: AccessTokenHeader {
+        AccessTokenHeader(accessToken: accessToken)
     }
 }

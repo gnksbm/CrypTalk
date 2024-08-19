@@ -45,13 +45,13 @@ enum Scheme: String {
 }
 
 enum Content {
-    case json, file
+    case json, multipartFormData
     
     var header: [String: String] {
         switch self {
         case .json:
             ["Content-Type": "application/json"]
-        case .file:
+        case .multipartFormData:
             ["Content-Type": "multipart/form-data"]
         }
     }

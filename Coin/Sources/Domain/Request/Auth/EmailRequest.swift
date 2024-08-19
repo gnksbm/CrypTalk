@@ -11,10 +11,10 @@ struct EmailRequest {
     let email: String
 }
 
-extension EmailRequest: ParameterProvider {
-    var parameter: Parameter { Parameter(email: email) }
+extension EmailRequest: BodyProvider {
+    var body: Body { Body(email: email) }
     
-    struct Parameter: Encodable {
+    struct Body: Encodable {
         let email: String
     }
 }

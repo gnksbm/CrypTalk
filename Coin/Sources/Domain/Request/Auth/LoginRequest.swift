@@ -12,12 +12,12 @@ struct LoginRequest {
     let password: String
 }
 
-extension LoginRequest: ParameterProvider {
-    var parameter: Parameter {
-        Parameter(email: email, password: password)
+extension LoginRequest: BodyProvider {
+    var body: Body {
+        Body(email: email, password: password)
     }
     
-    struct Parameter: Encodable {
+    struct Body: Encodable {
         let email: String
         let password: String
     }

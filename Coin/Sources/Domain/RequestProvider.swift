@@ -7,12 +7,35 @@
 
 import Foundation
 
+import Moya
+
+protocol PathProvider {
+    var additionalPath: String { get }
+}
+
+protocol QueryProvider {
+    associatedtype Query: Encodable
+    
+    var query: Query { get }
+}
+
+extension QueryProvider {
+    func toQuery() -> [String: String] {
+        do {
+            let data = try JSONEncoder().encode(query)
+            let jsonObject = try JSONSerialization.jsonObject(with: data)
+            guard let dic = jsonObject as? [String: String] else { return [:] }
+            return dic
+        } catch {
+            return [:]
+        }
+    }
+}
+
 protocol HeaderProvider {
     associatedtype Header: Encodable
     
     var header: Header { get }
-    
-    func toHeader() -> [String: String]
 }
 
 extension HeaderProvider {
@@ -28,8 +51,30 @@ extension HeaderProvider {
     }
 }
 
-protocol ParameterProvider {
-    associatedtype Parameter: Encodable
+protocol BodyProvider {
+    associatedtype Body: Encodable
     
-    var parameter: Parameter { get }
+    var body: Body { get }
+}
+
+protocol MultipartFormDataProvider {
+    var key: String { get }
+    var data: [Data] { get }
+    var fileType: FileType { get }
+}
+
+enum FileType: String {
+    case jpg, png, jpeg, gif, pdf
+}
+
+extension MultipartFormDataProvider {
+    func toMultipartFormData() -> [MultipartFormData] {
+        data.map {
+            MultipartFormData(
+                provider: .data($0),
+                name: key,
+                fileName: "\(fileType).\(fileType)"
+            )
+        }
+    }
 }

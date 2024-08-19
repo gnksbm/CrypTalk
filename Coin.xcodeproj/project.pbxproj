@@ -22,6 +22,13 @@
 		8EA517AC2C6DEFF90029A356 /* TargetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA517AB2C6DEFF90029A356 /* TargetProvider.swift */; };
 		8ED3DDEB2C720C1200126BD4 /* PostTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DDEA2C720C1200126BD4 /* PostTarget.swift */; };
 		8ED3DDEF2C720E1400126BD4 /* CreatePostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DDEE2C720E1400126BD4 /* CreatePostRequest.swift */; };
+		8ED3DDF12C720F3D00126BD4 /* UploadImageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DDF02C720F3D00126BD4 /* UploadImageRequest.swift */; };
+		8ED3DDF32C720F8300126BD4 /* AccessTokenHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DDF22C720F8300126BD4 /* AccessTokenHeader.swift */; };
+		8ED3DDFE2C72DBFE00126BD4 /* ViewPostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DDFD2C72DBFE00126BD4 /* ViewPostRequest.swift */; };
+		8ED3DE012C72DF0800126BD4 /* ViewPostWithIDRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE002C72DF0800126BD4 /* ViewPostWithIDRequest.swift */; };
+		8ED3DE032C72E1B200126BD4 /* UpdatePostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE022C72E1B200126BD4 /* UpdatePostRequest.swift */; };
+		8ED3DE052C72E2EF00126BD4 /* DeletePostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE042C72E2EF00126BD4 /* DeletePostRequest.swift */; };
+		8ED3DE0A2C72EE7600126BD4 /* ViewPostByUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE092C72EE7600126BD4 /* ViewPostByUserRequest.swift */; };
 		BE98C0902C6F4B610058D3FA /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C08F2C6F4B610058D3FA /* LoginRequest.swift */; };
 		BE98C0922C6F4C4C0058D3FA /* RequestProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C0912C6F4C4C0058D3FA /* RequestProvider.swift */; };
 		BE98C0942C6F4C620058D3FA /* JoinRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C0932C6F4C620058D3FA /* JoinRequest.swift */; };
@@ -71,6 +78,13 @@
 		8EA517AB2C6DEFF90029A356 /* TargetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetProvider.swift; sourceTree = "<group>"; };
 		8ED3DDEA2C720C1200126BD4 /* PostTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTarget.swift; sourceTree = "<group>"; };
 		8ED3DDEE2C720E1400126BD4 /* CreatePostRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostRequest.swift; sourceTree = "<group>"; };
+		8ED3DDF02C720F3D00126BD4 /* UploadImageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageRequest.swift; sourceTree = "<group>"; };
+		8ED3DDF22C720F8300126BD4 /* AccessTokenHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenHeader.swift; sourceTree = "<group>"; };
+		8ED3DDFD2C72DBFE00126BD4 /* ViewPostRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPostRequest.swift; sourceTree = "<group>"; };
+		8ED3DE002C72DF0800126BD4 /* ViewPostWithIDRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPostWithIDRequest.swift; sourceTree = "<group>"; };
+		8ED3DE022C72E1B200126BD4 /* UpdatePostRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePostRequest.swift; sourceTree = "<group>"; };
+		8ED3DE042C72E2EF00126BD4 /* DeletePostRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletePostRequest.swift; sourceTree = "<group>"; };
+		8ED3DE092C72EE7600126BD4 /* ViewPostByUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPostByUserRequest.swift; sourceTree = "<group>"; };
 		BE98C08F2C6F4B610058D3FA /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		BE98C0912C6F4C4C0058D3FA /* RequestProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProvider.swift; sourceTree = "<group>"; };
 		BE98C0932C6F4C620058D3FA /* JoinRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRequest.swift; sourceTree = "<group>"; };
@@ -185,8 +199,6 @@
 			children = (
 				8EA517A92C6DEF7C0029A356 /* AuthTarget.swift */,
 				8ED3DDEA2C720C1200126BD4 /* PostTarget.swift */,
-				8EA517AB2C6DEFF90029A356 /* TargetProvider.swift */,
-				BE98C0952C6F4EB80058D3FA /* BackEndTargetType.swift */,
 			);
 			path = Target;
 			sourceTree = "<group>";
@@ -207,6 +219,12 @@
 			isa = PBXGroup;
 			children = (
 				8ED3DDEE2C720E1400126BD4 /* CreatePostRequest.swift */,
+				8ED3DE042C72E2EF00126BD4 /* DeletePostRequest.swift */,
+				8ED3DE022C72E1B200126BD4 /* UpdatePostRequest.swift */,
+				8ED3DDF02C720F3D00126BD4 /* UploadImageRequest.swift */,
+				8ED3DDFD2C72DBFE00126BD4 /* ViewPostRequest.swift */,
+				8ED3DE002C72DF0800126BD4 /* ViewPostWithIDRequest.swift */,
+				8ED3DE092C72EE7600126BD4 /* ViewPostByUserRequest.swift */,
 			);
 			path = Post;
 			sourceTree = "<group>";
@@ -214,6 +232,8 @@
 		BE98C08B2C6F4A7F0058D3FA /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				8EA517AB2C6DEFF90029A356 /* TargetProvider.swift */,
+				BE98C0952C6F4EB80058D3FA /* BackEndTargetType.swift */,
 				8EA517A82C6DE3E40029A356 /* Target */,
 			);
 			path = Network;
@@ -239,6 +259,7 @@
 		BE98C08E2C6F4B560058D3FA /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				8ED3DDF22C720F8300126BD4 /* AccessTokenHeader.swift */,
 				8ED3DDED2C720E1000126BD4 /* Post */,
 				8ED3DDEC2C720E0A00126BD4 /* Auth */,
 			);
@@ -370,15 +391,22 @@
 				8EA517AC2C6DEFF90029A356 /* TargetProvider.swift in Sources */,
 				8ED3DDEB2C720C1200126BD4 /* PostTarget.swift in Sources */,
 				BE98C0982C6F4F2B0058D3FA /* EmailRequest.swift in Sources */,
+				8ED3DDFE2C72DBFE00126BD4 /* ViewPostRequest.swift in Sources */,
+				8ED3DE012C72DF0800126BD4 /* ViewPostWithIDRequest.swift in Sources */,
+				8ED3DDF12C720F3D00126BD4 /* UploadImageRequest.swift in Sources */,
 				BE98C0962C6F4EB80058D3FA /* BackEndTargetType.swift in Sources */,
 				8ED3DDEF2C720E1400126BD4 /* CreatePostRequest.swift in Sources */,
 				8EA5179E2C6DBEEA0029A356 /* Secret.swift in Sources */,
 				8EA517802C6DB0FB0029A356 /* AppDelegate.swift in Sources */,
 				BE98C09A2C6F50120058D3FA /* RefreshTokenRequest.swift in Sources */,
+				8ED3DE032C72E1B200126BD4 /* UpdatePostRequest.swift in Sources */,
 				8EA517AA2C6DEF7C0029A356 /* AuthTarget.swift in Sources */,
+				8ED3DE052C72E2EF00126BD4 /* DeletePostRequest.swift in Sources */,
 				BE98C09C2C6F55C00058D3FA /* WithDrawRequest.swift in Sources */,
 				BE98C0922C6F4C4C0058D3FA /* RequestProvider.swift in Sources */,
 				BE98C0942C6F4C620058D3FA /* JoinRequest.swift in Sources */,
+				8ED3DDF32C720F8300126BD4 /* AccessTokenHeader.swift in Sources */,
+				8ED3DE0A2C72EE7600126BD4 /* ViewPostByUserRequest.swift in Sources */,
 				8EA517822C6DB0FB0029A356 /* SceneDelegate.swift in Sources */,
 				BE98C0902C6F4B610058D3FA /* LoginRequest.swift in Sources */,
 			);
@@ -472,6 +500,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -528,6 +557,7 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;

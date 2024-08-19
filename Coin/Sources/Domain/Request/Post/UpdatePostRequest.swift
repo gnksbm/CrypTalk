@@ -1,14 +1,15 @@
 //
-//  CreatePostRequest.swift
+//  UpdatePostRequest.swift
 //  Coin
 //
-//  Created by gnksbm on 8/18/24.
+//  Created by gnksbm on 8/19/24.
 //
 
 import Foundation
 
-struct CreatePostRequest {
+struct UpdatePostRequest {
     let accessToken: String
+    let postID: String
     let title: String?
     let content: String?
     let content1: String?
@@ -20,13 +21,13 @@ struct CreatePostRequest {
     let files: [String]?
 }
 
-extension CreatePostRequest: HeaderProvider {
+extension UpdatePostRequest: HeaderProvider {
     var header: AccessTokenHeader {
         AccessTokenHeader(accessToken: accessToken)
     }
 }
 
-extension CreatePostRequest: BodyProvider {
+extension UpdatePostRequest: BodyProvider {
     var body: Body {
         Body(
             title: title,
@@ -64,4 +65,8 @@ extension CreatePostRequest: BodyProvider {
             case files
         }
     }
+}
+
+extension UpdatePostRequest: PathProvider {
+    var additionalPath: String { "/:\(postID)" }
 }

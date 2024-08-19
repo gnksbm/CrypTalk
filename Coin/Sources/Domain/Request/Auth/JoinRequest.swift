@@ -15,9 +15,9 @@ struct JoinRequest {
     let birthDay: String?
 }
 
-extension JoinRequest: ParameterProvider {
-    var parameter: Parameter {
-        Parameter(
+extension JoinRequest: BodyProvider {
+    var body: Body {
+        Body(
             email: email,
             password: password,
             nick: nick,
@@ -26,7 +26,7 @@ extension JoinRequest: ParameterProvider {
         )
     }
     
-    struct Parameter: Encodable {
+    struct Body: Encodable {
         let email: String
         let password: String
         let nick: String
