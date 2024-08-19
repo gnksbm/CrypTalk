@@ -11,6 +11,6 @@ struct AccessTokenHeader: Encodable {
     let accessToken: String
     
     enum CodingKeys: String, CodingKey {
-        case accessToken = "AccessToken"
+        case accessToken = "Authorization"
     }
 }

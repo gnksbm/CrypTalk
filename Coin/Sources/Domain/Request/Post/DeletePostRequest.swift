@@ -19,5 +19,5 @@ extension DeletePostRequest: HeaderProvider {
 }
 
 extension DeletePostRequest: PathProvider {
-    var additionalPath: String { "/:\(postID)" }
+    var additionalPath: String { "/\(postID)" }
 }

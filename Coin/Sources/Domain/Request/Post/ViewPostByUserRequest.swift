@@ -16,7 +16,7 @@ struct ViewPostByUserRequest {
 }
 
 extension ViewPostByUserRequest: PathProvider {
-    var additionalPath: String { "/:\(userID)" }
+    var additionalPath: String { "/\(userID)" }
 }
 
 extension ViewPostByUserRequest: QueryProvider {

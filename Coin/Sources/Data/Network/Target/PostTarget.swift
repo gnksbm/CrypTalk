@@ -11,7 +11,7 @@ import Moya
 
 enum PostTarget {
     case uploadImage(UploadImageRequest)
-    case create(CreatePostRequest)
+    case createPost(CreatePostRequest)
     case viewPost(ViewPostRequest)
     case viewPostWithID(ViewPostWithIDRequest)
     case updatePost(UpdatePostRequest)
@@ -24,7 +24,7 @@ extension PostTarget: BackEndTargetType {
         switch self {
         case .uploadImage:
             "/posts/files"
-        case .create, .viewPost:
+        case .createPost, .viewPost:
             "/posts"
         case .viewPostWithID(let request):
             "/posts\(request.additionalPath)"
@@ -39,7 +39,7 @@ extension PostTarget: BackEndTargetType {
     
     var method: Moya.Method {
         switch self {
-        case .uploadImage, .create:
+        case .uploadImage, .createPost:
             .post
         case .viewPost, .viewPostWithID, .viewPostByUser:
             .get
@@ -54,7 +54,7 @@ extension PostTarget: BackEndTargetType {
         switch self {
         case .uploadImage(let request):
             .uploadMultipart(request.toMultipartFormData())
-        case .create(let request):
+        case .createPost(let request):
             .requestJSONEncodable(request.body)
         case .viewPost(let request):
             .requestParameters(
@@ -77,7 +77,7 @@ extension PostTarget: BackEndTargetType {
         switch self {
         case .uploadImage(let request):
             request.toHeader()
-        case .create(let request):
+        case .createPost(let request):
             request.toHeader()
         case .viewPost(let request):
             request.toHeader()
@@ -96,7 +96,7 @@ extension PostTarget: BackEndTargetType {
         switch self {
         case .uploadImage:
             .multipartFormData
-        case .create, .updatePost:
+        case .createPost, .updatePost:
             .json
         case .viewPost, .viewPostWithID, .deletePost, .viewPostByUser:
             nil

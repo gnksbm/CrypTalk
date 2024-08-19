@@ -19,5 +19,5 @@ extension ViewPostWithIDRequest: HeaderProvider {
 }
 
 extension ViewPostWithIDRequest: PathProvider {
-    var additionalPath: String { "/:\(postID)" }
+    var additionalPath: String { "/\(postID)" }
 }

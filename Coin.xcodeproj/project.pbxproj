@@ -29,6 +29,7 @@
 		8ED3DE032C72E1B200126BD4 /* UpdatePostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE022C72E1B200126BD4 /* UpdatePostRequest.swift */; };
 		8ED3DE052C72E2EF00126BD4 /* DeletePostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE042C72E2EF00126BD4 /* DeletePostRequest.swift */; };
 		8ED3DE0A2C72EE7600126BD4 /* ViewPostByUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE092C72EE7600126BD4 /* ViewPostByUserRequest.swift */; };
+		8ED3DE0C2C73202C00126BD4 /* PostTargetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE0B2C73202C00126BD4 /* PostTargetTests.swift */; };
 		BE98C0902C6F4B610058D3FA /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C08F2C6F4B610058D3FA /* LoginRequest.swift */; };
 		BE98C0922C6F4C4C0058D3FA /* RequestProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C0912C6F4C4C0058D3FA /* RequestProvider.swift */; };
 		BE98C0942C6F4C620058D3FA /* JoinRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C0932C6F4C620058D3FA /* JoinRequest.swift */; };
@@ -85,6 +86,7 @@
 		8ED3DE022C72E1B200126BD4 /* UpdatePostRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePostRequest.swift; sourceTree = "<group>"; };
 		8ED3DE042C72E2EF00126BD4 /* DeletePostRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletePostRequest.swift; sourceTree = "<group>"; };
 		8ED3DE092C72EE7600126BD4 /* ViewPostByUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPostByUserRequest.swift; sourceTree = "<group>"; };
+		8ED3DE0B2C73202C00126BD4 /* PostTargetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTargetTests.swift; sourceTree = "<group>"; };
 		BE98C08F2C6F4B610058D3FA /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		BE98C0912C6F4C4C0058D3FA /* RequestProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProvider.swift; sourceTree = "<group>"; };
 		BE98C0932C6F4C620058D3FA /* JoinRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRequest.swift; sourceTree = "<group>"; };
@@ -229,6 +231,15 @@
 			path = Post;
 			sourceTree = "<group>";
 		};
+		8ED3DE0D2C73218600126BD4 /* Target */ = {
+			isa = PBXGroup;
+			children = (
+				BE98C0A32C6F57600058D3FA /* AuthTargetTests.swift */,
+				8ED3DE0B2C73202C00126BD4 /* PostTargetTests.swift */,
+			);
+			path = Target;
+			sourceTree = "<group>";
+		};
 		BE98C08B2C6F4A7F0058D3FA /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -269,7 +280,7 @@
 		BE98C0A22C6F57600058D3FA /* CoinTests */ = {
 			isa = PBXGroup;
 			children = (
-				BE98C0A32C6F57600058D3FA /* AuthTargetTests.swift */,
+				8ED3DE0D2C73218600126BD4 /* Target */,
 			);
 			path = CoinTests;
 			sourceTree = "<group>";
@@ -416,6 +427,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8ED3DE0C2C73202C00126BD4 /* PostTargetTests.swift in Sources */,
 				BE98C0A42C6F57600058D3FA /* AuthTargetTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
