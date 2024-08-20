@@ -68,6 +68,9 @@
 		BE98C09A2C6F50120058D3FA /* RefreshTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C0992C6F50120058D3FA /* RefreshTokenRequest.swift */; };
 		BE98C09C2C6F55C00058D3FA /* WithDrawRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C09B2C6F55BF0058D3FA /* WithDrawRequest.swift */; };
 		BE98C0A42C6F57600058D3FA /* AuthTargetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C0A32C6F57600058D3FA /* AuthTargetTests.swift */; };
+		BE98C0CC2C74B4320058D3FA /* UpdatePostError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C0CB2C74B4320058D3FA /* UpdatePostError.swift */; };
+		BE98C0CE2C74B4E30058D3FA /* DeletePostError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C0CD2C74B4E30058D3FA /* DeletePostError.swift */; };
+		BE98C0D02C74B54A0058D3FA /* CreatePostError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C0CF2C74B54A0058D3FA /* CreatePostError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,6 +159,9 @@
 		BE98C09B2C6F55BF0058D3FA /* WithDrawRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithDrawRequest.swift; sourceTree = "<group>"; };
 		BE98C0A12C6F57600058D3FA /* CoinTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoinTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE98C0A32C6F57600058D3FA /* AuthTargetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTargetTests.swift; sourceTree = "<group>"; };
+		BE98C0CB2C74B4320058D3FA /* UpdatePostError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePostError.swift; sourceTree = "<group>"; };
+		BE98C0CD2C74B4E30058D3FA /* DeletePostError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletePostError.swift; sourceTree = "<group>"; };
+		BE98C0CF2C74B54A0058D3FA /* CreatePostError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -410,6 +416,9 @@
 			isa = PBXGroup;
 			children = (
 				8ED3DE5C2C736AF400126BD4 /* UploadImageError.swift */,
+				BE98C0CF2C74B54A0058D3FA /* CreatePostError.swift */,
+				BE98C0CB2C74B4320058D3FA /* UpdatePostError.swift */,
+				BE98C0CD2C74B4E30058D3FA /* DeletePostError.swift */,
 			);
 			path = Post;
 			sourceTree = "<group>";
@@ -588,6 +597,7 @@
 				8ED3DE142C73257E00126BD4 /* CreateCommentRequest.swift in Sources */,
 				8ED3DE3C2C733B3000126BD4 /* BackEndError.swift in Sources */,
 				8ED3DE012C72DF0800126BD4 /* ReadPostWithIDRequest.swift in Sources */,
+				BE98C0D02C74B54A0058D3FA /* CreatePostError.swift in Sources */,
 				8ED3DE272C7330C800126BD4 /* ProfileTarget.swift in Sources */,
 				8ED3DE2A2C7331D600126BD4 /* ReadProfileRequest.swift in Sources */,
 				8ED3DE112C73253200126BD4 /* CommentTarget.swift in Sources */,
@@ -612,6 +622,7 @@
 				8EA517AA2C6DEF7C0029A356 /* AuthTarget.swift in Sources */,
 				8ED3DE052C72E2EF00126BD4 /* DeletePostRequest.swift in Sources */,
 				BE98C09C2C6F55C00058D3FA /* WithDrawRequest.swift in Sources */,
+				BE98C0CC2C74B4320058D3FA /* UpdatePostError.swift in Sources */,
 				8ED3DE542C73646100126BD4 /* WithDrawError.swift in Sources */,
 				BE98C0922C6F4C4C0058D3FA /* RequestProvider.swift in Sources */,
 				8ED3DE3E2C733D0700126BD4 /* JoinError.swift in Sources */,
@@ -623,6 +634,7 @@
 				8ED3DE572C73650100126BD4 /* RefreshTokenDTO.swift in Sources */,
 				8ED3DE0A2C72EE7600126BD4 /* ReadPostsByUserRequest.swift in Sources */,
 				8EA517822C6DB0FB0029A356 /* SceneDelegate.swift in Sources */,
+				BE98C0CE2C74B4E30058D3FA /* DeletePostError.swift in Sources */,
 				BE98C0902C6F4B610058D3FA /* LoginRequest.swift in Sources */,
 				8ED3DE1F2C732A7200126BD4 /* UpdateLikeRequest.swift in Sources */,
 			);

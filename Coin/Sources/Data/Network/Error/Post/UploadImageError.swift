@@ -13,3 +13,7 @@ enum UploadImageError: Int, Error {
     case forbidden = 403
     case tokenExpired = 419
 }
+
+typealias ReadPostsError = UploadImageError
+typealias ReadPostWithIDError = UploadImageError
+typealias ReadPostsByUserError = UploadImageError

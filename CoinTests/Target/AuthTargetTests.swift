@@ -111,6 +111,7 @@ final class AuthTargetTests: XCTestCase {
         provider.rx.request(
             .refreshToken(
                 RefreshTokenRequest(
+                    accessToken: "",
                     refreshToken: "a"
                 )
             )
