@@ -64,6 +64,9 @@
 		8ED3DE852C75F75A00126BD4 /* CreateComment.json in Resources */ = {isa = PBXBuildFile; fileRef = 8ED3DE842C75F75A00126BD4 /* CreateComment.json */; };
 		8ED3DE872C75F8F900126BD4 /* UpdateCommentError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE862C75F8F900126BD4 /* UpdateCommentError.swift */; };
 		8ED3DE892C75FA8100126BD4 /* DeleteCommentError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE882C75FA8100126BD4 /* DeleteCommentError.swift */; };
+		8ED3DE8C2C75FB6300126BD4 /* UpdateLikeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE8B2C75FB6300126BD4 /* UpdateLikeError.swift */; };
+		8ED3DE8F2C75FBF800126BD4 /* UpdateLike.json in Resources */ = {isa = PBXBuildFile; fileRef = 8ED3DE8E2C75FBF800126BD4 /* UpdateLike.json */; };
+		8ED3DE912C75FC2800126BD4 /* ReadLikedPostsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE902C75FC2800126BD4 /* ReadLikedPostsError.swift */; };
 		BE98C0902C6F4B610058D3FA /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C08F2C6F4B610058D3FA /* LoginRequest.swift */; };
 		BE98C0922C6F4C4C0058D3FA /* RequestProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C0912C6F4C4C0058D3FA /* RequestProvider.swift */; };
 		BE98C0942C6F4C620058D3FA /* JoinRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C0932C6F4C620058D3FA /* JoinRequest.swift */; };
@@ -171,6 +174,9 @@
 		8ED3DE842C75F75A00126BD4 /* CreateComment.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CreateComment.json; sourceTree = "<group>"; };
 		8ED3DE862C75F8F900126BD4 /* UpdateCommentError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCommentError.swift; sourceTree = "<group>"; };
 		8ED3DE882C75FA8100126BD4 /* DeleteCommentError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteCommentError.swift; sourceTree = "<group>"; };
+		8ED3DE8B2C75FB6300126BD4 /* UpdateLikeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateLikeError.swift; sourceTree = "<group>"; };
+		8ED3DE8E2C75FBF800126BD4 /* UpdateLike.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = UpdateLike.json; sourceTree = "<group>"; };
+		8ED3DE902C75FC2800126BD4 /* ReadLikedPostsError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadLikedPostsError.swift; sourceTree = "<group>"; };
 		BE98C08F2C6F4B610058D3FA /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		BE98C0912C6F4C4C0058D3FA /* RequestProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProvider.swift; sourceTree = "<group>"; };
 		BE98C0932C6F4C620058D3FA /* JoinRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRequest.swift; sourceTree = "<group>"; };
@@ -392,6 +398,7 @@
 			isa = PBXGroup;
 			children = (
 				8ED3DE3B2C733B3000126BD4 /* BackEndError.swift */,
+				8ED3DE8A2C75FB5A00126BD4 /* Like */,
 				8ED3DE7E2C75F64300126BD4 /* Comment */,
 				8ED3DE5B2C736AE900126BD4 /* Post */,
 				8ED3DE552C73646400126BD4 /* Auth */,
@@ -420,6 +427,7 @@
 		8ED3DE462C7341E600126BD4 /* Mock */ = {
 			isa = PBXGroup;
 			children = (
+				8ED3DE8D2C75FBE800126BD4 /* Like */,
 				8ED3DE832C75F73900126BD4 /* Comment */,
 				8ED3DE822C75F73400126BD4 /* Post */,
 				8ED3DE812C75F71300126BD4 /* Auth */,
@@ -500,6 +508,23 @@
 				8ED3DE842C75F75A00126BD4 /* CreateComment.json */,
 			);
 			path = Comment;
+			sourceTree = "<group>";
+		};
+		8ED3DE8A2C75FB5A00126BD4 /* Like */ = {
+			isa = PBXGroup;
+			children = (
+				8ED3DE8B2C75FB6300126BD4 /* UpdateLikeError.swift */,
+				8ED3DE902C75FC2800126BD4 /* ReadLikedPostsError.swift */,
+			);
+			path = Like;
+			sourceTree = "<group>";
+		};
+		8ED3DE8D2C75FBE800126BD4 /* Like */ = {
+			isa = PBXGroup;
+			children = (
+				8ED3DE8E2C75FBF800126BD4 /* UpdateLike.json */,
+			);
+			path = Like;
 			sourceTree = "<group>";
 		};
 		BE98C08B2C6F4A7F0058D3FA /* Network */ = {
@@ -671,6 +696,7 @@
 				8ED3DE482C7341FA00126BD4 /* JoinDTO.json in Resources */,
 				BE98C0E72C75EA020058D3FA /* WithDraw.json in Resources */,
 				8ED3DE852C75F75A00126BD4 /* CreateComment.json in Resources */,
+				8ED3DE8F2C75FBF800126BD4 /* UpdateLike.json in Resources */,
 				BE98C0DF2C75E9A50058D3FA /* EmailValidation.json in Resources */,
 				BE98C0E52C75E9CE0058D3FA /* RefreshToken.json in Resources */,
 				BE98C0E12C75E9BA0058D3FA /* LoginWithProfileImage.json in Resources */,
@@ -685,6 +711,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8ED3DE8C2C75FB6300126BD4 /* UpdateLikeError.swift in Sources */,
 				BE98C0DD2C75E9340058D3FA /* EmptyResponse.swift in Sources */,
 				8EA517842C6DB0FB0029A356 /* ViewController.swift in Sources */,
 				8ED3DE252C732F7100126BD4 /* ReadPostsByHashtagRequest.swift in Sources */,
@@ -738,6 +765,7 @@
 				8ED3DE802C75F64F00126BD4 /* CreateCommentError.swift in Sources */,
 				8ED3DE4A2C73424E00126BD4 /* EmailValidationError.swift in Sources */,
 				8ED3DE332C73393C00126BD4 /* Injected.swift in Sources */,
+				8ED3DE912C75FC2800126BD4 /* ReadLikedPostsError.swift in Sources */,
 				8ED3DE592C73651500126BD4 /* WithDrawDTO.swift in Sources */,
 				8ED3DE572C73650100126BD4 /* RefreshTokenDTO.swift in Sources */,
 				8ED3DE0A2C72EE7600126BD4 /* ReadPostsByUserRequest.swift in Sources */,
