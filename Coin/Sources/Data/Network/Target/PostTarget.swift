@@ -35,7 +35,7 @@ extension PostTarget: BackEndTargetType {
             "/posts/\(request.postID)"
         case .readPostsByUser(let request):
             "/posts/users/\(request.userID)"
-        case .readPostsByHashtag(let request):
+        case .readPostsByHashtag:
             "/posts/hashtags"
         }
     }
@@ -104,7 +104,7 @@ extension PostTarget: BackEndTargetType {
         case .createPost, .updatePost:
             .json
         case .readPosts, .readPostWithID, .deletePost, .readPostsByUser,
-                .readPostsByHashtag:
+            .readPostsByHashtag:
             nil
         }
     }
