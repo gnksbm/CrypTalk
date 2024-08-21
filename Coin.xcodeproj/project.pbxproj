@@ -50,7 +50,7 @@
 		8ED3DE3E2C733D0700126BD4 /* JoinError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE3D2C733D0700126BD4 /* JoinError.swift */; };
 		8ED3DE412C7340D900126BD4 /* JoinDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE402C7340D900126BD4 /* JoinDTO.swift */; };
 		8ED3DE442C73412F00126BD4 /* Single+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE432C73412F00126BD4 /* Single+.swift */; };
-		8ED3DE482C7341FA00126BD4 /* JoinDTOMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 8ED3DE472C7341FA00126BD4 /* JoinDTOMock.json */; };
+		8ED3DE482C7341FA00126BD4 /* JoinDTO.json in Resources */ = {isa = PBXBuildFile; fileRef = 8ED3DE472C7341FA00126BD4 /* JoinDTO.json */; };
 		8ED3DE4A2C73424E00126BD4 /* EmailValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE492C73424E00126BD4 /* EmailValidationError.swift */; };
 		8ED3DE4C2C7342B100126BD4 /* EmailValidationDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE4B2C7342B100126BD4 /* EmailValidationDTO.swift */; };
 		8ED3DE4E2C73435900126BD4 /* LoginDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE4D2C73435900126BD4 /* LoginDTO.swift */; };
@@ -77,6 +77,13 @@
 		BE98C0D92C74B79C0058D3FA /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C0D82C74B79C0058D3FA /* Comment.swift */; };
 		BE98C0DB2C74B7F00058D3FA /* ReadPostDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C0DA2C74B7F00058D3FA /* ReadPostDTO.swift */; };
 		BE98C0DD2C75E9340058D3FA /* EmptyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C0DC2C75E9340058D3FA /* EmptyResponse.swift */; };
+		BE98C0DF2C75E9A50058D3FA /* EmailValidation.json in Resources */ = {isa = PBXBuildFile; fileRef = BE98C0DE2C75E9A50058D3FA /* EmailValidation.json */; };
+		BE98C0E12C75E9BA0058D3FA /* LoginWithProfileImage.json in Resources */ = {isa = PBXBuildFile; fileRef = BE98C0E02C75E9BA0058D3FA /* LoginWithProfileImage.json */; };
+		BE98C0E32C75E9C20058D3FA /* Login.json in Resources */ = {isa = PBXBuildFile; fileRef = BE98C0E22C75E9C20058D3FA /* Login.json */; };
+		BE98C0E52C75E9CE0058D3FA /* RefreshToken.json in Resources */ = {isa = PBXBuildFile; fileRef = BE98C0E42C75E9CE0058D3FA /* RefreshToken.json */; };
+		BE98C0E72C75EA020058D3FA /* WithDraw.json in Resources */ = {isa = PBXBuildFile; fileRef = BE98C0E62C75EA020058D3FA /* WithDraw.json */; };
+		BE98C0E92C75EA0A0058D3FA /* UploadImage.json in Resources */ = {isa = PBXBuildFile; fileRef = BE98C0E82C75EA0A0058D3FA /* UploadImage.json */; };
+		BE98C0EB2C75EA130058D3FA /* CreatePost.json in Resources */ = {isa = PBXBuildFile; fileRef = BE98C0EA2C75EA130058D3FA /* CreatePost.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,7 +153,7 @@
 		8ED3DE3D2C733D0700126BD4 /* JoinError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinError.swift; sourceTree = "<group>"; };
 		8ED3DE402C7340D900126BD4 /* JoinDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinDTO.swift; sourceTree = "<group>"; };
 		8ED3DE432C73412F00126BD4 /* Single+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Single+.swift"; sourceTree = "<group>"; };
-		8ED3DE472C7341FA00126BD4 /* JoinDTOMock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = JoinDTOMock.json; sourceTree = "<group>"; };
+		8ED3DE472C7341FA00126BD4 /* JoinDTO.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = JoinDTO.json; sourceTree = "<group>"; };
 		8ED3DE492C73424E00126BD4 /* EmailValidationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidationError.swift; sourceTree = "<group>"; };
 		8ED3DE4B2C7342B100126BD4 /* EmailValidationDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidationDTO.swift; sourceTree = "<group>"; };
 		8ED3DE4D2C73435900126BD4 /* LoginDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDTO.swift; sourceTree = "<group>"; };
@@ -174,6 +181,13 @@
 		BE98C0D82C74B79C0058D3FA /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		BE98C0DA2C74B7F00058D3FA /* ReadPostDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadPostDTO.swift; sourceTree = "<group>"; };
 		BE98C0DC2C75E9340058D3FA /* EmptyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyResponse.swift; sourceTree = "<group>"; };
+		BE98C0DE2C75E9A50058D3FA /* EmailValidation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = EmailValidation.json; sourceTree = "<group>"; };
+		BE98C0E02C75E9BA0058D3FA /* LoginWithProfileImage.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LoginWithProfileImage.json; sourceTree = "<group>"; };
+		BE98C0E22C75E9C20058D3FA /* Login.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Login.json; sourceTree = "<group>"; };
+		BE98C0E42C75E9CE0058D3FA /* RefreshToken.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RefreshToken.json; sourceTree = "<group>"; };
+		BE98C0E62C75EA020058D3FA /* WithDraw.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = WithDraw.json; sourceTree = "<group>"; };
+		BE98C0E82C75EA0A0058D3FA /* UploadImage.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = UploadImage.json; sourceTree = "<group>"; };
+		BE98C0EA2C75EA130058D3FA /* CreatePost.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CreatePost.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -397,7 +411,14 @@
 		8ED3DE462C7341E600126BD4 /* Mock */ = {
 			isa = PBXGroup;
 			children = (
-				8ED3DE472C7341FA00126BD4 /* JoinDTOMock.json */,
+				8ED3DE472C7341FA00126BD4 /* JoinDTO.json */,
+				BE98C0EA2C75EA130058D3FA /* CreatePost.json */,
+				BE98C0E82C75EA0A0058D3FA /* UploadImage.json */,
+				BE98C0E62C75EA020058D3FA /* WithDraw.json */,
+				BE98C0E42C75E9CE0058D3FA /* RefreshToken.json */,
+				BE98C0E02C75E9BA0058D3FA /* LoginWithProfileImage.json */,
+				BE98C0E22C75E9C20058D3FA /* Login.json */,
+				BE98C0DE2C75E9A50058D3FA /* EmailValidation.json */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -601,7 +622,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8ED3DE482C7341FA00126BD4 /* JoinDTOMock.json in Resources */,
+				BE98C0E92C75EA0A0058D3FA /* UploadImage.json in Resources */,
+				BE98C0EB2C75EA130058D3FA /* CreatePost.json in Resources */,
+				8ED3DE482C7341FA00126BD4 /* JoinDTO.json in Resources */,
+				BE98C0E72C75EA020058D3FA /* WithDraw.json in Resources */,
+				BE98C0DF2C75E9A50058D3FA /* EmailValidation.json in Resources */,
+				BE98C0E52C75E9CE0058D3FA /* RefreshToken.json in Resources */,
+				BE98C0E12C75E9BA0058D3FA /* LoginWithProfileImage.json in Resources */,
+				BE98C0E32C75E9C20058D3FA /* Login.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
