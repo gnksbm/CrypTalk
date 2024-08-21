@@ -10,5 +10,5 @@ import Foundation
 enum WithDrawError: Int, Error {
     case invalidToken = 401
     case forbidden = 403
-    case expiredRefreshToken = 419
+    case tokenExpired = 419
 }
