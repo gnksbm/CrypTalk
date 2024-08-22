@@ -15,3 +15,13 @@ struct Creator: Decodable {
         case nick, profileImage
     }
 }
+
+extension Creator {
+    func toUser() -> User {
+        User(
+            id: userID,
+            nickname: nick,
+            profileImagePath: profileImage
+        )
+    }
+}

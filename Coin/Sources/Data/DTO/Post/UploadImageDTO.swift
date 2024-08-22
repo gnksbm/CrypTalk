@@ -10,3 +10,9 @@ import Foundation
 struct UploadImageDTO: Decodable {
     let files: [String]
 }
+
+extension UploadImageDTO {
+    func toResponse() -> UploadImageResponse {
+        UploadImageResponse(imagePaths: files)
+    }
+}

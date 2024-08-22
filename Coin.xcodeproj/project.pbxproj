@@ -76,6 +76,12 @@
 		BE3F5AB82C775708005F8502 /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F5AB62C775708005F8502 /* AuthRepository.swift */; };
 		BE3F5ABA2C775729005F8502 /* EmailValidationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F5AB92C775729005F8502 /* EmailValidationRequest.swift */; };
 		BE3F5ABE2C77579A005F8502 /* DefaultAuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F5ABD2C77579A005F8502 /* DefaultAuthRepository.swift */; };
+		BE3F5AC22C776099005F8502 /* UploadImageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F5AC12C776099005F8502 /* UploadImageResponse.swift */; };
+		BE3F5AC42C776278005F8502 /* MarketDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F5AC32C776278005F8502 /* MarketDirection.swift */; };
+		BE3F5AC62C776320005F8502 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F5AC52C776320005F8502 /* User.swift */; };
+		BE3F5AC82C776391005F8502 /* PostResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F5AC72C776391005F8502 /* PostResponse.swift */; };
+		BE3F5ACA2C776466005F8502 /* CommentResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F5AC92C776466005F8502 /* CommentResponse.swift */; };
+		BE3F5ACC2C7764CB005F8502 /* PostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F5ACB2C7764CB005F8502 /* PostRepository.swift */; };
 		BE98C0902C6F4B610058D3FA /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C08F2C6F4B610058D3FA /* LoginRequest.swift */; };
 		BE98C0922C6F4C4C0058D3FA /* RequestProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C0912C6F4C4C0058D3FA /* RequestProvider.swift */; };
 		BE98C0942C6F4C620058D3FA /* JoinRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C0932C6F4C620058D3FA /* JoinRequest.swift */; };
@@ -194,6 +200,12 @@
 		BE3F5AB62C775708005F8502 /* AuthRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
 		BE3F5AB92C775729005F8502 /* EmailValidationRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailValidationRequest.swift; sourceTree = "<group>"; };
 		BE3F5ABD2C77579A005F8502 /* DefaultAuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAuthRepository.swift; sourceTree = "<group>"; };
+		BE3F5AC12C776099005F8502 /* UploadImageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageResponse.swift; sourceTree = "<group>"; };
+		BE3F5AC32C776278005F8502 /* MarketDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketDirection.swift; sourceTree = "<group>"; };
+		BE3F5AC52C776320005F8502 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		BE3F5AC72C776391005F8502 /* PostResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostResponse.swift; sourceTree = "<group>"; };
+		BE3F5AC92C776466005F8502 /* CommentResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentResponse.swift; sourceTree = "<group>"; };
+		BE3F5ACB2C7764CB005F8502 /* PostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRepository.swift; sourceTree = "<group>"; };
 		BE98C08F2C6F4B610058D3FA /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		BE98C0912C6F4C4C0058D3FA /* RequestProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProvider.swift; sourceTree = "<group>"; };
 		BE98C0932C6F4C620058D3FA /* JoinRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRequest.swift; sourceTree = "<group>"; };
@@ -556,9 +568,10 @@
 		BE3F5AB22C775703005F8502 /* Response */ = {
 			isa = PBXGroup;
 			children = (
-				BE3F5AAF2C775703005F8502 /* JoinResponse.swift */,
-				BE3F5AB02C775703005F8502 /* LoginResponse.swift */,
-				BE3F5AB12C775703005F8502 /* RefreshTokenResponse.swift */,
+				BE3F5AC52C776320005F8502 /* User.swift */,
+				BE3F5AC32C776278005F8502 /* MarketDirection.swift */,
+				BE3F5AC02C77608A005F8502 /* Post */,
+				BE3F5ABF2C776032005F8502 /* Auth */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -567,6 +580,7 @@
 			isa = PBXGroup;
 			children = (
 				BE3F5AB62C775708005F8502 /* AuthRepository.swift */,
+				BE3F5ACB2C7764CB005F8502 /* PostRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -577,6 +591,26 @@
 				BE3F5ABD2C77579A005F8502 /* DefaultAuthRepository.swift */,
 			);
 			path = Repository;
+			sourceTree = "<group>";
+		};
+		BE3F5ABF2C776032005F8502 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				BE3F5AAF2C775703005F8502 /* JoinResponse.swift */,
+				BE3F5AB02C775703005F8502 /* LoginResponse.swift */,
+				BE3F5AB12C775703005F8502 /* RefreshTokenResponse.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		BE3F5AC02C77608A005F8502 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				BE3F5AC12C776099005F8502 /* UploadImageResponse.swift */,
+				BE3F5AC72C776391005F8502 /* PostResponse.swift */,
+				BE3F5AC92C776466005F8502 /* CommentResponse.swift */,
+			);
+			path = Post;
 			sourceTree = "<group>";
 		};
 		BE98C08B2C6F4A7F0058D3FA /* Network */ = {
@@ -781,8 +815,10 @@
 				8ED3DE142C73257E00126BD4 /* CreateCommentRequest.swift in Sources */,
 				8ED3DE932C7608EB00126BD4 /* NetworkService.swift in Sources */,
 				8ED3DE3C2C733B3000126BD4 /* BackEndError.swift in Sources */,
+				BE3F5AC22C776099005F8502 /* UploadImageResponse.swift in Sources */,
 				8ED3DE012C72DF0800126BD4 /* ReadPostWithIDRequest.swift in Sources */,
 				BE3F5AB42C775703005F8502 /* LoginResponse.swift in Sources */,
+				BE3F5ACC2C7764CB005F8502 /* PostRepository.swift in Sources */,
 				BE98C0D02C74B54A0058D3FA /* CreatePostError.swift in Sources */,
 				8ED3DE272C7330C800126BD4 /* ProfileTarget.swift in Sources */,
 				8ED3DE2A2C7331D600126BD4 /* ReadProfileRequest.swift in Sources */,
@@ -803,6 +839,7 @@
 				8ED3DE442C73412F00126BD4 /* Single+.swift in Sources */,
 				BE98C0DB2C74B7F00058D3FA /* ReadPostDTO.swift in Sources */,
 				8EA5179E2C6DBEEA0029A356 /* Secret.swift in Sources */,
+				BE3F5AC42C776278005F8502 /* MarketDirection.swift in Sources */,
 				8EA517802C6DB0FB0029A356 /* AppDelegate.swift in Sources */,
 				BE98C09A2C6F50120058D3FA /* RefreshTokenRequest.swift in Sources */,
 				BE98C0D32C74B5E70058D3FA /* UploadImageDTO.swift in Sources */,
@@ -821,11 +858,14 @@
 				BE98C0922C6F4C4C0058D3FA /* RequestProvider.swift in Sources */,
 				8ED3DE3E2C733D0700126BD4 /* JoinError.swift in Sources */,
 				BE98C0942C6F4C620058D3FA /* JoinRequest.swift in Sources */,
+				BE3F5AC82C776391005F8502 /* PostResponse.swift in Sources */,
 				8ED3DDF32C720F8300126BD4 /* AccessTokenHeader.swift in Sources */,
+				BE3F5ACA2C776466005F8502 /* CommentResponse.swift in Sources */,
 				BE98C0D52C74B71A0058D3FA /* CreatePostDTO.swift in Sources */,
 				8ED3DE802C75F64F00126BD4 /* CreateCommentError.swift in Sources */,
 				8ED3DE4A2C73424E00126BD4 /* EmailValidationError.swift in Sources */,
 				BE3F5AB82C775708005F8502 /* AuthRepository.swift in Sources */,
+				BE3F5AC62C776320005F8502 /* User.swift in Sources */,
 				8ED3DE962C76092F00126BD4 /* DefaultNetworkService.swift in Sources */,
 				8ED3DE332C73393C00126BD4 /* Injected.swift in Sources */,
 				8ED3DE912C75FC2800126BD4 /* ReadLikedPostsError.swift in Sources */,
