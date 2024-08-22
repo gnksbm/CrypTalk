@@ -14,6 +14,9 @@ protocol PostRepository {
     func createPost(request: CreatePostRequest) -> Single<PostResponse>
     func readPosts(request: ReadPostsRequest) -> Single<[PostResponse]>
     func readPostWithID(request: ReadPostWithIDRequest) -> Single<PostResponse>
+    func readPostsByUser(
+        request: ReadPostsByUserRequest
+    ) -> Single<[PostResponse]>
     func readPostsByHashtag(
         request: ReadPostsByHashtagRequest
     ) -> Single<[PostResponse]>

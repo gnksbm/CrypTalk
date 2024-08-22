@@ -1,5 +1,5 @@
 //
-//  Creator.swift
+//  CreatorDTO.swift
 //  Coin
 //
 //  Created by gnksbm on 8/20/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Creator: Decodable {
+struct CreatorDTO: Decodable {
     let userID, nick, profileImage: String
 
     enum CodingKeys: String, CodingKey {
@@ -16,7 +16,7 @@ struct Creator: Decodable {
     }
 }
 
-extension Creator {
+extension CreatorDTO {
     func toUser() -> User {
         User(
             id: userID,

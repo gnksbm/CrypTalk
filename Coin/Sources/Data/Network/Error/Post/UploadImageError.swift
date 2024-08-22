@@ -17,3 +17,4 @@ enum UploadImageError: Int, Error {
 typealias ReadPostsError = UploadImageError
 typealias ReadPostWithIDError = UploadImageError
 typealias ReadPostsByUserError = UploadImageError
+typealias ReadPostsByHashtagError = UploadImageError

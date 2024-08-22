@@ -9,4 +9,4 @@ import Foundation
 
 struct EmptyResponse: Decodable { }
 
-typealias RemovePostDTO = EmptyResponse
+typealias DeletePostDTO = EmptyResponse

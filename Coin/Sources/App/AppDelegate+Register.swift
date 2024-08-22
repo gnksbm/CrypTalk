@@ -11,5 +11,6 @@ extension AppDelegate {
     func registerDependency() {
         DIContainer.register(DefaultNetworkService(), type: NetworkService.self)
         DIContainer.register(DefaultAuthRepository(), type: AuthRepository.self)
+        DIContainer.register(DefaultPostRepository(), type: PostRepository.self)
     }
 }
