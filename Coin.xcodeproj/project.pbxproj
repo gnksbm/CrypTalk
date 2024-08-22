@@ -381,6 +381,7 @@
 				8ED3DE002C72DF0800126BD4 /* ReadPostWithIDRequest.swift */,
 				8ED3DE092C72EE7600126BD4 /* ReadPostsByUserRequest.swift */,
 				8ED3DE242C732F7100126BD4 /* ReadPostsByHashtagRequest.swift */,
+				8ED3DE202C732BAE00126BD4 /* ReadLikedPostsRequest.swift */,
 			);
 			path = Post;
 			sourceTree = "<group>";
@@ -411,7 +412,6 @@
 			isa = PBXGroup;
 			children = (
 				8ED3DE1E2C732A7200126BD4 /* UpdateLikeRequest.swift */,
-				8ED3DE202C732BAE00126BD4 /* ReadLikedPostsRequest.swift */,
 			);
 			path = Like;
 			sourceTree = "<group>";

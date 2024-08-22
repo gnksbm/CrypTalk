@@ -74,6 +74,17 @@ final class DefaultPostRepository: PostRepository {
         .map { try $0.toResponse() }
     }
     
+    func readLikedPosts(
+        request: ReadLikedPostsRequest
+    ) -> Single<[PostResponse]> {
+        networkService.request(
+            target: PostTarget.readLikedPosts(request),
+            errorType: ReadLikedPostsError.self
+        )
+        .decode(type: ReadLikedPostsDTO.self)
+        .map { try $0.toResponse() }
+    }
+    
     func updatePost(request: UpdatePostRequest) -> Single<PostResponse> {
         networkService.request(
             target: PostTarget.updatePost(request),

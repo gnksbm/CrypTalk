@@ -11,7 +11,6 @@ import Moya
 
 enum LikeTarget { 
     case updateLike(UpdateLikeRequest)
-    case readLikedPosts(ReadLikedPostsRequest)
 }
 
 extension LikeTarget: BackEndTargetType {
@@ -19,8 +18,6 @@ extension LikeTarget: BackEndTargetType {
         switch self {
         case .updateLike(let request):
             "/posts/\(request.postID)/comments"
-        case .readLikedPosts:
-            "/posts/likes/me"
         }
     }
     
@@ -28,8 +25,6 @@ extension LikeTarget: BackEndTargetType {
         switch self {
         case .updateLike:
             .post
-        case .readLikedPosts:
-            .get
         }
     }
     
@@ -37,16 +32,12 @@ extension LikeTarget: BackEndTargetType {
         switch self {
         case .updateLike(let request):
             .requestJSONEncodable(request.body)
-        case .readLikedPosts:
-            .requestPlain
         }
     }
     
     var httpHeaders: [String : String] {
         switch self {
         case .updateLike(let request):
-            request.toHeader()
-        case .readLikedPosts(let request):
             request.toHeader()
         }
     }
@@ -55,8 +46,6 @@ extension LikeTarget: BackEndTargetType {
         switch self {
         case .updateLike:
             .json
-        case .readLikedPosts:
-            nil
         }
     }
 }

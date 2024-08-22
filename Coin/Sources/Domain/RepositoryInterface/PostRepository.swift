@@ -20,6 +20,9 @@ protocol PostRepository {
     func readPostsByHashtag(
         request: ReadPostsByHashtagRequest
     ) -> Single<[PostResponse]>
+    func readLikedPosts(
+        request: ReadLikedPostsRequest
+    ) -> Single<[PostResponse]>
     func updatePost(request: UpdatePostRequest) -> Single<PostResponse>
     func deletePost(request: DeletePostRequest) -> Single<EmptyResponse>
 }

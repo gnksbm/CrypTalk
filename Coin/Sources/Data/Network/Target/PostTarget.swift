@@ -18,6 +18,7 @@ enum PostTarget {
     case deletePost(DeletePostRequest)
     case readPostsByUser(ReadPostsByUserRequest)
     case readPostsByHashtag(ReadPostsByHashtagRequest)
+    case readLikedPosts(ReadLikedPostsRequest)
 }
 
 extension PostTarget: BackEndTargetType {
@@ -37,6 +38,8 @@ extension PostTarget: BackEndTargetType {
             "/posts/users/\(request.userID)"
         case .readPostsByHashtag:
             "/posts/hashtags"
+        case .readLikedPosts:
+            "/posts/likes/me"
         }
     }
     
@@ -44,7 +47,8 @@ extension PostTarget: BackEndTargetType {
         switch self {
         case .uploadImage, .createPost:
             .post
-        case .readPosts, .readPostWithID, .readPostsByUser, .readPostsByHashtag:
+        case .readPosts, .readPostWithID, .readPostsByUser, .readPostsByHashtag,
+                .readLikedPosts:
             .get
         case .updatePost:
             .put
@@ -64,7 +68,7 @@ extension PostTarget: BackEndTargetType {
                 parameters: request.toQuery(),
                 encoding: URLEncoding.queryString
             )
-        case .readPostWithID, .deletePost, .readPostsByHashtag:
+        case .readPostWithID, .deletePost, .readPostsByHashtag, .readLikedPosts:
             .requestPlain
         case .updatePost(let request):
             .requestJSONEncodable(request.body)
@@ -94,6 +98,8 @@ extension PostTarget: BackEndTargetType {
             request.toHeader()
         case .readPostsByHashtag(let request):
             request.toHeader()
+        case .readLikedPosts(let request):
+            request.toHeader()
         }
     }
     
@@ -104,7 +110,7 @@ extension PostTarget: BackEndTargetType {
         case .createPost, .updatePost:
             .json
         case .readPosts, .readPostWithID, .deletePost, .readPostsByUser,
-            .readPostsByHashtag:
+                .readPostsByHashtag, .readLikedPosts:
             nil
         }
     }

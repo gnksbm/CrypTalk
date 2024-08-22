@@ -21,3 +21,5 @@ extension ReadPostsDTO {
 
 typealias ReadPostsByUserDTO = ReadPostsDTO
 typealias ReadPostsByHashtagDTO = ReadPostsDTO
+typealias ReadLikedPostsDTO = ReadPostsDTO
+
