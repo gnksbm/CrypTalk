@@ -25,4 +25,5 @@ protocol PostRepository {
     ) -> Single<[PostResponse]>
     func updatePost(request: UpdatePostRequest) -> Single<PostResponse>
     func deletePost(request: DeletePostRequest) -> Single<EmptyResponse>
+    func updateLike(request: UpdateLikeRequest) -> Single<UpdateLikeResponse>
 }

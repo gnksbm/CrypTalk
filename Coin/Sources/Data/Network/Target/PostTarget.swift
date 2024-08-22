@@ -19,6 +19,7 @@ enum PostTarget {
     case readPostsByUser(ReadPostsByUserRequest)
     case readPostsByHashtag(ReadPostsByHashtagRequest)
     case readLikedPosts(ReadLikedPostsRequest)
+    case updateLike(UpdateLikeRequest)
 }
 
 extension PostTarget: BackEndTargetType {
@@ -40,12 +41,14 @@ extension PostTarget: BackEndTargetType {
             "/posts/hashtags"
         case .readLikedPosts:
             "/posts/likes/me"
+        case .updateLike(let request):
+            "/posts/\(request.postID)/comments"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .uploadImage, .createPost:
+        case .uploadImage, .createPost, .updateLike:
             .post
         case .readPosts, .readPostWithID, .readPostsByUser, .readPostsByHashtag,
                 .readLikedPosts:
@@ -77,6 +80,8 @@ extension PostTarget: BackEndTargetType {
                 parameters: request.toQuery(),
                 encoding: URLEncoding.queryString
             )
+        case .updateLike(let request):
+            .requestJSONEncodable(request.body)
         }
     }
     
@@ -100,6 +105,8 @@ extension PostTarget: BackEndTargetType {
             request.toHeader()
         case .readLikedPosts(let request):
             request.toHeader()
+        case .updateLike(let request):
+            request.toHeader()
         }
     }
     
@@ -107,7 +114,7 @@ extension PostTarget: BackEndTargetType {
         switch self {
         case .uploadImage:
             .multipartFormData
-        case .createPost, .updatePost:
+        case .createPost, .updatePost, .updateLike:
             .json
         case .readPosts, .readPostWithID, .deletePost, .readPostsByUser,
                 .readPostsByHashtag, .readLikedPosts:

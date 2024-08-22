@@ -101,4 +101,13 @@ final class DefaultPostRepository: PostRepository {
         )
         .decode(type: DeletePostDTO.self)
     }
+    
+    func updateLike(request: UpdateLikeRequest) -> Single<UpdateLikeResponse> {
+        networkService.request(
+            target: PostTarget.updateLike(request),
+            errorType: UpdateLikeError.self
+        )
+        .decode(type: UpdateLikeDTO.self)
+        .map { $0.toResponse() }
+    }
 }
