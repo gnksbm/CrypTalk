@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LoginDTO: Encodable {
+struct LoginDTO: Decodable {
     let userID, email, nick: String
     let profileImage: String?
     let accessToken, refreshToken: String
@@ -18,3 +18,8 @@ struct LoginDTO: Encodable {
     }
 }
 
+extension LoginDTO {
+    func toResponse() -> LoginResponse {
+        LoginResponse(accessToken: accessToken, refreshToken: refreshToken)
+    }
+}

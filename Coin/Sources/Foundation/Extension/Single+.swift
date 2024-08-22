@@ -10,6 +10,14 @@ import Foundation
 import Moya
 import RxSwift
 
+extension Single<Data> {
+    func decode<T: Decodable>(type: T.Type) -> Single<T> {
+        asObservable()
+            .decode(type: type, decoder: JSONDecoder())
+            .asSingle()
+    }
+}
+
 extension Single<Moya.Response> {
     func catchError<T: Error>(
         errorType: T.Type

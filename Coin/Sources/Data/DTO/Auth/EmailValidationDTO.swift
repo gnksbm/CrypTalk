@@ -7,6 +7,12 @@
 
 import Foundation
 
-struct EmailValidationDTO: Encodable {
+struct EmailValidationDTO: Decodable {
     let message: String
+}
+
+extension EmailValidationDTO {
+    func toResponse() -> EmptyResponse {
+        EmptyResponse()
+    }
 }

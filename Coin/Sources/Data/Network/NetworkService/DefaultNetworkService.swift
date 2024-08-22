@@ -28,14 +28,14 @@ final class DefaultNetworkService: NetworkService {
     
     func request<T: TargetProvider, E: Error>(
         target: T,
-        error: E
+        errorType: E.Type
     ) -> Single<Data> where E: RawRepresentable<Int> {
         Single<Data>.create { observer in
            let provider = MoyaProvider<T>()
             provider.request(target) { result in
                 switch result {
                 case .success(let success):
-                    guard let error = E(rawValue: success.statusCode) else {
+                    if let error = E(rawValue: success.statusCode) {
                         observer(.failure(error))
                         return
                     }

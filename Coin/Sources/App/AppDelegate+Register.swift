@@ -9,8 +9,7 @@ import UIKit
 
 extension AppDelegate {
     func registerDependency() {
-        DIContainer.register {
-            (NetworkService.self, DefaultNetworkService())
-        }
+        DIContainer.register(DefaultNetworkService(), type: NetworkService.self)
+        DIContainer.register(DefaultAuthRepository(), type: AuthRepository.self)
     }
 }

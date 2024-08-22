@@ -8,7 +8,7 @@
 import Foundation
 
 @propertyWrapper
-struct Injected<T: AnyObject> {
+struct Injected<T> {
     var wrappedValue: T {
         DIContainer.resolve(type: T.self)
     }

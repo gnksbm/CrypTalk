@@ -13,6 +13,6 @@ protocol NetworkService {
     func request<T: TargetProvider>(target: T) -> Single<Data>
     func request<T: TargetProvider, E: Error>(
         target: T,
-        error: E
+        errorType: E.Type
     ) -> Single<Data> where E: RawRepresentable<Int>
 }

@@ -10,13 +10,8 @@ import Foundation
 enum DIContainer {
     static var storage = [String: Any]()
     
-    static func register<T>(
-        @DeclarativeBuilder<(T.Type, T)>
-        _ block: () -> [(key: T.Type, value: T)]
-    ) {
-        block().forEach { tuple in
-            storage["\(tuple.key)"] = tuple.value
-        }
+    static func register<T>(_ value: T, type: T.Type) {
+        storage["\(type)"] = value
     }
     
     static func resolve<T>(type: T.Type) -> T {

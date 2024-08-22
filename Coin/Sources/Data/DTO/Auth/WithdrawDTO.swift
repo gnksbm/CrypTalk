@@ -7,11 +7,17 @@
 
 import Foundation
 
-struct WithdrawDTO: Encodable {
+struct WithdrawDTO: Decodable {
     let userID, email, nick: String
     
     enum CodingKeys: String, CodingKey {
         case userID = "user_id"
         case email, nick
+    }
+}
+
+extension WithdrawDTO {
+    func toResponse() -> EmptyResponse {
+        EmptyResponse()
     }
 }

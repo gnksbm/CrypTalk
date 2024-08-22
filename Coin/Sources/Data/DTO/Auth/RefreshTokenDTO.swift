@@ -7,6 +7,12 @@
 
 import Foundation
 
-struct RefreshTokenDTO: Encodable {
+struct RefreshTokenDTO: Decodable {
     let message: String
+}
+
+extension RefreshTokenDTO {
+    func toResponse() -> RefreshTokenResponse {
+        RefreshTokenResponse(accessToken: message)
+    }
 }
