@@ -85,6 +85,8 @@
 		BE3F5ACE2C7765C0005F8502 /* DefaultPostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F5ACD2C7765C0005F8502 /* DefaultPostRepository.swift */; };
 		BE3F5AD02C7767E0005F8502 /* DateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F5ACF2C7767E0005F8502 /* DateFormat.swift */; };
 		BE3F5AD22C776B51005F8502 /* CommentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F5AD12C776B51005F8502 /* CommentRepository.swift */; };
+		BE3F5AD52C776BD2005F8502 /* CreateCommentDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F5AD42C776BD2005F8502 /* CreateCommentDTO.swift */; };
+		BE3F5AD72C776C9A005F8502 /* DefaultCommentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F5AD62C776C9A005F8502 /* DefaultCommentRepository.swift */; };
 		BE98C0902C6F4B610058D3FA /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C08F2C6F4B610058D3FA /* LoginRequest.swift */; };
 		BE98C0922C6F4C4C0058D3FA /* RequestProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C0912C6F4C4C0058D3FA /* RequestProvider.swift */; };
 		BE98C0942C6F4C620058D3FA /* JoinRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C0932C6F4C620058D3FA /* JoinRequest.swift */; };
@@ -212,6 +214,8 @@
 		BE3F5ACD2C7765C0005F8502 /* DefaultPostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPostRepository.swift; sourceTree = "<group>"; };
 		BE3F5ACF2C7767E0005F8502 /* DateFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormat.swift; sourceTree = "<group>"; };
 		BE3F5AD12C776B51005F8502 /* CommentRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentRepository.swift; sourceTree = "<group>"; };
+		BE3F5AD42C776BD2005F8502 /* CreateCommentDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCommentDTO.swift; sourceTree = "<group>"; };
+		BE3F5AD62C776C9A005F8502 /* DefaultCommentRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCommentRepository.swift; sourceTree = "<group>"; };
 		BE98C08F2C6F4B610058D3FA /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		BE98C0912C6F4C4C0058D3FA /* RequestProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProvider.swift; sourceTree = "<group>"; };
 		BE98C0932C6F4C620058D3FA /* JoinRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRequest.swift; sourceTree = "<group>"; };
@@ -445,6 +449,7 @@
 		8ED3DE3F2C73409600126BD4 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				BE3F5AD32C776BC5005F8502 /* Comment */,
 				BE98C0D12C74B5DD0058D3FA /* Post */,
 				8ED3DE5A2C7365D200126BD4 /* Auth */,
 			);
@@ -598,6 +603,7 @@
 			children = (
 				BE3F5ABD2C77579A005F8502 /* DefaultAuthRepository.swift */,
 				BE3F5ACD2C7765C0005F8502 /* DefaultPostRepository.swift */,
+				BE3F5AD62C776C9A005F8502 /* DefaultCommentRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -620,6 +626,14 @@
 				BE3F5AC92C776466005F8502 /* CommentResponse.swift */,
 			);
 			path = Post;
+			sourceTree = "<group>";
+		};
+		BE3F5AD32C776BC5005F8502 /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				BE3F5AD42C776BD2005F8502 /* CreateCommentDTO.swift */,
+			);
+			path = Comment;
 			sourceTree = "<group>";
 		};
 		BE98C08B2C6F4A7F0058D3FA /* Network */ = {
@@ -853,6 +867,7 @@
 				8EA5179E2C6DBEEA0029A356 /* Secret.swift in Sources */,
 				BE3F5AC42C776278005F8502 /* MarketDirection.swift in Sources */,
 				8EA517802C6DB0FB0029A356 /* AppDelegate.swift in Sources */,
+				BE3F5AD72C776C9A005F8502 /* DefaultCommentRepository.swift in Sources */,
 				BE98C09A2C6F50120058D3FA /* RefreshTokenRequest.swift in Sources */,
 				BE98C0D32C74B5E70058D3FA /* UploadImageDTO.swift in Sources */,
 				8ED3DE502C73438800126BD4 /* LoginError.swift in Sources */,
@@ -889,6 +904,7 @@
 				BE98C0CE2C74B4E30058D3FA /* DeletePostError.swift in Sources */,
 				BE98C0902C6F4B610058D3FA /* LoginRequest.swift in Sources */,
 				8ED3DE1F2C732A7200126BD4 /* UpdateLikeRequest.swift in Sources */,
+				BE3F5AD52C776BD2005F8502 /* CreateCommentDTO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,6 +11,6 @@ import RxSwift
 
 protocol CommentRepository {
     func createComment(request: CreateCommentRequest) -> Single<CommentResponse>
-    func updateComment(request: CreateCommentRequest) -> Single<CommentResponse>
-    func deleteComment(request: CreateCommentRequest) -> Single<EmptyResponse>
+    func updateComment(request: UpdateCommentRequest) -> Single<CommentResponse>
+    func deleteComment(request: DeleteCommentRequest) -> Single<EmptyResponse>
 }

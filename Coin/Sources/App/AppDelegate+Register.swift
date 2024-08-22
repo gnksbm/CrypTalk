@@ -12,5 +12,9 @@ extension AppDelegate {
         DIContainer.register(DefaultNetworkService(), type: NetworkService.self)
         DIContainer.register(DefaultAuthRepository(), type: AuthRepository.self)
         DIContainer.register(DefaultPostRepository(), type: PostRepository.self)
+        DIContainer.register(
+            DefaultCommentRepository(),
+            type: CommentRepository.self
+        )
     }
 }
