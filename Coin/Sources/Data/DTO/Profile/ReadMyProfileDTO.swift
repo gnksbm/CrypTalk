@@ -8,8 +8,8 @@
 import Foundation
 
 struct ReadMyProfileDTO: Decodable {
-    let userID, email, nick, phoneNum: String
-    let birthDay, profileImage: String
+    let userID, email, nick: String
+    let phoneNum, birthDay, profileImage: String?
     let followers, following: [FollowDTO]
     let posts: [String]
 
@@ -20,4 +20,21 @@ struct ReadMyProfileDTO: Decodable {
     }
 }
 
+extension ReadMyProfileDTO {
+    func toResponse() -> ProfileResponse {
+        ProfileResponse(
+            id: userID,
+            email: email,
+            nickname: nick,
+            phoneNumber: phoneNum,
+            birthDay: birthDay,
+            profileImagePath: profileImage,
+            followers: followers.map { $0.toUser() },
+            followings: following.map { $0.toUser() },
+            postIDs: posts
+        )
+    }
+}
+
 typealias FollowDTO = CreatorDTO
+typealias UpdateProfileDTO = ReadMyProfileDTO

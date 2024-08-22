@@ -92,6 +92,10 @@
 		BE3F5ADF2C7770E2005F8502 /* ProfileMin.json in Resources */ = {isa = PBXBuildFile; fileRef = BE3F5ADE2C7770E2005F8502 /* ProfileMin.json */; };
 		BE3F5AE42C777127005F8502 /* ReadMyProfileDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F5AE32C777127005F8502 /* ReadMyProfileDTO.swift */; };
 		BE3F5AE62C7771CE005F8502 /* ProfileMax.json in Resources */ = {isa = PBXBuildFile; fileRef = BE3F5AE52C7771CE005F8502 /* ProfileMax.json */; };
+		BE3F5AEA2C77738F005F8502 /* DefaultProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F5AE92C77738F005F8502 /* DefaultProfileRepository.swift */; };
+		BE3F5AED2C7773E9005F8502 /* ReadMyProfileError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F5AEC2C7773E9005F8502 /* ReadMyProfileError.swift */; };
+		BE3F5AEF2C778435005F8502 /* UpdateProfileError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F5AEE2C778435005F8502 /* UpdateProfileError.swift */; };
+		BE3F5AF22C778496005F8502 /* ProfileResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F5AF12C778495005F8502 /* ProfileResponse.swift */; };
 		BE98C0902C6F4B610058D3FA /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C08F2C6F4B610058D3FA /* LoginRequest.swift */; };
 		BE98C0922C6F4C4C0058D3FA /* RequestProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C0912C6F4C4C0058D3FA /* RequestProvider.swift */; };
 		BE98C0942C6F4C620058D3FA /* JoinRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C0932C6F4C620058D3FA /* JoinRequest.swift */; };
@@ -226,6 +230,10 @@
 		BE3F5ADE2C7770E2005F8502 /* ProfileMin.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ProfileMin.json; sourceTree = "<group>"; };
 		BE3F5AE32C777127005F8502 /* ReadMyProfileDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadMyProfileDTO.swift; sourceTree = "<group>"; };
 		BE3F5AE52C7771CE005F8502 /* ProfileMax.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ProfileMax.json; sourceTree = "<group>"; };
+		BE3F5AE92C77738F005F8502 /* DefaultProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultProfileRepository.swift; sourceTree = "<group>"; };
+		BE3F5AEC2C7773E9005F8502 /* ReadMyProfileError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadMyProfileError.swift; sourceTree = "<group>"; };
+		BE3F5AEE2C778435005F8502 /* UpdateProfileError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileError.swift; sourceTree = "<group>"; };
+		BE3F5AF12C778495005F8502 /* ProfileResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileResponse.swift; sourceTree = "<group>"; };
 		BE98C08F2C6F4B610058D3FA /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		BE98C0912C6F4C4C0058D3FA /* RequestProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProvider.swift; sourceTree = "<group>"; };
 		BE98C0932C6F4C620058D3FA /* JoinRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRequest.swift; sourceTree = "<group>"; };
@@ -440,6 +448,7 @@
 			isa = PBXGroup;
 			children = (
 				8ED3DE3B2C733B3000126BD4 /* BackEndError.swift */,
+				BE3F5AEB2C7773DF005F8502 /* Profile */,
 				8ED3DE8A2C75FB5A00126BD4 /* Like */,
 				8ED3DE7E2C75F64300126BD4 /* Comment */,
 				8ED3DE5B2C736AE900126BD4 /* Post */,
@@ -579,6 +588,7 @@
 				BE3F5AC52C776320005F8502 /* User.swift */,
 				BE3F5AC32C776278005F8502 /* MarketDirection.swift */,
 				BE98C0DC2C75E9340058D3FA /* EmptyResponse.swift */,
+				BE3F5AF02C77848B005F8502 /* Profile */,
 				BE3F5AC02C77608A005F8502 /* Post */,
 				BE3F5ABF2C776032005F8502 /* Auth */,
 			);
@@ -602,6 +612,7 @@
 				BE3F5ABD2C77579A005F8502 /* DefaultAuthRepository.swift */,
 				BE3F5ACD2C7765C0005F8502 /* DefaultPostRepository.swift */,
 				BE3F5AD62C776C9A005F8502 /* DefaultCommentRepository.swift */,
+				BE3F5AE92C77738F005F8502 /* DefaultProfileRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -639,6 +650,23 @@
 			isa = PBXGroup;
 			children = (
 				BE3F5AE32C777127005F8502 /* ReadMyProfileDTO.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		BE3F5AEB2C7773DF005F8502 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				BE3F5AEC2C7773E9005F8502 /* ReadMyProfileError.swift */,
+				BE3F5AEE2C778435005F8502 /* UpdateProfileError.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		BE3F5AF02C77848B005F8502 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				BE3F5AF12C778495005F8502 /* ProfileResponse.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -843,6 +871,7 @@
 				8EA517AC2C6DEFF90029A356 /* TargetProvider.swift in Sources */,
 				8ED3DE5D2C736AF400126BD4 /* UploadImageError.swift in Sources */,
 				8ED3DDEB2C720C1200126BD4 /* PostTarget.swift in Sources */,
+				BE3F5AED2C7773E9005F8502 /* ReadMyProfileError.swift in Sources */,
 				8ED3DE412C7340D900126BD4 /* JoinDTO.swift in Sources */,
 				8ED3DDFE2C72DBFE00126BD4 /* ReadPostsRequest.swift in Sources */,
 				8ED3DE142C73257E00126BD4 /* CreateCommentRequest.swift in Sources */,
@@ -859,6 +888,7 @@
 				8ED3DE112C73253200126BD4 /* CommentTarget.swift in Sources */,
 				8ED3DE2C2C7331DC00126BD4 /* UpdateProfileRequest.swift in Sources */,
 				8ED3DE162C73269800126BD4 /* UpdateCommentRequest.swift in Sources */,
+				BE3F5AEA2C77738F005F8502 /* DefaultProfileRepository.swift in Sources */,
 				BE3F5ACE2C7765C0005F8502 /* DefaultPostRepository.swift in Sources */,
 				8ED3DDF12C720F3D00126BD4 /* UploadImageRequest.swift in Sources */,
 				BE98C0962C6F4EB80058D3FA /* BackEndTargetType.swift in Sources */,
@@ -869,6 +899,7 @@
 				8ED3DE522C7343ED00126BD4 /* RefreshTokenError.swift in Sources */,
 				BE3F5AD02C7767E0005F8502 /* DateFormat.swift in Sources */,
 				8ED3DE182C7327AD00126BD4 /* DeleteCommentRequest.swift in Sources */,
+				BE3F5AEF2C778435005F8502 /* UpdateProfileError.swift in Sources */,
 				BE3F5ABA2C775729005F8502 /* EmailValidationRequest.swift in Sources */,
 				BE3F5ADD2C777086005F8502 /* ProfileRepository.swift in Sources */,
 				8ED3DE212C732BAE00126BD4 /* ReadLikedPostsRequest.swift in Sources */,
@@ -886,6 +917,7 @@
 				8ED3DE032C72E1B200126BD4 /* UpdatePostRequest.swift in Sources */,
 				BE3F5ABE2C77579A005F8502 /* DefaultAuthRepository.swift in Sources */,
 				8ED3DE892C75FA8100126BD4 /* DeleteCommentError.swift in Sources */,
+				BE3F5AF22C778496005F8502 /* ProfileResponse.swift in Sources */,
 				8EA517AA2C6DEF7C0029A356 /* AuthTarget.swift in Sources */,
 				8ED3DE052C72E2EF00126BD4 /* DeletePostRequest.swift in Sources */,
 				BE3F5AB32C775703005F8502 /* JoinResponse.swift in Sources */,

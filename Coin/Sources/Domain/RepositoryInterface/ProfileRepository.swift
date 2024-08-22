@@ -10,6 +10,6 @@ import Foundation
 import RxSwift
 
 protocol ProfileRepository {
-    func readMyProfile(request: ReadMyProfileRequest)
-    func updateProfile(request: UpdateProfileRequest)
+    func readMyProfile(request: ReadMyProfileRequest) -> Single<ProfileResponse>
+    func updateProfile(request: UpdateProfileRequest) -> Single<ProfileResponse>
 }
