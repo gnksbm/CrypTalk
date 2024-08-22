@@ -1,5 +1,5 @@
 //
-//  EmailRequest.swift
+//  EmailValidationRequest.swift
 //  Coin
 //
 //  Created by gnksbm on 8/16/24.
@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct EmailRequest {
+struct EmailValidationRequest {
     let email: String
 }
 
-extension EmailRequest: BodyProvider {
+extension EmailValidationRequest: BodyProvider {
     var body: Body { Body(email: email) }
     
     struct Body: Encodable {

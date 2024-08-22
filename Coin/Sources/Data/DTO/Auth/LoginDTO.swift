@@ -17,3 +17,4 @@ struct LoginDTO: Encodable {
         case email, nick, profileImage, accessToken, refreshToken
     }
 }
+

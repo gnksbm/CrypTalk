@@ -53,7 +53,7 @@ final class AuthTargetTests: XCTestCase {
         var statusCode: Int?
         provider.rx.request(
             .validationEmail(
-                EmailRequest(
+                EmailValidationRequest(
                     email: "a@a.a"
                 )
             )
@@ -134,12 +134,12 @@ final class AuthTargetTests: XCTestCase {
         disposeBag = DisposeBag()
     }
     
-    func testWithDraw() throws {
+    func testWithdraw() throws {
         let expectation = XCTestExpectation(description: "회원탈퇴 통신 성공")
         var statusCode: Int?
         provider.rx.request(
             .withdraw(
-                WithDrawRequest(
+                WithdrawRequest(
                     accessToken: "a"
                 )
             )

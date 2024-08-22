@@ -70,11 +70,15 @@
 		8ED3DE932C7608EB00126BD4 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE922C7608EB00126BD4 /* NetworkService.swift */; };
 		8ED3DE962C76092F00126BD4 /* DefaultNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE952C76092F00126BD4 /* DefaultNetworkService.swift */; };
 		8ED3DE982C761BDD00126BD4 /* AppDelegate+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE972C761BDD00126BD4 /* AppDelegate+Register.swift */; };
+		BE3F5AB32C775703005F8502 /* JoinResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F5AAF2C775703005F8502 /* JoinResponse.swift */; };
+		BE3F5AB42C775703005F8502 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F5AB02C775703005F8502 /* LoginResponse.swift */; };
+		BE3F5AB52C775703005F8502 /* RefreshTokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F5AB12C775703005F8502 /* RefreshTokenResponse.swift */; };
+		BE3F5AB82C775708005F8502 /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F5AB62C775708005F8502 /* AuthRepository.swift */; };
+		BE3F5ABA2C775729005F8502 /* EmailValidationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F5AB92C775729005F8502 /* EmailValidationRequest.swift */; };
 		BE98C0902C6F4B610058D3FA /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C08F2C6F4B610058D3FA /* LoginRequest.swift */; };
 		BE98C0922C6F4C4C0058D3FA /* RequestProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C0912C6F4C4C0058D3FA /* RequestProvider.swift */; };
 		BE98C0942C6F4C620058D3FA /* JoinRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C0932C6F4C620058D3FA /* JoinRequest.swift */; };
 		BE98C0962C6F4EB80058D3FA /* BackEndTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C0952C6F4EB80058D3FA /* BackEndTargetType.swift */; };
-		BE98C0982C6F4F2B0058D3FA /* EmailRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C0972C6F4F2B0058D3FA /* EmailRequest.swift */; };
 		BE98C09A2C6F50120058D3FA /* RefreshTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C0992C6F50120058D3FA /* RefreshTokenRequest.swift */; };
 		BE98C09C2C6F55C00058D3FA /* WithDrawRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C09B2C6F55BF0058D3FA /* WithDrawRequest.swift */; };
 		BE98C0A42C6F57600058D3FA /* AuthTargetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98C0A32C6F57600058D3FA /* AuthTargetTests.swift */; };
@@ -183,11 +187,15 @@
 		8ED3DE922C7608EB00126BD4 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		8ED3DE952C76092F00126BD4 /* DefaultNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNetworkService.swift; sourceTree = "<group>"; };
 		8ED3DE972C761BDD00126BD4 /* AppDelegate+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Register.swift"; sourceTree = "<group>"; };
+		BE3F5AAF2C775703005F8502 /* JoinResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinResponse.swift; sourceTree = "<group>"; };
+		BE3F5AB02C775703005F8502 /* LoginResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		BE3F5AB12C775703005F8502 /* RefreshTokenResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshTokenResponse.swift; sourceTree = "<group>"; };
+		BE3F5AB62C775708005F8502 /* AuthRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
+		BE3F5AB92C775729005F8502 /* EmailValidationRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailValidationRequest.swift; sourceTree = "<group>"; };
 		BE98C08F2C6F4B610058D3FA /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		BE98C0912C6F4C4C0058D3FA /* RequestProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProvider.swift; sourceTree = "<group>"; };
 		BE98C0932C6F4C620058D3FA /* JoinRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRequest.swift; sourceTree = "<group>"; };
 		BE98C0952C6F4EB80058D3FA /* BackEndTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackEndTargetType.swift; sourceTree = "<group>"; };
-		BE98C0972C6F4F2B0058D3FA /* EmailRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailRequest.swift; sourceTree = "<group>"; };
 		BE98C0992C6F50120058D3FA /* RefreshTokenRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshTokenRequest.swift; sourceTree = "<group>"; };
 		BE98C09B2C6F55BF0058D3FA /* WithDrawRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithDrawRequest.swift; sourceTree = "<group>"; };
 		BE98C0A12C6F57600058D3FA /* CoinTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoinTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -330,7 +338,7 @@
 			children = (
 				BE98C08F2C6F4B610058D3FA /* LoginRequest.swift */,
 				BE98C0932C6F4C620058D3FA /* JoinRequest.swift */,
-				BE98C0972C6F4F2B0058D3FA /* EmailRequest.swift */,
+				BE3F5AB92C775729005F8502 /* EmailValidationRequest.swift */,
 				BE98C0992C6F50120058D3FA /* RefreshTokenRequest.swift */,
 				BE98C09B2C6F55BF0058D3FA /* WithDrawRequest.swift */,
 			);
@@ -543,6 +551,24 @@
 			path = NetworkService;
 			sourceTree = "<group>";
 		};
+		BE3F5AB22C775703005F8502 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				BE3F5AAF2C775703005F8502 /* JoinResponse.swift */,
+				BE3F5AB02C775703005F8502 /* LoginResponse.swift */,
+				BE3F5AB12C775703005F8502 /* RefreshTokenResponse.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		BE3F5AB72C775708005F8502 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				BE3F5AB62C775708005F8502 /* AuthRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
 		BE98C08B2C6F4A7F0058D3FA /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -566,6 +592,8 @@
 			isa = PBXGroup;
 			children = (
 				BE98C0912C6F4C4C0058D3FA /* RequestProvider.swift */,
+				BE3F5AB72C775708005F8502 /* Repository */,
+				BE3F5AB22C775703005F8502 /* Response */,
 				BE98C08E2C6F4B560058D3FA /* Request */,
 			);
 			path = Domain;
@@ -737,13 +765,13 @@
 				8EA517AC2C6DEFF90029A356 /* TargetProvider.swift in Sources */,
 				8ED3DE5D2C736AF400126BD4 /* UploadImageError.swift in Sources */,
 				8ED3DDEB2C720C1200126BD4 /* PostTarget.swift in Sources */,
-				BE98C0982C6F4F2B0058D3FA /* EmailRequest.swift in Sources */,
 				8ED3DE412C7340D900126BD4 /* JoinDTO.swift in Sources */,
 				8ED3DDFE2C72DBFE00126BD4 /* ReadPostsRequest.swift in Sources */,
 				8ED3DE142C73257E00126BD4 /* CreateCommentRequest.swift in Sources */,
 				8ED3DE932C7608EB00126BD4 /* NetworkService.swift in Sources */,
 				8ED3DE3C2C733B3000126BD4 /* BackEndError.swift in Sources */,
 				8ED3DE012C72DF0800126BD4 /* ReadPostWithIDRequest.swift in Sources */,
+				BE3F5AB42C775703005F8502 /* LoginResponse.swift in Sources */,
 				BE98C0D02C74B54A0058D3FA /* CreatePostError.swift in Sources */,
 				8ED3DE272C7330C800126BD4 /* ProfileTarget.swift in Sources */,
 				8ED3DE2A2C7331D600126BD4 /* ReadProfileRequest.swift in Sources */,
@@ -758,6 +786,7 @@
 				8ED3DE4E2C73435900126BD4 /* LoginDTO.swift in Sources */,
 				8ED3DE522C7343ED00126BD4 /* RefreshTokenError.swift in Sources */,
 				8ED3DE182C7327AD00126BD4 /* DeleteCommentRequest.swift in Sources */,
+				BE3F5ABA2C775729005F8502 /* EmailValidationRequest.swift in Sources */,
 				8ED3DE1C2C7329FF00126BD4 /* LikeTarget.swift in Sources */,
 				8ED3DE212C732BAE00126BD4 /* ReadLikedPostsRequest.swift in Sources */,
 				8ED3DE442C73412F00126BD4 /* Single+.swift in Sources */,
@@ -767,11 +796,13 @@
 				BE98C09A2C6F50120058D3FA /* RefreshTokenRequest.swift in Sources */,
 				BE98C0D32C74B5E70058D3FA /* UploadImageDTO.swift in Sources */,
 				8ED3DE502C73438800126BD4 /* LoginError.swift in Sources */,
+				BE3F5AB52C775703005F8502 /* RefreshTokenResponse.swift in Sources */,
 				8ED3DE312C73376E00126BD4 /* DIContainer.swift in Sources */,
 				8ED3DE032C72E1B200126BD4 /* UpdatePostRequest.swift in Sources */,
 				8ED3DE892C75FA8100126BD4 /* DeleteCommentError.swift in Sources */,
 				8EA517AA2C6DEF7C0029A356 /* AuthTarget.swift in Sources */,
 				8ED3DE052C72E2EF00126BD4 /* DeletePostRequest.swift in Sources */,
+				BE3F5AB32C775703005F8502 /* JoinResponse.swift in Sources */,
 				BE98C09C2C6F55C00058D3FA /* WithDrawRequest.swift in Sources */,
 				BE98C0CC2C74B4320058D3FA /* UpdatePostError.swift in Sources */,
 				8ED3DE542C73646100126BD4 /* WithDrawError.swift in Sources */,
@@ -782,6 +813,7 @@
 				BE98C0D52C74B71A0058D3FA /* CreatePostDTO.swift in Sources */,
 				8ED3DE802C75F64F00126BD4 /* CreateCommentError.swift in Sources */,
 				8ED3DE4A2C73424E00126BD4 /* EmailValidationError.swift in Sources */,
+				BE3F5AB82C775708005F8502 /* AuthRepository.swift in Sources */,
 				8ED3DE962C76092F00126BD4 /* DefaultNetworkService.swift in Sources */,
 				8ED3DE332C73393C00126BD4 /* Injected.swift in Sources */,
 				8ED3DE912C75FC2800126BD4 /* ReadLikedPostsError.swift in Sources */,

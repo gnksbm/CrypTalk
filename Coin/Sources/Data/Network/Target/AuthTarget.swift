@@ -10,8 +10,8 @@ import Foundation
 import Moya
 
 enum AuthTarget {
-    case login(LoginRequest), join(JoinRequest), validationEmail(EmailRequest)
-    case refreshToken(RefreshTokenRequest), withdraw(WithDrawRequest)
+    case login(LoginRequest), join(JoinRequest), validationEmail(EmailValidationRequest)
+    case refreshToken(RefreshTokenRequest), withdraw(WithdrawRequest)
 }
 
 extension AuthTarget: BackEndTargetType {
