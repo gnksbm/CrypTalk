@@ -1,0 +1,25 @@
+{
+    "user_id": "65c9aa6932b0964405117d97", "email": "cold_noodles@sesac.com", "nick": " ",
+    "phoneNum": "01012341234",
+    "birthDay": "19601010",
+    "profileImage": "uploads/profiles/1707716853682.png",
+    "followers": [
+        {
+            "user_id": "65589297a93f5938a8416dc3",
+            "nick": " ",
+            "profileImage": "uploads/profiles/1700308221606.png"
+        }
+    ],
+    "following": [
+        {
+            "user_id": "65589297a93f5938a8416dc3",
+            "nick": " ",
+            "profileImage": "uploads/profiles/1700308221606.png"
+        }
+    ],
+    "posts": [
+        "65c9aec120e856755623884e",
+        "65c9aff159539d82a524d13b",
+        "65c9b000a34e2e83d79d94e8"
+    ]
+}

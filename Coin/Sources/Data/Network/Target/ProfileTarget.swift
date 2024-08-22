@@ -10,21 +10,21 @@ import Foundation
 import Moya
 
 enum ProfileTarget {
-    case readProfile(ReadProfileRequest)
+    case readMyProfile(ReadMyProfileRequest)
     case updateProfile(UpdateProfileRequest)
 }
 
 extension ProfileTarget: BackEndTargetType {
     var targetPath: String {
         switch self {
-        case .readProfile, .updateProfile:
+        case .readMyProfile, .updateProfile:
             "/users/me/profile"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .readProfile:
+        case .readMyProfile:
             .get
         case .updateProfile:
             .put
@@ -33,7 +33,7 @@ extension ProfileTarget: BackEndTargetType {
     
     var task: Moya.Task {
         switch self {
-        case .readProfile:
+        case .readMyProfile:
             .requestPlain
         case .updateProfile(let request):
             .requestJSONEncodable(request.body)
@@ -42,7 +42,7 @@ extension ProfileTarget: BackEndTargetType {
     
     var httpHeaders: [String : String] {
         switch self {
-        case .readProfile(let request):
+        case .readMyProfile(let request):
             request.toHeader()
         case .updateProfile(let request):
             request.toHeader()
@@ -51,7 +51,7 @@ extension ProfileTarget: BackEndTargetType {
     
     var content: Content? {
         switch self {
-        case .readProfile:
+        case .readMyProfile:
             nil
         case .updateProfile:
             .multipartFormData

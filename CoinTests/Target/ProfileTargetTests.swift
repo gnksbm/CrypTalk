@@ -20,8 +20,8 @@ final class ProfileTargetTests: XCTestCase {
     
     func testReadProfile() {
         testTarget(
-            .readProfile(
-                ReadProfileRequest(
+            .readMyProfile(
+                ReadMyProfileRequest(
                     accessToken: accessToken
                 )
             ),
