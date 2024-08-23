@@ -16,5 +16,9 @@ extension AppDelegate {
             DefaultCommentRepository(),
             type: CommentRepository.self
         )
+        DIContainer.register(
+            DefaultProfileRepository(),
+            type: ProfileRepository.self
+        )
     }
 }
