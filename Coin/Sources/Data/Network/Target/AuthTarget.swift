@@ -10,7 +10,8 @@ import Foundation
 import Moya
 
 enum AuthTarget {
-    case login(LoginRequest), join(JoinRequest), validationEmail(EmailValidationRequest)
+    case login(LoginRequest), join(JoinRequest)
+    case validationEmail(EmailValidationRequest)
     case refreshToken(RefreshTokenRequest), withdraw(WithdrawRequest)
 }
 

@@ -17,27 +17,48 @@ final class DefaultAuthUseCase: AuthUseCase {
     @UserDefaultsWrapper(key: .refreshToken, defaultValue: nil)
     private var refreshToken: String?
     
-    func validateEmail(request: EmailValidationRequest) -> Single<Bool> {
-        authRepository.validateEmail(request: request)
-            .toResult()
+    func validateEmail(email: String) -> RxSwift.Single<Bool> {
+        authRepository.validateEmail(
+            request: EmailValidationRequest(email: email)
+        )
+        .toResult()
     }
     
-    func join(request: JoinRequest) -> Single<Bool> {
-        authRepository.join(request: request)
-            .toResult()
+    func join(
+        email: String,
+        password: String,
+        nick: String,
+        phoneNum: String?,
+        birthDay: String?
+    ) -> RxSwift.Single<Bool> {
+        authRepository.join(
+            request: JoinRequest(
+                email: email,
+                password: password,
+                nick: nick,
+                phoneNum: phoneNum,
+                birthDay: birthDay
+            )
+        )
+        .toResult()
     }
     
-    func login(request: LoginRequest) -> Single<Bool> {
-        authRepository.login(request: request)
-            .asObservable()
-            .withUnretained(self)
-            .map { useCase, response in
-                useCase.accessToken = response.accessToken
-                useCase.refreshToken = response.refreshToken
-                return true
-            }
-            .catchAndReturn(false)
-            .asSingle()
+    func login(email: String, password: String) -> RxSwift.Single<Bool> {
+        authRepository.login(
+            request: LoginRequest(
+                email: email,
+                password: password
+            )
+        )
+        .asObservable()
+        .withUnretained(self)
+        .map { useCase, response in
+            useCase.accessToken = response.accessToken
+            useCase.refreshToken = response.refreshToken
+            return true
+        }
+        .catchAndReturn(false)
+        .asSingle()
     }
     
     func requestRefreshToken() -> Single<Bool> {

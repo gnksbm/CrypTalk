@@ -11,7 +11,6 @@ struct DeleteCommentRequest {
     let accessToken: String
     let postID: String
     let commentID: String
-    let content: String
 }
 
 extension DeleteCommentRequest: AccessTokenProvider { }

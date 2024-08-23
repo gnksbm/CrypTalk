@@ -12,6 +12,7 @@
 		8E1CAA492C7895B700CF7CAF /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1CAA482C7895B700CF7CAF /* UserDefaultsWrapper.swift */; };
 		8E1CAA4C2C78966F00CF7CAF /* DefaultAuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1CAA4B2C78966F00CF7CAF /* DefaultAuthUseCase.swift */; };
 		8E1CAA4E2C78985600CF7CAF /* ConvertResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1CAA4D2C78985600CF7CAF /* ConvertResponse.swift */; };
+		8E1CAA502C789BE800CF7CAF /* CryptoPostUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1CAA4F2C789BE800CF7CAF /* CryptoPostUseCase.swift */; };
 		8EA517802C6DB0FB0029A356 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA5177F2C6DB0FB0029A356 /* AppDelegate.swift */; };
 		8EA517822C6DB0FB0029A356 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA517812C6DB0FB0029A356 /* SceneDelegate.swift */; };
 		8EA517842C6DB0FB0029A356 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA517832C6DB0FB0029A356 /* ViewController.swift */; };
@@ -154,6 +155,7 @@
 		8E1CAA482C7895B700CF7CAF /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsWrapper.swift; sourceTree = "<group>"; };
 		8E1CAA4B2C78966F00CF7CAF /* DefaultAuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAuthUseCase.swift; sourceTree = "<group>"; };
 		8E1CAA4D2C78985600CF7CAF /* ConvertResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertResponse.swift; sourceTree = "<group>"; };
+		8E1CAA4F2C789BE800CF7CAF /* CryptoPostUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoPostUseCase.swift; sourceTree = "<group>"; };
 		8EA5177C2C6DB0FB0029A356 /* Coin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EA5177F2C6DB0FB0029A356 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8EA517812C6DB0FB0029A356 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 			isa = PBXGroup;
 			children = (
 				8E1CAA422C788EF100CF7CAF /* AuthUseCase.swift */,
+				8E1CAA4F2C789BE800CF7CAF /* CryptoPostUseCase.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -944,6 +947,7 @@
 				8ED3DE502C73438800126BD4 /* LoginError.swift in Sources */,
 				BE3F5AB52C775703005F8502 /* RefreshTokenResponse.swift in Sources */,
 				8ED3DE312C73376E00126BD4 /* DIContainer.swift in Sources */,
+				8E1CAA502C789BE800CF7CAF /* CryptoPostUseCase.swift in Sources */,
 				8ED3DE032C72E1B200126BD4 /* UpdatePostRequest.swift in Sources */,
 				BE3F5ABE2C77579A005F8502 /* DefaultAuthRepository.swift in Sources */,
 				8ED3DE892C75FA8100126BD4 /* DeleteCommentError.swift in Sources */,
