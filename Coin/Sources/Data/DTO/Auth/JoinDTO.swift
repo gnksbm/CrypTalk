@@ -17,7 +17,7 @@ struct JoinDTO: Decodable {
 }
 
 extension JoinDTO {
-    func toResponse() -> JoinResponse {
-        JoinResponse(userID: userID, email: email)
+    func toResponse() -> EmptyResponse {
+        EmptyResponse()
     }
 }

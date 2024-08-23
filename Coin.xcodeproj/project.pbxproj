@@ -10,6 +10,8 @@
 		8E1CAA432C788EF100CF7CAF /* AuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1CAA422C788EF100CF7CAF /* AuthUseCase.swift */; };
 		8E1CAA472C7892E400CF7CAF /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1CAA462C7892E400CF7CAF /* Logger.swift */; };
 		8E1CAA492C7895B700CF7CAF /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1CAA482C7895B700CF7CAF /* UserDefaultsWrapper.swift */; };
+		8E1CAA4C2C78966F00CF7CAF /* DefaultAuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1CAA4B2C78966F00CF7CAF /* DefaultAuthUseCase.swift */; };
+		8E1CAA4E2C78985600CF7CAF /* ConvertResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1CAA4D2C78985600CF7CAF /* ConvertResponse.swift */; };
 		8EA517802C6DB0FB0029A356 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA5177F2C6DB0FB0029A356 /* AppDelegate.swift */; };
 		8EA517822C6DB0FB0029A356 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA517812C6DB0FB0029A356 /* SceneDelegate.swift */; };
 		8EA517842C6DB0FB0029A356 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA517832C6DB0FB0029A356 /* ViewController.swift */; };
@@ -72,7 +74,6 @@
 		8ED3DE932C7608EB00126BD4 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE922C7608EB00126BD4 /* NetworkService.swift */; };
 		8ED3DE962C76092F00126BD4 /* DefaultNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE952C76092F00126BD4 /* DefaultNetworkService.swift */; };
 		8ED3DE982C761BDD00126BD4 /* AppDelegate+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE972C761BDD00126BD4 /* AppDelegate+Register.swift */; };
-		BE3F5AB32C775703005F8502 /* JoinResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F5AAF2C775703005F8502 /* JoinResponse.swift */; };
 		BE3F5AB42C775703005F8502 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F5AB02C775703005F8502 /* LoginResponse.swift */; };
 		BE3F5AB52C775703005F8502 /* RefreshTokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F5AB12C775703005F8502 /* RefreshTokenResponse.swift */; };
 		BE3F5AB82C775708005F8502 /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F5AB62C775708005F8502 /* AuthRepository.swift */; };
@@ -151,6 +152,8 @@
 		8E1CAA422C788EF100CF7CAF /* AuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCase.swift; sourceTree = "<group>"; };
 		8E1CAA462C7892E400CF7CAF /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		8E1CAA482C7895B700CF7CAF /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsWrapper.swift; sourceTree = "<group>"; };
+		8E1CAA4B2C78966F00CF7CAF /* DefaultAuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAuthUseCase.swift; sourceTree = "<group>"; };
+		8E1CAA4D2C78985600CF7CAF /* ConvertResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertResponse.swift; sourceTree = "<group>"; };
 		8EA5177C2C6DB0FB0029A356 /* Coin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EA5177F2C6DB0FB0029A356 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8EA517812C6DB0FB0029A356 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -213,7 +216,6 @@
 		8ED3DE922C7608EB00126BD4 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		8ED3DE952C76092F00126BD4 /* DefaultNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNetworkService.swift; sourceTree = "<group>"; };
 		8ED3DE972C761BDD00126BD4 /* AppDelegate+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Register.swift"; sourceTree = "<group>"; };
-		BE3F5AAF2C775703005F8502 /* JoinResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinResponse.swift; sourceTree = "<group>"; };
 		BE3F5AB02C775703005F8502 /* LoginResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		BE3F5AB12C775703005F8502 /* RefreshTokenResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshTokenResponse.swift; sourceTree = "<group>"; };
 		BE3F5AB62C775708005F8502 /* AuthRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
@@ -290,9 +292,18 @@
 		8E1CAA412C788D4C00CF7CAF /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
-				8E1CAA422C788EF100CF7CAF /* AuthUseCase.swift */,
+				8E1CAA4A2C78966100CF7CAF /* Interface */,
+				8E1CAA4B2C78966F00CF7CAF /* DefaultAuthUseCase.swift */,
 			);
 			path = UseCase;
+			sourceTree = "<group>";
+		};
+		8E1CAA4A2C78966100CF7CAF /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				8E1CAA422C788EF100CF7CAF /* AuthUseCase.swift */,
+			);
+			path = Interface;
 			sourceTree = "<group>";
 		};
 		8EA517732C6DB0FB0029A356 = {
@@ -636,7 +647,6 @@
 		BE3F5ABF2C776032005F8502 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				BE3F5AAF2C775703005F8502 /* JoinResponse.swift */,
 				BE3F5AB02C775703005F8502 /* LoginResponse.swift */,
 				BE3F5AB12C775703005F8502 /* RefreshTokenResponse.swift */,
 			);
@@ -711,6 +721,7 @@
 			isa = PBXGroup;
 			children = (
 				BE98C0912C6F4C4C0058D3FA /* RequestProvider.swift */,
+				8E1CAA4D2C78985600CF7CAF /* ConvertResponse.swift */,
 				8E1CAA412C788D4C00CF7CAF /* UseCase */,
 				BE3F5AB72C775708005F8502 /* RepositoryInterface */,
 				BE3F5AB22C775703005F8502 /* Response */,
@@ -920,6 +931,7 @@
 				BE3F5AEF2C778435005F8502 /* UpdateProfileError.swift in Sources */,
 				BE3F5ABA2C775729005F8502 /* EmailValidationRequest.swift in Sources */,
 				BE3F5ADD2C777086005F8502 /* ProfileRepository.swift in Sources */,
+				8E1CAA4E2C78985600CF7CAF /* ConvertResponse.swift in Sources */,
 				8ED3DE212C732BAE00126BD4 /* ReadLikedPostsRequest.swift in Sources */,
 				8ED3DE442C73412F00126BD4 /* Single+.swift in Sources */,
 				BE98C0DB2C74B7F00058D3FA /* ReadPostsDTO.swift in Sources */,
@@ -938,7 +950,6 @@
 				BE3F5AF22C778496005F8502 /* ProfileResponse.swift in Sources */,
 				8EA517AA2C6DEF7C0029A356 /* AuthTarget.swift in Sources */,
 				8ED3DE052C72E2EF00126BD4 /* DeletePostRequest.swift in Sources */,
-				BE3F5AB32C775703005F8502 /* JoinResponse.swift in Sources */,
 				BE98C09C2C6F55C00058D3FA /* WithDrawRequest.swift in Sources */,
 				BE98C0CC2C74B4320058D3FA /* UpdatePostError.swift in Sources */,
 				8E1CAA492C7895B700CF7CAF /* UserDefaultsWrapper.swift in Sources */,
@@ -961,6 +972,7 @@
 				8ED3DE912C75FC2800126BD4 /* ReadLikedPostsError.swift in Sources */,
 				8ED3DE592C73651500126BD4 /* WithDrawDTO.swift in Sources */,
 				8ED3DE572C73650100126BD4 /* RefreshTokenDTO.swift in Sources */,
+				8E1CAA4C2C78966F00CF7CAF /* DefaultAuthUseCase.swift in Sources */,
 				8ED3DE0A2C72EE7600126BD4 /* ReadPostsByUserRequest.swift in Sources */,
 				8EA517822C6DB0FB0029A356 /* SceneDelegate.swift in Sources */,
 				8ED3DE982C761BDD00126BD4 /* AppDelegate+Register.swift in Sources */,

@@ -21,7 +21,7 @@ final class DefaultAuthRepository: AuthRepository {
         .map { $0.toResponse() }
     }
     
-    func requestJoin(request: JoinRequest) -> Single<JoinResponse> {
+    func join(request: JoinRequest) -> Single<EmptyResponse> {
         networkService.request(
             target: AuthTarget.join(request),
             errorType: JoinError.self

@@ -11,7 +11,7 @@ import RxSwift
 
 protocol AuthRepository {
     func validateEmail(request: EmailValidationRequest) -> Single<EmptyResponse>
-    func requestJoin(request: JoinRequest) -> Single<JoinResponse>
+    func join(request: JoinRequest) -> Single<EmptyResponse>
     func login(request: LoginRequest) -> Single<LoginResponse>
     func refreshToken(
         request: RefreshTokenRequest
