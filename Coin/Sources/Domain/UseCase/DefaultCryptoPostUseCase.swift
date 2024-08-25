@@ -39,6 +39,31 @@ final class DefaultCryptoPostUseCase: CryptoPostUseCase {
                 productID: cryptoName
             )
         )
+        .catch { [weak self] error in
+            if let self,
+               let error = error as? ReadPostsError,
+               let refreshToken,
+               case .tokenExpired = error {
+                authRepository.refreshToken(
+                    request: RefreshTokenRequest(
+                        accessToken: accessToken,
+                        refreshToken: refreshToken
+                    )
+                )
+                .flatMap { response in
+                    self.postRepository.readPosts(
+                        request: ReadPostsRequest(
+                            accessToken: response.accessToken,
+                            next: "\(page)",
+                            limit: "\(limit)",
+                            productID: cryptoName
+                        )
+                    )
+                }
+            } else {
+                .error(error)
+            }
+        }
     }
     
     func addPost(

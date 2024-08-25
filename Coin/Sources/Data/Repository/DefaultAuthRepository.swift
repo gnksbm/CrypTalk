@@ -12,7 +12,9 @@ import RxSwift
 final class DefaultAuthRepository: AuthRepository {
     @Injected private var networkService: NetworkService
     
-    func validateEmail(request: EmailValidationRequest) -> Single<EmptyResponse> {
+    func validateEmail(
+        request: EmailValidationRequest
+    ) -> Single<EmptyResponse> {
         networkService.request(
             target: AuthTarget.validationEmail(request),
             errorType: EmailValidationError.self
