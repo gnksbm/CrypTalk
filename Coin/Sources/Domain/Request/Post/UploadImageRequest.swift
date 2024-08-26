@@ -10,7 +10,7 @@ import Foundation
 import Moya
 
 struct UploadImageRequest {
-    let accessToken: String
+    var accessToken: String
     let data: [Data]
 }
 

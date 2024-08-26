@@ -8,7 +8,7 @@
 import Foundation
 
 struct ReadLikedPostsRequest {
-    let accessToken: String
+    var accessToken: String
 }
 
 extension ReadLikedPostsRequest: AccessTokenProvider { }

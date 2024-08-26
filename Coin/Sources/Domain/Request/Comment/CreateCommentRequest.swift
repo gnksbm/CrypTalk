@@ -8,7 +8,7 @@
 import Foundation
 
 struct CreateCommentRequest {
-    let accessToken: String
+    var accessToken: String
     let postID: String
     let content: String
 }

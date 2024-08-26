@@ -8,7 +8,7 @@
 import Foundation
 
 struct DeletePostRequest {
-    let accessToken: String
+    var accessToken: String
     let postID: String
 }
 

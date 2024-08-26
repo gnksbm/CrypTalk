@@ -8,7 +8,7 @@
 import Foundation
 
 protocol AccessTokenProvider: HeaderProvider {
-    var accessToken: String { get }
+    var accessToken: String { get set }
 }
 
 extension AccessTokenProvider {

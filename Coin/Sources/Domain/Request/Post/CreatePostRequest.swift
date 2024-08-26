@@ -8,7 +8,7 @@
 import Foundation
 
 struct CreatePostRequest {
-    let accessToken: String
+    var accessToken: String
     let title: String?
     let content: String?
     let content1: String?

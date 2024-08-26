@@ -8,7 +8,7 @@
 import Foundation
 
 struct UpdateLikeRequest {
-    let accessToken: String
+    var accessToken: String
     let postID: String
     let likeStatus: Bool
 }

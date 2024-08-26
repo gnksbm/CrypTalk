@@ -8,7 +8,7 @@
 import Foundation
 
 struct ReadPostsRequest {
-    let accessToken: String
+    var accessToken: String
     let next: String?
     let limit: String?
     let productID: String?

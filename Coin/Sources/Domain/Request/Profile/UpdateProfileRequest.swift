@@ -10,7 +10,7 @@ import Foundation
 import Moya
 
 struct UpdateProfileRequest {
-    let accessToken: String
+    var accessToken: String
     let nick: String?
     let phoneNum: String?
     let birthDay: String?

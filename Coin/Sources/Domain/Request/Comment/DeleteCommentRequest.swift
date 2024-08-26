@@ -8,7 +8,7 @@
 import Foundation
 
 struct DeleteCommentRequest {
-    let accessToken: String
+    var accessToken: String
     let postID: String
     let commentID: String
 }

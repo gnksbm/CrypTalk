@@ -8,7 +8,7 @@
 import Foundation
 
 struct ReadPostWithIDRequest {
-    let accessToken: String
+    var accessToken: String
     let postID: String
 }
 

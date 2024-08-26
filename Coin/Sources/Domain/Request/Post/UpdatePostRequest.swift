@@ -8,7 +8,7 @@
 import Foundation
 
 struct UpdatePostRequest {
-    let accessToken: String
+    var accessToken: String
     let postID: String
     let title: String?
     let content: String?

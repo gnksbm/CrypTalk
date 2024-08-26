@@ -8,7 +8,7 @@
 import Foundation
 
 struct ReadMyProfileRequest {
-    let accessToken: String
+    var accessToken: String
 }
 
 extension ReadMyProfileRequest: AccessTokenProvider { }

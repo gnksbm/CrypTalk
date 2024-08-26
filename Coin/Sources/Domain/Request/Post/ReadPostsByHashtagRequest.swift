@@ -8,7 +8,7 @@
 import Foundation
 
 struct ReadPostsByHashtagRequest {
-    let accessToken: String
+    var accessToken: String
 }
 
 extension ReadPostsByHashtagRequest: AccessTokenProvider { }

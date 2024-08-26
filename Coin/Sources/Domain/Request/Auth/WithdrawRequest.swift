@@ -8,7 +8,7 @@
 import Foundation
 
 struct WithdrawRequest {
-    let accessToken: String
+    var accessToken: String
 }
 
 extension WithdrawRequest: AccessTokenProvider { }

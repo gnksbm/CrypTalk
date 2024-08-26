@@ -31,39 +31,23 @@ final class DefaultCryptoPostUseCase: CryptoPostUseCase {
         guard let accessToken else {
             return .error(CryptoPostError.missingAccessToken)
         }
-        return postRepository.readPosts(
+        return AuthRequestRetrier(
             request: ReadPostsRequest(
                 accessToken: accessToken,
                 next: "\(page)",
                 limit: "\(limit)",
                 productID: cryptoName
             )
-        )
-        .catch { [weak self] error in
-            if let self,
-               let error = error as? ReadPostsError,
-               let refreshToken,
-               case .tokenExpired = error {
-                authRepository.refreshToken(
-                    request: RefreshTokenRequest(
-                        accessToken: accessToken,
-                        refreshToken: refreshToken
-                    )
+        ) { request in
+            self.postRepository.readPosts(
+                request: ReadPostsRequest(
+                    accessToken: accessToken,
+                    next: "\(page)",
+                    limit: "\(limit)",
+                    productID: cryptoName
                 )
-                .flatMap { response in
-                    self.postRepository.readPosts(
-                        request: ReadPostsRequest(
-                            accessToken: response.accessToken,
-                            next: "\(page)",
-                            limit: "\(limit)",
-                            productID: cryptoName
-                        )
-                    )
-                }
-            } else {
-                .error(error)
-            }
-        }
+            )
+        }.execute()
     }
     
     func addPost(
@@ -79,84 +63,156 @@ final class DefaultCryptoPostUseCase: CryptoPostUseCase {
                 data: directionData,
                 encoding: .utf8
         ) else { return .error(CryptoPostError.failureParseMarketDirection) }
-        return postRepository.uploadImage(
-            request: UploadImageRequest(
-                accessToken: accessToken,
-                data: imageData
-            )
-        )
-        .asObservable()
-        .withUnretained(self)
-        .flatMap { useCase, response in
-            useCase.postRepository.createPost(
-                request: CreatePostRequest(
-                    accessToken: accessToken,
-                    title: nil,
-                    content: content,
-                    content1: directionStr,
-                    content2: nil,
-                    content3: nil,
-                    content4: nil,
-                    content5: nil,
-                    productID: nil,
-                    files: response.imagePaths
-                )
-            )
-        }
-        .asSingle()
+        return uploadImage(imageData: imageData)
+            .asObservable()
+            .withUnretained(self)
+            .flatMap { useCase, response in
+                AuthRequestRetrier(
+                    request: CreatePostRequest(
+                        accessToken: accessToken,
+                        title: nil,
+                        content: content,
+                        content1: directionStr,
+                        content2: nil,
+                        content3: nil,
+                        content4: nil,
+                        content5: nil,
+                        productID: nil,
+                        files: response.imagePaths
+                    )
+                ) { request in
+                    useCase.postRepository.createPost(
+                        request: CreatePostRequest(
+                            accessToken: accessToken,
+                            title: nil,
+                            content: content,
+                            content1: directionStr,
+                            content2: nil,
+                            content3: nil,
+                            content4: nil,
+                            content5: nil,
+                            productID: nil,
+                            files: response.imagePaths
+                        )
+                    )
+                }.execute()
+            }
+            .asSingle()
     }
     
-    func addComment(postID: String, content: String) -> Single<CommentResponse> {
+    func addComment(
+        postID: String,
+        content: String
+    ) -> Single<CommentResponse> {
         guard let accessToken else {
             return .error(CryptoPostError.missingAccessToken)
         }
-        return commentRepository.createComment(
+        return AuthRequestRetrier(
             request: CreateCommentRequest(
                 accessToken: accessToken,
                 postID: postID,
                 content: content
             )
-        )
+        ) { request in
+            self.commentRepository.createComment(
+                request: CreateCommentRequest(
+                    accessToken: accessToken,
+                    postID: postID,
+                    content: content
+                )
+            )
+        }
+        .execute()
     }
     
-    func updateComment(postID: String, commentID: String, content: String) -> Single<CommentResponse> {
+    func updateComment(
+        postID: String,
+        commentID: String,
+        content: String
+    ) -> Single<CommentResponse> {
         guard let accessToken else {
             return .error(CryptoPostError.missingAccessToken)
         }
-        return commentRepository.updateComment(
+        return AuthRequestRetrier(
             request: UpdateCommentRequest(
                 accessToken: accessToken,
                 postID: postID,
                 commentID: commentID,
                 content: content
             )
-        )
+        ) { request in
+            self.commentRepository.updateComment(
+                request: UpdateCommentRequest(
+                    accessToken: accessToken,
+                    postID: postID,
+                    commentID: commentID,
+                    content: content
+                )
+            )
+        }
+        .execute()
     }
     
     func deleteComment(postID: String, commentID: String) -> Single<Bool> {
         guard let accessToken else {
             return .error(CryptoPostError.missingAccessToken)
         }
-        return commentRepository.deleteComment(
+        return AuthRequestRetrier(
             request: DeleteCommentRequest(
                 accessToken: accessToken,
                 postID: postID,
                 commentID: commentID
             )
-        )
+        ) { request in
+            self.commentRepository.deleteComment(
+                request: DeleteCommentRequest(
+                    accessToken: accessToken,
+                    postID: postID,
+                    commentID: commentID
+                )
+            )
+        }
+        .execute()
         .toResult()
     }
     
-    func likePost(postID: String, currentLikeStatus: Bool) -> Single<UpdateLikeResponse> {
+    func likePost(
+        postID: String,
+        currentLikeStatus: Bool
+    ) -> Single<UpdateLikeResponse> {
         guard let accessToken else {
             return .error(CryptoPostError.missingAccessToken)
         }
-        return postRepository.updateLike(
+        return AuthRequestRetrier(
             request: UpdateLikeRequest(
                 accessToken: accessToken,
                 postID: postID,
                 likeStatus: !currentLikeStatus
             )
-        )
+        ) { request in
+            self.postRepository.updateLike(
+                request: UpdateLikeRequest(
+                    accessToken: accessToken,
+                    postID: postID,
+                    likeStatus: !currentLikeStatus
+                )
+            )
+        }
+        .execute()
+    }
+    
+    private func uploadImage(imageData: [Data]) -> Single<UploadImageResponse> {
+        guard let accessToken else {
+            return .error(CryptoPostError.missingAccessToken)
+        }
+        return AuthRequestRetrier(
+            request: UploadImageRequest(
+                accessToken: accessToken,
+                data: imageData
+            )
+        ) { request in
+            self.postRepository.uploadImage(request: request)
+        }
+        .execute()
     }
 }
