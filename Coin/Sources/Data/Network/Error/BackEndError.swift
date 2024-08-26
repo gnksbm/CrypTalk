@@ -8,8 +8,16 @@
 import Foundation
 
 enum BackEndError: Int, Error {
-    case invalidAuthKey = 420
+    case missingRequiredValue = 400
+    case unauthorized = 401
+    case containWhiteSpace = 402
+    case forbidden = 403
+    case alreadyUsedValue = 409
+    case requestFailure = 410
+    case accessTokenExpired = 419
+    case invalidRefreshToken = 420
     case excessiveRequest = 429
-    case invalidURL = 444
+    case invalidURLRequest = 444
+    case noPermission = 445
     case serverError = 500
 }

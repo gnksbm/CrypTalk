@@ -17,7 +17,7 @@ final class DefaultAuthRepository: AuthRepository {
     ) -> Single<EmptyResponse> {
         networkService.request(
             target: AuthTarget.validationEmail(request),
-            errorType: EmailValidationError.self
+            errorType: BackEndError.self
         )
         .decode(type: EmailValidationDTO.self)
         .map { $0.toResponse() }
@@ -26,7 +26,7 @@ final class DefaultAuthRepository: AuthRepository {
     func join(request: JoinRequest) -> Single<EmptyResponse> {
         networkService.request(
             target: AuthTarget.join(request),
-            errorType: JoinError.self
+            errorType: BackEndError.self
         )
         .decode(type: JoinDTO.self)
         .map { $0.toResponse() }
@@ -35,7 +35,7 @@ final class DefaultAuthRepository: AuthRepository {
     func login(request: LoginRequest) -> Single<LoginResponse> {
         networkService.request(
             target: AuthTarget.login(request),
-            errorType: LoginError.self
+            errorType: BackEndError.self
         )
         .decode(type: LoginDTO.self)
         .map { $0.toResponse() }
@@ -46,7 +46,7 @@ final class DefaultAuthRepository: AuthRepository {
     ) -> Single<RefreshTokenResponse> {
         networkService.request(
             target: AuthTarget.refreshToken(request),
-            errorType: RefreshTokenError.self
+            errorType: BackEndError.self
         )
         .decode(type: RefreshTokenDTO.self)
         .map { $0.toResponse() }
@@ -55,7 +55,7 @@ final class DefaultAuthRepository: AuthRepository {
     func withdraw(request: WithdrawRequest) -> Single<EmptyResponse> {
         networkService.request(
             target: AuthTarget.withdraw(request),
-            errorType: WithdrawError.self
+            errorType: BackEndError.self
         )
         .decode(type: WithdrawDTO.self)
         .map { $0.toResponse() }

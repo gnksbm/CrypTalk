@@ -17,7 +17,7 @@ final class DefaultProfileRepository: ProfileRepository {
     ) -> Single<ProfileResponse> {
         networkService.request(
             target: ProfileTarget.readMyProfile(request),
-            errorType: ReadMyProfileError.self
+            errorType: BackEndError.self
         )
         .decode(type: ReadMyProfileDTO.self)
         .map { $0.toResponse() }
@@ -28,7 +28,7 @@ final class DefaultProfileRepository: ProfileRepository {
     ) -> Single<ProfileResponse> {
         networkService.request(
             target: ProfileTarget.updateProfile(request),
-            errorType: UpdateProfileError.self
+            errorType: BackEndError.self
         )
         .decode(type: UpdateProfileDTO.self)
         .map { $0.toResponse() }

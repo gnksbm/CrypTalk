@@ -13,7 +13,7 @@ import Moya
 final class DefaultNetworkService: NetworkService {
     func request<T: TargetProvider>(target: T) -> Single<Data> {
         Single<Data>.create { observer in
-           let provider = MoyaProvider<T>()
+            let provider = MoyaProvider<T>()
             provider.request(target) { result in
                 switch result {
                 case .success(let success):
@@ -31,7 +31,7 @@ final class DefaultNetworkService: NetworkService {
         errorType: E.Type
     ) -> Single<Data> where E: RawRepresentable<Int> {
         Single<Data>.create { observer in
-           let provider = MoyaProvider<T>()
+            let provider = MoyaProvider<T>()
             provider.request(target) { result in
                 switch result {
                 case .success(let success):

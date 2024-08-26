@@ -17,7 +17,7 @@ final class DefaultCommentRepository: CommentRepository {
     ) -> Single<CommentResponse> {
         networkService.request(
             target: CommentTarget.createComment(request),
-            errorType: CreateCommentError.self
+            errorType: BackEndError.self
         )
         .decode(type: CreateCommentDTO.self)
         .map { try $0.toResponse() }
@@ -28,7 +28,7 @@ final class DefaultCommentRepository: CommentRepository {
     ) -> Single<CommentResponse> {
         networkService.request(
             target: CommentTarget.updateComment(request),
-            errorType: UpdateCommentError.self
+            errorType: BackEndError.self
         )
         .decode(type: UpdateCommentDTO.self)
         .map { try $0.toResponse() }
@@ -37,7 +37,7 @@ final class DefaultCommentRepository: CommentRepository {
     func deleteComment(request: DeleteCommentRequest) -> Single<EmptyResponse> {
         networkService.request(
             target: CommentTarget.deleteComment(request),
-            errorType: DeleteCommentError.self
+            errorType: BackEndError.self
         )
         .decode(type: DeleteCommentDTO.self)
     }
