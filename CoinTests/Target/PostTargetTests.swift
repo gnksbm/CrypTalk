@@ -139,6 +139,30 @@ final class PostTargetTests: XCTestCase {
         )
     }
     
+    func testUpdateLike() {
+        testTarget(
+            .updateLike(
+                UpdateLikeRequest(
+                    accessToken: accessToken,
+                    postID: "",
+                    likeStatus: true
+                )
+            ),
+            successStatusCode: 401
+        )
+    }
+    
+    func testReadLikedPosts() {
+        testTarget(
+            .readLikedPosts(
+                ReadLikedPostsRequest(
+                    accessToken: accessToken
+                )
+            ),
+            successStatusCode: 401
+        )
+    }   
+    
     private func testTarget(_ target: PostTarget, successStatusCode: Int) {
         let expectation = XCTestExpectation(description: "\(target) 통신 성공")
         var statusCode: Int?

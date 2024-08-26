@@ -51,8 +51,7 @@ final class CommentTargetTests: XCTestCase {
                 DeleteCommentRequest(
                     accessToken: accessToken,
                     postID: "",
-                    commentID: "",
-                    content: ""
+                    commentID: ""
                 )
             ),
             successStatusCode: 401

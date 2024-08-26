@@ -14,7 +14,6 @@ enum CryptoPostError: Error {
 }
 
 final class DefaultCryptoPostUseCase: CryptoPostUseCase {
-    @Injected private var authRepository: AuthRepository
     @Injected private var postRepository: PostRepository
     @Injected private var commentRepository: CommentRepository
     
