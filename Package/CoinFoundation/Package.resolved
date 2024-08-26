@@ -1,10 +1,10 @@
 {
-  "originHash" : "6224e0f3a8d3d85db47c571817e75d3949516c50e18200288af8834289e28730",
+  "originHash" : "fa70d5d3877fa85b78d214f1c72595b3967df94e6be0b9ba6e319269ec7f77de",
   "pins" : [
     {
       "identity" : "alamofire",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Alamofire/Alamofire",
+      "location" : "https://github.com/Alamofire/Alamofire.git",
       "state" : {
         "revision" : "f455c2975872ccd2d9c81594c658af65716e9b9a",
         "version" : "5.9.1"
@@ -20,15 +20,6 @@
       }
     },
     {
-      "identity" : "neat",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/gnksbm/Neat.git",
-      "state" : {
-        "branch" : "main",
-        "revision" : "7c219b3203afd05e2586871fae4c899dc52fd1e8"
-      }
-    },
-    {
       "identity" : "reactiveswift",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/ReactiveCocoa/ReactiveSwift.git",
@@ -40,7 +31,7 @@
     {
       "identity" : "rxswift",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/ReactiveX/RxSwift.git",
+      "location" : "https://github.com/ReactiveX/RxSwift",
       "state" : {
         "revision" : "c8742ed97fc2f0c015a5ea5eddefb064cd7532d2",
         "version" : "6.0.0"

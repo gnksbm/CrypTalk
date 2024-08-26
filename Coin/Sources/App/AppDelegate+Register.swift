@@ -7,6 +7,10 @@
 
 import UIKit
 
+import CoinFoundation
+import Domain
+import Data
+
 extension AppDelegate {
     func registerDependency() {
         DIContainer.register(DefaultNetworkService(), type: NetworkService.self)
