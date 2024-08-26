@@ -13,7 +13,7 @@ import RxSwift
 
 struct AuthRequestRetrier<Request: AccessTokenProvider, Response> {
     @Injected private var authRepository: AuthRepository
-    @UserDefaultsWrapper(key: .refreshToken, defaultValue: "Fail")
+    @UserDefaultsWrapper(key: .refreshToken, defaultValue: nil)
     private var refreshToken: String?
     
     let request: Request

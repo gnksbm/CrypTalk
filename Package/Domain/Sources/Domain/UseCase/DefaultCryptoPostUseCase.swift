@@ -19,7 +19,7 @@ final class DefaultCryptoPostUseCase: CryptoPostUseCase {
     @Injected private var postRepository: PostRepository
     @Injected private var commentRepository: CommentRepository
     
-    @UserDefaultsWrapper(key: .accessToken, defaultValue: "Fail")
+    @UserDefaultsWrapper(key: .accessToken, defaultValue: nil)
     private var accessToken: String?
     @UserDefaultsWrapper(key: .refreshToken, defaultValue: nil)
     private var refreshToken: String?

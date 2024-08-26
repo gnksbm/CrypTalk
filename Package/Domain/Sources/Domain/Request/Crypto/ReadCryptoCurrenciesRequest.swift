@@ -23,7 +23,7 @@ extension ReadCryptoCurrenciesRequest: QueryProvider {
     }
     
     public struct Query: Encodable {
-        let order = "market_cap_asc"
+        let order = "market_cap_desc"
         let baseCurrency = "krw"
         let page: String
         let perPage: String
