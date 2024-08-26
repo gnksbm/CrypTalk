@@ -8,6 +8,10 @@
 import Foundation
 
 public enum Secret {
+    public static let coinGeckoApiKey =
+    Bundle.main.object(
+        forInfoDictionaryKey: "COIN_GECKO_API_KEY"
+    ) as? String ?? ""
     public static let apiKey =
     Bundle.main.object(forInfoDictionaryKey: "API_KEY") as? String ?? ""
     public static var apiKeyHeader =

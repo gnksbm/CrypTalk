@@ -1,5 +1,5 @@
 {
-  "originHash" : "fa70d5d3877fa85b78d214f1c72595b3967df94e6be0b9ba6e319269ec7f77de",
+  "originHash" : "e5bc541e9fef8a2109fc95c678d10e9a9b23fcf7a4da0e54e2355cf8971e6111",
   "pins" : [
     {
       "identity" : "alamofire",
@@ -17,6 +17,15 @@
       "state" : {
         "revision" : "c263811c1f3dbf002be9bd83107f7cdc38992b26",
         "version" : "15.0.3"
+      }
+    },
+    {
+      "identity" : "neat",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/gnksbm/Neat.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "5f7be82dc53e1d15210334b7856ebcf095846d78"
       }
     },
     {

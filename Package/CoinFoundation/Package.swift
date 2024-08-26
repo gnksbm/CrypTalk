@@ -8,7 +8,7 @@ let package = Package(
         .library(
             name: "CoinFoundation",
             targets: ["CoinFoundation"]
-        ),
+        )
     ],
     dependencies: [
         .package(

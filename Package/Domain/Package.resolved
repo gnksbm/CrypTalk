@@ -20,6 +20,15 @@
       }
     },
     {
+      "identity" : "neat",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/gnksbm/Neat.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "5f7be82dc53e1d15210334b7856ebcf095846d78"
+      }
+    },
+    {
       "identity" : "reactiveswift",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/ReactiveCocoa/ReactiveSwift.git",
