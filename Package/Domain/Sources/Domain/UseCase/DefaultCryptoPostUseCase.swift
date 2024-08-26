@@ -15,14 +15,19 @@ enum CryptoPostError: Error {
     case missingAccessToken, failureParseMarketDirection
 }
 
-final class DefaultCryptoPostUseCase: CryptoPostUseCase {
+public final class DefaultCryptoPostUseCase: CryptoPostUseCase {
     @Injected private var postRepository: PostRepository
     @Injected private var commentRepository: CommentRepository
+    @Injected private var cryptoCurrencyRepository: CryptoCurrencyRepository
     
     @UserDefaultsWrapper(key: .accessToken, defaultValue: nil)
     private var accessToken: String?
     @UserDefaultsWrapper(key: .refreshToken, defaultValue: nil)
     private var refreshToken: String?
+    
+    func fetchCryptoCurrencies(page: Int) -> Single<[CryptoCurrencyResponse]> {
+        cryptoCurrencyRepository.readCryptoCurrencies(page: page)
+    }
     
     func fetchPosts(
         cryptoName: String,

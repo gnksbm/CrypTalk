@@ -11,7 +11,7 @@ import CoinFoundation
 
 import RxSwift
 
-final class DefaultAuthUseCase: AuthUseCase {
+public final class DefaultAuthUseCase: AuthUseCase {
     @Injected private var authRepository: AuthRepository
     
     @UserDefaultsWrapper(key: .accessToken, defaultValue: nil)

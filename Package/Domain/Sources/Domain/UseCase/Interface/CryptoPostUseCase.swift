@@ -10,6 +10,8 @@ import Foundation
 import RxSwift
 
 protocol CryptoPostUseCase {
+    func fetchCryptoCurrencies(page: Int) -> Single<[CryptoCurrencyResponse]>
+    
     func fetchPosts(
         cryptoName: String,
         page: Int,
