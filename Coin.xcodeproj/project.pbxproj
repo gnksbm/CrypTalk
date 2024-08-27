@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8E792A6C2C7C742C009142D3 /* Domain in Frameworks */ = {isa = PBXBuildFile; productRef = 8E792A6B2C7C742C009142D3 /* Domain */; };
 		8E792A6F2C7C7671009142D3 /* Data in Frameworks */ = {isa = PBXBuildFile; productRef = 8E792A6E2C7C7671009142D3 /* Data */; };
 		8EA517802C6DB0FB0029A356 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA5177F2C6DB0FB0029A356 /* AppDelegate.swift */; };
 		8EA517822C6DB0FB0029A356 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA517812C6DB0FB0029A356 /* SceneDelegate.swift */; };
@@ -51,7 +50,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8E792A6C2C7C742C009142D3 /* Domain in Frameworks */,
 				8E792A6F2C7C7671009142D3 /* Data in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -142,7 +140,6 @@
 			);
 			name = Coin;
 			packageProductDependencies = (
-				8E792A6B2C7C742C009142D3 /* Domain */,
 				8E792A6E2C7C7671009142D3 /* Data */,
 			);
 			productName = Coin;
@@ -443,10 +440,6 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8E792A6B2C7C742C009142D3 /* Domain */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Domain;
-		};
 		8E792A6E2C7C7671009142D3 /* Data */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Data;
