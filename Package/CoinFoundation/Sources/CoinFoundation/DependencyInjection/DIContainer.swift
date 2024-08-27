@@ -21,10 +21,3 @@ public enum DIContainer {
         return object
     }
 }
-
-@resultBuilder
-public enum DeclarativeBuilder<T> {
-    public static func buildBlock(_ components: T...) -> [T] {
-        components
-    }
-}
