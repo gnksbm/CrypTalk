@@ -60,6 +60,7 @@ public final class DefaultPortfolioUseCase: PortfolioUseCase {
     
     public func updateAsset(
         userID: String,
+        commentID: String,
         request: CryptoAsset
     ) -> Single<CryptoAsset> {
         guard let accessToken else {
@@ -70,36 +71,36 @@ public final class DefaultPortfolioUseCase: PortfolioUseCase {
             return .error(PortfolioError.failureParseCryptoAsset)
         }
         return AuthRequestRetrier(
-            request: CreateCommentRequest(
+            request: UpdateCommentRequest(
                 accessToken: accessToken,
                 postID: userIDToPortfolio(userID: userID),
+                commentID: commentID,
                 content: content
             )
         ) { request in
-            self.portfolioRepository.createAsset(request: request)
-        }.execute()
+            self.portfolioRepository.updateAsset(request: request)
+        }
+        .execute()
     }
     
     public func removeAsset(
         userID: String,
-        request: CryptoAsset
-    ) -> Single<CryptoAsset> {
+        commentID: String
+    ) -> Single<Bool> {
         guard let accessToken else {
             return .error(PortfolioError.missingAccessToken)
         }
-        guard let data = try? JSONEncoder().encode(request),
-              let content = String(data: data, encoding: .utf8) else {
-            return .error(PortfolioError.failureParseCryptoAsset)
-        }
         return AuthRequestRetrier(
-            request: CreateCommentRequest(
+            request: DeleteCommentRequest(
                 accessToken: accessToken,
                 postID: userIDToPortfolio(userID: userID),
-                content: content
+                commentID: commentID
             )
         ) { request in
-            self.portfolioRepository.createAsset(request: request)
-        }.execute()
+            self.portfolioRepository.deleteAsset(request: request)
+        }
+        .execute()
+        .toResult()
     }
     
     private func userIDToPortfolio(userID: String) -> String {

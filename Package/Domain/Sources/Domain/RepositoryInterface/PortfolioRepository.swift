@@ -16,5 +16,5 @@ public protocol PortfolioRepository {
     
     func createAsset(request: CreateCommentRequest) -> Single<CryptoAsset>
     func updateAsset(request: UpdateCommentRequest) -> Single<CryptoAsset>
-    func deleteAsset(request: DeleteCommentRequest) -> Single<CryptoAsset>
+    func deleteAsset(request: DeleteCommentRequest) -> Single<EmptyResponse>
 }

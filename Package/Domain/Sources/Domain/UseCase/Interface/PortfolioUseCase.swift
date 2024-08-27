@@ -19,11 +19,12 @@ public protocol PortfolioUseCase {
     
     func updateAsset(
         userID: String,
+        commentID: String,
         request: CryptoAsset
     ) -> Single<CryptoAsset>
     
     func removeAsset(
         userID: String,
-        request: CryptoAsset
-    ) -> Single<CryptoAsset>
+        commentID: String
+    ) -> Single<Bool>
 }

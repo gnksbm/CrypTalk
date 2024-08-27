@@ -32,8 +32,15 @@ extension CreateCommentDTO {
         )
     }
     
+    func toAsset() throws -> CryptoAsset {
+        guard let data = content.data(using: .utf8) else {
+            throw CommentDTOError.failureParseCryptoAsset
+        }
+        return try JSONDecoder().decode(CryptoAsset.self, from: data)
+    }
+    
     enum CommentDTOError: Error {
-        case failureParseCreatedAt
+        case failureParseCreatedAt, failureParseCryptoAsset
     }
 }
 

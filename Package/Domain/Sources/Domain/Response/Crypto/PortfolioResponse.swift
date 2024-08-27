@@ -9,4 +9,8 @@ import Foundation
 
 public struct PortfolioResponse {
     public let assets: [CryptoAsset]
+    
+    public init(assets: [CryptoAsset]) {
+        self.assets = assets
+    }
 }

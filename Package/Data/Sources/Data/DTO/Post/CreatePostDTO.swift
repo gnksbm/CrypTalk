@@ -40,6 +40,12 @@ extension CreatePostDTO {
         )
     }
     
+    func toPortfolio() throws -> PortfolioResponse {
+        PortfolioResponse(
+            assets: try comments.map { try $0.toAsset() }
+        )
+    }
+    
     func toMarketDirection() throws -> MarketDirection {
         guard let data = content1.data(using: .utf8) else {
             throw CreatePostDTOError.failureParseContent1
