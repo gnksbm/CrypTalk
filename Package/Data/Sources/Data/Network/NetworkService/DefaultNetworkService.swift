@@ -7,6 +7,8 @@
 
 import Foundation
 
+import CoinFoundation
+
 import RxSwift
 import Moya
 
@@ -39,6 +41,7 @@ public final class DefaultNetworkService: NetworkService {
                 case .success(let success):
                     if let error = E(rawValue: success.statusCode) {
                         observer(.failure(error))
+                        Logger.error(error, with: target.self)
                         return
                     }
                     observer(.success(success.data))

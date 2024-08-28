@@ -19,18 +19,18 @@ final class CryptoPostHeaderView: BaseView {
     }
     private let titleButton = UIButton(configuration: .plain()).nt.configure {
         $0.configuration.titleAlignment(.leading)
-            .configuration.baseForegroundColor(Design.Color.foregroundColor)
+            .configuration.baseForegroundColor(Design.Color.foreground)
             .setContentCompressionResistancePriority(
                 .required,
                 for: .horizontal
             )
     }
     private let priceLabel = UILabel().nt.configure {
-        $0.textColor(Design.Color.foregroundColor)
+        $0.textColor(Design.Color.foreground)
             .textAlignment(.right)
     }
     private let rateLabel = UILabel().nt.configure {
-        $0.textColor(Design.Color.foregroundColor)
+        $0.textColor(Design.Color.foreground)
             .textAlignment(.right)
     }
     

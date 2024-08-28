@@ -65,7 +65,9 @@ public extension MultipartFormDataProvider {
         data.map {
             MultipartFormData(
                 provider: .data($0),
-                name: key
+                name: key,
+                fileName: "image.gif",
+                mimeType: "image/gif"
             )
         }
     }

@@ -15,12 +15,14 @@ import SnapKit
 import Neat
 
 final class CryptoPostViewController: BaseViewController, ViewType {
+    private let pageChangeEvent = BehaviorSubject(value: 1)
+    
+    private let plusButton = UIBarButtonItem(systemItem: .add)
     private let headerView = CryptoPostHeaderView()
     private lazy var tableView = UITableView().nt.configure {
         $0.tableHeaderView(headerView)
             .backgroundColor(.clear)
     }
-    private let pageChangeEvent = BehaviorSubject(value: 1)
     
     init(viewModel: CryptoPostViewModel) {
         super.init()
@@ -31,7 +33,8 @@ final class CryptoPostViewController: BaseViewController, ViewType {
         let output = viewModel.transform(
             input: CryptoPostViewModel.Input(
                 viewWillAppearEvent: viewWillAppearEvent, 
-                pageChangeEvent: pageChangeEvent
+                pageChangeEvent: pageChangeEvent,
+                plusButtonTapEvent: plusButton.rx.tap.asObservable()
             ),
             disposeBag: &disposeBag
         )
@@ -48,6 +51,20 @@ final class CryptoPostViewController: BaseViewController, ViewType {
                 .subscribe { vc, responses in
                     vc.headerView.updateView(responses: responses)
                 }
+            
+            output.startAddFlow
+                .withUnretained(self)
+                .bind { vc, cryptoName in
+                    vc.navigationController?.pushViewController(
+                        AddPostViewController(
+                            viewModel: AddPostViewModel(
+                                cryptoName: cryptoName,
+                                cryptoPostUseCase: DefaultCryptoPostUseCase()
+                            )
+                        ),
+                        animated: true
+                    )
+                }
         }
     }
     
@@ -57,5 +74,9 @@ final class CryptoPostViewController: BaseViewController, ViewType {
         tableView.snp.makeConstraints { make in
             make.edges.equalTo(safeArea)
         }
+    }
+    
+    override func configureNavigation() {
+        navigationItem.rightBarButtonItem = plusButton
     }
 }

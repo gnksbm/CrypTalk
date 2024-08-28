@@ -14,6 +14,7 @@ public enum BackEndError: Int, Error {
     case forbidden = 403
     case alreadyUsedValue = 409
     case requestFailure = 410
+    case refreshTokenExpired = 418
     case accessTokenExpired = 419
     case invalidRefreshToken = 420
     case excessiveRequest = 429

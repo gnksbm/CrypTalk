@@ -12,13 +12,13 @@ extension String {
     static let bundleIdentifier = Bundle.main.bundleIdentifier ?? "Coin"
 }
 
-enum Logger {
+public enum Logger {
     private static var logger = OSLog(
         subsystem: .bundleIdentifier,
         category: "Default"
     )
     
-    static func debug(
+    public static func debug(
         _ content: Any,
         file: String = #fileID,
         line: Int = #line,
@@ -35,7 +35,7 @@ enum Logger {
         )
     }
     
-    static func error(
+    public static func error(
         _ error: Error,
         with: Any? = nil,
         file: String = #fileID,
@@ -67,7 +67,7 @@ enum Logger {
         }
     }
     
-    static func retainCount(
+    public static func retainCount(
         _ target: AnyObject,
         file: String = #fileID,
         line: Int = #line,
@@ -85,7 +85,7 @@ enum Logger {
         )
     }
     
-    static func nilObject<T: AnyObject, U>(
+    public static func nilObject<T: AnyObject, U>(
         _ target: T,
         keyPath: KeyPath<T, U>,
         file: String = #fileID,

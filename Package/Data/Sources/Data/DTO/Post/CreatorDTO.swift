@@ -10,7 +10,8 @@ import Foundation
 import Domain
 
 struct CreatorDTO: Decodable {
-    let userID, nick, profileImage: String
+    let userID, nick: String
+    let profileImage: String?
 
     enum CodingKeys: String, CodingKey {
         case userID = "user_id"

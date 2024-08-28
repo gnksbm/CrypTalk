@@ -27,7 +27,10 @@ final class CryptoPostViewModel: ViewModelType {
     func transform(input: Input, disposeBag: inout DisposeBag) -> Output {
         let output = Output(
             cryptoCurrency: PublishSubject<CryptoCurrencyResponse>(), 
-            cryptoPostResponse: PublishSubject<[PostResponse]>()
+            cryptoPostResponse: PublishSubject<[PostResponse]>(),
+            startAddFlow: input.plusButtonTapEvent
+                .withUnretained(self)
+                .map { vm, _ in vm.coinID ?? "" }
         )
         
         disposeBag.insert {
@@ -44,7 +47,7 @@ final class CryptoPostViewModel: ViewModelType {
                     return vm.useCase.fetchPosts(
                         cryptoName: currencyResponse.name,
                         page: page,
-                        limit: 100
+                        limit: 5
                     )
                 }
                 .bind(to: output.cryptoPostResponse)
@@ -58,10 +61,12 @@ extension CryptoPostViewModel {
     struct Input {
         let viewWillAppearEvent: Observable<Void>
         let pageChangeEvent: Observable<Int>
+        let plusButtonTapEvent: Observable<Void>
     }
     
     struct Output {
         let cryptoCurrency: PublishSubject<CryptoCurrencyResponse>
         let cryptoPostResponse: PublishSubject<[PostResponse]>
+        let startAddFlow: Observable<String>
     }
 }

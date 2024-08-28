@@ -13,7 +13,7 @@ import RxSwift
 
 struct AuthRequestRetrier<Request: AccessTokenProvider, Response> {
     @Injected private var authRepository: AuthRepository
-    @UserDefaultsWrapper(key: .refreshToken, defaultValue: nil)
+    @UserDefaultsWrapper(key: .refreshToken, defaultValue: "")
     private var refreshToken: String?
     
     let request: Request
@@ -40,6 +40,9 @@ struct AuthRequestRetrier<Request: AccessTokenProvider, Response> {
                     )
                 )
                 .flatMap { response in
+                    @UserDefaultsWrapper(key: .accessToken, defaultValue: nil)
+                    var accessToken: String?
+                    accessToken = response.accessToken
                     var newRequest = request
                     newRequest.accessToken = response.accessToken
                     return stream(newRequest)

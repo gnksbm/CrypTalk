@@ -17,9 +17,15 @@ public enum Design {
         public static let regular = 20.f
     }
     
+    public enum Radius {
+        public static let regular = 12.f
+    }
+    
     public enum Color {
-        public static let foregroundColor = UIColor.black
-        public static let backgroundColor = UIColor.white
+        public static let foreground = UIColor.black
+        public static let background = UIColor.white
+        public static let secondary = UIColor.gray
+        public static let tint = UIColor.blue
     }
 }
 #endif

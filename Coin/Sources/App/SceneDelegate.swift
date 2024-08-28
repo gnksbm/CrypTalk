@@ -19,11 +19,13 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     ) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = CryptoPostViewController(
+        let cryptoPostViewController = CryptoPostViewController(
             viewModel: CryptoPostViewModel(
                 useCase: DefaultCryptoPostUseCase()
             )
         )
+        window?.rootViewController =
+        UINavigationController(rootViewController: cryptoPostViewController)
         window?.makeKeyAndVisible()
     }
 

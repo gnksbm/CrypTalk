@@ -20,9 +20,9 @@ public final class DefaultCryptoPostUseCase: CryptoPostUseCase {
     @Injected private var commentRepository: CommentRepository
     @Injected private var cryptoCurrencyRepository: CryptoCurrencyRepository
     
-    @UserDefaultsWrapper(key: .accessToken, defaultValue: nil)
+    @UserDefaultsWrapper(key: .accessToken, defaultValue: "")
     private var accessToken: String?
-    @UserDefaultsWrapper(key: .refreshToken, defaultValue: nil)
+    @UserDefaultsWrapper(key: .refreshToken, defaultValue: "")
     private var refreshToken: String?
     @UserDefaultsWrapper(key: .latestViewedID, defaultValue: "bitcoin")
     private var latestViewedID: String
@@ -68,10 +68,12 @@ public final class DefaultCryptoPostUseCase: CryptoPostUseCase {
             )
         ) { request in
             self.postRepository.readPosts(request: request)
-        }.execute()
+        }
+        .execute()
     }
     
     public func addPost(
+        cryptoName: String,
         direction: MarketDirection,
         content: String,
         imageData: [Data]
@@ -98,12 +100,13 @@ public final class DefaultCryptoPostUseCase: CryptoPostUseCase {
                         content3: nil,
                         content4: nil,
                         content5: nil,
-                        productID: nil,
+                        productID: cryptoName,
                         files: response.imagePaths
                     )
                 ) { request in
                     useCase.postRepository.createPost(request: request)
-                }.execute()
+                }
+                .execute()
             }
             .asSingle()
     }
@@ -148,7 +151,10 @@ public final class DefaultCryptoPostUseCase: CryptoPostUseCase {
         .execute()
     }
     
-    public func deleteComment(postID: String, commentID: String) -> Single<Bool> {
+    public func deleteComment(
+        postID: String,
+        commentID: String
+    ) -> Single<Bool> {
         guard let accessToken else {
             return .error(CryptoPostError.missingAccessToken)
         }
@@ -185,6 +191,9 @@ public final class DefaultCryptoPostUseCase: CryptoPostUseCase {
     }
     
     private func uploadImage(imageData: [Data]) -> Single<UploadImageResponse> {
+        guard !imageData.isEmpty else {
+            return .just(UploadImageResponse(imagePaths: []))
+        }
         guard let accessToken else {
             return .error(CryptoPostError.missingAccessToken)
         }

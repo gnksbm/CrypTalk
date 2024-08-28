@@ -10,9 +10,10 @@ import Foundation
 import Domain
 
 struct CreatePostDTO: Decodable {
-    let postID, productID, title, content: String
-    let content1, content2, content3, content4: String
-    let content5, createdAt: String
+    let postID, content: String
+    let productID, title: String?
+    let content1, content2, content3, content4, content5: String?
+    let createdAt: String
     let creator: CreatorDTO
     let files: [String]
     let likes, likes2: [String]
@@ -47,7 +48,7 @@ extension CreatePostDTO {
     }
     
     func toMarketDirection() throws -> MarketDirection {
-        guard let data = content1.data(using: .utf8) else {
+        guard let data = content1?.data(using: .utf8) else {
             throw CreatePostDTOError.failureParseContent1
         }
         return try JSONDecoder().decode(MarketDirection.self, from: data)

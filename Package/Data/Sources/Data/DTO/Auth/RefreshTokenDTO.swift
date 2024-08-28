@@ -10,11 +10,11 @@ import Foundation
 import Domain
 
 struct RefreshTokenDTO: Decodable {
-    let message: String
+    let accessToken: String
 }
 
 extension RefreshTokenDTO {
     func toResponse() -> RefreshTokenResponse {
-        RefreshTokenResponse(accessToken: message)
+        RefreshTokenResponse(accessToken: accessToken)
     }
 }

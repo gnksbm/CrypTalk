@@ -21,6 +21,7 @@ public protocol CryptoPostUseCase {
     ) -> Single<[PostResponse]>
     
     func addPost(
+        cryptoName: String,
         direction: MarketDirection,
         content: String,
         imageData: [Data]

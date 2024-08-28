@@ -24,6 +24,14 @@ public struct UploadImageRequest {
 
 extension UploadImageRequest: AccessTokenProvider { }
 
+extension UploadImageRequest: BodyProvider {
+    public var body: Body { Body(data: data) }
+    
+    public struct Body: Encodable {
+        let data: [Data]
+    }
+}
+
 extension UploadImageRequest: MultipartFormDataProvider {
     public var key: String { "files" }
     
