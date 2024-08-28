@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8E792A6F2C7C7671009142D3 /* Data in Frameworks */ = {isa = PBXBuildFile; productRef = 8E792A6E2C7C7671009142D3 /* Data */; };
 		8E792A752C7F3F74009142D3 /* CryptoPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E792A742C7F3F74009142D3 /* CryptoPostViewModel.swift */; };
+		8E792A782C7F8486009142D3 /* CryptoPostHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E792A772C7F8486009142D3 /* CryptoPostHeaderView.swift */; };
 		8EA517802C6DB0FB0029A356 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA5177F2C6DB0FB0029A356 /* AppDelegate.swift */; };
 		8EA517822C6DB0FB0029A356 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA517812C6DB0FB0029A356 /* SceneDelegate.swift */; };
 		8EA517842C6DB0FB0029A356 /* CryptoPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA517832C6DB0FB0029A356 /* CryptoPostViewController.swift */; };
@@ -34,6 +35,7 @@
 
 /* Begin PBXFileReference section */
 		8E792A742C7F3F74009142D3 /* CryptoPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoPostViewModel.swift; sourceTree = "<group>"; };
+		8E792A772C7F8486009142D3 /* CryptoPostHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoPostHeaderView.swift; sourceTree = "<group>"; };
 		8EA5177C2C6DB0FB0029A356 /* Coin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EA5177F2C6DB0FB0029A356 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8EA517812C6DB0FB0029A356 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,8 +66,17 @@
 			children = (
 				8EA517832C6DB0FB0029A356 /* CryptoPostViewController.swift */,
 				8E792A742C7F3F74009142D3 /* CryptoPostViewModel.swift */,
+				8E792A762C7F8483009142D3 /* View */,
 			);
 			path = CryptoPost;
+			sourceTree = "<group>";
+		};
+		8E792A762C7F8483009142D3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8E792A772C7F8486009142D3 /* CryptoPostHeaderView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		8EA517732C6DB0FB0029A356 = {
@@ -214,6 +225,7 @@
 			files = (
 				8EA517842C6DB0FB0029A356 /* CryptoPostViewController.swift in Sources */,
 				8EA517802C6DB0FB0029A356 /* AppDelegate.swift in Sources */,
+				8E792A782C7F8486009142D3 /* CryptoPostHeaderView.swift in Sources */,
 				8EA517822C6DB0FB0029A356 /* SceneDelegate.swift in Sources */,
 				8ED3DE982C761BDD00126BD4 /* AppDelegate+Register.swift in Sources */,
 				8E792A752C7F3F74009142D3 /* CryptoPostViewModel.swift in Sources */,
