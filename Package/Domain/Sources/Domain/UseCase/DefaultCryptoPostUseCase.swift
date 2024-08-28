@@ -24,12 +24,34 @@ public final class DefaultCryptoPostUseCase: CryptoPostUseCase {
     private var accessToken: String?
     @UserDefaultsWrapper(key: .refreshToken, defaultValue: nil)
     private var refreshToken: String?
+    @UserDefaultsWrapper(key: .latestViewedID, defaultValue: "bitcoin")
+    private var latestViewedID: String
     
-    func fetchCryptoCurrencies(page: Int) -> Single<[CryptoCurrencyResponse]> {
+    public init() { }
+    
+    public func fetchCryptoCurrencies(
+        page: Int
+    ) -> Single<[CryptoCurrencyResponse]> {
         cryptoCurrencyRepository.readCryptoCurrencies(page: page)
     }
     
-    func fetchPosts(
+    public func fetchCryptoCurrency(
+        coinID: String?
+    ) -> Single<CryptoCurrencyResponse> {
+        let coinID = coinID ?? latestViewedID
+        return cryptoCurrencyRepository.readCryptoCurrency(
+            coinID: coinID
+        )
+        .asObservable()
+        .withUnretained(self)
+        .map { useCase, response in
+            useCase.latestViewedID = response.id
+            return response
+        }
+        .asSingle()
+    }
+    
+    public func fetchPosts(
         cryptoName: String,
         page: Int,
         limit: Int
@@ -49,7 +71,7 @@ public final class DefaultCryptoPostUseCase: CryptoPostUseCase {
         }.execute()
     }
     
-    func addPost(
+    public func addPost(
         direction: MarketDirection,
         content: String,
         imageData: [Data]
@@ -86,7 +108,7 @@ public final class DefaultCryptoPostUseCase: CryptoPostUseCase {
             .asSingle()
     }
     
-    func addComment(
+    public func addComment(
         postID: String,
         content: String
     ) -> Single<CommentResponse> {
@@ -105,7 +127,7 @@ public final class DefaultCryptoPostUseCase: CryptoPostUseCase {
         .execute()
     }
     
-    func updateComment(
+    public func updateComment(
         postID: String,
         commentID: String,
         content: String
@@ -126,7 +148,7 @@ public final class DefaultCryptoPostUseCase: CryptoPostUseCase {
         .execute()
     }
     
-    func deleteComment(postID: String, commentID: String) -> Single<Bool> {
+    public func deleteComment(postID: String, commentID: String) -> Single<Bool> {
         guard let accessToken else {
             return .error(CryptoPostError.missingAccessToken)
         }
@@ -143,7 +165,7 @@ public final class DefaultCryptoPostUseCase: CryptoPostUseCase {
         .toResult()
     }
     
-    func likePost(
+    public func likePost(
         postID: String,
         currentLikeStatus: Bool
     ) -> Single<UpdateLikeResponse> {

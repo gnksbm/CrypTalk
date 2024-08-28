@@ -20,6 +20,14 @@ let package = Package(
             exact: "6.0.0"
         ),
         .package(
+            url: "https://github.com/SnapKit/SnapKit",
+            exact: "5.7.1"
+        ),
+        .package(
+            url: "https://github.com/onevcat/Kingfisher",
+            exact: "7.12.0"
+        ),
+        .package(
             url: "https://github.com/gnksbm/Neat.git",
             branch: "main"
         )
@@ -29,7 +37,9 @@ let package = Package(
             name: "CoinFoundation",
             dependencies: [
                 "Moya",
-                "RxSwift",
+                .product(name: "RxCocoa", package: "RxSwift"),
+                "SnapKit",
+                "Kingfisher",
                 "Neat"
             ]
         ),

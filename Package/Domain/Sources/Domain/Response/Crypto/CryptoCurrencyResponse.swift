@@ -8,23 +8,29 @@
 import Foundation
 
 public struct CryptoCurrencyResponse {
-    let marketCapRank: Int
-    let id: String
-    let symbol: String
-    let name: String
-    let price: Int
+    public let id: String
+    public let imageURL: URL?
+    public let marketCapRank: Int
+    public let symbol: String
+    public let name: String
+    public let price: Double
+    public let rate: Double
     
     public init(
-        marketCapRank: Int,
         id: String,
+        imageURL: URL?,
+        marketCapRank: Int,
         symbol: String,
         name: String,
-        price: Int
+        price: Double,
+        rate: Double
     ) {
-        self.marketCapRank = marketCapRank
         self.id = id
+        self.imageURL = imageURL
+        self.marketCapRank = marketCapRank
         self.symbol = symbol
         self.name = name
         self.price = price
+        self.rate = rate
     }
 }

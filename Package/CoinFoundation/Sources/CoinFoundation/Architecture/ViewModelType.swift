@@ -13,5 +13,5 @@ public protocol ViewModelType: AnyObject {
     associatedtype Input
     associatedtype Output
     
-    func bind(input: Input, disposeBag: inout DisposeBag)
+    func transform(input: Input, disposeBag: inout DisposeBag) -> Output
 }

@@ -8,11 +8,11 @@
 import Foundation
 
 public struct PostResponse {
-    let writter: User
-    let content: String
-    let direction: MarketDirection
-    let likerIDs: [String]
-    let comments: [CommentResponse]
+    public let writter: User
+    public let content: String
+    public let direction: MarketDirection
+    public let likerIDs: [String]
+    public let comments: [CommentResponse]
     
     public init(
         writter: User,

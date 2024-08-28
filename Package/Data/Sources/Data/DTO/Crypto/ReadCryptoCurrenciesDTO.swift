@@ -15,11 +15,13 @@ extension ReadCryptoCurrenciesDTO {
     func toResponse() -> [CryptoCurrencyResponse] {
         map {
             CryptoCurrencyResponse(
-                marketCapRank: $0.marketCapRank,
                 id: $0.id,
+                imageURL: URL(string: $0.image),
+                marketCapRank: $0.marketCapRank,
                 symbol: $0.symbol,
                 name: $0.name,
-                price: $0.currentPrice
+                price: $0.currentPrice,
+                rate: $0.priceChangePercentage24H
             )
         }
     }
@@ -28,7 +30,8 @@ extension ReadCryptoCurrenciesDTO {
 struct ReadCryptoCurrency: Codable {
     let id, symbol, name: String
     let image: String
-    let currentPrice, marketCap, marketCapRank, fullyDilutedValuation: Int
+    let currentPrice: Double
+    let marketCap, marketCapRank, fullyDilutedValuation: Int
     let totalVolume, high24H, low24H: Int
     let priceChange24H, priceChangePercentage24H: Double
     let marketCapChange24H: Int

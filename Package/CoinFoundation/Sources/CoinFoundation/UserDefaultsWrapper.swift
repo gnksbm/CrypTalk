@@ -47,6 +47,6 @@ public struct UserDefaultsWrapper<T: Codable> {
 
 extension UserDefaultsWrapper {
     public enum UserDefaultsKey: String {
-        case accessToken, refreshToken
+        case accessToken, refreshToken, latestViewedID
     }
 }

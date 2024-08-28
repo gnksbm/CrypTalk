@@ -26,9 +26,13 @@ open class BaseViewController: UIViewController {
         super.viewDidLoad()
         configureUI()
         configureLayout()
+        configureDefaultUI()
     }
     
-    func configureUI() { }
-    func configureLayout() { }
+    open func configureUI() { }
+    open func configureLayout() { }
+    private func configureDefaultUI() {
+        view.backgroundColor = Design.Color.backgroundColor
+    }
 }
 #endif

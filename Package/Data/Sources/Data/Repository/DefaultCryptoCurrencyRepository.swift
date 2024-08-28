@@ -15,6 +15,20 @@ import RxSwift
 public final class DefaultCryptoCurrencyRepository: CryptoCurrencyRepository {
     @Injected private var networkService: NetworkService
     
+    public init() { }
+    
+    public func readCryptoCurrency(
+        coinID: String
+    ) -> Single<CryptoCurrencyResponse> {
+        networkService.request(
+            target: CryptoCurrencyTarget.readCryptoCurrencyWithID(
+                ReadCryptoCurrencyWithIDRequest(coinID: coinID)
+            )
+        )
+        .decode(type: ReadCryptoCurrencyWithIDDTO.self)
+        .map { try $0.toResponse() }   
+    }
+    
     public func readCryptoCurrencies(
         page: Int
     ) -> Single<[CryptoCurrencyResponse]> {

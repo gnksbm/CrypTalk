@@ -24,5 +24,9 @@ extension AppDelegate {
             DefaultProfileRepository(),
             type: ProfileRepository.self
         )
+        DIContainer.register(
+            DefaultCryptoCurrencyRepository(),
+            type: CryptoCurrencyRepository.self
+        )
     }
 }
