@@ -11,6 +11,8 @@ import CoinFoundation
 import Domain
 
 import Neat
+import RxCocoa
+import RxSwift
 import SnapKit
 import Kingfisher
 
@@ -35,6 +37,16 @@ extension MarketDirection {
 }
 
 final class CryptoPostCVCell: BaseTVCell {
+    let likeButtonTapEvent = PublishSubject<PostResponse>()
+    let commentButtonTapEvent = PublishSubject<PostResponse>()
+    var disposeBag = DisposeBag()
+    
+    private let cardBackgroundView = UIView().nt.configure {
+        $0.layer.cornerRadius(Design.Radius.regular)
+            .clipsToBounds(true)
+            .backgroundColor(.quaternarySystemFill)
+    }
+    
     private let profileImageView = UIImageView().nt.configure {
         $0.layer.cornerRadius(Design.Dimension.symbolSize / 2)
             .clipsToBounds(true)
@@ -42,7 +54,9 @@ final class CryptoPostCVCell: BaseTVCell {
     }
     private let nicknameLabel = UILabel()
     private let directionLabel = UILabel()
-    private let contentLabel = UILabel()
+    private let contentLabel = UILabel().nt.configure {
+        $0.numberOfLines(3)
+    }
     private let likeButton = UIButton(configuration: .plain()).nt.configure {
         $0.configuration.image(UIImage(systemName: "heart"))
             .configuration.baseForegroundColor(Design.Color.red)
@@ -52,7 +66,17 @@ final class CryptoPostCVCell: BaseTVCell {
             .configuration.baseForegroundColor(Design.Color.tint)
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = DisposeBag()
+    }
+    
+    override func configureUI() {
+        selectionStyle = .none
+    }
+    
     override func configureLayout() {
+        contentView.addSubview(cardBackgroundView)
         [
             profileImageView,
             nicknameLabel,
@@ -60,10 +84,15 @@ final class CryptoPostCVCell: BaseTVCell {
             contentLabel,
             likeButton,
             commentButton
-        ].forEach { contentView.addSubview($0) }
+        ].forEach { cardBackgroundView.addSubview($0) }
+        
+        cardBackgroundView.snp.makeConstraints { make in
+            make.edges.equalTo(contentView)
+                .inset(Design.Padding.regular)
+        }
         
         profileImageView.snp.makeConstraints { make in
-            make.top.leading.equalTo(contentView)
+            make.top.leading.equalTo(cardBackgroundView)
                 .inset(Design.Padding.regular)
             make.size.equalTo(Design.Dimension.symbolSize)
         }
@@ -78,7 +107,8 @@ final class CryptoPostCVCell: BaseTVCell {
             make.centerY.equalTo(profileImageView)
             make.leading.equalTo(nicknameLabel.snp.trailing)
                 .offset(Design.Padding.regular)
-            make.trailing.equalTo(contentView).inset(Design.Padding.regular)
+            make.trailing.equalTo(cardBackgroundView)
+                .inset(Design.Padding.regular)
         }
         
         contentLabel.snp.makeConstraints { make in
@@ -91,23 +121,39 @@ final class CryptoPostCVCell: BaseTVCell {
         likeButton.snp.makeConstraints { make in
             make.top.equalTo(contentLabel.snp.bottom)
                 .offset(Design.Padding.regular)
-            make.bottom.equalTo(contentView).inset(Design.Padding.regular)
+            make.bottom.equalTo(cardBackgroundView)
+                .inset(Design.Padding.regular)
         }
         
         commentButton.snp.makeConstraints { make in
             make.centerY.equalTo(likeButton)
             make.leading.equalTo(likeButton.snp.trailing)
                 .offset(Design.Padding.regular)
-            make.trailing.equalTo(contentView)
+            make.trailing.equalTo(cardBackgroundView)
                 .inset(Design.Padding.regular)
         }
     }
     
     func configureCell(item: PostResponse) {
+        if let path = item.writter.profileImagePath {
+            profileImageView.kf.setImage(with: URL(string: path))
+        }
         nicknameLabel.text = item.writter.nickname
         directionLabel.text = item.direction.toString
+        directionLabel.textColor = item.direction.color
         contentLabel.text = item.content
         likeButton.configuration?.title = item.likerIDs.count.formatted()
         commentButton.configuration?.title = item.comments.count.formatted()
+        likeButton.configuration?.image = item.isLikedPost ?
+        UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
+        disposeBag.insert {
+            likeButton.rx.tap
+                .map { _ in item }
+                .bind(to: likeButtonTapEvent)
+            
+            commentButton.rx.tap
+                .map { _ in item }
+                .bind(to: commentButtonTapEvent)
+        }
     }
 }

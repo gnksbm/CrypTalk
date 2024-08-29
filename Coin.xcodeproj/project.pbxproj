@@ -23,6 +23,7 @@
 		8ED3DE982C761BDD00126BD4 /* AppDelegate+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE972C761BDD00126BD4 /* AppDelegate+Register.swift */; };
 		BEC0940B2C8051D3008AA991 /* CryptoPostCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC0940A2C8051D3008AA991 /* CryptoPostCVCell.swift */; };
 		BEC0940D2C805BF9008AA991 /* CryptoPostTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC0940C2C805BF8008AA991 /* CryptoPostTableView.swift */; };
+		BEC094112C806982008AA991 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC094102C806982008AA991 /* PostDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -57,6 +58,7 @@
 		8ED3DE972C761BDD00126BD4 /* AppDelegate+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Register.swift"; sourceTree = "<group>"; };
 		BEC0940A2C8051D3008AA991 /* CryptoPostCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoPostCVCell.swift; sourceTree = "<group>"; };
 		BEC0940C2C805BF8008AA991 /* CryptoPostTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CryptoPostTableView.swift; sourceTree = "<group>"; };
+		BEC094102C806982008AA991 /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,10 +179,19 @@
 		BEC0940E2C806309008AA991 /* Post */ = {
 			isa = PBXGroup;
 			children = (
+				BEC0940F2C806820008AA991 /* PostDetail */,
 				8E792A792C7F8D06009142D3 /* AddPostViewController */,
 				8E792A732C7F3F6D009142D3 /* CryptoPost */,
 			);
 			path = Post;
+			sourceTree = "<group>";
+		};
+		BEC0940F2C806820008AA991 /* PostDetail */ = {
+			isa = PBXGroup;
+			children = (
+				BEC094102C806982008AA991 /* PostDetailViewController.swift */,
+			);
+			path = PostDetail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,6 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8EA517842C6DB0FB0029A356 /* CryptoPostViewController.swift in Sources */,
+				BEC094112C806982008AA991 /* PostDetailViewController.swift in Sources */,
 				8EA517802C6DB0FB0029A356 /* AppDelegate.swift in Sources */,
 				BEC0940B2C8051D3008AA991 /* CryptoPostCVCell.swift in Sources */,
 				8E792A782C7F8486009142D3 /* CryptoPostHeaderView.swift in Sources */,

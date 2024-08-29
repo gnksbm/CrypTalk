@@ -44,7 +44,6 @@ public protocol CryptoPostUseCase {
     ) -> Single<Bool>
     
     func likePost(
-        postID: String,
-        currentLikeStatus: Bool
-    ) -> Single<UpdateLikeResponse>
+        post: PostResponse
+    ) -> Single<PostResponse>
 }

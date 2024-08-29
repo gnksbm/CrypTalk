@@ -26,9 +26,14 @@ final class CryptoPostViewModel: ViewModelType {
     
     func transform(input: Input, disposeBag: inout DisposeBag) -> Output {
         let output = Output(
-            cryptoCurrency: PublishSubject<CryptoCurrencyResponse>(), 
-            cryptoPostResponse: PublishSubject<[PostResponse]>(),
-            startAddFlow: PublishSubject()
+            cryptoCurrency: PublishSubject(),
+            cryptoPostResponse: PublishSubject(),
+            likeChanged: PublishSubject(),
+            startAddFlow: PublishSubject(),
+            startDetailFlow: Observable.merge(
+                input.cellTapEvent,
+                input.commentButtonTapEvent
+            )
         )
         
         disposeBag.insert {
@@ -54,6 +59,15 @@ final class CryptoPostViewModel: ViewModelType {
                 .withLatestFrom(output.cryptoCurrency)
                 .map { $0.name }
                 .bind(to: output.startAddFlow)
+            
+            input.likeButtonTapEvent
+                .withUnretained(self)
+                .flatMap { vm, response in
+                    vm.useCase.likePost(
+                        post: response
+                    )
+                }
+                .bind(to: output.likeChanged)
         }
         
         return output
@@ -65,11 +79,16 @@ extension CryptoPostViewModel {
         let viewWillAppearEvent: Observable<Void>
         let pageChangeEvent: Observable<Int>
         let plusButtonTapEvent: Observable<Void>
+        let cellTapEvent: Observable<PostResponse>
+        let likeButtonTapEvent: Observable<PostResponse>
+        let commentButtonTapEvent: Observable<PostResponse>
     }
     
     struct Output {
         let cryptoCurrency: PublishSubject<CryptoCurrencyResponse>
         let cryptoPostResponse: PublishSubject<[PostResponse]>
+        let likeChanged: PublishSubject<PostResponse>
         let startAddFlow: PublishSubject<String>
+        let startDetailFlow: Observable<PostResponse>
     }
 }

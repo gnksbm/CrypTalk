@@ -44,7 +44,7 @@ extension PostTarget: BackEndTargetType {
         case .readLikedPosts:
             "/posts/likes/me"
         case .updateLike(let request):
-            "/posts/\(request.postID)/comments"
+            "/posts/\(request.postID)/like"
         }
     }
     

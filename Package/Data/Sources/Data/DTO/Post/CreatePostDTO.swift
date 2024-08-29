@@ -33,6 +33,7 @@ extension CreatePostDTO {
         let direction = try toMarketDirection()
         let comments = try comments.map { try $0.toResponse() }
         return PostResponse(
+            postID: postID,
             writter: creator.toUser(),
             content: content,
             direction: direction,

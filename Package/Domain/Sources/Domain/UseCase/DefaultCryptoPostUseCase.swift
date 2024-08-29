@@ -12,7 +12,7 @@ import CoinFoundation
 import RxSwift
 
 enum CryptoPostError: Error {
-    case missingAccessToken, failureParseMarketDirection
+    case missingAccessToken, failureParseMarketDirection, canNotFindUserID
 }
 
 public final class DefaultCryptoPostUseCase: CryptoPostUseCase {
@@ -20,10 +20,12 @@ public final class DefaultCryptoPostUseCase: CryptoPostUseCase {
     @Injected private var commentRepository: CommentRepository
     @Injected private var cryptoCurrencyRepository: CryptoCurrencyRepository
     
-    @UserDefaultsWrapper(key: .accessToken, defaultValue: "")
+    @UserDefaultsWrapper(key: .accessToken, defaultValue: nil)
     private var accessToken: String?
-    @UserDefaultsWrapper(key: .refreshToken, defaultValue: "")
+    @UserDefaultsWrapper(key: .refreshToken, defaultValue: nil)
     private var refreshToken: String?
+    @UserDefaultsWrapper(key: .userID, defaultValue: nil)
+    private var userID: String?
     @UserDefaultsWrapper(key: .latestViewedID, defaultValue: "bitcoin")
     private var latestViewedID: String
     
@@ -172,20 +174,37 @@ public final class DefaultCryptoPostUseCase: CryptoPostUseCase {
     }
     
     public func likePost(
-        postID: String,
-        currentLikeStatus: Bool
-    ) -> Single<UpdateLikeResponse> {
+        post: PostResponse
+    ) -> Single<PostResponse> {
         guard let accessToken else {
             return .error(CryptoPostError.missingAccessToken)
+        }
+        guard let userID else {
+            return .error(CryptoPostError.canNotFindUserID)
         }
         return AuthRequestRetrier(
             request: UpdateLikeRequest(
                 accessToken: accessToken,
-                postID: postID,
-                likeStatus: !currentLikeStatus
+                postID: post.postID,
+                likeStatus: !post.isLikedPost
             )
         ) { request in
             self.postRepository.updateLike(request: request)
+                .map { response in
+                    var copy = post
+                    let isLiked = response.likeStatus
+                    let containID = copy.likerIDs.contains(userID)
+                    switch (isLiked, containID) {
+                    case (true, false):
+                        copy.likerIDs.append(userID)
+                    case (false, true):
+                        copy.likerIDs = copy.likerIDs.filter { $0 == userID }
+                    case (true, true), (false, false):
+                        break
+                    }
+                    copy.isLikedPost = response.likeStatus
+                    return copy
+                }
         }
         .execute()
     }

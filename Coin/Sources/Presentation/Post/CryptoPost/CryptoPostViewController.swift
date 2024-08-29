@@ -23,6 +23,7 @@ final class CryptoPostViewController: BaseViewController, ViewType {
         $0.tableHeaderView(headerView)
             .backgroundColor(.clear)
             .register(CryptoPostCVCell.self)
+            .separatorStyle(.none)
     }
     
     init(viewModel: CryptoPostViewModel) {
@@ -35,7 +36,10 @@ final class CryptoPostViewController: BaseViewController, ViewType {
             input: CryptoPostViewModel.Input(
                 viewWillAppearEvent: viewWillAppearEvent, 
                 pageChangeEvent: pageChangeEvent,
-                plusButtonTapEvent: plusButton.rx.tap.asObservable()
+                plusButtonTapEvent: plusButton.rx.tap.asObservable(),
+                cellTapEvent: tableView.tapEvent,
+                likeButtonTapEvent: tableView.likeButtonTapEvent,
+                commentButtonTapEvent: tableView.commentButtonTapEvent
             ),
             disposeBag: &disposeBag
         )
@@ -50,7 +54,19 @@ final class CryptoPostViewController: BaseViewController, ViewType {
             output.cryptoPostResponse
                 .withUnretained(self)
                 .bind { vc, items in
-                    vc.tableView.applyItem(items: items)
+                    vc.tableView.applyItem(
+                        items: items,
+                        withAnimating: false
+                    )
+                }
+            
+            output.likeChanged
+                .withUnretained(self)
+                .bind { vc, changedResponse in
+                    vc.tableView.updateItems(
+                        [changedResponse],
+                        withAnimating: false
+                    )
                 }
             
             output.startAddFlow
@@ -63,6 +79,15 @@ final class CryptoPostViewController: BaseViewController, ViewType {
                                 cryptoPostUseCase: DefaultCryptoPostUseCase()
                             )
                         ),
+                        animated: true
+                    )
+                }
+            
+            output.startDetailFlow
+                .withUnretained(self)
+                .bind { vc, cryptoName in
+                    vc.navigationController?.pushViewController(
+                        PostDetailViewController(),
                         animated: true
                     )
                 }

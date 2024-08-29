@@ -8,7 +8,7 @@
 import Foundation
 
 public struct UpdateLikeResponse {
-    let likeStatus: Bool
+    public let likeStatus: Bool
     
     public init(likeStatus: Bool) {
         self.likeStatus = likeStatus

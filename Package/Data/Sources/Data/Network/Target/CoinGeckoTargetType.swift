@@ -24,6 +24,6 @@ extension CoinGeckoTargetType {
     public var port: Int? { nil }
     public var path: String { "/api/v\(version)\(targetPath)" }
     public var commonHeaders: [String : String] {
-        [Secret.apiKeyHeader: Secret.coinGeckoApiKey]
+        ["x_cg_pro_api_key": Secret.coinGeckoApiKey]
     }
 }
