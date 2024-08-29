@@ -8,6 +8,7 @@
 import UIKit
 
 import Domain
+import CoinFoundation
 
 final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?

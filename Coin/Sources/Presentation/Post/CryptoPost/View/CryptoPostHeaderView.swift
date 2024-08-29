@@ -48,10 +48,6 @@ final class CryptoPostHeaderView: BaseView {
         rateLabel.text = response.rate.formatted(.percent)
     }
     
-    func updateView(responses: [PostResponse]) {
-        print(responses.count)
-    }
-    
     override func configureLayout() {
         [
             iconImageView,

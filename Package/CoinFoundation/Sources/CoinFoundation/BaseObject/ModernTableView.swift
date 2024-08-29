@@ -1,5 +1,5 @@
 //
-//  ModernCollectionView.swift
+//  File.swift
 //  
 //
 //  Created by gnksbm on 8/29/24.
@@ -8,24 +8,13 @@
 #if canImport(UIKit)
 import UIKit
 
-open class ModernCollectionView<Section: Hashable, Item: Hashable>:
-    UICollectionView {
-    open class func createLayout() -> UICollectionViewCompositionalLayout {
-        UICollectionViewCompositionalLayout { _, env in
-            NSCollectionLayoutSection.list(
-                using: UICollectionLayoutListConfiguration(
-                    appearance: .plain
-                ),
-                layoutEnvironment: env
-            )
-        }
-    }
-    
+open class ModernTableView<Section: Hashable, Item: Hashable>: UITableView {
     public var diffableDataSource:
-    UICollectionViewDiffableDataSource<Section, Item>!
+    UITableViewDiffableDataSource<Section, Item>!
     
-    public init() {
-        super.init(frame: .zero, collectionViewLayout: Self.createLayout())
+    public override init(frame: CGRect, style: UITableView.Style) {
+        super.init(frame: frame, style: style)
+        configureDataSource()
     }
     
     @available(*, unavailable)
@@ -36,8 +25,8 @@ open class ModernCollectionView<Section: Hashable, Item: Hashable>:
     open func createCellProvider() -> CellProvider { { _, _, _ in nil } }
     
     open func configureDataSource() {
-        diffableDataSource = UICollectionViewDiffableDataSource(
-            collectionView: self,
+        diffableDataSource = UITableViewDiffableDataSource(
+            tableView: self,
             cellProvider: createCellProvider()
         )
     }
@@ -46,7 +35,8 @@ open class ModernCollectionView<Section: Hashable, Item: Hashable>:
         for indexPath: IndexPath
     ) -> Item where Section: CaseIterable, Section.AllCases.Index == Int {
         let section = Section.allCases[indexPath.section]
-        return diffableDataSource.snapshot(for: section).items[indexPath.row]
+        return diffableDataSource.snapshot()
+            .itemIdentifiers(inSection: section)[indexPath.row]
     }
     
     public func applyItem(
@@ -171,7 +161,8 @@ open class ModernCollectionView<Section: Hashable, Item: Hashable>:
     public func getItem(
         for indexPath: IndexPath
     ) -> Item where Section == SingleSection {
-        return diffableDataSource.snapshot(for: .main).items[indexPath.row]
+        return diffableDataSource.snapshot()
+            .itemIdentifiers(inSection: .main)[indexPath.row]
     }
     
     public func applyItem(
@@ -204,11 +195,6 @@ open class ModernCollectionView<Section: Hashable, Item: Hashable>:
     
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Item>
     public typealias CellProvider =
-    (UICollectionView, IndexPath, Item) -> UICollectionViewCell?
+    (UITableView, IndexPath, Item) -> UITableViewCell?
 }
-
-public enum SingleSection {
-    case main
-}
-
 #endif

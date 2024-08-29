@@ -26,6 +26,7 @@ public enum Design {
         public static let background = UIColor.white
         public static let secondary = UIColor.gray
         public static let tint = UIColor.blue
+        public static let red = UIColor.red
     }
 }
 #endif

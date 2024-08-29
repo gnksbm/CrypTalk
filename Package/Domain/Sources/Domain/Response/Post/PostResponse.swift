@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct PostResponse {
+public struct PostResponse: Hashable {
     public let writter: User
     public let content: String
     public let direction: MarketDirection

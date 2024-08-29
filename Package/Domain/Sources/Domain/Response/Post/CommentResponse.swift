@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CommentResponse {
+public struct CommentResponse: Hashable {
     let id: String
     let comment: String
     let createdAt: Date

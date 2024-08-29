@@ -19,9 +19,10 @@ final class CryptoPostViewController: BaseViewController, ViewType {
     
     private let plusButton = UIBarButtonItem(systemItem: .add)
     private let headerView = CryptoPostHeaderView()
-    private lazy var tableView = UITableView().nt.configure {
+    private lazy var tableView = CryptoPostTableView().nt.configure {
         $0.tableHeaderView(headerView)
             .backgroundColor(.clear)
+            .register(CryptoPostCVCell.self)
     }
     
     init(viewModel: CryptoPostViewModel) {
@@ -42,14 +43,14 @@ final class CryptoPostViewController: BaseViewController, ViewType {
         disposeBag.insert {
             output.cryptoCurrency
                 .withUnretained(self)
-                .subscribe { vc, response in
+                .bind { vc, response in
                     vc.headerView.updateView(response: response)
                 }
             
             output.cryptoPostResponse
                 .withUnretained(self)
-                .subscribe { vc, responses in
-                    vc.headerView.updateView(responses: responses)
+                .bind { vc, items in
+                    vc.tableView.applyItem(items: items)
                 }
             
             output.startAddFlow
