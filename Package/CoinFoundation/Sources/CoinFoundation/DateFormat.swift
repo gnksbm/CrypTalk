@@ -8,7 +8,8 @@
 import Foundation
 
 public enum DateFormat: String {
-    case placeholder = ""
+    case createdAtInput = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+    case createdAtOutput = "MM월 dd일"
 }
 
 extension DateFormat {

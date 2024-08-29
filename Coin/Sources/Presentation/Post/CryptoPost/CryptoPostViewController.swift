@@ -85,9 +85,11 @@ final class CryptoPostViewController: BaseViewController, ViewType {
             
             output.startDetailFlow
                 .withUnretained(self)
-                .bind { vc, cryptoName in
+                .bind { vc, response in
                     vc.navigationController?.pushViewController(
-                        PostDetailViewController(),
+                        PostDetailViewController(
+                            viewModel: PostDetailViewModel(response: response)
+                        ),
                         animated: true
                     )
                 }

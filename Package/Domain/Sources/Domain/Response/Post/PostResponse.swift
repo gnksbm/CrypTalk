@@ -10,6 +10,7 @@ import Foundation
 public struct PostResponse: Hashable {
     public let postID: String
     public let writter: User
+    public let createdAt: Date
     public let content: String
     public let direction: MarketDirection
     public var likerIDs: [String]
@@ -19,6 +20,7 @@ public struct PostResponse: Hashable {
     public init(
         postID: String,
         writter: User,
+        createdAt: Date,
         content: String,
         direction: MarketDirection,
         likerIDs: [String],
@@ -26,6 +28,7 @@ public struct PostResponse: Hashable {
     ) {
         self.postID = postID
         self.writter = writter
+        self.createdAt = createdAt
         self.content = content
         self.direction = direction
         self.likerIDs = likerIDs

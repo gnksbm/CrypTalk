@@ -32,9 +32,12 @@ extension CreatePostDTO {
     func toResponse() throws -> PostResponse {
         let direction = try toMarketDirection()
         let comments = try comments.map { try $0.toResponse() }
+        guard let createdAt = createdAt.formatted(dateFormat: .createdAtInput)
+        else { throw CreatePostDTOError.invalidCreatedAtFormat }
         return PostResponse(
             postID: postID,
             writter: creator.toUser(),
+            createdAt: createdAt,
             content: content,
             direction: direction,
             likerIDs: likes,
@@ -56,7 +59,7 @@ extension CreatePostDTO {
     }
 
     enum CreatePostDTOError: Error {
-        case failureParseContent1
+        case failureParseContent1, invalidCreatedAtFormat
     }
 }
 
