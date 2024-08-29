@@ -28,9 +28,7 @@ final class CryptoPostViewModel: ViewModelType {
         let output = Output(
             cryptoCurrency: PublishSubject<CryptoCurrencyResponse>(), 
             cryptoPostResponse: PublishSubject<[PostResponse]>(),
-            startAddFlow: input.plusButtonTapEvent
-                .withUnretained(self)
-                .map { vm, _ in vm.coinID ?? "" }
+            startAddFlow: PublishSubject()
         )
         
         disposeBag.insert {
@@ -51,6 +49,11 @@ final class CryptoPostViewModel: ViewModelType {
                     )
                 }
                 .bind(to: output.cryptoPostResponse)
+            
+            input.plusButtonTapEvent
+                .withLatestFrom(output.cryptoCurrency)
+                .map { $0.name }
+                .bind(to: output.startAddFlow)
         }
         
         return output
@@ -67,6 +70,6 @@ extension CryptoPostViewModel {
     struct Output {
         let cryptoCurrency: PublishSubject<CryptoCurrencyResponse>
         let cryptoPostResponse: PublishSubject<[PostResponse]>
-        let startAddFlow: Observable<String>
+        let startAddFlow: PublishSubject<String>
     }
 }

@@ -15,7 +15,7 @@ import SnapKit
 import Neat
 
 final class CryptoPostViewController: BaseViewController, ViewType {
-    private let pageChangeEvent = BehaviorSubject(value: 1)
+    private let pageChangeEvent = BehaviorSubject(value: 0)
     
     private let plusButton = UIBarButtonItem(systemItem: .add)
     private let headerView = CryptoPostHeaderView()
