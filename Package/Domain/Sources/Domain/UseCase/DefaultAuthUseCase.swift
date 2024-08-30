@@ -19,14 +19,16 @@ public final class DefaultAuthUseCase: AuthUseCase {
     @UserDefaultsWrapper(key: .refreshToken, defaultValue: nil)
     private var refreshToken: String?
     
-    func validateEmail(email: String) -> RxSwift.Single<Bool> {
+    public init() { }
+    
+    public func validateEmail(email: String) -> RxSwift.Single<Bool> {
         authRepository.validateEmail(
             request: EmailValidationRequest(email: email)
         )
         .toResult()
     }
     
-    func join(
+    public func join(
         email: String,
         password: String,
         nick: String,
@@ -45,7 +47,7 @@ public final class DefaultAuthUseCase: AuthUseCase {
         .toResult()
     }
     
-    func login(email: String, password: String) -> RxSwift.Single<Bool> {
+    public func login(email: String, password: String) -> RxSwift.Single<Bool> {
         authRepository.login(
             request: LoginRequest(
                 email: email,
@@ -63,7 +65,7 @@ public final class DefaultAuthUseCase: AuthUseCase {
         .asSingle()
     }
     
-    func requestRefreshToken() -> Single<Bool> {
+    public func requestRefreshToken() -> Single<Bool> {
         guard let accessToken,
               let refreshToken else { return Single.just(false) }
         return authRepository.refreshToken(
@@ -82,7 +84,7 @@ public final class DefaultAuthUseCase: AuthUseCase {
         .asSingle()
     }
     
-    func withdraw() -> Single<Bool> {
+    public func withdraw() -> Single<Bool> {
         guard let accessToken else { return Single.just(false) }
         return authRepository.withdraw(
             request: WithdrawRequest(accessToken: accessToken)

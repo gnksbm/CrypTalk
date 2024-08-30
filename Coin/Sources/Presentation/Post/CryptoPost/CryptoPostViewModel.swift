@@ -33,7 +33,8 @@ final class CryptoPostViewModel: ViewModelType {
             startDetailFlow: Observable.merge(
                 input.cellTapEvent,
                 input.commentButtonTapEvent
-            )
+            ), 
+            accessTokenExpired: PublishSubject()
         )
         
         disposeBag.insert {
@@ -53,7 +54,15 @@ final class CryptoPostViewModel: ViewModelType {
                         limit: 5
                     )
                 }
-                .bind(to: output.cryptoPostResponse)
+                .subscribe(
+                    onNext: { responses in
+                        output.cryptoPostResponse.onNext(responses)
+                    },
+                    onError: { error in
+                        Logger.error(error)
+                        output.accessTokenExpired.onNext(())
+                    }
+                )
             
             input.plusButtonTapEvent
                 .withLatestFrom(output.cryptoCurrency)
@@ -90,5 +99,6 @@ extension CryptoPostViewModel {
         let likeChanged: PublishSubject<PostResponse>
         let startAddFlow: PublishSubject<String>
         let startDetailFlow: Observable<PostResponse>
+        let accessTokenExpired: PublishSubject<Void>
     }
 }

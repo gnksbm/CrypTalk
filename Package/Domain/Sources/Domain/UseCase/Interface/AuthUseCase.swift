@@ -9,7 +9,7 @@ import Foundation
 
 import RxSwift
 
-protocol AuthUseCase {
+public protocol AuthUseCase {
     func validateEmail(email: String) -> Single<Bool>
     
     func join(

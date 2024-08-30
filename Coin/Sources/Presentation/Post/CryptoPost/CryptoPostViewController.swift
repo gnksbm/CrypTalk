@@ -93,6 +93,16 @@ final class CryptoPostViewController: BaseViewController, ViewType {
                         animated: true
                     )
                 }
+            
+            output.accessTokenExpired
+                .withUnretained(self)
+                .bind { vc, _ in
+                    vc.view.window?.rootViewController = LoginViewController(
+                        viewModel: LoginViewModel(
+                            authUseCase: DefaultAuthUseCase()
+                        )
+                    )
+                }
         }
     }
     
