@@ -35,6 +35,13 @@ final class PostDetailViewModel: ViewModelType {
                 .map { vm, _ in vm.response }
                 .bind(to: output.post)
             
+            input.likeButtonTapEvent
+                .withUnretained(self)
+                .flatMap { vm, post in
+                    vm.cryptoPostUseCase.likePost(post: post)
+                }
+                .bind(to: output.post)
+            
             input.commentDoneButtonTapEvent
                 .withLatestFrom(input.commentChangeEvent)
                 .withUnretained(self)
@@ -57,6 +64,7 @@ final class PostDetailViewModel: ViewModelType {
 extension PostDetailViewModel {
     struct Input { 
         let viewWillAppear: Observable<Void>
+        let likeButtonTapEvent: Observable<PostResponse>
         let commentChangeEvent: Observable<String>
         let commentDoneButtonTapEvent: Observable<Void>
     }

@@ -36,6 +36,12 @@ public struct PostResponse: Hashable {
     }
 }
 
+public extension PostResponse {
+    mutating func updateLike(userID: String) {
+        isLikedPost = likerIDs.contains(userID)
+    }
+}
+
 extension PostResponse: Identifiable {
     public var id: String { postID }
 }

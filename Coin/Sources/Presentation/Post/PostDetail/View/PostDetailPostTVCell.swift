@@ -1,5 +1,5 @@
 //
-//  PostDetailHeaderView.swift
+//  PostDetailPostTVCell.swift
 //  Coin
 //
 //  Created by gnksbm on 8/30/24.
@@ -10,7 +10,12 @@ import UIKit
 import CoinFoundation
 import Domain
 
-final class PostDetailHeaderView: BaseView {
+import RxSwift
+
+final class PostDetailPostTVCell: BaseTVCell {
+    let likeButtonTapEvent = PublishSubject<PostResponse>()
+    var disposeBag = DisposeBag()
+    
     private let profileImageView = UIImageView().nt.configure {
         $0.contentMode(.scaleAspectFill)
             .layer.cornerRadius(Design.Dimension.symbolSize / 2)
@@ -31,6 +36,11 @@ final class PostDetailHeaderView: BaseView {
             .configuration.baseForegroundColor(Design.Color.red)
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = DisposeBag()
+    }
+    
     override func configureLayout() {
         [
             profileImageView,
@@ -39,10 +49,10 @@ final class PostDetailHeaderView: BaseView {
             directionLabel,
             contentLabel,
             likeButton
-        ].forEach { addSubview($0) }
+        ].forEach { contentView.addSubview($0) }
         
         profileImageView.snp.makeConstraints { make in
-            make.top.leading.equalTo(self).inset(Design.Padding.regular)
+            make.top.leading.equalTo(contentView).inset(Design.Padding.regular)
             make.size.equalTo(Design.Dimension.symbolSize)
         }
         
@@ -69,7 +79,7 @@ final class PostDetailHeaderView: BaseView {
             make.centerY.equalTo(dateLabel)
             make.leading.equalTo(dateLabel.snp.trailing)
                 .offset(Design.Padding.regular)
-            make.trailing.equalTo(self)
+            make.trailing.equalTo(contentView)
                 .inset(Design.Padding.regular)
         }
         
@@ -78,11 +88,11 @@ final class PostDetailHeaderView: BaseView {
                 .offset(Design.Padding.regular)
             make.leading.equalTo(profileImageView)
             make.trailing.equalTo(directionLabel)
-            make.bottom.equalTo(self).inset(Design.Padding.regular)
+            make.bottom.equalTo(contentView).inset(Design.Padding.regular)
         }
     }
     
-    func updateView(item: PostResponse) {
+    func configureCell(item: PostResponse) {
         if let path = item.writter.profileImagePath {
             profileImageView.kf.setImage(with: URL(string: path))
         } else {
@@ -96,5 +106,11 @@ final class PostDetailHeaderView: BaseView {
         likeButton.configuration?.title = item.likerIDs.count.formatted()
         likeButton.configuration?.image = item.isLikedPost ?
         UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
+        likeButton.rx.tap
+            .map { _ in
+                item
+            }
+            .bind(to: likeButtonTapEvent)
+            .disposed(by: disposeBag)
     }
 }

@@ -22,6 +22,10 @@ struct LoginDTO: Decodable {
 
 extension LoginDTO {
     func toResponse() -> LoginResponse {
-        LoginResponse(accessToken: accessToken, refreshToken: refreshToken)
+        LoginResponse(
+            userID: userID,
+            accessToken: accessToken,
+            refreshToken: refreshToken
+        )
     }
 }

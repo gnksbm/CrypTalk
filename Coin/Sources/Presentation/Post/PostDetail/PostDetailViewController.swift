@@ -29,9 +29,10 @@ final class PostDetailViewController: BaseViewController, ViewType {
         ]
     )
     
-    private let headerView = PostDetailHeaderView()
     private lazy var tableView = PostDetailTableView().nt.configure {
-        $0.tableHeaderView(headerView)
+        $0.backgroundColor(.clear)
+            .register(PostDetailPostTVCell.self)
+            .register(PostDetailCommentTVCell.self)
     }
     private lazy var commentTextView = UITextView().nt.configure {
         $0.attributedText(textViewPlaceholder)
@@ -68,6 +69,7 @@ final class PostDetailViewController: BaseViewController, ViewType {
         let output = viewModel.transform(
             input: PostDetailViewModel.Input(
                 viewWillAppear: viewWillAppearEvent,
+                likeButtonTapEvent: tableView.likeButtonTapEvent.asObserver(),
                 commentChangeEvent: commentTextView.rx.text.orEmpty
                     .asObservable(),
                 commentDoneButtonTapEvent: commentDoneButton.rx.tap
@@ -80,20 +82,26 @@ final class PostDetailViewController: BaseViewController, ViewType {
             output.post
                 .withUnretained(self)
                 .bind { vc, item in
-                    vc.headerView.updateView(item: item)
-                    vc.tableView.updateItems(item.comments)
+                    vc.tableView.applyItem(withAnimating: false) { section in
+                        switch section {
+                        case .post:
+                            [.post(item)]
+                        case .comment:
+                            item.comments.map { .comment($0) }
+                        }
+                    }
+                    vc.commentTextView.rx.text.onNext("")
                 }
         }
     }
     
     override func configureLayout() {
-        [tableView, commentBackgroundView].forEach { view.addSubview($0) }
-        [commentTextView, commentDoneButton].forEach { view.addSubview($0) }
-        headerView.translatesAutoresizingMaskIntoConstraints = false
-        
-        headerView.snp.makeConstraints { make in
-            make.width.equalTo(tableView)
-        }
+        [
+            tableView,
+            commentBackgroundView,
+            commentTextView,
+            commentDoneButton
+        ].forEach { view.addSubview($0) }
         
         tableView.snp.makeConstraints { make in
             make.top.horizontalEdges.equalTo(safeArea)

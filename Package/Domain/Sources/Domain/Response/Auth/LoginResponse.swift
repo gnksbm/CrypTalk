@@ -8,12 +8,14 @@
 import Foundation
 
 public struct LoginResponse {
-    let accessToken, refreshToken: String
+    let userID, accessToken, refreshToken: String
     
     public init(
+        userID: String,
         accessToken: String,
         refreshToken: String
     ) {
+        self.userID = userID
         self.accessToken = accessToken
         self.refreshToken = refreshToken
     }

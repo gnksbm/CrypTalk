@@ -71,10 +71,6 @@ final class CryptoPostTVCell: BaseTVCell {
         disposeBag = DisposeBag()
     }
     
-    override func configureUI() {
-        selectionStyle = .none
-    }
-    
     override func configureLayout() {
         contentView.addSubview(cardBackgroundView)
         [

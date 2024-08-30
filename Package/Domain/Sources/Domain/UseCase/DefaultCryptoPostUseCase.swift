@@ -24,8 +24,8 @@ public final class DefaultCryptoPostUseCase: CryptoPostUseCase {
     private var accessToken: String?
     @UserDefaultsWrapper(key: .refreshToken, defaultValue: nil)
     private var refreshToken: String?
-    @UserDefaultsWrapper(key: .savedEmail, defaultValue: nil)
-    private var savedEmail: String?
+    @UserDefaultsWrapper(key: .userID, defaultValue: nil)
+    private var userID: String?
     @UserDefaultsWrapper(key: .latestViewedID, defaultValue: "bitcoin")
     private var latestViewedID: String
     
@@ -41,12 +41,20 @@ public final class DefaultCryptoPostUseCase: CryptoPostUseCase {
         guard let accessToken else {
             return .error(CryptoPostError.missingAccessToken)
         }
+        guard let userID else {
+            return .error(CryptoPostError.canNotFindUserID)
+        }
         return postRepository.readPostWithID(
             request: ReadPostWithIDRequest(
                 accessToken: accessToken,
                 postID: postID
             )
         )
+        .map { 
+            var copy = $0
+            copy.updateLike(userID: userID)
+            return copy
+        }
     }
     
     public func fetchCryptoCurrency(
@@ -73,6 +81,9 @@ public final class DefaultCryptoPostUseCase: CryptoPostUseCase {
         guard let accessToken else {
             return .error(CryptoPostError.missingAccessToken)
         }
+        guard let userID else {
+            return .error(CryptoPostError.canNotFindUserID)
+        }
         return AuthRequestRetrier(
             request: ReadPostsRequest(
                 accessToken: accessToken,
@@ -82,6 +93,13 @@ public final class DefaultCryptoPostUseCase: CryptoPostUseCase {
             )
         ) { request in
             self.postRepository.readPosts(request: request)
+                .map { responses in
+                    responses.map {
+                        var copy = $0
+                        copy.updateLike(userID: userID)
+                        return copy
+                    }
+                }
         }
         .execute()
     }
@@ -191,7 +209,7 @@ public final class DefaultCryptoPostUseCase: CryptoPostUseCase {
         guard let accessToken else {
             return .error(CryptoPostError.missingAccessToken)
         }
-        guard let savedEmail else {
+        guard let userID else {
             return .error(CryptoPostError.canNotFindUserID)
         }
         return AuthRequestRetrier(
@@ -205,14 +223,12 @@ public final class DefaultCryptoPostUseCase: CryptoPostUseCase {
                 .map { response in
                     var copy = post
                     let isLiked = response.likeStatus
-                    let containID = copy.likerIDs.contains(savedEmail)
+                    let containID = copy.likerIDs.contains(userID)
                     switch (isLiked, containID) {
                     case (true, false):
-                        copy.likerIDs.append(savedEmail)
+                        copy.likerIDs.append(userID)
                     case (false, true):
-                        copy.likerIDs = copy.likerIDs.filter {
-                            $0 == savedEmail
-                        }
+                        copy.likerIDs = copy.likerIDs.filter { $0 == userID }
                     case (true, true), (false, false):
                         break
                     }

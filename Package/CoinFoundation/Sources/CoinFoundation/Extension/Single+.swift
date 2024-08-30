@@ -10,10 +10,20 @@ import Foundation
 import Moya
 import RxSwift
 
+enum StreamError: Error {
+    case DecodeError(Error)
+}
+
 public extension Single<Data> {
     func decode<T: Decodable>(type: T.Type) -> Single<T> {
         asObservable()
-            .decode(type: type, decoder: JSONDecoder())
+            .map {
+                do {
+                    return try JSONDecoder().decode(T.self, from: $0)
+                } catch {
+                    throw StreamError.DecodeError(error)
+                }
+            }
             .asSingle()
     }
 }

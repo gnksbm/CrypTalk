@@ -19,11 +19,11 @@ final class CryptoPostTableView:
     
     override func createCellProvider() -> CellProvider {
         { [weak self] tableView, indexPath, item in
-            guard let self,
-                  let cell = tableView.dequeueReusableCell(
-                withIdentifier: String(describing: CryptoPostTVCell.self),
+            guard let self else { return CryptoPostTVCell() }
+            let cell = tableView.dequeueReusableCell(
+                cellType: CryptoPostTVCell.self,
                 for: indexPath
-            ) as? CryptoPostTVCell else { return CryptoPostTVCell() }
+            )
             cell.configureCell(item: item)
             cell.disposeBag.insert {
                 cell.likeButtonTapEvent

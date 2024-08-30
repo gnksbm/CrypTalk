@@ -16,6 +16,7 @@ open class BaseTVCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configureUI()
         configureLayout()
+        configureDefaultUI()
     }
     
     @available(*, unavailable)
@@ -25,6 +26,9 @@ open class BaseTVCell: UITableViewCell {
     
     open func configureUI() { }
     open func configureLayout() { }
+    private func configureDefaultUI() {
+        selectionStyle = .none
+    }
 }
 #endif
 

@@ -89,8 +89,8 @@ open class ModernTableView<Section: Hashable, Item: Hashable>: UITableView {
     }
     
     public func applyItem(
-        _ sectionHandler: (Section) -> [Item],
-        withAnimating: Bool = true
+        withAnimating: Bool = true,
+        _ sectionHandler: (Section) -> [Item]
     ) where Section: CaseIterable {
         var snapshot = Snapshot()
         Section.allCases.forEach { section in
