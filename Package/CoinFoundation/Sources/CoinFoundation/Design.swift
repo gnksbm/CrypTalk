@@ -29,5 +29,9 @@ public enum Design {
         public static let tint = UIColor.blue
         public static let red = UIColor.red
     }
+    
+    public enum ImageLiteral {
+        public static let profile = UIImage(systemName: "person.fill")
+    }
 }
 #endif

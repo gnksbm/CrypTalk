@@ -27,9 +27,7 @@ final class PostDetailViewModel: ViewModelType {
         disposeBag.insert {
             input.viewWillAppear
                 .withUnretained(self)
-                .map { vm, _ in
-                    vm.response
-                }
+                .map { vm, _ in vm.response }
                 .bind(to: output.post)
         }
         

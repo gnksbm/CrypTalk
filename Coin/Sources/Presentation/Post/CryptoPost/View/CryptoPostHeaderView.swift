@@ -16,6 +16,7 @@ import Neat
 final class CryptoPostHeaderView: BaseView {
     private let iconImageView = UIImageView().nt.configure {
         $0.contentMode(.scaleAspectFill)
+            .clipsToBounds(true)
     }
     private let titleButton = UIButton(configuration: .plain()).nt.configure {
         $0.configuration.titleAlignment(.leading)
@@ -32,13 +33,6 @@ final class CryptoPostHeaderView: BaseView {
     private let rateLabel = UILabel().nt.configure {
         $0.textColor(Design.Color.foreground)
             .textAlignment(.right)
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        let size = systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
-        self.frame.size.height = size.height
     }
     
     func updateView(response: CryptoCurrencyResponse) {
@@ -58,8 +52,8 @@ final class CryptoPostHeaderView: BaseView {
         
         iconImageView.snp.makeConstraints { make in
             make.top.leading.equalTo(self)
-                .inset(Design.Padding.regular).priority(.required)
-            make.size.equalTo(Design.Dimension.symbolSize).priority(.required)
+                .inset(Design.Padding.regular)
+            make.size.equalTo(Design.Dimension.symbolSize)
         }
         
         titleButton.snp.makeConstraints { make in
@@ -71,9 +65,9 @@ final class CryptoPostHeaderView: BaseView {
         priceLabel.snp.makeConstraints { make in
             make.centerY.equalTo(titleButton)
             make.leading.equalTo(titleButton.snp.trailing)
-                .offset(Design.Padding.regular).priority(.required)
+                .offset(Design.Padding.regular)
             make.trailing.equalTo(self)
-                .inset(Design.Padding.regular).priority(.required)
+                .inset(Design.Padding.regular)
         }
         
         rateLabel.snp.makeConstraints { make in
@@ -81,7 +75,7 @@ final class CryptoPostHeaderView: BaseView {
                 .offset(Design.Padding.regular)
             make.trailing.equalTo(priceLabel)
             make.bottom.equalTo(self)
-                .inset(Design.Padding.regular).priority(.required)
+                .inset(Design.Padding.regular)
         }
     }
 }

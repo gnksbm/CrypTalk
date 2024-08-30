@@ -21,9 +21,9 @@ final class CryptoPostTableView:
         { [weak self] tableView, indexPath, item in
             guard let self,
                   let cell = tableView.dequeueReusableCell(
-                withIdentifier: String(describing: CryptoPostCVCell.self),
+                withIdentifier: String(describing: CryptoPostTVCell.self),
                 for: indexPath
-            ) as? CryptoPostCVCell else { return CryptoPostCVCell() }
+            ) as? CryptoPostTVCell else { return CryptoPostTVCell() }
             cell.configureCell(item: item)
             cell.disposeBag.insert {
                 cell.likeButtonTapEvent

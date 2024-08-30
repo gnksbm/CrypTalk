@@ -38,31 +38,12 @@ final class CryptoPostViewModel: ViewModelType {
         )
         
         disposeBag.insert {
-            let viewWillAppearEvent = input.viewWillAppearEvent
-            
-            viewWillAppearEvent
-                .throttle(
-                    .seconds(360),
-                    scheduler: MainScheduler.instance
-                )
+            input.viewWillAppearEvent
                 .withUnretained(self)
                 .flatMap { vm, _ in
                     vm.useCase.fetchCryptoCurrency(coinID: vm.coinID)
                 }
-                .withUnretained(self)
-                .subscribe(
-                    onNext: { vm, response in
-                        output.cryptoCurrency.onNext(response)
-                    }
-                )
-            
-            viewWillAppearEvent
-                .withLatestFrom(
-                    Observable.combineLatest(
-                        output.cryptoCurrency,
-                        input.pageChangeEvent
-                    )
-                )
+                .withLatestFrom(input.pageChangeEvent) { ($0, $1) }
                 .withUnretained(self)
                 .flatMap { vm, tuple in
                     let (currencyResponse, page) = tuple

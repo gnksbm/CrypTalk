@@ -22,7 +22,7 @@ final class CryptoPostViewController: BaseViewController, ViewType {
     private lazy var tableView = CryptoPostTableView().nt.configure {
         $0.tableHeaderView(headerView)
             .backgroundColor(.clear)
-            .register(CryptoPostCVCell.self)
+            .register(CryptoPostTVCell.self)
             .separatorStyle(.none)
     }
     
@@ -108,9 +108,14 @@ final class CryptoPostViewController: BaseViewController, ViewType {
     
     override func configureLayout() {
         [tableView].forEach { view.addSubview($0) }
+        headerView.translatesAutoresizingMaskIntoConstraints = false
         
         tableView.snp.makeConstraints { make in
             make.edges.equalTo(safeArea)
+        }
+        
+        headerView.snp.makeConstraints { make in
+            make.width.equalTo(tableView)
         }
     }
     

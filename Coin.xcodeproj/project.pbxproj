@@ -22,8 +22,10 @@
 		8EA5179A2C6DBA550029A356 /* .gitmessage.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8EA517992C6DBA550029A356 /* .gitmessage.txt */; };
 		8EB506252C816B0B00AA060D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB506242C816B0B00AA060D /* LoginViewController.swift */; };
 		8EB506272C816C8600AA060D /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB506262C816C8600AA060D /* LoginViewModel.swift */; };
+		8EB5062A2C81917C00AA060D /* PostDetailTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB506292C81917C00AA060D /* PostDetailTableView.swift */; };
+		8EB5062C2C8191C000AA060D /* PostDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB5062B2C8191C000AA060D /* PostDetailHeaderView.swift */; };
 		8ED3DE982C761BDD00126BD4 /* AppDelegate+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE972C761BDD00126BD4 /* AppDelegate+Register.swift */; };
-		BEC0940B2C8051D3008AA991 /* CryptoPostCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC0940A2C8051D3008AA991 /* CryptoPostCVCell.swift */; };
+		BEC0940B2C8051D3008AA991 /* CryptoPostTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC0940A2C8051D3008AA991 /* CryptoPostTVCell.swift */; };
 		BEC0940D2C805BF9008AA991 /* CryptoPostTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC0940C2C805BF8008AA991 /* CryptoPostTableView.swift */; };
 		BEC094112C806982008AA991 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC094102C806982008AA991 /* PostDetailViewController.swift */; };
 		BEC094132C808DFC008AA991 /* PostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC094122C808DFC008AA991 /* PostDetailViewModel.swift */; };
@@ -60,8 +62,10 @@
 		8EA5179B2C6DBBE90029A356 /* Secret.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secret.xcconfig; sourceTree = "<group>"; };
 		8EB506242C816B0B00AA060D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8EB506262C816C8600AA060D /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		8EB506292C81917C00AA060D /* PostDetailTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailTableView.swift; sourceTree = "<group>"; };
+		8EB5062B2C8191C000AA060D /* PostDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailHeaderView.swift; sourceTree = "<group>"; };
 		8ED3DE972C761BDD00126BD4 /* AppDelegate+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Register.swift"; sourceTree = "<group>"; };
-		BEC0940A2C8051D3008AA991 /* CryptoPostCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoPostCVCell.swift; sourceTree = "<group>"; };
+		BEC0940A2C8051D3008AA991 /* CryptoPostTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoPostTVCell.swift; sourceTree = "<group>"; };
 		BEC0940C2C805BF8008AA991 /* CryptoPostTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CryptoPostTableView.swift; sourceTree = "<group>"; };
 		BEC094102C806982008AA991 /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		BEC094122C808DFC008AA991 /* PostDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewModel.swift; sourceTree = "<group>"; };
@@ -102,7 +106,7 @@
 			children = (
 				8E792A772C7F8486009142D3 /* CryptoPostHeaderView.swift */,
 				BEC0940C2C805BF8008AA991 /* CryptoPostTableView.swift */,
-				BEC0940A2C8051D3008AA991 /* CryptoPostCVCell.swift */,
+				BEC0940A2C8051D3008AA991 /* CryptoPostTVCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -192,6 +196,15 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		8EB506282C81905100AA060D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8EB506292C81917C00AA060D /* PostDetailTableView.swift */,
+				8EB5062B2C8191C000AA060D /* PostDetailHeaderView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		BEC0940E2C806309008AA991 /* Post */ = {
 			isa = PBXGroup;
 			children = (
@@ -207,6 +220,7 @@
 			children = (
 				BEC094102C806982008AA991 /* PostDetailViewController.swift */,
 				BEC094122C808DFC008AA991 /* PostDetailViewModel.swift */,
+				8EB506282C81905100AA060D /* View */,
 			);
 			path = PostDetail;
 			sourceTree = "<group>";
@@ -290,11 +304,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EB5062A2C81917C00AA060D /* PostDetailTableView.swift in Sources */,
+				8EB5062C2C8191C000AA060D /* PostDetailHeaderView.swift in Sources */,
 				8EB506252C816B0B00AA060D /* LoginViewController.swift in Sources */,
 				8EA517842C6DB0FB0029A356 /* CryptoPostViewController.swift in Sources */,
 				BEC094112C806982008AA991 /* PostDetailViewController.swift in Sources */,
 				8EA517802C6DB0FB0029A356 /* AppDelegate.swift in Sources */,
-				BEC0940B2C8051D3008AA991 /* CryptoPostCVCell.swift in Sources */,
+				BEC0940B2C8051D3008AA991 /* CryptoPostTVCell.swift in Sources */,
 				BEC094132C808DFC008AA991 /* PostDetailViewModel.swift in Sources */,
 				8E792A782C7F8486009142D3 /* CryptoPostHeaderView.swift in Sources */,
 				8EA517822C6DB0FB0029A356 /* SceneDelegate.swift in Sources */,
