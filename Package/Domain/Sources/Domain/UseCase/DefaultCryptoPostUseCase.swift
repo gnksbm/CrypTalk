@@ -37,6 +37,18 @@ public final class DefaultCryptoPostUseCase: CryptoPostUseCase {
         cryptoCurrencyRepository.readCryptoCurrencies(page: page)
     }
     
+    public func fetchPost(postID: String) -> Single<PostResponse> {
+        guard let accessToken else {
+            return .error(CryptoPostError.missingAccessToken)
+        }
+        return postRepository.readPostWithID(
+            request: ReadPostWithIDRequest(
+                accessToken: accessToken,
+                postID: postID
+            )
+        )
+    }
+    
     public func fetchCryptoCurrency(
         coinID: String?
     ) -> Single<CryptoCurrencyResponse> {

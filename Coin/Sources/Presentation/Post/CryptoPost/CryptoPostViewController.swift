@@ -88,7 +88,10 @@ final class CryptoPostViewController: BaseViewController, ViewType {
                 .bind { vc, response in
                     vc.navigationController?.pushViewController(
                         PostDetailViewController(
-                            viewModel: PostDetailViewModel(response: response)
+                            viewModel: PostDetailViewModel(
+                                cryptoPostUseCase: DefaultCryptoPostUseCase(),
+                                response: response
+                            )
                         ),
                         animated: true
                     )

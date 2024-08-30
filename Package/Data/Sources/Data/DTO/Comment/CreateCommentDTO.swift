@@ -21,7 +21,7 @@ struct CreateCommentDTO: Decodable {
 
 extension CreateCommentDTO {
     func toResponse() throws -> CommentResponse {
-        guard let date = createdAt.iso8601Formatted() else {
+        guard let date = createdAt.formatted(dateFormat: .createdAtInput) else {
             throw CommentDTOError.failureParseCreatedAt
         }
         return CommentResponse(

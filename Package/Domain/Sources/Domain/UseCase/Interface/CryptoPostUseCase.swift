@@ -20,6 +20,8 @@ public protocol CryptoPostUseCase {
         limit: Int
     ) -> Single<[PostResponse]>
     
+    func fetchPost(postID: String) -> Single<PostResponse>
+    
     func addPost(
         cryptoName: String,
         direction: MarketDirection,

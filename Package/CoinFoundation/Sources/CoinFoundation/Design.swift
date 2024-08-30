@@ -32,6 +32,8 @@ public enum Design {
     
     public enum ImageLiteral {
         public static let profile = UIImage(systemName: "person.fill")
+        public static let sendComment =
+        UIImage(systemName: "arrow.up.message.fill")
     }
 }
 #endif

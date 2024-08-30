@@ -13,9 +13,14 @@ import Domain
 import RxSwift
 
 final class PostDetailViewModel: ViewModelType {
+    private let cryptoPostUseCase: CryptoPostUseCase
     private let response: PostResponse
     
-    init(response: PostResponse) {
+    init(
+        cryptoPostUseCase: CryptoPostUseCase,
+        response: PostResponse
+    ) {
+        self.cryptoPostUseCase = cryptoPostUseCase
         self.response = response
     }
     
@@ -29,6 +34,21 @@ final class PostDetailViewModel: ViewModelType {
                 .withUnretained(self)
                 .map { vm, _ in vm.response }
                 .bind(to: output.post)
+            
+            input.commentDoneButtonTapEvent
+                .withLatestFrom(input.commentChangeEvent)
+                .withUnretained(self)
+                .flatMap { vm, comment in
+                    vm.cryptoPostUseCase.addComment(
+                        postID: vm.response.postID,
+                        content: comment
+                    )
+                }
+                .withUnretained(self)
+                .flatMap { vm, _ in
+                    vm.cryptoPostUseCase.fetchPost(postID: vm.response.postID)
+                }
+                .bind(to: output.post)
         }
         
         return output
@@ -37,6 +57,8 @@ final class PostDetailViewModel: ViewModelType {
 extension PostDetailViewModel {
     struct Input { 
         let viewWillAppear: Observable<Void>
+        let commentChangeEvent: Observable<String>
+        let commentDoneButtonTapEvent: Observable<Void>
     }
     
     struct Output {

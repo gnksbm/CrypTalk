@@ -8,10 +8,10 @@
 import Foundation
 
 public struct CommentResponse: Hashable {
-    let id: String
-    let comment: String
-    let createdAt: Date
-    let writter: User
+    public let id: String
+    public let comment: String
+    public let createdAt: Date
+    public let writter: User
     
     public init(id: String, comment: String, createdAt: Date, writter: User) {
         self.id = id
@@ -20,3 +20,5 @@ public struct CommentResponse: Hashable {
         self.writter = writter
     }
 }
+
+extension CommentResponse: Identifiable { }

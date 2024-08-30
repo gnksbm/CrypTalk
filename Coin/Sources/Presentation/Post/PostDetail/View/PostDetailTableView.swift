@@ -14,3 +14,7 @@ final class PostDetailTableView:
     ModernTableView<SingleSection, CommentResponse> {
     
 }
+
+final class PostDetailTVCell: BaseTVCell {
+    
+}
