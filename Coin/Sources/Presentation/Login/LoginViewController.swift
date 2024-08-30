@@ -50,7 +50,9 @@ final class LoginViewController: BaseViewController, ViewType {
                             useCase: DefaultCryptoPostUseCase()
                         )
                     )
-                    vc.view.window?.rootViewController = rootViewController
+                    vc.view.window?.rootViewController = UINavigationController(
+                        rootViewController: rootViewController
+                    )
                 }
         }
     }

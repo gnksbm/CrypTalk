@@ -18,6 +18,8 @@ public final class DefaultAuthUseCase: AuthUseCase {
     private var accessToken: String?
     @UserDefaultsWrapper(key: .refreshToken, defaultValue: nil)
     private var refreshToken: String?
+    @UserDefaultsWrapper(key: .savedEmail, defaultValue: nil)
+    private var savedEmail: String?
     
     public init() { }
     
@@ -57,6 +59,7 @@ public final class DefaultAuthUseCase: AuthUseCase {
         .asObservable()
         .withUnretained(self)
         .map { useCase, response in
+            useCase.savedEmail = email
             useCase.accessToken = response.accessToken
             useCase.refreshToken = response.refreshToken
             return true

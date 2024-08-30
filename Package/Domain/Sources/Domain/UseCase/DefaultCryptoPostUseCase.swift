@@ -24,8 +24,8 @@ public final class DefaultCryptoPostUseCase: CryptoPostUseCase {
     private var accessToken: String?
     @UserDefaultsWrapper(key: .refreshToken, defaultValue: nil)
     private var refreshToken: String?
-    @UserDefaultsWrapper(key: .userID, defaultValue: nil)
-    private var userID: String?
+    @UserDefaultsWrapper(key: .savedEmail, defaultValue: nil)
+    private var savedEmail: String?
     @UserDefaultsWrapper(key: .latestViewedID, defaultValue: "bitcoin")
     private var latestViewedID: String
     
@@ -179,7 +179,7 @@ public final class DefaultCryptoPostUseCase: CryptoPostUseCase {
         guard let accessToken else {
             return .error(CryptoPostError.missingAccessToken)
         }
-        guard let userID else {
+        guard let savedEmail else {
             return .error(CryptoPostError.canNotFindUserID)
         }
         return AuthRequestRetrier(
@@ -193,12 +193,14 @@ public final class DefaultCryptoPostUseCase: CryptoPostUseCase {
                 .map { response in
                     var copy = post
                     let isLiked = response.likeStatus
-                    let containID = copy.likerIDs.contains(userID)
+                    let containID = copy.likerIDs.contains(savedEmail)
                     switch (isLiked, containID) {
                     case (true, false):
-                        copy.likerIDs.append(userID)
+                        copy.likerIDs.append(savedEmail)
                     case (false, true):
-                        copy.likerIDs = copy.likerIDs.filter { $0 == userID }
+                        copy.likerIDs = copy.likerIDs.filter {
+                            $0 == savedEmail
+                        }
                     case (true, true), (false, false):
                         break
                     }

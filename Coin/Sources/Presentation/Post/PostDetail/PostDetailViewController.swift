@@ -73,12 +73,14 @@ final class PostDetailViewController: BaseViewController, ViewType {
         
         directionLabel.snp.makeConstraints { make in
             make.top.equalTo(profileImageView.snp.centerY)
+                .inset(Design.Padding.small)
             make.leading.equalTo(profileImageView.snp.trailing)
                 .offset(Design.Padding.regular)
         }
         
         dateLabel.snp.makeConstraints { make in
             make.centerY.equalTo(nicknameLabel)
+                .offset(Design.Padding.small)
             make.leading.equalTo(nicknameLabel.snp.trailing)
                 .offset(Design.Padding.regular)
         }

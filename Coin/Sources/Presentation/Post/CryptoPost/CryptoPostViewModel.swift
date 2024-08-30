@@ -34,16 +34,35 @@ final class CryptoPostViewModel: ViewModelType {
                 input.cellTapEvent,
                 input.commentButtonTapEvent
             ), 
-            accessTokenExpired: PublishSubject()
+            startLoginFlow: PublishSubject()
         )
         
         disposeBag.insert {
-            input.viewWillAppearEvent
+            let viewWillAppearEvent = input.viewWillAppearEvent
+            
+            viewWillAppearEvent
+                .throttle(
+                    .seconds(360),
+                    scheduler: MainScheduler.instance
+                )
                 .withUnretained(self)
                 .flatMap { vm, _ in
                     vm.useCase.fetchCryptoCurrency(coinID: vm.coinID)
                 }
-                .withLatestFrom(input.pageChangeEvent) { ($0, $1) }
+                .withUnretained(self)
+                .subscribe(
+                    onNext: { vm, response in
+                        output.cryptoCurrency.onNext(response)
+                    }
+                )
+            
+            viewWillAppearEvent
+                .withLatestFrom(
+                    Observable.combineLatest(
+                        output.cryptoCurrency,
+                        input.pageChangeEvent
+                    )
+                )
                 .withUnretained(self)
                 .flatMap { vm, tuple in
                     let (currencyResponse, page) = tuple
@@ -60,7 +79,7 @@ final class CryptoPostViewModel: ViewModelType {
                     },
                     onError: { error in
                         Logger.error(error)
-                        output.accessTokenExpired.onNext(())
+                        output.startLoginFlow.onNext(())
                     }
                 )
             
@@ -76,7 +95,15 @@ final class CryptoPostViewModel: ViewModelType {
                         post: response
                     )
                 }
-                .bind(to: output.likeChanged)
+                .subscribe(
+                    onNext: { response in
+                        output.likeChanged.onNext(response)
+                    },
+                    onError: { error in
+                        Logger.error(error)
+                        output.startLoginFlow.onNext(())
+                    }
+                )
         }
         
         return output
@@ -99,6 +126,6 @@ extension CryptoPostViewModel {
         let likeChanged: PublishSubject<PostResponse>
         let startAddFlow: PublishSubject<String>
         let startDetailFlow: Observable<PostResponse>
-        let accessTokenExpired: PublishSubject<Void>
+        let startLoginFlow: PublishSubject<Void>
     }
 }

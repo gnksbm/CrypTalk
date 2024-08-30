@@ -14,6 +14,7 @@ public enum Design {
     }
     
     public enum Padding {
+        public static let small = 10.f
         public static let regular = 20.f
     }
     

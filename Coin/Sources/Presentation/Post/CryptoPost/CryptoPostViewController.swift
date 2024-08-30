@@ -94,7 +94,7 @@ final class CryptoPostViewController: BaseViewController, ViewType {
                     )
                 }
             
-            output.accessTokenExpired
+            output.startLoginFlow
                 .withUnretained(self)
                 .bind { vc, _ in
                     vc.view.window?.rootViewController = LoginViewController(
