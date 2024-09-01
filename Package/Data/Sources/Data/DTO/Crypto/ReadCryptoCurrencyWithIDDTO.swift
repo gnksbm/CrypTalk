@@ -12,16 +12,17 @@ import Domain
 struct ReadCryptoCurrencyWithIDDTO: Codable {
     let id, symbol, name, webSlug: String
     let assetPlatformID: String?
-    let platforms: Platforms
+    let platforms: Platforms?
     let blockTimeInMinutes: Int
-    let hashingAlgorithm: String
+    let hashingAlgorithm: String?
     let categories: [String]
     let previewListing: Bool
     let publicNotice: String?
     let additionalNotices: [String]
     let links: Links
     let image: Image
-    let countryOrigin, genesisDate: String
+    let countryOrigin: String
+    let genesisDate: String?
     let sentimentVotesUpPercentage, sentimentVotesDownPercentage: Double
     let watchlistPortfolioUsers, marketCapRank: Int
     let marketData: MarketData
@@ -116,7 +117,7 @@ extension ReadCryptoCurrencyWithIDDTO {
     }
     
     struct CodeAdditionsDeletions4_Weeks: Codable {
-        let additions, deletions: Int
+        let additions, deletions: Int?
     }
     
     struct Image: Codable {
@@ -155,7 +156,8 @@ extension ReadCryptoCurrencyWithIDDTO {
     
     struct MarketData: Codable {
         let currentPrice: [String: Double]
-        let totalValueLocked, mcapToTvlRatio, fdvToTvlRatio, roi: Double?
+        let totalValueLocked, mcapToTvlRatio, fdvToTvlRatio: Double?
+        let roi: Roi?
         let ath, athChangePercentage: [String: Double]
         let athDate: [String: String]
         let atl, atlChangePercentage: [String: Double]
@@ -174,7 +176,8 @@ extension ReadCryptoCurrencyWithIDDTO {
         let priceChange24HInCurrency, priceChangePercentage1HInCurrency, priceChangePercentage24HInCurrency, priceChangePercentage7DInCurrency: [String: Double]
         let priceChangePercentage14DInCurrency, priceChangePercentage30DInCurrency, priceChangePercentage60DInCurrency, priceChangePercentage200DInCurrency: [String: Double]
         let priceChangePercentage1YInCurrency, marketCapChange24HInCurrency, marketCapChangePercentage24HInCurrency: [String: Double]
-        let totalSupply, maxSupply, circulatingSupply: Int
+        let totalSupply, circulatingSupply: Double
+        let maxSupply: Double?
         let lastUpdated: String
         
         enum CodingKeys: String, CodingKey {
@@ -223,8 +226,14 @@ extension ReadCryptoCurrencyWithIDDTO {
         }
     }
     
+    struct Roi: Codable {
+        let times: Double
+        let currency: String
+        let percentage: Double
+    }
+    
     struct Platforms: Codable {
-        let empty: String
+        let empty: String?
         
         enum CodingKeys: String, CodingKey {
             case empty = ""

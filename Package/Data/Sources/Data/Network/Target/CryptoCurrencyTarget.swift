@@ -14,6 +14,7 @@ import Moya
 public enum CryptoCurrencyTarget: CoinGeckoTargetType {
     case readCryptoCurrencies(ReadCryptoCurrenciesRequest)
     case readCryptoCurrencyWithID(ReadCryptoCurrencyWithIDRequest)
+    case searchCoinWithID(SearchCoinWithIDRequest)
     
     public var targetPath: String {
         switch self {
@@ -21,12 +22,15 @@ public enum CryptoCurrencyTarget: CoinGeckoTargetType {
             "/coins/markets"
         case .readCryptoCurrencyWithID(let request):
             "/coins/\(request.coinID)"
+        case .searchCoinWithID:
+            "/search"
         }
     }
     
     public var method: Moya.Method {
         switch self {
-        case .readCryptoCurrencies, .readCryptoCurrencyWithID:
+        case .readCryptoCurrencies, .readCryptoCurrencyWithID,
+                .searchCoinWithID:
             .get
         }
     }
@@ -40,19 +44,26 @@ public enum CryptoCurrencyTarget: CoinGeckoTargetType {
             )
         case .readCryptoCurrencyWithID:
             .requestPlain
+        case .searchCoinWithID(let request):
+            .requestParameters(
+                parameters: request.toQuery(),
+                encoding: URLEncoding.queryString
+            )
         }
     }
     
     public var httpHeaders: [String : String] {
         switch self {
-        case .readCryptoCurrencies, .readCryptoCurrencyWithID:
+        case .readCryptoCurrencies, .readCryptoCurrencyWithID,
+                .searchCoinWithID:
             [:]
         }
     }
     
     public var content: Content? {
         switch self {
-        case .readCryptoCurrencies, .readCryptoCurrencyWithID:
+        case .readCryptoCurrencies, .readCryptoCurrencyWithID,
+                .searchCoinWithID:
             nil
         }
     }

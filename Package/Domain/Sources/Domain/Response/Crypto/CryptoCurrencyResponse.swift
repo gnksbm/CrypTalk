@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CryptoCurrencyResponse {
+public struct CryptoCurrencyResponse: Hashable {
     public let id: String
     public let imageURL: URL?
     public let marketCapRank: Int

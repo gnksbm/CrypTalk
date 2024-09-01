@@ -40,4 +40,16 @@ public final class DefaultCryptoCurrencyRepository: CryptoCurrencyRepository {
         .decode(type: ReadCryptoCurrenciesDTO.self)
         .map { $0.toResponse() }
     }
+    
+    public func searchCoin(query: String) -> Single<[SearchCoinResponse]> {
+        networkService.request(
+            target: CryptoCurrencyTarget.searchCoinWithID(
+                SearchCoinWithIDRequest(
+                    query: query
+                )
+            )
+        )
+        .decode(type: SearchCoinWithIDDTO.self)
+        .map { $0.toResponse() }
+    }
 }

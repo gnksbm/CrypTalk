@@ -16,7 +16,7 @@ import RxSwift
 final class PurchaseCoinViewModel: ViewModelType {
     private let portfolioUseCase: PortfolioUseCase
     private let cryptoPostUseCase: CryptoPostUseCase
-    private let coinID: String?
+    private var coinID: String?
     
     init(
         portfolioUseCase: PortfolioUseCase,
@@ -113,5 +113,11 @@ extension PurchaseCoinViewModel {
         let startSearchFlow: Observable<Void>
         let startPurchaseFlow: PublishSubject<IamportPayment>
         let finishFlow: PublishSubject<Void>
+    }
+}
+
+extension PurchaseCoinViewModel: SearchCoinViewModelDelegate {
+    func itemSelected(_ item: SearchCoinResponse) {
+        coinID = item.id
     }
 }

@@ -8,6 +8,8 @@
 #if canImport(UIKit)
 import UIKit
 
+import RxSwift
+
 open class ModernCollectionView<Section: Hashable, Item: Hashable>:
     UICollectionView {
     open class func createLayout() -> UICollectionViewCompositionalLayout {
@@ -26,6 +28,7 @@ open class ModernCollectionView<Section: Hashable, Item: Hashable>:
     
     public init() {
         super.init(frame: .zero, collectionViewLayout: Self.createLayout())
+        configureDataSource()
     }
     
     @available(*, unavailable)
@@ -209,6 +212,27 @@ open class ModernCollectionView<Section: Hashable, Item: Hashable>:
 
 public enum SingleSection {
     case main
+}
+
+public extension ModernCollectionView
+where Section: CaseIterable, Section.AllCases.Index == Int {
+    var tapEvent: Observable<Item>  {
+        rx.itemSelected
+            .withUnretained(self)
+            .map { cv, indexPath in
+                cv.getItem(for: indexPath)
+            }
+    }
+}
+
+public extension ModernCollectionView where Section == SingleSection {
+    var tapEvent: Observable<Item>  {
+        rx.itemSelected
+            .withUnretained(self)
+            .map { cv, indexPath in
+                cv.getItem(for: indexPath)
+            }
+    }
 }
 
 #endif

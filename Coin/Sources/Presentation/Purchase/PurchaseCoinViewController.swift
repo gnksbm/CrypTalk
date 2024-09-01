@@ -9,6 +9,7 @@ import UIKit
 import WebKit
 
 import CoinFoundation
+import Domain
 
 import iamport_ios
 import Kingfisher
@@ -24,7 +25,7 @@ final class PurchaseCoinViewController: BaseViewController, ViewType {
     }
     private let titleLabel = UILabel().nt.configure {
         $0.textColor(Design.Color.foreground)
-            .textAlignment(.right)
+            .textAlignment(.left)
     }
     private let changeCoinButton = UIButton().nt.configure {
         $0.configuration(.plain())
@@ -58,6 +59,19 @@ final class PurchaseCoinViewController: BaseViewController, ViewType {
         )
         
         disposeBag.insert {
+            output.startSearchFlow
+                .bind(with: self) { vc, _ in
+                    let searchViewModel = SearchCoinViewModel(
+                        searchCoinUseCase: DefaultSearchCoinUseCase(),
+                        viewType: .dismiss
+                    )
+                    searchViewModel.delegate = viewModel
+                    vc.navigationController?.pushViewController(
+                        SearchCoinViewController(viewModel: searchViewModel),
+                        animated: true
+                    )
+                }
+            
             output.selectedCoin
                 .bind(with: self) { vc, response in
                     vc.iconImageView.kf.setImage(with: response.imageURL)
