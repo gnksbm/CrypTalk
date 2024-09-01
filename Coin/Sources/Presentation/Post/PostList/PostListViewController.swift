@@ -36,7 +36,8 @@ final class PostListViewController: BaseViewController, ViewType {
             input: PostListViewModel.Input(
                 viewWillAppearEvent: viewWillAppearEvent, 
                 pageChangeEvent: pageChangeEvent,
-                plusButtonTapEvent: plusButton.rx.tap.asObservable(),
+                plusButtonTapEvent: plusButton.rx.tap.asObservable(), 
+                titleTapEvent: headerView.titleTapEvent.asObservable(),
                 cellTapEvent: tableView.tapEvent,
                 likeButtonTapEvent: tableView.likeButtonTapEvent,
                 commentButtonTapEvent: tableView.commentButtonTapEvent
@@ -104,6 +105,19 @@ final class PostListViewController: BaseViewController, ViewType {
                         viewModel: LoginViewModel(
                             authUseCase: DefaultAuthUseCase()
                         )
+                    )
+                }
+            
+            output.startSearchFlow
+                .bind(with: self) { vc, _ in
+                    let searchViewModel = SearchCoinViewModel(
+                        searchCoinUseCase: DefaultSearchCoinUseCase(),
+                        viewType: .dismiss
+                    )
+                    searchViewModel.delegate = viewModel
+                    vc.navigationController?.pushViewController(
+                        SearchCoinViewController(viewModel: searchViewModel),
+                        animated: true
                     )
                 }
         }

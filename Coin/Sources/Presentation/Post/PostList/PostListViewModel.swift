@@ -14,7 +14,7 @@ import RxSwift
 
 final class PostListViewModel: ViewModelType {
     private let useCase: CryptoPostUseCase
-    private let coinID: String?
+    private var coinID: String?
     
     init(
         useCase: CryptoPostUseCase,
@@ -34,7 +34,8 @@ final class PostListViewModel: ViewModelType {
                 input.cellTapEvent,
                 input.commentButtonTapEvent
             ), 
-            startLoginFlow: PublishSubject()
+            startLoginFlow: PublishSubject(),
+            startSearchFlow: input.titleTapEvent
         )
         
         disposeBag.insert {
@@ -102,6 +103,7 @@ extension PostListViewModel {
         let viewWillAppearEvent: Observable<Void>
         let pageChangeEvent: Observable<Int>
         let plusButtonTapEvent: Observable<Void>
+        let titleTapEvent: Observable<Void>
         let cellTapEvent: Observable<PostResponse>
         let likeButtonTapEvent: Observable<PostResponse>
         let commentButtonTapEvent: Observable<PostResponse>
@@ -114,5 +116,12 @@ extension PostListViewModel {
         let startAddFlow: PublishSubject<String>
         let startDetailFlow: Observable<PostResponse>
         let startLoginFlow: PublishSubject<Void>
+        let startSearchFlow: Observable<Void>
+    }
+}
+
+extension PostListViewModel: SearchCoinViewModelDelegate {
+    func itemSelected(_ item: SearchCoinResponse) {
+        coinID = item.id
     }
 }

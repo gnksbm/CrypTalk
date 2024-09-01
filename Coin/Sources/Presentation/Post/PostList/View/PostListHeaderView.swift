@@ -12,8 +12,10 @@ import Domain
 
 import Kingfisher
 import Neat
+import RxCocoa
 
 final class PostListHeaderView: BaseView {
+    lazy var titleTapEvent = titleButton.rx.tap
     private let iconImageView = UIImageView().nt.configure {
         $0.contentMode(.scaleAspectFill)
             .layer.cornerRadius(Design.Dimension.symbolSize / 2)
@@ -26,6 +28,9 @@ final class PostListHeaderView: BaseView {
                 .required,
                 for: .horizontal
             )
+            .configuration.image(Design.ImageLiteral.bottomArrow)
+            .configuration.imagePlacement(.trailing)
+            .configuration.imagePadding(Design.Padding.regular)
     }
     private let priceLabel = UILabel().nt.configure {
         $0.textColor(Design.Color.foreground)
@@ -65,7 +70,7 @@ final class PostListHeaderView: BaseView {
         
         priceLabel.snp.makeConstraints { make in
             make.centerY.equalTo(titleButton)
-            make.leading.equalTo(titleButton.snp.trailing)
+            make.leading.greaterThanOrEqualTo(titleButton.snp.trailing)
                 .offset(Design.Padding.regular)
             make.trailing.equalTo(self)
                 .inset(Design.Padding.regular)

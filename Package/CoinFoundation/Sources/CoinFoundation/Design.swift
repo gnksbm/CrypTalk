@@ -47,6 +47,8 @@ public enum Design {
         UIImage(systemName: "arrow.up.message.fill")
         public static let addAsset =
         UIImage(systemName: "bag.fill.badge.plus")
+        public static let bottomArrow =
+        UIImage(systemName: "chevron.down")
     }
 }
 #endif
