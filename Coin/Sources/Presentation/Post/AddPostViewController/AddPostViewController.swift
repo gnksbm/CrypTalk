@@ -15,6 +15,13 @@ import SnapKit
 import Neat
 
 final class AddPostViewController: BaseViewController, ViewType {
+    private let directionTitleLabel = UILabel().nt.configure {
+        $0.text("의견")
+            .textColor(Design.Color.foreground)
+    }
+    private let directionPicker = UIPickerView().nt.configure {
+        $0
+    }
     private let contentTitleLabel = UILabel().nt.configure {
         $0.text("내용")
             .textColor(Design.Color.foreground)
@@ -36,12 +43,17 @@ final class AddPostViewController: BaseViewController, ViewType {
         let output = viewModel.transform(
             input: AddPostViewModel.Input(
                 textChangeEvent: contentTextView.rx.text.orEmpty.asObservable(),
+                directionChangeEvent: directionPicker.rx.itemSelected
+                    .map { MarketDirection.allCases[$0.row] },
                 doneButtonTapEvent: doneButton.rx.tap.asObservable()
             ),
             disposeBag: &disposeBag
         )
         
         disposeBag.insert {
+            output.directionTitles
+                .bind(to: directionPicker.rx.itemTitles) { $1 }
+            
             output.doneButtonIsEnabled
                 .bind(to: doneButton.rx.isEnabled)
             
@@ -55,14 +67,29 @@ final class AddPostViewController: BaseViewController, ViewType {
     
     override func configureLayout() {
         [
+            directionTitleLabel,
+            directionPicker,
             contentTitleLabel,
             contentTextView,
             doneButton
         ].forEach { view.addSubview($0) }
         
-        contentTitleLabel.snp.makeConstraints { make in
+        directionTitleLabel.snp.makeConstraints { make in
             make.leading.top.equalTo(safeArea)
+                .inset(Design.Padding.regular)
+        }
+        
+        directionPicker.snp.makeConstraints { make in
+            make.leading.equalTo(directionTitleLabel.snp.trailing)
                 .offset(Design.Padding.regular)
+            make.centerY.equalTo(directionTitleLabel)
+            make.trailing.equalTo(safeArea)
+                .inset(Design.Padding.regular)
+        }
+        
+        contentTitleLabel.snp.makeConstraints { make in
+            make.top.equalTo(directionPicker.snp.bottom)
+            make.leading.equalTo(directionTitleLabel)
         }
         
         contentTextView.snp.makeConstraints { make in

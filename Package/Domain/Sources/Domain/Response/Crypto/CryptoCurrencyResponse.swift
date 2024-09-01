@@ -34,3 +34,9 @@ public struct CryptoCurrencyResponse: Hashable {
         self.rate = rate
     }
 }
+
+public extension CryptoCurrencyResponse {
+    var rateToString: String {
+        String(format: "%.2f", rate) + "%"
+    }
+}

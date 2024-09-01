@@ -30,6 +30,11 @@ public enum Design {
         public static let red = UIColor.red
     }
     
+    public enum StringLiteral {
+        public static let postTab = "게시글"
+        public static let portfolioTab = "포트폴리오"
+    }
+    
     public enum ImageLiteral {
         public static let postTab = UIImage(systemName: "bitcoinsign.circle")
         public static let postTabSelected =

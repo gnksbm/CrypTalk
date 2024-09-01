@@ -16,6 +16,7 @@ import Neat
 final class PostListHeaderView: BaseView {
     private let iconImageView = UIImageView().nt.configure {
         $0.contentMode(.scaleAspectFill)
+            .layer.cornerRadius(Design.Dimension.symbolSize / 2)
             .clipsToBounds(true)
     }
     private let titleButton = UIButton(configuration: .plain()).nt.configure {
@@ -39,7 +40,7 @@ final class PostListHeaderView: BaseView {
         iconImageView.kf.setImage(with: response.imageURL)
         titleButton.configuration?.title = response.name
         priceLabel.text = response.price.formatted(.currency(code: "KRW"))
-        rateLabel.text = response.rate.formatted(.percent)
+        rateLabel.text = response.rateToString
     }
     
     override func configureLayout() {

@@ -49,10 +49,19 @@ final class TabBarController: UITabBarController {
         
         private var tabBarItem: UITabBarItem {
             UITabBarItem(
-                title: nil,
+                title: title,
                 image: image,
                 selectedImage: selectedImage
             )
+        }
+        
+        private var title: String? {
+            switch self {
+            case .post:
+                Design.StringLiteral.postTab
+            case .portfolio:
+                Design.StringLiteral.portfolioTab
+            }
         }
         
         private var image: UIImage? {

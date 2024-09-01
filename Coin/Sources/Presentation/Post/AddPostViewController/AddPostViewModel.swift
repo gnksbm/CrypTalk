@@ -26,6 +26,7 @@ final class AddPostViewModel: ViewModelType {
     
     func transform(input: Input, disposeBag: inout DisposeBag) -> Output {
         let output = Output(
+            directionTitles: .just(MarketDirection.allCases.map { $0.toString }),
             doneButtonIsEnabled: input.textChangeEvent.map { !$0.isEmpty },
             finishFlow: PublishSubject<Void>()
         )
@@ -33,14 +34,15 @@ final class AddPostViewModel: ViewModelType {
         disposeBag.insert {
             input.doneButtonTapEvent
                 .withLatestFrom(input.textChangeEvent)
+                .withLatestFrom(input.directionChangeEvent) { ($0, $1) }
                 .withUnretained(self)
-                .flatMap { vm, content in
-                    // TODO: Direction, imageData 수정
-                    vm.cryptoPostUseCase.addPost(
+                .flatMap { vm, tuple in
+                    let (content, direction) = tuple
+                    return vm.cryptoPostUseCase.addPost(
                         cryptoName: vm.cryptoName,
-                        direction: .increase,
+                        direction: direction,
                         content: content,
-                        imageData: [Data()]
+                        imageData: []
                     )
                 }
                 .map { _ in }
@@ -61,10 +63,12 @@ final class AddPostViewModel: ViewModelType {
 extension AddPostViewModel {
     struct Input {
         let textChangeEvent: Observable<String>
+        let directionChangeEvent: Observable<MarketDirection>
         let doneButtonTapEvent: Observable<Void>
     }
     
     struct Output { 
+        let directionTitles: Observable<[String]>
         let doneButtonIsEnabled: Observable<Bool>
         let finishFlow: PublishSubject<Void>
     }

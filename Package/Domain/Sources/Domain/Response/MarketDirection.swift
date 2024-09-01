@@ -7,6 +7,6 @@
 
 import Foundation
 
-public enum MarketDirection: String, Codable, Hashable {
+public enum MarketDirection: String, Codable, Hashable, CaseIterable {
     case increase, decrease
 }
