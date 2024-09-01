@@ -9,12 +9,17 @@ import UIKit
 import SwiftUI
 
 import CoinFoundation
+import Domain
+
 import SnapKit
 
 final class PortfolioViewController: BaseViewController, ViewType {
-    let chartViewModel = PieChartViewModel()
-    lazy var chartViewController = UIHostingController(
+    private let chartViewModel = PieChartViewModel()
+    private lazy var chartViewController = UIHostingController(
         rootView: PieChartView(viewModel: chartViewModel)
+    )
+    private let purchaseButton = UIBarButtonItem(
+        image: Design.ImageLiteral.addAsset
     )
     
     init(viewModel: PortfolioViewModel) {
@@ -25,7 +30,8 @@ final class PortfolioViewController: BaseViewController, ViewType {
     func bind(viewModel: PortfolioViewModel) {
         let output = viewModel.transform(
             input: PortfolioViewModel.Input(
-                viewWillAppearEvent: viewWillAppearEvent
+                viewWillAppearEvent: viewWillAppearEvent,
+                purchaseButtonTapped: purchaseButton.rx.tap.asObservable()
             ),
             disposeBag: &disposeBag
         )
@@ -34,6 +40,19 @@ final class PortfolioViewController: BaseViewController, ViewType {
             output.portfolio
                 .bind(with: self) { vc, response in
                     vc.chartViewModel.reduce(action: .updatePortfolio(response))
+                }
+            
+            output.startPurchaseFlow
+                .bind(with: self) { vc, _ in
+                    vc.navigationController?.pushViewController(
+                        PurchaseCoinViewController(
+                            viewModel: PurchaseCoinViewModel(
+                                portfolioUseCase: DefaultPortfolioUseCase(),
+                                cryptoPostUseCase: DefaultCryptoPostUseCase()
+                            )
+                        ),
+                        animated: true
+                    )
                 }
         }
     }
@@ -46,5 +65,9 @@ final class PortfolioViewController: BaseViewController, ViewType {
         chartViewController.view.snp.makeConstraints { make in
             make.edges.equalTo(safeArea)
         }
+    }
+    
+    override func configureNavigation() {
+        navigationItem.rightBarButtonItem = purchaseButton
     }
 }

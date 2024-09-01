@@ -25,6 +25,7 @@ extension ReadPostsDTO {
             throw PortfolioError.canNotFindPortfolio
         }
         return PortfolioResponse(
+            portfolioID: response.postID, 
             assets: try response.comments.map { try $0.toAsset() }
         )
     }

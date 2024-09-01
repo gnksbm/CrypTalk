@@ -62,43 +62,83 @@ public final class DefaultPortfolioUseCase: PortfolioUseCase {
                     )
                 )
             } else {
-                Single.never()
+                Single.error(error)
             }
         }
     }
     
-    public func addAsset(
-        userID: String,
-        request: CryptoAsset
-    ) -> Single<CryptoAsset> {
+    public func purchaseAsset(request: CryptoAsset) -> Single<CryptoAsset> {
         guard let accessToken else {
             return .error(PortfolioError.missingAccessToken)
         }
-        guard let data = try? JSONEncoder().encode(request),
-              let content = String(data: data, encoding: .utf8) else {
-            return .error(PortfolioError.failureParseCryptoAsset)
+        guard let userID else {
+            return .error(PortfolioError.canNotFindUserID)
         }
-        return AuthRequestRetrier(
-            request: CreateCommentRequest(
-                accessToken: accessToken,
-                postID: userIDToPortfolio(userID: userID),
-                content: content
-            )
-        ) { request in
-            self.portfolioRepository.createAsset(request: request)
-        }
-        .execute()
+        return fetchPortfolio()
+            .asObservable()
+            .withUnretained(self)
+            .flatMap { useCase, response in
+                if let asset = response.assets.first(
+                    where: { asset in
+                        asset.value.name == request.value.name
+                    }
+                ) {
+                    var copy = request.value
+                    copy.amount += asset.value.amount
+                    guard let data = try? JSONEncoder().encode(copy),
+                          let content = String(data: data, encoding: .utf8) 
+                    else {
+                        return Single<CryptoAsset>.error(
+                            PortfolioError.failureParseCryptoAsset
+                        )
+                    }
+                    return AuthRequestRetrier(
+                        request: UpdateCommentRequest(
+                            accessToken: accessToken,
+                            postID: response.portfolioID,
+                            commentID: asset.commentID,
+                            content: content
+                        )
+                    ) { request in
+                        useCase.portfolioRepository.updateAsset(
+                            request: request
+                        )
+                    }
+                    .execute()
+                } else {
+                    guard let data = try? JSONEncoder().encode(request.value),
+                          let content = String(data: data, encoding: .utf8) 
+                    else {
+                        return .error(PortfolioError.failureParseCryptoAsset)
+                    }
+                    return AuthRequestRetrier(
+                        request: CreateCommentRequest(
+                            accessToken: accessToken,
+                            postID: response.portfolioID,
+                            content: content
+                        )
+                    ) { request in
+                        useCase.portfolioRepository.createAsset(
+                            request: request
+                        )
+                    }
+                    .execute()
+                }
+            }
+            .asSingle()
     }
     
     public func updateAsset(
-        userID: String,
         commentID: String,
         request: CryptoAsset
     ) -> Single<CryptoAsset> {
         guard let accessToken else {
             return .error(PortfolioError.missingAccessToken)
         }
-        guard let data = try? JSONEncoder().encode(request),
+        guard let userID else {
+            return .error(PortfolioError.canNotFindUserID)
+        }
+        guard let data = try? JSONEncoder().encode(request.value),
               let content = String(data: data, encoding: .utf8) else {
             return .error(PortfolioError.failureParseCryptoAsset)
         }
@@ -116,11 +156,13 @@ public final class DefaultPortfolioUseCase: PortfolioUseCase {
     }
     
     public func removeAsset(
-        userID: String,
         commentID: String
     ) -> Single<Bool> {
         guard let accessToken else {
             return .error(PortfolioError.missingAccessToken)
+        }
+        guard let userID else {
+            return .error(PortfolioError.canNotFindUserID)
         }
         return AuthRequestRetrier(
             request: DeleteCommentRequest(

@@ -1,5 +1,5 @@
 //
-//  CryptoPostTableView.swift
+//  PostListTableView.swift
 //  Coin
 //
 //  Created by gnksbm on 8/29/24.
@@ -12,16 +12,15 @@ import Domain
 
 import RxSwift
 
-final class CryptoPostTableView:
-    ModernTableView<SingleSection, PostResponse> {
+final class PostListTableView: ModernTableView<SingleSection, PostResponse> {
     let likeButtonTapEvent = PublishSubject<PostResponse>()
     let commentButtonTapEvent = PublishSubject<PostResponse>()
     
     override func createCellProvider() -> CellProvider {
         { [weak self] tableView, indexPath, item in
-            guard let self else { return CryptoPostTVCell() }
+            guard let self else { return PostListTVCell() }
             let cell = tableView.dequeueReusableCell(
-                cellType: CryptoPostTVCell.self,
+                cellType: PostListTVCell.self,
                 for: indexPath
             )
             cell.configureCell(item: item)

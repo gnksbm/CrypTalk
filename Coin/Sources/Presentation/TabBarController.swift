@@ -32,8 +32,8 @@ final class TabBarController: UITabBarController {
         private var viewController: UIViewController {
             switch self {
             case .post:
-                CryptoPostViewController(
-                    viewModel: CryptoPostViewModel(
+                PostListViewController(
+                    viewModel: PostListViewModel(
                         useCase: DefaultCryptoPostUseCase()
                     )
                 )

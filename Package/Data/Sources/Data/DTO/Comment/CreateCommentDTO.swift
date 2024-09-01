@@ -36,7 +36,8 @@ extension CreateCommentDTO {
         guard let data = content.data(using: .utf8) else {
             throw CommentDTOError.failureParseCryptoAsset
         }
-        return try JSONDecoder().decode(CryptoAsset.self, from: data)
+        let value = try JSONDecoder().decode(CryptoAsset.Value.self, from: data)
+        return CryptoAsset(commentID: commentID, value: value)
     }
     
     enum CommentDTOError: Error {

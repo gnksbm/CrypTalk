@@ -8,9 +8,14 @@
 import Foundation
 
 public struct PortfolioResponse {
+    public let portfolioID: String
     public let assets: [CryptoAsset]
     
-    public init(assets: [CryptoAsset]) {
+    public init(
+        portfolioID: String,
+        assets: [CryptoAsset]
+    ) {
+        self.portfolioID = portfolioID
         self.assets = assets
     }
 }

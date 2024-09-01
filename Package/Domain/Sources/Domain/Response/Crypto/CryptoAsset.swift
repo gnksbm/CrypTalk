@@ -7,12 +7,42 @@
 
 import Foundation
 
-public struct CryptoAsset: Codable {
-    public let id: String
-    public let name: String
-    public let symbol: String
-    public let price: Double
-    public let amount: Double
+public struct CryptoAsset {
+    public let commentID: String
+    public var value: Value
+    
+    public init(
+        commentID: String,
+        value: Value
+    ) {
+        self.commentID = commentID
+        self.value = value
+    }
+    
+    public init(
+        commentID: String,
+        name: String,
+        symbol: String,
+        price: Double,
+        amount: Double
+    ) {
+        self.commentID = commentID
+        self.value = Value(
+            name: name,
+            symbol: symbol,
+            price: price,
+            amount: amount
+        )
+    }
+    
+    public struct Value: Codable {
+        public let name: String
+        public let symbol: String
+        public let price: Double
+        public var amount: Double
+    }
 }
 
-extension CryptoAsset: Identifiable { }
+extension CryptoAsset: Identifiable {
+    public var id: String { value.name }
+}

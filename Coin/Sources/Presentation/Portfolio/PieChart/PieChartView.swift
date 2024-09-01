@@ -12,15 +12,18 @@ struct PieChartView: View {
     @StateObject var viewModel: PieChartViewModel
     
     var body: some View {
-        if viewModel.state.portfolio.assets.isEmpty {
-            Text("포트폴리오가 비었습니다")
-        } else {
-            if #available(iOS 17, *) {
-                chartView
+        VStack {
+            if viewModel.state.portfolio.assets.isEmpty {
+                Text("포트폴리오가 비었습니다")
             } else {
-                Text("iOS 17 이상에서 사용 가능 합니다")
+                if #available(iOS 17, *) {
+                    chartView
+                } else {
+                    Text("iOS 17 이상에서 사용 가능 합니다")
+                }
             }
         }
+        .padding()
     }
     
     @available(iOS 17, *)
@@ -28,8 +31,15 @@ struct PieChartView: View {
         Chart {
             ForEach(viewModel.state.portfolio.assets) { asset in
                 SectorMark(
-                    angle: .value("Weight", asset.amount * asset.amount)
+                    angle: .value(
+                        "Weight",
+                        asset.value.price * asset.value.amount
+                    ),
+                    angularInset: 2.0
                 )
+                .annotation(position: .overlay) {
+                    Text("\(asset.value.name), \(asset.value.amount)개")
+                }
             }
         }
     }

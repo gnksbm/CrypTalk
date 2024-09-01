@@ -1,5 +1,5 @@
 //
-//  CryptoPostViewController.swift
+//  PostListViewController.swift
 //  Coin
 //
 //  Created by gnksbm on 8/15/24.
@@ -14,26 +14,26 @@ import RxSwift
 import SnapKit
 import Neat
 
-final class CryptoPostViewController: BaseViewController, ViewType {
+final class PostListViewController: BaseViewController, ViewType {
     private let pageChangeEvent = BehaviorSubject(value: 0)
     
     private let plusButton = UIBarButtonItem(systemItem: .add)
-    private let headerView = CryptoPostHeaderView()
-    private lazy var tableView = CryptoPostTableView().nt.configure {
+    private let headerView = PostListHeaderView()
+    private lazy var tableView = PostListTableView().nt.configure {
         $0.tableHeaderView(headerView)
             .backgroundColor(.clear)
-            .register(CryptoPostTVCell.self)
+            .register(PostListTVCell.self)
             .separatorStyle(.none)
     }
     
-    init(viewModel: CryptoPostViewModel) {
+    init(viewModel: PostListViewModel) {
         super.init()
         self.viewModel = viewModel
     }
     
-    func bind(viewModel: CryptoPostViewModel) {
+    func bind(viewModel: PostListViewModel) {
         let output = viewModel.transform(
-            input: CryptoPostViewModel.Input(
+            input: PostListViewModel.Input(
                 viewWillAppearEvent: viewWillAppearEvent, 
                 pageChangeEvent: pageChangeEvent,
                 plusButtonTapEvent: plusButton.rx.tap.asObservable(),

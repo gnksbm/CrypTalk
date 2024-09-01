@@ -10,8 +10,8 @@ import Foundation
 import Domain
 
 struct CreatePostDTO: Decodable {
-    let postID, content: String
-    let productID, title: String?
+    let postID: String
+    let content, productID, title: String?
     let content1, content2, content3, content4, content5: String?
     let createdAt: String
     let creator: CreatorDTO
@@ -32,7 +32,8 @@ extension CreatePostDTO {
     func toResponse() throws -> PostResponse {
         let direction = try toMarketDirection()
         let comments = try comments.map { try $0.toResponse() }
-        guard let createdAt = createdAt.formatted(dateFormat: .createdAtInput)
+        guard let createdAt = createdAt.formatted(dateFormat: .createdAtInput),
+              let content
         else { throw CreatePostDTOError.invalidCreatedAtFormat }
         return PostResponse(
             postID: postID,
@@ -47,6 +48,7 @@ extension CreatePostDTO {
     
     func toPortfolio() throws -> PortfolioResponse {
         PortfolioResponse(
+            portfolioID: postID,
             assets: try comments.map { try $0.toAsset() }
         )
     }

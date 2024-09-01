@@ -40,6 +40,8 @@ public enum Design {
         public static let profile = UIImage(systemName: "person.fill")
         public static let sendComment =
         UIImage(systemName: "arrow.up.message.fill")
+        public static let addAsset =
+        UIImage(systemName: "bag.fill.badge.plus")
     }
 }
 #endif

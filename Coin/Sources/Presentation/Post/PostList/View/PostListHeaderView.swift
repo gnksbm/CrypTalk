@@ -1,5 +1,5 @@
 //
-//  CryptoPostHeaderView.swift
+//  PostListHeaderView.swift
 //  Coin
 //
 //  Created by gnksbm on 8/29/24.
@@ -13,7 +13,7 @@ import Domain
 import Kingfisher
 import Neat
 
-final class CryptoPostHeaderView: BaseView {
+final class PostListHeaderView: BaseView {
     private let iconImageView = UIImageView().nt.configure {
         $0.contentMode(.scaleAspectFill)
             .clipsToBounds(true)

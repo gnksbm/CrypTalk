@@ -27,7 +27,8 @@ final class PortfolioViewModel: ViewModelType {
     func transform(input: Input, disposeBag: inout DisposeBag) -> Output {
         let output = Output(
             portfolio: PublishSubject(),
-            startLoginFlow: PublishSubject()
+            startLoginFlow: PublishSubject(),
+            startPurchaseFlow: input.purchaseButtonTapped
         )
         
         disposeBag.insert {
@@ -40,15 +41,17 @@ final class PortfolioViewModel: ViewModelType {
                         vm.useCase.fetchPortfolio()
                     }
                 }
-                .subscribe(
+                .catch { error in
+                    Logger.error(error)
+                    if let error = error as? BackEndError,
+                       case .refreshTokenExpired = error {
+                        output.startLoginFlow.onNext(())
+                    }
+                    return .empty()
+                }
+                .bind(
                     onNext: { response in
                         output.portfolio.onNext(response)
-                    },
-                    onError: { error in
-                        if let error = error as? BackEndError,
-                           case .refreshTokenExpired = error {
-                            output.startLoginFlow.onNext(())
-                        }
                     }
                 )
         }
@@ -60,9 +63,12 @@ final class PortfolioViewModel: ViewModelType {
 extension PortfolioViewModel {
     struct Input { 
         let viewWillAppearEvent: Observable<Void>
+        let purchaseButtonTapped: Observable<Void>
     }
+    
     struct Output {
         let portfolio: PublishSubject<PortfolioResponse>
         let startLoginFlow: PublishSubject<Void>
+        let startPurchaseFlow: Observable<Void>
     }
 }

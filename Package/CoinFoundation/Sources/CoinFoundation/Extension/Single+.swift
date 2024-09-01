@@ -11,7 +11,7 @@ import Moya
 import RxSwift
 
 enum StreamError: Error {
-    case DecodeError(Error)
+    case decodeError(Error)
 }
 
 public extension Single<Data> {
@@ -21,7 +21,7 @@ public extension Single<Data> {
                 do {
                     return try JSONDecoder().decode(T.self, from: $0)
                 } catch {
-                    throw StreamError.DecodeError(error)
+                    throw StreamError.decodeError(error)
                 }
             }
             .asSingle()

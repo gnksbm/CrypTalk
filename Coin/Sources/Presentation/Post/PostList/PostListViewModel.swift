@@ -1,5 +1,5 @@
 //
-//  CryptoPostViewModel.swift
+//  PostListViewModel.swift
 //  Coin
 //
 //  Created by gnksbm on 8/28/24.
@@ -12,7 +12,7 @@ import Domain
 
 import RxSwift
 
-final class CryptoPostViewModel: ViewModelType {
+final class PostListViewModel: ViewModelType {
     private let useCase: CryptoPostUseCase
     private let coinID: String?
     
@@ -60,7 +60,10 @@ final class CryptoPostViewModel: ViewModelType {
                     },
                     onError: { error in
                         Logger.error(error)
-                        output.startLoginFlow.onNext(())
+                        if let error = error as? BackEndError,
+                           case .unauthorized = error {
+                            output.startLoginFlow.onNext(())
+                        }
                     }
                 )
             
@@ -82,7 +85,10 @@ final class CryptoPostViewModel: ViewModelType {
                     },
                     onError: { error in
                         Logger.error(error)
-                        output.startLoginFlow.onNext(())
+                        if let error = error as? BackEndError,
+                           case .unauthorized = error {
+                            output.startLoginFlow.onNext(())
+                        }
                     }
                 )
         }
@@ -91,7 +97,7 @@ final class CryptoPostViewModel: ViewModelType {
     }
 }
 
-extension CryptoPostViewModel {
+extension PostListViewModel {
     struct Input {
         let viewWillAppearEvent: Observable<Void>
         let pageChangeEvent: Observable<Int>

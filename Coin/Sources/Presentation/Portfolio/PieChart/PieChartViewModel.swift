@@ -22,7 +22,7 @@ final class PieChartViewModel: ObservableObject {
 
 extension PieChartViewModel {
     struct State {
-        var portfolio = PortfolioResponse(assets: [])
+        var portfolio = PortfolioResponse(portfolioID: "", assets: [])
     }
     
     enum Action {

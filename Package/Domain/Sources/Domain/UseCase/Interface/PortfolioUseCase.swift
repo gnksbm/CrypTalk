@@ -14,19 +14,9 @@ public protocol PortfolioUseCase {
     
     func fetchPortfolio(userID: String) -> Single<PortfolioResponse>
     
-    func addAsset(
-        userID: String,
-        request: CryptoAsset
-    ) -> Single<CryptoAsset>
-    
-    func updateAsset(
-        userID: String,
-        commentID: String,
-        request: CryptoAsset
-    ) -> Single<CryptoAsset>
+    func purchaseAsset(request: CryptoAsset) -> Single<CryptoAsset>
     
     func removeAsset(
-        userID: String,
         commentID: String
     ) -> Single<Bool>
 }

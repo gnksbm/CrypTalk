@@ -1,5 +1,5 @@
 //
-//  CryptoPostTVCell.swift
+//  PostListTVCell.swift
 //  Coin
 //
 //  Created by gnksbm on 8/29/24.
@@ -36,7 +36,7 @@ extension MarketDirection {
     }
 }
 
-final class CryptoPostTVCell: BaseTVCell {
+final class PostListTVCell: BaseTVCell {
     let likeButtonTapEvent = PublishSubject<PostResponse>()
     let commentButtonTapEvent = PublishSubject<PostResponse>()
     var disposeBag = DisposeBag()
