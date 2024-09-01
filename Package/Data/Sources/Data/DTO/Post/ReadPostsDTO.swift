@@ -19,6 +19,15 @@ extension ReadPostsDTO {
     func toResponse() throws -> [PostResponse] {
         try data.map { try $0.toResponse() }
     }
+    
+    func toPortfolio() throws -> PortfolioResponse {
+        guard let response = data.first else {
+            throw PortfolioError.canNotFindPortfolio
+        }
+        return PortfolioResponse(
+            assets: try response.comments.map { try $0.toAsset() }
+        )
+    }
 }
 
 typealias ReadPostsByUserDTO = ReadPostsDTO

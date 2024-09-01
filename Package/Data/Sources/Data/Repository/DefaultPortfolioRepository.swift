@@ -15,14 +15,27 @@ import RxSwift
 public final class DefaultPortfolioRepository: PortfolioRepository {
     @Injected private var networkService: NetworkService
     
-    public func fetchPortfolio(
-        request: ReadPostWithIDRequest
+    public init() { }
+    
+    public func createPortfolio(
+        request: CreatePostRequest
     ) -> Single<PortfolioResponse> {
         networkService.request(
-            target: PostTarget.readPostWithID(request),
+            target: PostTarget.createPost(request),
             errorType: BackEndError.self
         )
-        .decode(type: ReadPostWithIDDTO.self)
+        .decode(type: CreatePostDTO.self)
+        .map { try $0.toPortfolio() }
+    }
+    
+    public func fetchPortfolio(
+        request: ReadPostsRequest
+    ) -> Single<PortfolioResponse> {
+        networkService.request(
+            target: PostTarget.readPosts(request),
+            errorType: BackEndError.self
+        )
+        .decode(type: ReadPostsDTO.self)
         .map { try $0.toPortfolio() }
     }
     

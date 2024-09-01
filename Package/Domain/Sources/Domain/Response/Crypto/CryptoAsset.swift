@@ -14,3 +14,5 @@ public struct CryptoAsset: Codable {
     public let price: Double
     public let amount: Double
 }
+
+extension CryptoAsset: Identifiable { }

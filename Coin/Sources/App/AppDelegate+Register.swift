@@ -28,5 +28,9 @@ extension AppDelegate {
             DefaultCryptoCurrencyRepository(),
             type: CryptoCurrencyRepository.self
         )
+        DIContainer.register(
+            DefaultPortfolioRepository(),
+            type: PortfolioRepository.self
+        )
     }
 }

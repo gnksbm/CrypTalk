@@ -31,6 +31,12 @@ public enum Design {
     }
     
     public enum ImageLiteral {
+        public static let postTab = UIImage(systemName: "bitcoinsign.circle")
+        public static let postTabSelected =
+        UIImage(systemName: "bitcoinsign.circle.fill")
+        public static let portfolioTab = UIImage(systemName: "chart.pie")
+        public static let portfolioTabSelected =
+        UIImage(systemName: "chart.pie.fill")
         public static let profile = UIImage(systemName: "person.fill")
         public static let sendComment =
         UIImage(systemName: "arrow.up.message.fill")

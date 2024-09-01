@@ -20,13 +20,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     ) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        let cryptoPostViewController = CryptoPostViewController(
-            viewModel: CryptoPostViewModel(
-                useCase: DefaultCryptoPostUseCase()
-            )
-        )
-        window?.rootViewController =
-        UINavigationController(rootViewController: cryptoPostViewController)
+        window?.rootViewController = createRootViewController()
         window?.makeKeyAndVisible()
     }
 
@@ -39,4 +33,18 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneWillEnterForeground(_ scene: UIScene) { }
 
     func sceneDidEnterBackground(_ scene: UIScene) { }
+    
+    private func createRootViewController() -> UIViewController {
+        @UserDefaultsWrapper(key: .refreshToken, defaultValue: nil)
+        var refreshToken: String?
+        if refreshToken == nil {
+            return LoginViewController(
+                viewModel: LoginViewModel(
+                    authUseCase: DefaultAuthUseCase()
+                )
+            )
+        } else {
+            return TabBarController()
+        }
+    }
 }

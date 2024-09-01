@@ -10,6 +10,8 @@ import Foundation
 import RxSwift
 
 public protocol PortfolioUseCase {
+    func fetchPortfolio() -> Single<PortfolioResponse>
+    
     func fetchPortfolio(userID: String) -> Single<PortfolioResponse>
     
     func addAsset(

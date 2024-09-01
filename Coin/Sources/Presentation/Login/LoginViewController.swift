@@ -45,14 +45,7 @@ final class LoginViewController: BaseViewController, ViewType {
             output.loginResult
                 .withUnretained(self)
                 .bind { vc, _ in
-                    let rootViewController = CryptoPostViewController(
-                        viewModel: CryptoPostViewModel(
-                            useCase: DefaultCryptoPostUseCase()
-                        )
-                    )
-                    vc.view.window?.rootViewController = UINavigationController(
-                        rootViewController: rootViewController
-                    )
+                    vc.view.window?.rootViewController = TabBarController()
                 }
         }
     }

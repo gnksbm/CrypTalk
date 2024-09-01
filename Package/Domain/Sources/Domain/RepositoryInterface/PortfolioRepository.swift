@@ -10,8 +10,11 @@ import Foundation
 import RxSwift
 
 public protocol PortfolioRepository {
+    func createPortfolio(
+        request: CreatePostRequest
+    ) -> Single<PortfolioResponse>
     func fetchPortfolio(
-        request: ReadPostWithIDRequest
+        request: ReadPostsRequest
     ) -> Single<PortfolioResponse>
     
     func createAsset(request: CreateCommentRequest) -> Single<CryptoAsset>
