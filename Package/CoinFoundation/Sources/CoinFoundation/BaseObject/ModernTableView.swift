@@ -12,6 +12,8 @@ open class ModernTableView<Section: Hashable, Item: Hashable>: UITableView {
     public var diffableDataSource:
     UITableViewDiffableDataSource<Section, Item>!
     
+    public var emptyView: UIView?
+    
     public override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
         configureDataSource()
@@ -44,6 +46,11 @@ open class ModernTableView<Section: Hashable, Item: Hashable>: UITableView {
         items: [Item],
         withAnimating: Bool = true
     ) {
+        if items.isEmpty {
+            backgroundView = emptyView
+        } else {
+            backgroundView = nil
+        }
         var snapshot = Snapshot()
         if !snapshot.sectionIdentifiers.contains(section) {
             snapshot.appendSections([section])
@@ -60,6 +67,7 @@ open class ModernTableView<Section: Hashable, Item: Hashable>: UITableView {
         items: [Item],
         withAnimating: Bool = true
     ) {
+        
         var snapshot = diffableDataSource.snapshot()
         if !snapshot.sectionIdentifiers.contains(section) {
             snapshot.appendSections([section])
@@ -96,6 +104,11 @@ open class ModernTableView<Section: Hashable, Item: Hashable>: UITableView {
         Section.allCases.forEach { section in
             snapshot.appendSections([section])
             let items = sectionHandler(section)
+            if items.isEmpty {
+                backgroundView = emptyView
+            } else {
+                backgroundView = nil
+            }
             snapshot.appendItems(
                 items,
                 toSection: section
@@ -169,6 +182,11 @@ open class ModernTableView<Section: Hashable, Item: Hashable>: UITableView {
         items: [Item],
         withAnimating: Bool = true
     ) where Section == SingleSection {
+        if items.isEmpty {
+            backgroundView = emptyView
+        } else {
+            backgroundView = nil
+        }
         var snapshot = Snapshot()
         snapshot.appendSections([.main])
         snapshot.appendItems(items)

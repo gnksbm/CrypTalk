@@ -17,7 +17,7 @@ final class TabBarController: UITabBarController {
     }
     
     enum TabKind: CaseIterable {
-        case post, portfolio
+        case post, coin, portfolio
         
         static func makeViewControllers() -> [UIViewController] {
             allCases.map { tabKind in
@@ -34,6 +34,12 @@ final class TabBarController: UITabBarController {
             case .post:
                 PostListViewController(
                     viewModel: PostListViewModel(
+                        useCase: DefaultCryptoPostUseCase()
+                    )
+                )
+            case .coin:
+                CoinListViewController(
+                    viewModel: CoinListViewModel(
                         useCase: DefaultCryptoPostUseCase()
                     )
                 )
@@ -59,6 +65,8 @@ final class TabBarController: UITabBarController {
             switch self {
             case .post:
                 Design.StringLiteral.postTab
+            case .coin:
+                Design.StringLiteral.coinTab
             case .portfolio:
                 Design.StringLiteral.portfolioTab
             }
@@ -68,6 +76,8 @@ final class TabBarController: UITabBarController {
             switch self {
             case .post:
                 Design.ImageLiteral.postTab
+            case .coin:
+                Design.ImageLiteral.coinTab
             case .portfolio:
                 Design.ImageLiteral.portfolioTab
             }
@@ -77,6 +87,8 @@ final class TabBarController: UITabBarController {
             switch self {
             case .post:
                 Design.ImageLiteral.postTabSelected
+            case .coin:
+                Design.ImageLiteral.coinTabSelected
             case .portfolio:
                 Design.ImageLiteral.portfolioTabSelected
             }

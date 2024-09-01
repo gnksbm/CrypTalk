@@ -32,12 +32,17 @@ public enum Design {
     
     public enum StringLiteral {
         public static let postTab = "게시글"
+        public static let coinTab = "순위"
         public static let portfolioTab = "포트폴리오"
     }
     
     public enum ImageLiteral {
-        public static let postTab = UIImage(systemName: "bitcoinsign.circle")
+        public static let postTab =
+        UIImage(systemName: "bubble.left.and.bubble.right")
         public static let postTabSelected =
+        UIImage(systemName: "bubble.left.and.bubble.right.fill")
+        public static let coinTab = UIImage(systemName: "bitcoinsign.circle")
+        public static let coinTabSelected =
         UIImage(systemName: "bitcoinsign.circle.fill")
         public static let portfolioTab = UIImage(systemName: "chart.pie")
         public static let portfolioTabSelected =

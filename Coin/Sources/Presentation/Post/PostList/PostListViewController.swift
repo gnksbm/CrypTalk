@@ -24,6 +24,12 @@ final class PostListViewController: BaseViewController, ViewType {
             .backgroundColor(.clear)
             .register(PostListTVCell.self)
             .separatorStyle(.none)
+            .emptyView(
+                UILabel().nt.configure {
+                    $0.text("등록된 게시글이 없습니다")
+                        .textAlignment(.center)
+                }
+            )
     }
     
     init(viewModel: PostListViewModel) {

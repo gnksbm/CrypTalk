@@ -23,6 +23,8 @@ open class ModernCollectionView<Section: Hashable, Item: Hashable>:
         }
     }
     
+    public var emptyView: UIView?
+    
     public var diffableDataSource:
     UICollectionViewDiffableDataSource<Section, Item>!
     
@@ -57,6 +59,11 @@ open class ModernCollectionView<Section: Hashable, Item: Hashable>:
         items: [Item],
         withAnimating: Bool = true
     ) {
+        if items.isEmpty {
+            backgroundView = emptyView
+        } else {
+            backgroundView = nil
+        }
         var snapshot = Snapshot()
         if !snapshot.sectionIdentifiers.contains(section) {
             snapshot.appendSections([section])
@@ -109,6 +116,11 @@ open class ModernCollectionView<Section: Hashable, Item: Hashable>:
         Section.allCases.forEach { section in
             snapshot.appendSections([section])
             let items = sectionHandler(section)
+            if items.isEmpty {
+                backgroundView = emptyView
+            } else {
+                backgroundView = nil
+            }
             snapshot.appendItems(
                 items,
                 toSection: section
@@ -181,6 +193,11 @@ open class ModernCollectionView<Section: Hashable, Item: Hashable>:
         items: [Item],
         withAnimating: Bool = true
     ) where Section == SingleSection {
+        if items.isEmpty {
+            backgroundView = emptyView
+        } else {
+            backgroundView = nil
+        }
         var snapshot = Snapshot()
         snapshot.appendSections([.main])
         snapshot.appendItems(items)

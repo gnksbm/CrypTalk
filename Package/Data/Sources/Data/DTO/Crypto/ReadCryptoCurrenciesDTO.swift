@@ -31,10 +31,12 @@ struct ReadCryptoCurrency: Codable {
     let id, symbol, name: String
     let image: String
     let currentPrice: Double
-    let marketCap, marketCapRank, fullyDilutedValuation: Int
-    let totalVolume, high24H, low24H: Int
+    let marketCap: Int
+    let marketCapRank: Int
+    let fullyDilutedValuation: Double
+    let totalVolume, high24H, low24H: Double
     let priceChange24H, priceChangePercentage24H: Double
-    let marketCapChange24H: Int
+    let marketCapChange24H: Double
     let marketCapChangePercentage24H: Double
     let circulatingSupply, totalSupply, ath: Double
     let maxSupply: Double?
@@ -42,7 +44,7 @@ struct ReadCryptoCurrency: Codable {
     let athDate: String
     let atl, atlChangePercentage: Double
     let atlDate: String
-    let roi: String?
+    let roi: Roi?
     let lastUpdated: String
     
     enum CodingKeys: String, CodingKey {
@@ -70,5 +72,11 @@ struct ReadCryptoCurrency: Codable {
         case atlDate = "atl_date"
         case roi
         case lastUpdated = "last_updated"
+    }
+    
+    struct Roi: Codable {
+        let times: Double
+        let currency: String
+        let percentage: Double
     }
 }
