@@ -144,5 +144,6 @@ final class PostListViewController: BaseViewController, ViewType {
     
     override func configureNavigation() {
         navigationItem.rightBarButtonItem = plusButton
+        navigationItem.title = Design.StringLiteral.postTab
     }
 }

@@ -23,16 +23,19 @@ final class PurchaseCoinViewController: BaseViewController, ViewType {
         $0.contentMode(.scaleAspectFill)
             .clipsToBounds(true)
     }
-    private let titleLabel = UILabel().nt.configure {
-        $0.textColor(Design.Color.foreground)
-            .textAlignment(.left)
-    }
-    private let changeCoinButton = UIButton().nt.configure {
-        $0.configuration(.plain())
-            .configuration.title("변경하기")
+    private let titleButton = UIButton(configuration: .plain()).nt.configure {
+        $0.configuration.titleAlignment(.leading)
+            .configuration.baseForegroundColor(Design.Color.foreground)
+            .setContentCompressionResistancePriority(
+                .required,
+                for: .horizontal
+            )
+            .configuration.image(Design.ImageLiteral.bottomArrow)
+            .configuration.imagePlacement(.trailing)
+            .configuration.imagePadding(Design.Padding.regular)
     }
     private let amountTextField = UITextField().nt.configure {
-        $0.borderStyle(.bezel)
+        $0.borderStyle(.roundedRect)
             .placeholder("구매 수량을 입력해주세요")
             .keyboardType(.numberPad)
     }
@@ -49,7 +52,7 @@ final class PurchaseCoinViewController: BaseViewController, ViewType {
         let output = viewModel.transform(
             input: PurchaseCoinViewModel.Input(
                 viewWillAppearEvent: viewWillAppearEvent,
-                changeButtonTapEvent: changeCoinButton.rx.tap.asObservable(),
+                changeButtonTapEvent: titleButton.rx.tap.asObservable(),
                 amountChangeEvent: amountTextField.rx.text.orEmpty
                     .asObservable(),
                 purchaseButtonTapped: purchaseButton.rx.tap.asObservable(),
@@ -75,7 +78,7 @@ final class PurchaseCoinViewController: BaseViewController, ViewType {
             output.selectedCoin
                 .bind(with: self) { vc, response in
                     vc.iconImageView.kf.setImage(with: response.imageURL)
-                    vc.titleLabel.text = response.name
+                    vc.titleButton.configuration?.title = response.name
                 }
             
             output.startPurchaseFlow
@@ -101,8 +104,7 @@ final class PurchaseCoinViewController: BaseViewController, ViewType {
     override func configureLayout() {
         [
             iconImageView,
-            titleLabel,
-            changeCoinButton,
+            titleButton,
             amountTextField,
             purchaseButton
         ].forEach { view.addSubview($0) }
@@ -113,22 +115,16 @@ final class PurchaseCoinViewController: BaseViewController, ViewType {
             make.size.equalTo(Design.Dimension.symbolSize)
         }
         
-        titleLabel.snp.makeConstraints { make in
+        titleButton.snp.makeConstraints { make in
             make.centerY.equalTo(iconImageView)
             make.leading.equalTo(iconImageView.snp.trailing)
                 .offset(Design.Padding.regular)
-        }
-        
-        changeCoinButton.snp.makeConstraints { make in
-            make.centerY.equalTo(iconImageView)
-            make.leading.equalTo(titleLabel.snp.trailing)
-                .offset(Design.Padding.regular)
-            make.trailing.equalTo(safeArea)
+            make.trailing.lessThanOrEqualTo(safeArea)
                 .inset(Design.Padding.regular)
         }
         
         amountTextField.snp.makeConstraints { make in
-            make.top.equalTo(changeCoinButton.snp.bottom)
+            make.top.equalTo(titleButton.snp.bottom)
                 .offset(Design.Padding.regular)
             make.horizontalEdges.equalTo(safeArea).inset(Design.Padding.regular)
         }

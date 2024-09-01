@@ -64,4 +64,8 @@ final class CoinListViewController: BaseViewController, ViewType {
             make.edges.equalTo(safeArea)
         }
     }
+    
+    override func configureNavigation() {
+        navigationItem.title = Design.StringLiteral.coinTitle
+    }
 }

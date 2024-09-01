@@ -16,22 +16,34 @@ struct PieChartView: View {
     var body: some View {
         ScrollView {
             VStack {
-                if viewModel.state.portfolio.assets.isEmpty {
-                    Text("포트폴리오가 비었습니다")
-                } else {
-                    if #available(iOS 17, *) {
-                        chartView
+                VStack {
+                    if viewModel.state.portfolio.assets.isEmpty {
+                        Text("포트폴리오가 비었습니다")
                     } else {
-                        Text("차트는 iOS 17 이상에서 사용 가능 합니다")
+                        if #available(iOS 17, *) {
+                            chartView
+                        } else {
+                            Text("차트는 iOS 17 이상에서 사용 가능 합니다")
+                        }
                     }
                 }
+                .padding(.bottom)
+                ForEach(viewModel.state.portfolio.assets) { asset in
+                    HStack {
+                        Text(asset.value.name)
+                            .padding(.leading)
+                        Spacer()
+                        Text("\(asset.value.amount.removeDecimal)개")
+                            .padding(.trailing)
+                    }
+                    .padding(.vertical)
+                }
+                .background(.tertiary)
+                .clipShape(
+                    RoundedRectangle(cornerRadius: Design.Radius.regular)
+                )
             }
             .padding()
-            ForEach(viewModel.state.portfolio.assets) { asset in
-                let name = asset.value.name
-                let amount = asset.value.amount.removeDecimal
-                Text("\(name) - \(amount)개")
-            }
         }
     }
     
@@ -47,10 +59,14 @@ struct PieChartView: View {
                     angularInset: 2.0
                 )
                 .annotation(position: .overlay) {
-                    let name = asset.value.name
-                    let amount = asset.value.amount.removeDecimal
-                    Text("\(name) - \(amount)개")
+                    Text(asset.value.name)
                 }
+                .foregroundStyle(
+                    by: .value(
+                        "name",
+                        asset.value.name
+                    )
+                )
             }
         }
         .frame(height: UIScreen.main.bounds.width)

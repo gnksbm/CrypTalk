@@ -26,13 +26,18 @@ public enum Design {
         public static let foreground = UIColor.black
         public static let background = UIColor.white
         public static let secondary = UIColor.gray
-        public static let tint = UIColor.blue
+        public static let tint = #colorLiteral(red: 0, green: 0.4485855026, blue: 0.8562381629, alpha: 1)
         public static let red = UIColor.red
+    }
+    
+    public enum Font {
+        public static let heading = UIFont.systemFont(ofSize: 20)
     }
     
     public enum StringLiteral {
         public static let postTab = "게시글"
         public static let coinTab = "순위"
+        public static let coinTitle = "시가총액 상위"
         public static let portfolioTab = "포트폴리오"
     }
     

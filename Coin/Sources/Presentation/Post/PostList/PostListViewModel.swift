@@ -55,18 +55,17 @@ final class PostListViewModel: ViewModelType {
                         limit: 5
                     )
                 }
-                .subscribe(
-                    onNext: { responses in
-                        output.cryptoPostResponse.onNext(responses)
-                    },
-                    onError: { error in
-                        Logger.error(error)
-                        if let error = error as? BackEndError,
-                           case .unauthorized = error {
-                            output.startLoginFlow.onNext(())
-                        }
+                .catch { error in
+                    Logger.error(error)
+                    if let error = error as? BackEndError,
+                       case .unauthorized = error {
+                        output.startLoginFlow.onNext(())
                     }
-                )
+                    return .empty()
+                }
+                .bind { responses in
+                    output.cryptoPostResponse.onNext(responses)
+                }
             
             input.plusButtonTapEvent
                 .withLatestFrom(output.cryptoCurrency)
@@ -80,18 +79,17 @@ final class PostListViewModel: ViewModelType {
                         post: response
                     )
                 }
-                .subscribe(
-                    onNext: { response in
-                        output.likeChanged.onNext(response)
-                    },
-                    onError: { error in
-                        Logger.error(error)
-                        if let error = error as? BackEndError,
-                           case .unauthorized = error {
-                            output.startLoginFlow.onNext(())
-                        }
+                .catch { error in
+                    Logger.error(error)
+                    if let error = error as? BackEndError,
+                       case .unauthorized = error {
+                        output.startLoginFlow.onNext(())
                     }
-                )
+                    return .empty()
+                }
+                .bind { response in
+                    output.likeChanged.onNext(response)
+                }
         }
         
         return output

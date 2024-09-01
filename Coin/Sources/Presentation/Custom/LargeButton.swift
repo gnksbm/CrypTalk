@@ -14,7 +14,7 @@ extension UIButton {
         let inset = 15.f
         return UIButton().nt.configure {
             $0.configuration(.bordered())
-                .configuration.cornerStyle(.capsule)
+//                .configuration.cornerStyle(.capsule)
                 .configuration.contentInsets(
                     NSDirectionalEdgeInsets(
                         top: inset,
@@ -27,7 +27,7 @@ extension UIButton {
                     AttributedString(
                         title,
                         attributes: AttributeContainer([
-                            .foregroundColor: Design.Color.foreground
+                            .foregroundColor: Design.Color.background
                         ])
                     )
                 )

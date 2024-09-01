@@ -69,5 +69,6 @@ final class PortfolioViewController: BaseViewController, ViewType {
     
     override func configureNavigation() {
         navigationItem.rightBarButtonItem = purchaseButton
+        navigationItem.title = Design.StringLiteral.portfolioTab
     }
 }
