@@ -42,6 +42,10 @@ final class PurchaseCoinViewModel: ViewModelType {
                 .flatMap { vm, _ in
                     vm.cryptoPostUseCase.fetchCryptoCurrency(coinID: vm.coinID)
                 }
+                .catch { error in
+                    Logger.error(error)
+                    return .empty()
+                }
                 .bind(to: output.selectedCoin)
             
             input.purchaseButtonTapped

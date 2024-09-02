@@ -26,7 +26,8 @@ final class PostDetailViewModel: ViewModelType {
     
     func transform(input: Input, disposeBag: inout DisposeBag) -> Output {
         let output = Output(
-            post: PublishSubject()
+            post: PublishSubject(),
+            startPortfolioFlow: input.nicknameButtonTapEvent
         )
         
         disposeBag.insert {
@@ -67,9 +68,11 @@ extension PostDetailViewModel {
         let likeButtonTapEvent: Observable<PostResponse>
         let commentChangeEvent: Observable<String>
         let commentDoneButtonTapEvent: Observable<Void>
+        let nicknameButtonTapEvent: Observable<User>
     }
     
     struct Output {
         let post: PublishSubject<PostResponse>
+        let startPortfolioFlow: Observable<User>
     }
 }

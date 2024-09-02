@@ -74,7 +74,8 @@ final class PostDetailViewController: BaseViewController, ViewType {
                 commentChangeEvent: commentTextView.rx.text.orEmpty
                     .asObservable(),
                 commentDoneButtonTapEvent: commentDoneButton.rx.tap
-                    .asObservable()
+                    .asObservable(),
+                nicknameButtonTapEvent: tableView.nicknameButtonTapEvent
             ),
             disposeBag: &disposeBag
         )
@@ -92,6 +93,19 @@ final class PostDetailViewController: BaseViewController, ViewType {
                         }
                     }
                     vc.commentTextView.rx.text.onNext("")
+                }
+            
+            output.startPortfolioFlow
+                .bind(with: self) { vc, user in
+                    vc.navigationController?.pushViewController(
+                        PortfolioViewController(
+                            viewModel: PortfolioViewModel(
+                                useCase: DefaultPortfolioUseCase(),
+                                userID: user.id
+                            )
+                        ),
+                        animated: true
+                    )
                 }
         }
     }

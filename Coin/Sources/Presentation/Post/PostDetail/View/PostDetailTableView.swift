@@ -15,6 +15,7 @@ import RxSwift
 final class PostDetailTableView:
     ModernTableView<PostDetailSection, PostDetailItem> {
     let likeButtonTapEvent = PublishSubject<PostResponse>()
+    let nicknameButtonTapEvent = PublishSubject<User>()
     
     override func createCellProvider() -> CellProvider {
         { [weak self] tableView, indexPath, item in
@@ -29,6 +30,9 @@ final class PostDetailTableView:
                 cell.likeButtonTapEvent
                     .bind(to: self.likeButtonTapEvent)
                     .disposed(by: cell.disposeBag)
+                cell.nicknameButtonTapEvent
+                    .bind(to: self.nicknameButtonTapEvent)
+                    .disposed(by: cell.disposeBag)
                 return cell
             case .comment(let item):
                 let cell = tableView.dequeueReusableCell(
@@ -36,6 +40,9 @@ final class PostDetailTableView:
                     for: indexPath
                 )
                 cell.configureCell(item: item)
+                cell.nicknameButtonTapEvent
+                    .bind(to: self.nicknameButtonTapEvent)
+                    .disposed(by: cell.disposeBag)
                 return cell
             }
         }

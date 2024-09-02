@@ -15,14 +15,24 @@ final class PieChartViewModel: ObservableObject {
     func reduce(action: Action) {
         switch action {
         case .updatePortfolio(let response):
-            state.portfolio = response
+            if response.assets.isEmpty {
+                state.portfolio = .empty
+            } else {
+                state.portfolio = .loaded(response.assets) 
+            }
         }
     }
 }
 
 extension PieChartViewModel {
     struct State {
-        var portfolio = PortfolioResponse(portfolioID: "", assets: [])
+        var portfolio = PortfolioState.loading
+        
+        enum PortfolioState {
+            case loading
+            case empty
+            case loaded([CryptoAsset])
+        }
     }
     
     enum Action {

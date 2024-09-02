@@ -10,13 +10,24 @@ import UIKit
 import CoinFoundation
 import Domain
 
+import RxCocoa
+import RxSwift
+
 final class PostDetailCommentTVCell: BaseTVCell {
+    let nicknameButtonTapEvent = PublishSubject<User>()
+    var disposeBag = DisposeBag()
+    
     private let profileImageView = UIImageView().nt.configure {
         $0.layer.cornerRadius(Design.Dimension.symbolSize / 2)
             .clipsToBounds(true)
             .backgroundColor(Design.Color.secondary)
     }
-    private let nicknameLabel = UILabel()
+    private let nicknameButton = UIButton().nt.configure {
+        $0.setTitleColor(
+            Design.Color.foreground,
+            for: .normal
+        )
+    }
     private let dateLabel = UILabel().nt.configure {
         $0.setContentCompressionResistancePriority(
             .required,
@@ -27,10 +38,15 @@ final class PostDetailCommentTVCell: BaseTVCell {
         $0.numberOfLines(0)
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = DisposeBag()
+    }
+    
     override func configureLayout() {
         [
             profileImageView,
-            nicknameLabel,
+            nicknameButton,
             dateLabel,
             contentLabel
         ].forEach { contentView.addSubview($0) }
@@ -41,15 +57,15 @@ final class PostDetailCommentTVCell: BaseTVCell {
             make.size.equalTo(Design.Dimension.symbolSize)
         }
         
-        nicknameLabel.snp.makeConstraints { make in
+        nicknameButton.snp.makeConstraints { make in
             make.centerY.equalTo(profileImageView)
             make.leading.equalTo(profileImageView.snp.trailing)
                 .offset(Design.Padding.regular)
         }
         
         dateLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(nicknameLabel)
-            make.leading.equalTo(nicknameLabel.snp.trailing)
+            make.centerY.equalTo(nicknameButton)
+            make.leading.equalTo(nicknameButton.snp.trailing)
                 .offset(Design.Padding.regular)
             make.trailing.equalTo(contentView)
                 .inset(Design.Padding.regular)
@@ -67,8 +83,17 @@ final class PostDetailCommentTVCell: BaseTVCell {
         if let path = item.writter.profileImagePath {
             profileImageView.kf.setImage(with: URL(string: path))
         }
-        nicknameLabel.text = item.writter.nickname
+        nicknameButton.setTitle(
+            item.writter.nickname,
+            for: .normal
+        )
         dateLabel.text = item.createdAt.formatted(dateFormat: .createdAtOutput)
         contentLabel.text = item.comment
+        
+        disposeBag.insert {
+            nicknameButton.rx.tap
+                .map { _ in item.writter }
+                .bind(to: nicknameButtonTapEvent)
+        }
     }
 }

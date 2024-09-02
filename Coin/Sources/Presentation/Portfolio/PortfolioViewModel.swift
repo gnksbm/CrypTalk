@@ -33,7 +33,10 @@ final class PortfolioViewModel: ViewModelType {
         
         disposeBag.insert {
             input.viewWillAppearEvent
-                .throttle(.seconds(60), scheduler: MainScheduler.instance)
+                .throttle(
+                    .seconds(60),
+                    scheduler: MainScheduler.instance
+                )
                 .withUnretained(self)
                 .flatMap { vm, _ in
                     if let userID = vm.userID {

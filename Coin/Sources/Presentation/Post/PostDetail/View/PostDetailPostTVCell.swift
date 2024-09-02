@@ -10,10 +10,12 @@ import UIKit
 import CoinFoundation
 import Domain
 
+import RxCocoa
 import RxSwift
 
 final class PostDetailPostTVCell: BaseTVCell {
     let likeButtonTapEvent = PublishSubject<PostResponse>()
+    let nicknameButtonTapEvent = PublishSubject<User>()
     var disposeBag = DisposeBag()
     
     private let profileImageView = UIImageView().nt.configure {
@@ -25,7 +27,12 @@ final class PostDetailPostTVCell: BaseTVCell {
                 for: .vertical
             )
     }
-    private let nicknameLabel = UILabel()
+    private let nicknameButton = UIButton().nt.configure {
+        $0.setTitleColor(
+            Design.Color.foreground,
+            for: .normal
+        )
+    }
     private let dateLabel = UILabel().nt.configure {
         $0.setContentCompressionResistancePriority(
             .required,
@@ -47,7 +54,7 @@ final class PostDetailPostTVCell: BaseTVCell {
     override func configureLayout() {
         [
             profileImageView,
-            nicknameLabel,
+            nicknameButton,
             dateLabel,
             directionLabel,
             contentLabel,
@@ -60,7 +67,7 @@ final class PostDetailPostTVCell: BaseTVCell {
                 .priority(.required)
         }
         
-        nicknameLabel.snp.makeConstraints { make in
+        nicknameButton.snp.makeConstraints { make in
             make.bottom.equalTo(profileImageView.snp.centerY)
             make.leading.equalTo(profileImageView.snp.trailing)
                 .offset(Design.Padding.regular)
@@ -74,8 +81,8 @@ final class PostDetailPostTVCell: BaseTVCell {
         }
         
         dateLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(nicknameLabel)
-            make.leading.equalTo(nicknameLabel.snp.trailing)
+            make.centerY.equalTo(nicknameButton)
+            make.leading.equalTo(nicknameButton.snp.trailing)
                 .offset(Design.Padding.regular)
         }
         
@@ -100,7 +107,10 @@ final class PostDetailPostTVCell: BaseTVCell {
         if let path = item.writter.profileImagePath {
             profileImageView.kf.setImage(with: URL(string: path))
         }
-        nicknameLabel.text = item.writter.nickname
+        nicknameButton.setTitle(
+            item.writter.nickname,
+            for: .normal
+        )
         dateLabel.text = item.createdAt.formatted(dateFormat: .createdAtOutput)
         directionLabel.text = item.direction.toString
         directionLabel.textColor = item.direction.color
@@ -108,11 +118,14 @@ final class PostDetailPostTVCell: BaseTVCell {
         likeButton.configuration?.title = item.likerIDs.count.formatted()
         likeButton.configuration?.image = item.isLikedPost ?
         UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
-        likeButton.rx.tap
-            .map { _ in
-                item
-            }
-            .bind(to: likeButtonTapEvent)
-            .disposed(by: disposeBag)
+        disposeBag.insert {
+            likeButton.rx.tap
+                .map { _ in item }
+                .bind(to: likeButtonTapEvent)
+            
+            nicknameButton.rx.tap
+                .map { _ in item.writter }
+                .bind(to: nicknameButtonTapEvent)
+        }
     }
 }
