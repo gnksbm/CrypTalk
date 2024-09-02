@@ -33,6 +33,7 @@ final class PostDetailViewController: BaseViewController, ViewType {
         $0.backgroundColor(.clear)
             .register(PostDetailPostTVCell.self)
             .register(PostDetailCommentTVCell.self)
+            .delegate(self)
     }
     private lazy var commentTextView = UITextView().nt.configure {
         $0.attributedText(textViewPlaceholder)
@@ -41,7 +42,7 @@ final class PostDetailViewController: BaseViewController, ViewType {
     }
     private let commentBackgroundView = UIView().nt.configure {
         $0.layer.cornerRadius(Design.Radius.regular)
-            .backgroundColor(.tertiarySystemFill)
+            .backgroundColor(.lightGray)
     }
     private lazy var commentDoneButton = UIButton(
         configuration: .plain()
@@ -106,7 +107,7 @@ final class PostDetailViewController: BaseViewController, ViewType {
         tableView.snp.makeConstraints { make in
             make.top.horizontalEdges.equalTo(safeArea)
             make.bottom.equalTo(commentBackgroundView.snp.top)
-                .offset(Design.Padding.regular)
+                .offset(-Design.Padding.regular)
         }
         
         commentBackgroundView.snp.makeConstraints { make in
@@ -167,6 +168,34 @@ extension PostDetailViewController: UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty == true {
             textView.attributedText = textViewPlaceholder
+        }
+    }
+}
+
+extension PostDetailViewController: UITableViewDelegate {
+    func tableView(
+        _ tableView: UITableView,
+        viewForFooterInSection section: Int
+    ) -> UIView? {
+        switch PostDetailSection.allCases[section] {
+        case .post:
+            UIView().nt.configure {
+                $0.backgroundColor(.tertiarySystemFill)
+            }
+        case .comment:
+            nil
+        }
+    }
+    
+    func tableView(
+        _ tableView: UITableView,
+        heightForFooterInSection section: Int
+    ) -> CGFloat {
+        switch PostDetailSection.allCases[section] {
+        case .post:
+            Design.Dimension.tableViewFooter
+        case .comment:
+            0
         }
     }
 }

@@ -11,6 +11,7 @@ import UIKit
 public enum Design {
     public enum Dimension {
         public static let symbolSize = 40.f
+        public static let tableViewFooter = 20.f
     }
     
     public enum Padding {

@@ -17,10 +17,13 @@ final class PostDetailPostTVCell: BaseTVCell {
     var disposeBag = DisposeBag()
     
     private let profileImageView = UIImageView().nt.configure {
-        $0.contentMode(.scaleAspectFill)
-            .layer.cornerRadius(Design.Dimension.symbolSize / 2)
+        $0.layer.cornerRadius(Design.Dimension.symbolSize / 2)
             .clipsToBounds(true)
             .backgroundColor(Design.Color.secondary)
+            .setContentCompressionResistancePriority(
+                .required,
+                for: .vertical
+            )
     }
     private let nicknameLabel = UILabel()
     private let dateLabel = UILabel().nt.configure {
@@ -54,6 +57,7 @@ final class PostDetailPostTVCell: BaseTVCell {
         profileImageView.snp.makeConstraints { make in
             make.top.leading.equalTo(contentView).inset(Design.Padding.regular)
             make.size.equalTo(Design.Dimension.symbolSize)
+                .priority(.required)
         }
         
         nicknameLabel.snp.makeConstraints { make in
@@ -84,7 +88,7 @@ final class PostDetailPostTVCell: BaseTVCell {
         }
         
         contentLabel.snp.makeConstraints { make in
-            make.top.equalTo(profileImageView.snp.bottom)
+            make.top.greaterThanOrEqualTo(profileImageView.snp.bottom)
                 .offset(Design.Padding.regular)
             make.leading.equalTo(profileImageView)
             make.trailing.equalTo(directionLabel)
@@ -95,8 +99,6 @@ final class PostDetailPostTVCell: BaseTVCell {
     func configureCell(item: PostResponse) {
         if let path = item.writter.profileImagePath {
             profileImageView.kf.setImage(with: URL(string: path))
-        } else {
-            profileImageView.image = Design.ImageLiteral.profile
         }
         nicknameLabel.text = item.writter.nickname
         dateLabel.text = item.createdAt.formatted(dateFormat: .createdAtOutput)

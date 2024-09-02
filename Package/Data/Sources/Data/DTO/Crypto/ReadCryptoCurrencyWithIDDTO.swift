@@ -130,7 +130,7 @@ extension ReadCryptoCurrencyWithIDDTO {
         let blockchainSite, officialForumURL: [String]
         let chatURL, announcementURL: [String]
         let twitterScreenName, facebookUsername: String
-        let bitcointalkThreadIdentifier: String?
+//        let bitcointalkThreadIdentifier: String?
         let telegramChannelIdentifier: String
         let subredditURL: String
         let reposURL: ReposURL
@@ -143,7 +143,7 @@ extension ReadCryptoCurrencyWithIDDTO {
             case announcementURL = "announcement_url"
             case twitterScreenName = "twitter_screen_name"
             case facebookUsername = "facebook_username"
-            case bitcointalkThreadIdentifier = "bitcointalk_thread_identifier"
+//            case bitcointalkThreadIdentifier = "bitcointalk_thread_identifier"
             case telegramChannelIdentifier = "telegram_channel_identifier"
             case subredditURL = "subreddit_url"
             case reposURL = "repos_url"
