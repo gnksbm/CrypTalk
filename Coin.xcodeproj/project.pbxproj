@@ -47,6 +47,8 @@
 		BEC094132C808DFC008AA991 /* PostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC094122C808DFC008AA991 /* PostDetailViewModel.swift */; };
 		BECB29CE2C86EB7400671266 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECB29CD2C86EB7400671266 /* ProfileViewController.swift */; };
 		BECB29D02C86EBD700671266 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECB29CF2C86EBD700671266 /* ProfileViewModel.swift */; };
+		BECB29D32C8722C500671266 /* CandlestickChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECB29D22C8722C500671266 /* CandlestickChartView.swift */; };
+		BECB29D52C8723FF00671266 /* CandlestickRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECB29D42C8723FF00671266 /* CandlestickRepresentable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -105,6 +107,8 @@
 		BEC094122C808DFC008AA991 /* PostDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewModel.swift; sourceTree = "<group>"; };
 		BECB29CD2C86EB7400671266 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		BECB29CF2C86EBD700671266 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		BECB29D22C8722C500671266 /* CandlestickChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandlestickChartView.swift; sourceTree = "<group>"; };
+		BECB29D42C8723FF00671266 /* CandlestickRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandlestickRepresentable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -282,6 +286,7 @@
 			isa = PBXGroup;
 			children = (
 				8E7233412C8455D800760D53 /* TabBarController.swift */,
+				BECB29D12C87229300671266 /* CandlestickChart */,
 				BECB29CC2C86EB6C00671266 /* Profile */,
 				8E7233502C84DCA100760D53 /* CoinList */,
 				8E7233482C84AF8300760D53 /* Search */,
@@ -341,6 +346,15 @@
 				BECB29CF2C86EBD700671266 /* ProfileViewModel.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		BECB29D12C87229300671266 /* CandlestickChart */ = {
+			isa = PBXGroup;
+			children = (
+				BECB29D22C8722C500671266 /* CandlestickChartView.swift */,
+				BECB29D42C8723FF00671266 /* CandlestickRepresentable.swift */,
+			);
+			path = CandlestickChart;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -427,6 +441,7 @@
 				8E7233472C84607C00760D53 /* PurchaseCoinViewModel.swift in Sources */,
 				8EB506252C816B0B00AA060D /* LoginViewController.swift in Sources */,
 				8EA517842C6DB0FB0029A356 /* PostListViewController.swift in Sources */,
+				BECB29D52C8723FF00671266 /* CandlestickRepresentable.swift in Sources */,
 				BEC094112C806982008AA991 /* PostDetailViewController.swift in Sources */,
 				8E72334C2C84AFE700760D53 /* SearchCoinViewModel.swift in Sources */,
 				8E72335B2C84EBD300760D53 /* Appearance.swift in Sources */,
@@ -441,6 +456,7 @@
 				8EB506272C816C8600AA060D /* LoginViewModel.swift in Sources */,
 				8E7233522C84DCB700760D53 /* CoinListViewController.swift in Sources */,
 				8E72333E2C84338600760D53 /* PieChartViewModel.swift in Sources */,
+				BECB29D32C8722C500671266 /* CandlestickChartView.swift in Sources */,
 				8E7233392C84310000760D53 /* PortfolioViewController.swift in Sources */,
 				BEC0940D2C805BF9008AA991 /* PostListTableView.swift in Sources */,
 				8E792A7D2C7F8D32009142D3 /* AddPostViewModel.swift in Sources */,
