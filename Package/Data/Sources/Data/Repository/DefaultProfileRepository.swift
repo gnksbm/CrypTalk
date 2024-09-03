@@ -38,4 +38,11 @@ public final class DefaultProfileRepository: ProfileRepository {
         .decode(type: UpdateProfileDTO.self)
         .map { $0.toResponse() }
     }
+    
+    public func readImage(request: ReadImageReuqest) -> Single<Data> {
+        networkService.request(
+            target: ProfileTarget.readImage(request),
+            errorType: BackEndError.self
+        )
+    }
 }

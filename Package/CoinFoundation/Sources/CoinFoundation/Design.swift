@@ -27,12 +27,22 @@ public enum Design {
         public static let foreground = UIColor.black
         public static let background = UIColor.white
         public static let secondary = UIColor.gray
-        public static let tint = #colorLiteral(red: 0, green: 0.4485855026, blue: 0.8562381629, alpha: 1)
-        public static let red = UIColor.red
+        public static let clear = UIColor.clear
+        public static let gray1 = UIColor(named: "Gray1")
+        public static let gray2 = UIColor(named: "Gray2")
+        public static let tint = UIColor(named: "BlackCandle")
+        public static let red = UIColor(named: "WhiteCandle")
     }
     
     public enum Font {
         public static let heading = UIFont.systemFont(ofSize: 20)
+        public static let title = UIFont.systemFont(ofSize: 19)
+        public static let subtitle = UIFont.systemFont(ofSize: 18)
+        public static let body1 = UIFont.systemFont(ofSize: 17)
+        public static let body2 = UIFont.systemFont(ofSize: 16)
+        public static let label1 = UIFont.systemFont(ofSize: 15)
+        public static let label2 = UIFont.systemFont(ofSize: 14)
+        public static let caption = UIFont.systemFont(ofSize: 13)
     }
     
     public enum StringLiteral {

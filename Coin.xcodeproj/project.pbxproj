@@ -45,6 +45,8 @@
 		BEC0940D2C805BF9008AA991 /* PostListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC0940C2C805BF8008AA991 /* PostListTableView.swift */; };
 		BEC094112C806982008AA991 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC094102C806982008AA991 /* PostDetailViewController.swift */; };
 		BEC094132C808DFC008AA991 /* PostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC094122C808DFC008AA991 /* PostDetailViewModel.swift */; };
+		BECB29CE2C86EB7400671266 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECB29CD2C86EB7400671266 /* ProfileViewController.swift */; };
+		BECB29D02C86EBD700671266 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECB29CF2C86EBD700671266 /* ProfileViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -101,6 +103,8 @@
 		BEC0940C2C805BF8008AA991 /* PostListTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostListTableView.swift; sourceTree = "<group>"; };
 		BEC094102C806982008AA991 /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		BEC094122C808DFC008AA991 /* PostDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewModel.swift; sourceTree = "<group>"; };
+		BECB29CD2C86EB7400671266 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		BECB29CF2C86EBD700671266 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -278,6 +282,7 @@
 			isa = PBXGroup;
 			children = (
 				8E7233412C8455D800760D53 /* TabBarController.swift */,
+				BECB29CC2C86EB6C00671266 /* Profile */,
 				8E7233502C84DCA100760D53 /* CoinList */,
 				8E7233482C84AF8300760D53 /* Search */,
 				8E7233432C84602A00760D53 /* Purchase */,
@@ -327,6 +332,15 @@
 				8EB506282C81905100AA060D /* View */,
 			);
 			path = PostDetail;
+			sourceTree = "<group>";
+		};
+		BECB29CC2C86EB6C00671266 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				BECB29CD2C86EB7400671266 /* ProfileViewController.swift */,
+				BECB29CF2C86EBD700671266 /* ProfileViewModel.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -432,6 +446,7 @@
 				8E792A7D2C7F8D32009142D3 /* AddPostViewModel.swift in Sources */,
 				8ED3DE982C761BDD00126BD4 /* AppDelegate+Register.swift in Sources */,
 				8E7233452C84603500760D53 /* PurchaseCoinViewController.swift in Sources */,
+				BECB29CE2C86EB7400671266 /* ProfileViewController.swift in Sources */,
 				8E7233362C81C09D00760D53 /* PostDetailCommentTVCell.swift in Sources */,
 				8E72333B2C84317F00760D53 /* PieChartView.swift in Sources */,
 				8E72334A2C84AF9E00760D53 /* SearchCoinViewController.swift in Sources */,
@@ -441,6 +456,7 @@
 				8E7233572C84DEAE00760D53 /* CoinListCollectionView.swift in Sources */,
 				8E634C532C7F927F006115E9 /* LargeButton.swift in Sources */,
 				8E7233402C84363300760D53 /* PortfolioViewModel.swift in Sources */,
+				BECB29D02C86EBD700671266 /* ProfileViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

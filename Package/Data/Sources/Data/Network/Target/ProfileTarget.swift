@@ -14,6 +14,7 @@ import Moya
 enum ProfileTarget {
     case readMyProfile(ReadMyProfileRequest)
     case updateProfile(UpdateProfileRequest)
+    case readImage(ReadImageReuqest)
 }
 
 extension ProfileTarget: BackEndTargetType {
@@ -21,12 +22,14 @@ extension ProfileTarget: BackEndTargetType {
         switch self {
         case .readMyProfile, .updateProfile:
             "/users/me/profile"
+        case .readImage(let request):
+            "/\(request.additionalPath)"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .readMyProfile:
+        case .readMyProfile, .readImage:
             .get
         case .updateProfile:
             .put
@@ -35,15 +38,17 @@ extension ProfileTarget: BackEndTargetType {
     
     var task: Moya.Task {
         switch self {
-        case .readMyProfile:
+        case .readMyProfile, .readImage:
             .requestPlain
         case .updateProfile(let request):
-            .requestJSONEncodable(request.body)
+            .uploadMultipart(request.toMultipartFormData())
         }
     }
     
     var httpHeaders: [String : String] {
         switch self {
+        case .readImage(let request):
+            request.toHeader()
         case .readMyProfile(let request):
             request.toHeader()
         case .updateProfile(let request):
@@ -53,7 +58,7 @@ extension ProfileTarget: BackEndTargetType {
     
     var content: Content? {
         switch self {
-        case .readMyProfile:
+        case .readMyProfile, .readImage:
             nil
         case .updateProfile:
             .multipartFormData

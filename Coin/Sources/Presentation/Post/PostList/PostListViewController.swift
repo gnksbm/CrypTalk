@@ -17,11 +17,14 @@ import Neat
 final class PostListViewController: BaseViewController, ViewType {
     private let pageChangeEvent = BehaviorSubject(value: 0)
     
+    private let profileButton = UIBarButtonItem(
+        image: UIImage(systemName: "person")
+    )
     private let plusButton = UIBarButtonItem(systemItem: .add)
     private let headerView = PostListHeaderView()
     private lazy var tableView = PostListTableView().nt.configure {
         $0.tableHeaderView(headerView)
-            .backgroundColor(.clear)
+            .backgroundColor(Design.Color.clear)
             .register(PostListTVCell.self)
             .separatorStyle(.none)
             .emptyView(
@@ -46,7 +49,8 @@ final class PostListViewController: BaseViewController, ViewType {
                 titleTapEvent: headerView.titleTapEvent.asObservable(),
                 cellTapEvent: tableView.tapEvent,
                 likeButtonTapEvent: tableView.likeButtonTapEvent,
-                commentButtonTapEvent: tableView.commentButtonTapEvent
+                commentButtonTapEvent: tableView.commentButtonTapEvent,
+                profileButtonTapEvent: profileButton.rx.tap.asObservable()
             ),
             disposeBag: &disposeBag
         )
@@ -126,6 +130,18 @@ final class PostListViewController: BaseViewController, ViewType {
                         animated: true
                     )
                 }
+            
+            output.startProfileFlow
+                .bind(with: self) { vc, _ in
+                    vc.navigationController?.pushViewController(
+                        ProfileViewController(
+                            viewModel: ProfileViewModel(
+                                profileUseCase: DefaultProfileUseCase()
+                            )
+                        ),
+                        animated: true
+                    )
+                }
         }
     }
     
@@ -143,6 +159,7 @@ final class PostListViewController: BaseViewController, ViewType {
     }
     
     override func configureNavigation() {
+        navigationItem.leftBarButtonItem = profileButton
         navigationItem.rightBarButtonItem = plusButton
         navigationItem.title = Design.StringLiteral.postTab
     }

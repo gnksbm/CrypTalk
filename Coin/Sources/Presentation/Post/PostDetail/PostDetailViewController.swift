@@ -25,24 +25,24 @@ final class PostDetailViewController: BaseViewController, ViewType {
         string: "의견을 남겨보세요",
         attributes: [
             .font: textViewFont,
-            .foregroundColor: UIColor.tertiaryLabel
+            .foregroundColor: Design.Color.secondary
         ]
     )
     
     private lazy var tableView = PostDetailTableView().nt.configure {
-        $0.backgroundColor(.clear)
+        $0.backgroundColor(Design.Color.clear)
             .register(PostDetailPostTVCell.self)
             .register(PostDetailCommentTVCell.self)
             .delegate(self)
     }
     private lazy var commentTextView = UITextView().nt.configure {
         $0.attributedText(textViewPlaceholder)
-            .backgroundColor(.clear)
+            .backgroundColor(Design.Color.clear)
             .delegate(self)
     }
     private let commentBackgroundView = UIView().nt.configure {
         $0.layer.cornerRadius(Design.Radius.regular)
-            .backgroundColor(.lightGray)
+            .backgroundColor(Design.Color.gray2)
     }
     private lazy var commentDoneButton = UIButton(
         configuration: .plain()
@@ -54,7 +54,7 @@ final class PostDetailViewController: BaseViewController, ViewType {
             .configurationUpdateHandler(
                 { button in
                     button.tintColor = button.isEnabled ?
-                        .secondaryLabel : .tertiaryLabel
+                    Design.Color.secondary : Design.Color.gray1
                 }
             )
             .isEnabled(false)
@@ -82,8 +82,7 @@ final class PostDetailViewController: BaseViewController, ViewType {
         
         disposeBag.insert {
             output.post
-                .withUnretained(self)
-                .bind { vc, item in
+                .bind(with: self) { vc, item in
                     vc.tableView.applyItem(withAnimating: false) { section in
                         switch section {
                         case .post:
@@ -92,7 +91,9 @@ final class PostDetailViewController: BaseViewController, ViewType {
                             item.comments.map { .comment($0) }
                         }
                     }
-                    vc.commentTextView.rx.text.onNext("")
+                    vc.commentTextView.rx.attributedText.onNext(
+                        vc.textViewPlaceholder
+                    )
                 }
             
             output.startPortfolioFlow
@@ -175,7 +176,7 @@ extension PostDetailViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.attributedText == textViewPlaceholder {
             textView.text.removeAll()
-            textView.textColor = .label
+            textView.textColor = Design.Color.secondary
         }
     }
     
@@ -194,7 +195,7 @@ extension PostDetailViewController: UITableViewDelegate {
         switch PostDetailSection.allCases[section] {
         case .post:
             UIView().nt.configure {
-                $0.backgroundColor(.tertiarySystemFill)
+                $0.backgroundColor(Design.Color.gray1)
             }
         case .comment:
             nil

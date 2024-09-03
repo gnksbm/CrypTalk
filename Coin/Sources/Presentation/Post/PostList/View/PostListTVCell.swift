@@ -17,7 +17,7 @@ import SnapKit
 import Kingfisher
 
 extension MarketDirection {
-    var color: UIColor {
+    var color: UIColor? {
         switch self {
         case .increase:
             Design.Color.red
@@ -44,7 +44,7 @@ final class PostListTVCell: BaseTVCell {
     private let cardBackgroundView = UIView().nt.configure {
         $0.layer.cornerRadius(Design.Radius.regular)
             .clipsToBounds(true)
-            .backgroundColor(.quaternarySystemFill)
+            .backgroundColor(Design.Color.gray1)
     }
     
     private let profileImageView = UIImageView().nt.configure {

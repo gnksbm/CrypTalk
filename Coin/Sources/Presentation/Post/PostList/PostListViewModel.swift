@@ -35,7 +35,8 @@ final class PostListViewModel: ViewModelType {
                 input.commentButtonTapEvent
             ), 
             startLoginFlow: PublishSubject(),
-            startSearchFlow: input.titleTapEvent
+            startSearchFlow: input.titleTapEvent,
+            startProfileFlow: input.profileButtonTapEvent
         )
         
         disposeBag.insert {
@@ -105,6 +106,7 @@ extension PostListViewModel {
         let cellTapEvent: Observable<PostResponse>
         let likeButtonTapEvent: Observable<PostResponse>
         let commentButtonTapEvent: Observable<PostResponse>
+        let profileButtonTapEvent: Observable<Void>
     }
     
     struct Output {
@@ -115,6 +117,7 @@ extension PostListViewModel {
         let startDetailFlow: Observable<PostResponse>
         let startLoginFlow: PublishSubject<Void>
         let startSearchFlow: Observable<Void>
+        let startProfileFlow: Observable<Void>
     }
 }
 

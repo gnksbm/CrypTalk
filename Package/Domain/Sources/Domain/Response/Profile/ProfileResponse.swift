@@ -8,15 +8,15 @@
 import Foundation
 
 public struct ProfileResponse {
-    let id: String
-    let email: String
-    let nickname: String
-    let phoneNumber: String?
-    let birthDay: String?
-    let profileImagePath: String?
-    let followers: [User]
-    let followings: [User]
-    let postIDs: [String]
+    public let id: String
+    public let email: String
+    public let nickname: String
+    public let phoneNumber: String?
+    public let birthDay: String?
+    public let profileImagePath: String?
+    public let followers: [User]
+    public let followings: [User]
+    public let postIDs: [String]
 
     public init(
         id: String,
