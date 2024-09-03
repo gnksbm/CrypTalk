@@ -256,4 +256,14 @@ public final class DefaultCryptoPostUseCase: CryptoPostUseCase {
         }
         .execute()
     }
+    
+    public func fetchChartData(
+        coinID: String,
+        days: Int
+    ) -> Single<[ChartDataResponse]> {
+        cryptoCurrencyRepository.readChartData(
+            coinID: coinID,
+            days: days
+        )
+    }
 }

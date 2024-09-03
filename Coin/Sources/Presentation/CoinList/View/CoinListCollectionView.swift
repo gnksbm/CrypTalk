@@ -11,6 +11,7 @@ import CoinFoundation
 import Domain
 
 import Neat
+import RxSwift
 
 final class CoinListCollectionView:
     ModernCollectionView<SingleSection, CryptoCurrencyResponse> {
@@ -34,14 +35,22 @@ final class CoinListCollectionView:
             return NSCollectionLayoutSection(group: group)
         }
     }
+    
+    let chartButtonTapEvent = PublishSubject<CryptoCurrencyResponse>()
+    
     override func createCellProvider() -> CellProvider {
         let registration = CoinListCVCell.createRegistration()
-        return { collectionView, indexPath, item in
-            collectionView.dequeueConfiguredReusableCell(
+        return { [weak self] collectionView, indexPath, item in
+            guard let self else { return UICollectionViewCell() }
+            let cell = collectionView.dequeueConfiguredReusableCell(
                 using: registration,
                 for: indexPath,
                 item: item
             )
+            cell.chartButtonTapEvent
+                .bind(to: chartButtonTapEvent)
+                .disposed(by: cell.disposeBag)
+            return cell
         }
     }
 }

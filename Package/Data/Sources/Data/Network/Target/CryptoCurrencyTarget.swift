@@ -15,6 +15,7 @@ public enum CryptoCurrencyTarget: CoinGeckoTargetType {
     case readCryptoCurrencies(ReadCryptoCurrenciesRequest)
     case readCryptoCurrencyWithID(ReadCryptoCurrencyWithIDRequest)
     case searchCoinWithID(SearchCoinWithIDRequest)
+    case readChartData(ReadChartDataRequest)
     
     public var targetPath: String {
         switch self {
@@ -24,13 +25,15 @@ public enum CryptoCurrencyTarget: CoinGeckoTargetType {
             "/coins/\(request.coinID)"
         case .searchCoinWithID:
             "/search"
+        case .readChartData(let request):
+            "/coins/\(request.coinID)/ohlc"
         }
     }
     
     public var method: Moya.Method {
         switch self {
         case .readCryptoCurrencies, .readCryptoCurrencyWithID,
-                .searchCoinWithID:
+                .searchCoinWithID, .readChartData:
             .get
         }
     }
@@ -49,13 +52,18 @@ public enum CryptoCurrencyTarget: CoinGeckoTargetType {
                 parameters: request.toQuery(),
                 encoding: URLEncoding.queryString
             )
+        case .readChartData(let request):
+            .requestParameters(
+                parameters: request.toQuery(),
+                encoding: URLEncoding.queryString
+            )
         }
     }
     
     public var httpHeaders: [String : String] {
         switch self {
         case .readCryptoCurrencies, .readCryptoCurrencyWithID,
-                .searchCoinWithID:
+                .searchCoinWithID, .readChartData:
             [:]
         }
     }
@@ -63,7 +71,7 @@ public enum CryptoCurrencyTarget: CoinGeckoTargetType {
     public var content: Content? {
         switch self {
         case .readCryptoCurrencies, .readCryptoCurrencyWithID,
-                .searchCoinWithID:
+                .searchCoinWithID, .readChartData:
             nil
         }
     }

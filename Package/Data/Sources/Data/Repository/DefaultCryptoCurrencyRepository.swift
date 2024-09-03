@@ -53,4 +53,21 @@ public final class DefaultCryptoCurrencyRepository: CryptoCurrencyRepository {
         .decode(type: SearchCoinWithIDDTO.self)
         .map { $0.toResponse() }
     }
+    
+    public func readChartData(
+        coinID: String,
+        days: Int
+    ) -> Single<[ChartDataResponse]> {
+        networkService.request(
+            target: CryptoCurrencyTarget.readChartData(
+                ReadChartDataRequest(
+                    coinID: coinID,
+                    days: "\(days)",
+                    precision: nil
+                )
+            )
+        )
+        .decode(type: ReadChartDataDTO.self)
+        .map { try $0.toResponse() }
+    }
 }

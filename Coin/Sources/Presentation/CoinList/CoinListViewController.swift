@@ -31,7 +31,8 @@ final class CoinListViewController: BaseViewController, ViewType {
         let output = viewModel.transform(
             input: CoinListViewModel.Input(
                 viewWillAppearEvent: viewWillAppearEvent,
-                itemSelected: collectionView.tapEvent
+                itemSelected: collectionView.tapEvent,
+                chartButtonTapEvent: collectionView.chartButtonTapEvent
             ),
             disposeBag: &disposeBag
         )
@@ -49,6 +50,21 @@ final class CoinListViewController: BaseViewController, ViewType {
                             viewModel: PostListViewModel(
                                 useCase: DefaultCryptoPostUseCase(),
                                 coinID: response.id
+                            )
+                        ),
+                        animated: true
+                    )
+                }
+            
+            output.startChartFlow
+                .bind(with: self) { vc, tuple in
+                    vc.present(
+                        UINavigationController(
+                            rootViewController: CandlestickChartViewController(
+                                viewModel: CandlestickChartViewModel(
+                                    title: tuple.title,
+                                    items: tuple.items
+                                )
                             )
                         ),
                         animated: true

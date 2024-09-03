@@ -8,6 +8,7 @@
 import UIKit
 
 import CoinFoundation
+import Domain
 
 final class CandlestickChartView: UIScrollView {
     private var dataSource: [CandlestickRepresentable] = [] {
@@ -125,8 +126,8 @@ final class CandlestickChartView: UIScrollView {
         candleTailView.frame = tailRect
     }
     
-    private func getCandleColor(kind: CandleKind) -> UIColor {
-        var candleColor: UIColor
+    private func getCandleColor(kind: CandleKind) -> UIColor? {
+        var candleColor: UIColor?
         switch kind {
         case .white:
             candleColor = appearance.whiteCandleColor
@@ -161,19 +162,19 @@ extension CandlestickChartView {
         let tailWidth: CGFloat
         let bodyWidthMultiplier: CGFloat
         let candleWidth: CGFloat
-        let whiteCandleColor: UIColor
-        let dodgeCandleColor: UIColor
-        let blackCandleColor: UIColor
-        let backgroundColor: UIColor
+        let whiteCandleColor: UIColor?
+        let dodgeCandleColor: UIColor?
+        let blackCandleColor: UIColor?
+        let backgroundColor: UIColor?
         
         init(
             tailWidth: CGFloat = 1,
             bodyWidthMultiplier: CGFloat = 0.9,
             candleWidth: CGFloat = 10,
-            whiteCandleColor: UIColor = .red,
-            dodgeCandleColor: UIColor = .gray,
-            blackCandleColor: UIColor = .blue,
-            backgroundColor: UIColor = .systemBackground
+            whiteCandleColor: UIColor? = .red,
+            dodgeCandleColor: UIColor? = .gray,
+            blackCandleColor: UIColor? = .blue,
+            backgroundColor: UIColor? = .systemBackground
         ) {
             self.tailWidth = tailWidth
             self.bodyWidthMultiplier = bodyWidthMultiplier

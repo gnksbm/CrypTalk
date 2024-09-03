@@ -48,7 +48,9 @@
 		BECB29CE2C86EB7400671266 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECB29CD2C86EB7400671266 /* ProfileViewController.swift */; };
 		BECB29D02C86EBD700671266 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECB29CF2C86EBD700671266 /* ProfileViewModel.swift */; };
 		BECB29D32C8722C500671266 /* CandlestickChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECB29D22C8722C500671266 /* CandlestickChartView.swift */; };
-		BECB29D52C8723FF00671266 /* CandlestickRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECB29D42C8723FF00671266 /* CandlestickRepresentable.swift */; };
+		BECB29D72C872E6200671266 /* SearchCoinCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECB29D62C872E6200671266 /* SearchCoinCVCell.swift */; };
+		BECB29DA2C87323C00671266 /* CandlestickChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECB29D92C87323C00671266 /* CandlestickChartViewController.swift */; };
+		BECB29DC2C87330A00671266 /* CandlestickChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECB29DB2C87330A00671266 /* CandlestickChartViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -108,7 +110,9 @@
 		BECB29CD2C86EB7400671266 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		BECB29CF2C86EBD700671266 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		BECB29D22C8722C500671266 /* CandlestickChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandlestickChartView.swift; sourceTree = "<group>"; };
-		BECB29D42C8723FF00671266 /* CandlestickRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandlestickRepresentable.swift; sourceTree = "<group>"; };
+		BECB29D62C872E6200671266 /* SearchCoinCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoinCVCell.swift; sourceTree = "<group>"; };
+		BECB29D92C87323C00671266 /* CandlestickChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandlestickChartViewController.swift; sourceTree = "<group>"; };
+		BECB29DB2C87330A00671266 /* CandlestickChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandlestickChartViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				8E72334E2C84B2CD00760D53 /* SearchCoinCollectionView.swift */,
+				BECB29D62C872E6200671266 /* SearchCoinCVCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -286,7 +291,7 @@
 			isa = PBXGroup;
 			children = (
 				8E7233412C8455D800760D53 /* TabBarController.swift */,
-				BECB29D12C87229300671266 /* CandlestickChart */,
+				BECB29D82C87323300671266 /* CandlestickChart */,
 				BECB29CC2C86EB6C00671266 /* Profile */,
 				8E7233502C84DCA100760D53 /* CoinList */,
 				8E7233482C84AF8300760D53 /* Search */,
@@ -348,13 +353,22 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
-		BECB29D12C87229300671266 /* CandlestickChart */ = {
+		BECB29D82C87323300671266 /* CandlestickChart */ = {
+			isa = PBXGroup;
+			children = (
+				BECB29D92C87323C00671266 /* CandlestickChartViewController.swift */,
+				BECB29DB2C87330A00671266 /* CandlestickChartViewModel.swift */,
+				BECB29DD2C87374E00671266 /* View */,
+			);
+			path = CandlestickChart;
+			sourceTree = "<group>";
+		};
+		BECB29DD2C87374E00671266 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				BECB29D22C8722C500671266 /* CandlestickChartView.swift */,
-				BECB29D42C8723FF00671266 /* CandlestickRepresentable.swift */,
 			);
-			path = CandlestickChart;
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -438,10 +452,11 @@
 			files = (
 				8EB5062A2C81917C00AA060D /* PostDetailTableView.swift in Sources */,
 				8EB5062C2C8191C000AA060D /* PostDetailPostTVCell.swift in Sources */,
+				BECB29DC2C87330A00671266 /* CandlestickChartViewModel.swift in Sources */,
 				8E7233472C84607C00760D53 /* PurchaseCoinViewModel.swift in Sources */,
+				BECB29DA2C87323C00671266 /* CandlestickChartViewController.swift in Sources */,
 				8EB506252C816B0B00AA060D /* LoginViewController.swift in Sources */,
 				8EA517842C6DB0FB0029A356 /* PostListViewController.swift in Sources */,
-				BECB29D52C8723FF00671266 /* CandlestickRepresentable.swift in Sources */,
 				BEC094112C806982008AA991 /* PostDetailViewController.swift in Sources */,
 				8E72334C2C84AFE700760D53 /* SearchCoinViewModel.swift in Sources */,
 				8E72335B2C84EBD300760D53 /* Appearance.swift in Sources */,
@@ -473,6 +488,7 @@
 				8E634C532C7F927F006115E9 /* LargeButton.swift in Sources */,
 				8E7233402C84363300760D53 /* PortfolioViewModel.swift in Sources */,
 				BECB29D02C86EBD700671266 /* ProfileViewModel.swift in Sources */,
+				BECB29D72C872E6200671266 /* SearchCoinCVCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

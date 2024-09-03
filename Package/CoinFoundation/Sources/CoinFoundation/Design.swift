@@ -70,6 +70,8 @@ public enum Design {
         UIImage(systemName: "bag.fill.badge.plus")
         public static let bottomArrow =
         UIImage(systemName: "chevron.down")
+        public static let chart =
+        UIImage(systemName: "chart.bar.xaxis")
     }
 }
 #endif

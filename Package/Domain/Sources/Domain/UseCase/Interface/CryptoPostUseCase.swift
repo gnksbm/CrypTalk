@@ -48,4 +48,9 @@ public protocol CryptoPostUseCase {
     func likePost(
         post: PostResponse
     ) -> Single<PostResponse>
+    
+    func fetchChartData(
+        coinID: String,
+        days: Int
+    ) -> Single<[ChartDataResponse]>
 }

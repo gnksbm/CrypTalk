@@ -1,13 +1,13 @@
 //
 //  CandlestickRepresentable.swift
-//  Coin
+//  
 //
 //  Created by gnksbm on 9/3/24.
 //
 
 import Foundation
 
-protocol CandlestickRepresentable {
+public protocol CandlestickRepresentable {
     typealias Price = Double
     
     var date: Date { get }
@@ -17,7 +17,7 @@ protocol CandlestickRepresentable {
     var closingPrice: Price { get }
 }
 
-extension CandlestickRepresentable {
+public extension CandlestickRepresentable {
     var dailyRange: Price {
         highestPrice - lowestPrice
     }
@@ -38,7 +38,7 @@ extension CandlestickRepresentable {
     }
 }
 
-extension Array<CandlestickRepresentable> {
+public extension Array<CandlestickRepresentable> {
     var chartOpeingPrice: Element.Price? {
         self.first?.openingPrice
     }
@@ -52,7 +52,8 @@ extension Array<CandlestickRepresentable> {
     }
 }
 
-enum CandleKind {
+public enum CandleKind {
     case white, dodge, black
 }
+
 

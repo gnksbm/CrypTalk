@@ -22,7 +22,8 @@ final class CoinListViewModel: ViewModelType {
     func transform(input: Input, disposeBag: inout DisposeBag) -> Output {
         let output = Output(
             marketCap: PublishSubject(), 
-            startPostFlow: input.itemSelected
+            startPostFlow: input.itemSelected,
+            startChartFlow: PublishSubject()
         )
         
         disposeBag.insert {
@@ -32,6 +33,14 @@ final class CoinListViewModel: ViewModelType {
                     vm.useCase.fetchCryptoCurrencies(page: 1)
                 }
                 .bind(to: output.marketCap)
+            
+            input.chartButtonTapEvent
+                .withUnretained(self)
+                .flatMap { vm, response in
+                    vm.useCase.fetchChartData(coinID: response.id, days: 1)
+                        .map { (response.name, $0)}
+                }
+                .bind(to: output.startChartFlow)
         }
         
         return output
@@ -41,10 +50,13 @@ extension CoinListViewModel {
     struct Input { 
         let viewWillAppearEvent: Observable<Void>
         let itemSelected: Observable<CryptoCurrencyResponse>
+        let chartButtonTapEvent: Observable<CryptoCurrencyResponse>
     }
     
     struct Output { 
         let marketCap: PublishSubject<[CryptoCurrencyResponse]>
         let startPostFlow: Observable<CryptoCurrencyResponse>
+        let startChartFlow:
+        PublishSubject<(title: String, items: [ChartDataResponse])>
     }
 }

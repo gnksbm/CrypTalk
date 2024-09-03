@@ -12,6 +12,7 @@ import Domain
 
 import Kingfisher
 import Neat
+import RxSwift
 import SnapKit
 
 final class CoinListCVCell: BaseCVCell, RegistrableCell {
@@ -22,8 +23,15 @@ final class CoinListCVCell: BaseCVCell, RegistrableCell {
             cell.iconImageView.kf.setImage(with: item.imageURL)
             cell.nameLabel.text = item.name
             cell.priceLabel.text = item.price.formatted(.currency(code: "krw"))
+            cell.chartButton.rx.tap
+                .map { _ in item }
+                .bind(to: cell.chartButtonTapEvent)
+                .disposed(by: cell.disposeBag)
         }
     }
+    
+    let chartButtonTapEvent = PublishSubject<CryptoCurrencyResponse>()
+    var disposeBag = DisposeBag()
     
     private let rankLabel = UILabel()
     private let iconImageView = UIImageView().nt.configure {
@@ -31,13 +39,22 @@ final class CoinListCVCell: BaseCVCell, RegistrableCell {
             .clipsToBounds(true)
     }
     private let nameLabel = UILabel()
+    private let chartButton = UIButton().nt.configure {
+        $0.setImage(Design.ImageLiteral.chart, for: .normal)
+    }
     private let priceLabel = UILabel()
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = DisposeBag()
+    }
     
     override func configureLayout() {
         [
             rankLabel,
             iconImageView,
             nameLabel,
+            chartButton,
             priceLabel
         ].forEach { contentView.addSubview($0) }
         
@@ -65,6 +82,12 @@ final class CoinListCVCell: BaseCVCell, RegistrableCell {
             make.centerY.equalTo(iconImageView)
             make.leading.greaterThanOrEqualTo(nameLabel.snp.trailing)
                 .offset(Design.Padding.regular)
+            make.trailing.equalTo(chartButton.snp.leading)
+                .offset(-Design.Padding.regular)
+        }
+        
+        chartButton.snp.makeConstraints { make in
+            make.centerY.equalTo(iconImageView)
             make.trailing.equalTo(contentView)
                 .inset(Design.Padding.regular)
         }
