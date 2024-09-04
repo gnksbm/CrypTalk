@@ -9,12 +9,12 @@ import Foundation
 
 public struct PostResponse: Hashable {
     public let postID: String
-    public let writter: User
+    public var writter: User
     public let createdAt: Date
     public let content: String
     public let direction: MarketDirection
     public var likerIDs: [String]
-    public let comments: [CommentResponse]
+    public var comments: [CommentResponse]
     public var isLikedPost = false
     
     public init(

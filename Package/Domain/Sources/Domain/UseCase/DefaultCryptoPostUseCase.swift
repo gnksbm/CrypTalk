@@ -16,6 +16,7 @@ enum CryptoPostError: Error {
 }
 
 public final class DefaultCryptoPostUseCase: CryptoPostUseCase {
+    @Injected private var profileRepository: ProfileRepository
     @Injected private var postRepository: PostRepository
     @Injected private var commentRepository: CommentRepository
     @Injected private var cryptoCurrencyRepository: CryptoCurrencyRepository
@@ -44,17 +45,45 @@ public final class DefaultCryptoPostUseCase: CryptoPostUseCase {
         guard let userID else {
             return .error(CryptoPostError.canNotFindUserID)
         }
-        return postRepository.readPostWithID(
+        return AuthRequestRetrier(
             request: ReadPostWithIDRequest(
                 accessToken: accessToken,
                 postID: postID
             )
-        )
-        .map { 
+        ) { request in
+            self.postRepository.readPostWithID(
+                request: ReadPostWithIDRequest(
+                    accessToken: accessToken,
+                    postID: postID
+                )
+            )
+        }
+        .execute()
+        .asObservable()
+        .withUnretained(self)
+        .flatMap { useCase, response in
+            useCase.replaceImage(
+                item: response,
+                accessToken: accessToken
+            )
+            .flatMap { response in
+                useCase.replaceImages(
+                    items: response.comments,
+                    accessToken: accessToken
+                )
+                .map { comments in
+                    var copy = response
+                    copy.comments = comments
+                    return response
+                }
+            }
+        }
+        .map {
             var copy = $0
             copy.updateLike(userID: userID)
             return copy
         }
+        .asSingle()
     }
     
     public func fetchCryptoCurrency(
@@ -102,6 +131,12 @@ public final class DefaultCryptoPostUseCase: CryptoPostUseCase {
                 }
         }
         .execute()
+        .asObservable()
+        .withUnretained(self)
+        .flatMap { useCase, items in
+            useCase.replaceImages(items: items, accessToken: accessToken)
+        }
+        .asSingle()
     }
     
     public func addPost(
@@ -239,6 +274,16 @@ public final class DefaultCryptoPostUseCase: CryptoPostUseCase {
         .execute()
     }
     
+    public func fetchChartData(
+        coinID: String,
+        days: Int
+    ) -> Single<[ChartDataResponse]> {
+        cryptoCurrencyRepository.readChartData(
+            coinID: coinID,
+            days: days
+        )
+    }
+    
     private func uploadImage(imageData: [Data]) -> Single<UploadImageResponse> {
         guard !imageData.isEmpty else {
             return .just(UploadImageResponse(imagePaths: []))
@@ -257,13 +302,77 @@ public final class DefaultCryptoPostUseCase: CryptoPostUseCase {
         .execute()
     }
     
-    public func fetchChartData(
-        coinID: String,
-        days: Int
-    ) -> Single<[ChartDataResponse]> {
-        cryptoCurrencyRepository.readChartData(
-            coinID: coinID,
-            days: days
+    private func replaceImage(
+        item: PostResponse,
+        accessToken: String
+    ) -> Observable<PostResponse> {
+        if let additionalPath = item.writter.profileImagePath {
+            return profileRepository.readImage(
+                request: ReadImageReuqest(
+                    accessToken: accessToken,
+                    additionalPath: additionalPath
+                )
+            )
+            .asObservable()
+            .map { data in
+                var copy = item
+                copy.writter.imageData = data
+                return copy
+            }
+        } else {
+            return .just(item)
+        }
+    }
+    
+    private func replaceImages(
+        items: [PostResponse],
+        accessToken: String
+    ) -> Observable<[PostResponse]> {
+        Observable.zip(
+            items.map { item in
+                if let additionalPath = item.writter.profileImagePath {
+                    return profileRepository.readImage(
+                        request: ReadImageReuqest(
+                            accessToken: accessToken,
+                            additionalPath: additionalPath
+                        )
+                    )
+                    .asObservable()
+                    .map { data in
+                        var copy = item
+                        copy.writter.imageData = data
+                        return copy
+                    }
+                } else {
+                    return .just(item)
+                }
+            }
+        )
+    }
+    
+    private func replaceImages(
+        items: [CommentResponse],
+        accessToken: String
+    ) -> Observable<[CommentResponse]> {
+        Observable.zip(
+            items.map { item in
+                if let additionalPath = item.writter.profileImagePath {
+                    return profileRepository.readImage(
+                        request: ReadImageReuqest(
+                            accessToken: accessToken,
+                            additionalPath: additionalPath
+                        )
+                    )
+                    .asObservable()
+                    .map { data in
+                        var copy = item
+                        copy.writter.imageData = data
+                        return copy
+                    }
+                } else {
+                    return .just(item)
+                }
+            }
         )
     }
 }

@@ -104,8 +104,8 @@ final class PostDetailPostTVCell: BaseTVCell {
     }
     
     func configureCell(item: PostResponse) {
-        if let path = item.writter.profileImagePath {
-            profileImageView.kf.setImage(with: URL(string: path))
+        if let data = item.writter.imageData {
+            profileImageView.image = UIImage(data: data)
         }
         nicknameButton.setTitle(
             item.writter.nickname,

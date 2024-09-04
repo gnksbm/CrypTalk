@@ -11,9 +11,14 @@ public struct CommentResponse: Hashable {
     public let id: String
     public let comment: String
     public let createdAt: Date
-    public let writter: User
+    public var writter: User
     
-    public init(id: String, comment: String, createdAt: Date, writter: User) {
+    public init(
+        id: String,
+        comment: String,
+        createdAt: Date,
+        writter: User
+    ) {
         self.id = id
         self.comment = comment
         self.createdAt = createdAt

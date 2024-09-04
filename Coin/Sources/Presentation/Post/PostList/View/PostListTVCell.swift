@@ -131,8 +131,8 @@ final class PostListTVCell: BaseTVCell {
     }
     
     func configureCell(item: PostResponse) {
-        if let path = item.writter.profileImagePath {
-            profileImageView.kf.setImage(with: URL(string: path))
+        if let data = item.writter.imageData {
+            profileImageView.image = UIImage(data: data)
         }
         nicknameLabel.text = item.writter.nickname
         directionLabel.text = item.direction.toString

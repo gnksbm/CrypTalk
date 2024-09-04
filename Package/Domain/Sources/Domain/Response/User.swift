@@ -10,7 +10,8 @@ import Foundation
 public struct User: Hashable {
     public let id: String
     public let nickname: String
-    public let profileImagePath: String?
+    let profileImagePath: String?
+    public var imageData: Data?
     
     public init(id: String, nickname: String, profileImagePath: String?) {
         self.id = id
