@@ -37,6 +37,7 @@ final class AddPostViewController: BaseViewController, ViewType {
     init(viewModel: AddPostViewModel) {
         super.init()
         self.viewModel = viewModel
+        configureContentTextView()
     }
     
     func bind(viewModel: AddPostViewModel) {
@@ -104,5 +105,16 @@ final class AddPostViewController: BaseViewController, ViewType {
             make.horizontalEdges.bottom.equalTo(safeArea)
                 .inset(Design.Padding.regular)
         }
+    }
+    
+    private func configureContentTextView() {
+        let tapGesture = UITapGestureRecognizer()
+        view.addGestureRecognizer(tapGesture)
+        tapGesture.rx.event
+            .withUnretained(self)
+            .bind { vc, _ in
+                vc.contentTextView.endEditing(true)
+            }
+            .disposed(by: disposeBag)
     }
 }

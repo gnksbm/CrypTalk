@@ -35,17 +35,25 @@ final class PostListHeaderView: BaseView {
     private let priceLabel = UILabel().nt.configure {
         $0.textColor(Design.Color.foreground)
             .textAlignment(.right)
+            .font(.systemFont(ofSize: 24, weight: .medium))
     }
     private let rateLabel = UILabel().nt.configure {
         $0.textColor(Design.Color.foreground)
             .textAlignment(.right)
+            .font(.systemFont(ofSize: 20, weight: .bold))
     }
     
     func updateView(response: CryptoCurrencyResponse) {
         iconImageView.kf.setImage(with: response.imageURL)
-        titleButton.configuration?.title = response.name
-        priceLabel.text = response.price.formatted(.currency(code: "KRW"))
+        titleButton.configuration?.attributedTitle = AttributedString(
+            response.name,
+            attributes: AttributeContainer([
+                .font: UIFont.systemFont(ofSize: 26, weight: .medium),
+            ])
+        )
+        priceLabel.text = response.price.formatted() + "원"
         rateLabel.text = response.rateToString
+        rateLabel.textColor = response.rate.toForegroundColorForNumeric
     }
     
     override func configureLayout() {
@@ -65,7 +73,7 @@ final class PostListHeaderView: BaseView {
         titleButton.snp.makeConstraints { make in
             make.centerY.equalTo(iconImageView)
             make.leading.equalTo(iconImageView.snp.trailing)
-                .offset(Design.Padding.regular)
+//                .offset(Design.Padding.regular)
         }
         
         priceLabel.snp.makeConstraints { make in

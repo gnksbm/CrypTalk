@@ -9,10 +9,10 @@ import UIKit
 import PhotosUI
 
 import CoinFoundation
+import Domain
 
 import SnapKit
 import Neat
-
 import RxSwift
 
 final class ProfileViewController: BaseViewController, ViewType {
@@ -21,7 +21,8 @@ final class ProfileViewController: BaseViewController, ViewType {
         $0.clipsToBounds(true)
             .setImage(UIImage(systemName: "plus"), for: .normal)
     }
-    private let doneButton = UIBarButtonItem(systemItem: .done)
+    private let doneButton = UIBarButtonItem(title: "완료")
+    private let logoutButton = UIBarButtonItem(title: "로그아웃")
     private lazy var photoView = PHPickerViewController(
         configuration: {
             var config = PHPickerConfiguration()
@@ -43,7 +44,8 @@ final class ProfileViewController: BaseViewController, ViewType {
                 viewWillAppearEvent: viewWillAppearEvent,
                 imageButtonTapEvent: profileButton.rx.tap.asObservable(),
                 selectedImage: imageSelectedEvent.asObservable(),
-                updateButtonTapEvent: doneButton.rx.tap.asObservable()
+                updateButtonTapEvent: doneButton.rx.tap.asObservable(), 
+                logoutButtonTapEvent: logoutButton.rx.tap.asObservable()
             ),
             disposeBag: &disposeBag
         )
@@ -58,6 +60,15 @@ final class ProfileViewController: BaseViewController, ViewType {
                     vc.present(
                         vc.photoView,
                         animated: true
+                    )
+                }
+            
+            output.startLoginFlow
+                .bind(with: self) { vc, _ in
+                    vc.view.window?.rootViewController = LoginViewController(
+                        viewModel: LoginViewModel(
+                            authUseCase: DefaultAuthUseCase()
+                        )
                     )
                 }
             
@@ -88,7 +99,7 @@ final class ProfileViewController: BaseViewController, ViewType {
     }
     
     override func configureNavigation() {
-        navigationItem.rightBarButtonItem = doneButton
+        navigationItem.rightBarButtonItems = [logoutButton, doneButton]
     }
 }
 

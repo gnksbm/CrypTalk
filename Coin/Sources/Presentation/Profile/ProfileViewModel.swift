@@ -13,9 +13,14 @@ import Domain
 import RxSwift
 
 final class ProfileViewModel: ViewModelType {
+    private let authUseCase: AuthUseCase
     private let profileUseCase: ProfileUseCase
     
-    init(profileUseCase: ProfileUseCase) {
+    init(
+        authUseCase: AuthUseCase,
+        profileUseCase: ProfileUseCase
+    ) {
+        self.authUseCase = authUseCase
         self.profileUseCase = profileUseCase
     }
     
@@ -24,6 +29,7 @@ final class ProfileViewModel: ViewModelType {
             profile: PublishSubject(),
             profileImage: PublishSubject(),
             startPhotoFlow: input.imageButtonTapEvent,
+            startLoginFlow: PublishSubject(),
             finishFlow: PublishSubject()
         )
         
@@ -78,6 +84,13 @@ final class ProfileViewModel: ViewModelType {
                 }
                 .map { _ in }
                 .bind(to: output.finishFlow)
+            
+            input.logoutButtonTapEvent
+                .withUnretained(self)
+                .flatMap { vm, _ in
+                    vm.authUseCase.logout()
+                }
+                .bind(to: output.startLoginFlow)
         }
         
         return output
@@ -90,12 +103,14 @@ extension ProfileViewModel {
         let imageButtonTapEvent: Observable<Void>
         let selectedImage: Observable<Data?>
         let updateButtonTapEvent: Observable<Void>
+        let logoutButtonTapEvent: Observable<Void>
     }
     
     struct Output {
         let profile: PublishSubject<ProfileResponse>
         let profileImage: PublishSubject<Data>
         let startPhotoFlow: Observable<Void>
+        let startLoginFlow: PublishSubject<Void>
         let finishFlow: PublishSubject<Void>
     }
 }

@@ -28,4 +28,6 @@ public protocol AuthUseCase {
     func requestRefreshToken() -> Single<Bool>
     
     func withdraw() -> Single<Bool>
+    
+    func logout() -> Single<Void>
 }

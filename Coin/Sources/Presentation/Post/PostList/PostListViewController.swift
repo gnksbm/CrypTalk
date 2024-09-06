@@ -136,6 +136,7 @@ final class PostListViewController: BaseViewController, ViewType {
                     vc.navigationController?.pushViewController(
                         ProfileViewController(
                             viewModel: ProfileViewModel(
+                                authUseCase: DefaultAuthUseCase(), 
                                 profileUseCase: DefaultProfileUseCase()
                             )
                         ),

@@ -94,4 +94,11 @@ public final class DefaultAuthUseCase: AuthUseCase {
         )
         .toResult()
     }
+    
+    public func logout() -> Single<Void> {
+        accessToken = nil
+        refreshToken = nil
+        userID = nil
+        return Single.just(())
+    }
 }

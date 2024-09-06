@@ -28,6 +28,10 @@ final class CoinListViewModel: ViewModelType {
         
         disposeBag.insert {
             input.viewWillAppearEvent
+                .throttle(
+                    .seconds(360),
+                    scheduler: MainScheduler.instance
+                )
                 .withUnretained(self)
                 .flatMap { vm, _ in
                     vm.useCase.fetchCryptoCurrencies(page: 1)

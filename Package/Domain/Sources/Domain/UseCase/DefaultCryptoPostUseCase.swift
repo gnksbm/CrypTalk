@@ -10,6 +10,7 @@ import Foundation
 import CoinFoundation
 
 import RxSwift
+import UIKit
 
 enum CryptoPostError: Error {
     case missingAccessToken, failureParseMarketDirection, canNotFindUserID
@@ -319,6 +320,7 @@ public final class DefaultCryptoPostUseCase: CryptoPostUseCase {
                 copy.writter.imageData = data
                 return copy
             }
+            .catchAndReturn(item)
         } else {
             return .just(item)
         }
@@ -338,11 +340,13 @@ public final class DefaultCryptoPostUseCase: CryptoPostUseCase {
                         )
                     )
                     .asObservable()
+                    
                     .map { data in
                         var copy = item
                         copy.writter.imageData = data
                         return copy
                     }
+                    .catchAndReturn(item)
                 } else {
                     return .just(item)
                 }
@@ -369,6 +373,7 @@ public final class DefaultCryptoPostUseCase: CryptoPostUseCase {
                         copy.writter.imageData = data
                         return copy
                     }
+                    .catchAndReturn(item)
                 } else {
                     return .just(item)
                 }
