@@ -7,7 +7,7 @@
 
 | 시장 요약 | 주식 상세 | 캔들 차트 | 검색 |
 | --- | --- | --- | --- |
-|![Simulator Screenshot - iPhone 15 Pro Max - 2024-09-09 at 14 51 22](https://github.com/user-attachments/assets/1f5e35df-312a-46d8-a4a0-17410de56e79)|![Simulator Screenshot - iPhone 15 Pro Max - 2024-09-09 at 14 53 06](https://github.com/user-attachments/assets/36c9cea3-7e84-4ec3-96fd-74a3f193d2f4)|![Simulator Screenshot - iPhone 15 Pro Max - 2024-09-09 at 14 53 27](https://github.com/user-attachments/assets/1665993c-34cc-4c7d-b9cf-4dbf76cafe53)|![Simulator Screenshot - iPhone 15 Pro Max - 2024-09-09 at 14 54 47](https://github.com/user-attachments/assets/d4a09455-614d-4a59-ab4d-24c5b6d78745)|
+|![Simulator Screenshot - iPhone 15 Pro - 2024-09-04 at 16 54 55](https://github.com/user-attachments/assets/bd9deebf-1c8a-43f8-b04a-cd7bff642bd2)|![Simulator Screenshot - iPhone 15 Pro - 2024-09-04 at 17 10 30](https://github.com/user-attachments/assets/66493781-a37a-41eb-8a72-e44f473089c9)|![Simulator Screenshot - iPhone 15 Pro - 2024-09-04 at 16 55 13](https://github.com/user-attachments/assets/c96f291d-e18c-476c-8f6f-7df9484837b4)|![Simulator Screenshot - iPhone 15 Pro - 2024-09-04 at 17 12 26](https://github.com/user-attachments/assets/5d77e4e6-c576-40ce-b7d0-52d348184cb5)|
 
 ### 핵심기능
 - 회원 인증(회원가입/로그인/토큰 갱신)
