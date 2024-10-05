@@ -52,7 +52,9 @@ final class PostListTVCell: BaseTVCell {
             .clipsToBounds(true)
             .backgroundColor(Design.Color.secondary)
     }
-    private let nicknameLabel = UILabel()
+    private let nicknameLabel = UILabel().nt.configure {
+        $0.textAlignment(.left)
+    }
     private let directionLabel = UILabel()
     private let contentLabel = UILabel().nt.configure {
         $0.numberOfLines(3)
@@ -110,7 +112,7 @@ final class PostListTVCell: BaseTVCell {
         contentLabel.snp.makeConstraints { make in
             make.top.equalTo(profileImageView.snp.bottom)
                 .offset(Design.Padding.regular)
-            make.leading.equalTo(profileImageView)
+            make.leading.equalTo(nicknameLabel)
             make.trailing.equalTo(directionLabel)
         }
         
