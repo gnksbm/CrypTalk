@@ -13,11 +13,13 @@ import Foundation
 final class MockPostRepository: PostRepository {
     private let mockImage = UploadImageResponse(imagePaths: ["test"])
     private let mockPost = PostResponse(
+        postID: "",
         writter: User(
             id: "",
             nickname: "test",
             profileImagePath: ""
         ),
+        createdAt: .now,
         content: "",
         direction: .decrease,
         likerIDs: [],

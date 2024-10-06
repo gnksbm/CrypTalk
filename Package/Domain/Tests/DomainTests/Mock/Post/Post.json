@@ -24,7 +24,10 @@
     "hashTags": ["개발", "iOS"],
     "comments": [
         {
-            "comment_id": "65c9e2adf3b6e32c930a994c", "content": " ... ??", "createdAt": "2024-02-12T09:19:41.962Z", "creator": {
+            "comment_id": "65c9e2adf3b6e32c930a994c", 
+            "content": " ... ??",
+            "createdAt": "2024-02-12T09:19:41.962Z",
+            "creator": {
                 "user_id": "65c9aa6932b0964405117d97",
                 "nick": " ",
                 "profileImage": "uploads/profiles/1707716853682.png"

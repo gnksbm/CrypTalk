@@ -67,7 +67,6 @@ final class PostListViewModel: ViewModelType {
                 .bind { responses in
                     output.cryptoPostResponse.onNext(responses)
                 }
-            
             input.plusButtonTapEvent
                 .withLatestFrom(output.cryptoCurrency)
                 .map { $0.name }

@@ -1,0 +1,335 @@
+{
+    "data": [
+        {
+            "post_id": "6e76f4c1-6425-41ec-aced-4bb6d3452e8d",
+            "content": "최근 비트코인 반감기 소식으로 가격이 하락할 것 같아요. 어떻게 생각하세요?",
+            "product_id": null,
+            "title": "비트코인 가격 전망 66",
+            "content1": "\"decrease\"",
+            "content2": null,
+            "content3": null,
+            "content4": null,
+            "content5": null,
+            "createdAt": "2024-09-30T14:34:38.000Z",
+            "creator": {
+                "user_id": "a0790706-3956-429a-8416-94ad9cb57ad8",
+                "nick": "하늘빛"
+            },
+            "files": [
+                "https://example.com/image2.jpg"
+            ],
+            "likes": [
+                "d1e5e9ff-1ee4-4a80-baed-49b96562c7c9",
+                "59a9b0bb-9942-4fbb-871c-b36064d28185",
+                "c47d3a86-f996-4ba8-ab79-93f70e40f91a"
+            ],
+            "likes2": [
+                "766e107c-ed32-4e82-9cfb-2b3ec5848f46"
+            ],
+            "hashTags": [
+                "Bitcoin"
+            ],
+            "comments": [
+                {
+                    "comment_id": "8dcd42f3-c39e-4881-a830-52164b9ee9e2",
+                    "content": "반감기 때마다 가격이 어떻게 움직였는지 분석해봐야겠네요.",
+                    "createdAt": "2024-09-24T14:34:38.000Z",
+                    "creator": {
+                        "user_id": "cb3ed2bf-496b-42a6-b71b-00eceb156e89",
+                        "nick": "별사탕"
+                    }
+                },
+                {
+                    "comment_id": "5d32d765-4c06-4c78-8c4e-211e8474a43f",
+                    "content": "과거 반감기 후에는 상승세였던 것 같은데 이번엔 다를까?",
+                    "createdAt": "2024-09-13T14:34:38.000Z",
+                    "creator": {
+                        "user_id": "af37cb25-be55-4da2-b7c3-350e1b05e627",
+                        "nick": "산책러"
+                    }
+                },
+                {
+                    "comment_id": "98236542-fb2b-4f96-846e-0963ec807d34",
+                    "content": "이번 반감기는 시장 상황이 달라서 하락할 수도 있을 것 같아요.",
+                    "createdAt": "2024-09-29T14:34:38.000Z",
+                    "creator": {
+                        "user_id": "11c934a4-39b6-4e15-b6b3-0d46eac3a58f",
+                        "nick": "코인마스터"
+                    }
+                }
+            ]
+        },
+        {
+            "post_id": "b5d2266f-a1b5-4e8c-8576-567ba433f345",
+            "content": "최근 비트코인 규제 완화 소식에 가격이 오를 것 같아요! 여러분의 생각은?",
+            "product_id": null,
+            "title": "비트코인 가격 전망 63",
+            "content1": "\"increase\"",
+            "content2": null,
+            "content3": null,
+            "content4": null,
+            "content5": null,
+            "createdAt": "2024-09-29T14:34:38.000Z",
+            "creator": {
+                "user_id": "f125920f-3fb8-4a12-ba7a-426eddabbc6b",
+                "nick": "별무리"
+            },
+            "files": [
+                "https://example.com/image3.jpg"
+            ],
+            "likes": [
+                "cf209866-b3eb-42b2-a455-b868fc7b38f2",
+                "a5c2d3c8-f6fb-4633-8791-36d07a4ac6d5",
+                "f397b00e-f647-4f0b-a094-44d305d3ab84",
+                "86bf7c46-e876-4acc-be6a-b38d86990c89"
+            ],
+            "likes2": [
+                "647717ba-73b8-4ff3-81ba-fe0d745eab23",
+                "62604bf6-123c-44d6-ba5c-46f30dacdc34",
+                "facc2ed6-3b8c-4d6a-b9b3-6d4e88228746",
+                "7354ebc3-c1c2-437d-abe3-693553abc309"
+            ],
+            "hashTags": [
+                "Bitcoin"
+            ],
+            "comments": [
+                {
+                    "comment_id": "4c8f524f-3aa6-4ca0-8691-8f08f953bda9",
+                    "content": "규제 완화는 큰 영향을 줄 것 같아요. 긍정적입니다!",
+                    "createdAt": "2024-09-17T14:34:38.000Z",
+                    "creator": {
+                        "user_id": "7217182e-9329-4250-bae7-a54d0523b625",
+                        "nick": "달빛소나타"
+                    }
+                },
+                {
+                    "comment_id": "c0d106a9-a447-4fbb-9986-07de020f17ca",
+                    "content": "규제가 완화되면 더 많은 사람들이 참여할 것 같아요.",
+                    "createdAt": "2024-09-29T14:34:38.000Z",
+                    "creator": {
+                        "user_id": "8774f3d2-62d6-4a44-98d5-979cf876355b",
+                        "nick": "솔라플레이"
+                    }
+                },
+                {
+                    "comment_id": "407f847f-3e46-41e3-89f3-c97a11b510d5",
+                    "content": "규제 완화가 실질적으로 어떤 변화를 가져올지 궁금하네요.",
+                    "createdAt": "2024-10-01T14:34:38.000Z",
+                    "creator": {
+                        "user_id": "287b5062-db0c-4cc9-a95a-b262f59805f9",
+                        "nick": "바람의노래"
+                    }
+                },
+                {
+                    "comment_id": "f9d793cb-47d9-4562-947b-7287b9696944",
+                    "content": "규제 완화 덕분에 비트코인 접근성이 높아질 것 같아요!",
+                    "createdAt": "2024-09-08T14:34:38.000Z",
+                    "creator": {
+                        "user_id": "d25517ef-7334-4436-b8fa-d7c8b5006b07",
+                        "nick": "별빛소녀"
+                    }
+                }
+            ]
+        },
+        {
+            "post_id": "9e4ac3d1-df93-4eb6-a6c3-a9ba806ee5d0",
+            "content": "최근 시장 회복세 덕분에 비트코인 가격이 계속 오를 것 같아요!",
+            "product_id": null,
+            "title": "비트코인 가격 전망 56",
+            "content1": "\"increase\"",
+            "content2": null,
+            "content3": null,
+            "content4": null,
+            "content5": null,
+            "createdAt": "2024-09-30T14:34:38.000Z",
+            "creator": {
+                "user_id": "5e21b1a3-b440-457e-b35c-26cdd792a999",
+                "nick": "별무리"
+            },
+            "files": [
+                "https://example.com/image2.jpg"
+            ],
+            "likes": [
+                "3f11bcc3-c68d-4c51-b3b9-58eade93108f",
+                "9d2ec727-a8fc-48b3-be83-b98bbc666e4d"
+            ],
+            "likes2": [],
+            "hashTags": [
+                "Bitcoin"
+            ],
+            "comments": [
+                {
+                    "comment_id": "7b86d18b-1f64-404e-a923-a011ff85d3a9",
+                    "content": "응, 최근 오르는 추세가 확실하네요!",
+                    "createdAt": "2024-09-22T14:34:38.000Z",
+                    "creator": {
+                        "user_id": "ab220204-9412-4afb-8e7a-6bf531afea5d",
+                        "nick": "달빛소나타"
+                    }
+                },
+                {
+                    "comment_id": "555e6230-f3cc-4379-a4d3-618dc1795efb",
+                    "content": "계속 오를 것 같아서 투자 늘리려구요.",
+                    "createdAt": "2024-10-03T14:34:38.000Z",
+                    "creator": {
+                        "user_id": "1f12017e-6c03-47aa-a779-ab53727cad4c",
+                        "nick": "바람의노래"
+                    }
+                },
+                {
+                    "comment_id": "129e1b05-79c1-46fa-9247-07f0ce757df2",
+                    "content": "가격 상승세가 지속될 것 같아요!",
+                    "createdAt": "2024-10-01T14:34:38.000Z",
+                    "creator": {
+                        "user_id": "24d030cb-304e-4411-b5aa-535657689758",
+                        "nick": "솔라플레이"
+                    }
+                },
+                {
+                    "comment_id": "5f9f0bed-f325-4756-a9f2-ee73c6d027cc",
+                    "content": "비트코인 오르는 거 보니까 저도 포지션 늘려야겠어요.",
+                    "createdAt": "2024-09-30T14:34:38.000Z",
+                    "creator": {
+                        "user_id": "f21dce29-1065-4a06-ad48-1d7b3d5cf20e",
+                        "nick": "바람의노래"
+                    }
+                }
+            ]
+        },
+        {
+            "post_id": "617539d1-983a-459f-8fd3-2491da99310e",
+            "content": "경제 지표가 좋아지면서 비트코인 가격이 더 오를 것 같아요!",
+            "product_id": null,
+            "title": "비트코인 가격 전망 87",
+            "content1": "\"increase\"",
+            "content2": null,
+            "content3": null,
+            "content4": null,
+            "content5": null,
+            "createdAt": "2024-09-23T14:34:38.000Z",
+            "creator": {
+                "user_id": "f5399b8c-d492-469a-baa8-1109d757f009",
+                "nick": "별무리"
+            },
+            "files": [
+                "https://example.com/image1.jpg"
+            ],
+            "likes": [
+                "2cfa4ee1-c561-44d7-91c6-9d617401b1e8",
+                "f1aad758-9f31-4c9f-9333-33377e0c52af",
+                "40405385-229c-41ba-a8e1-c3d8e6992260",
+                "a515e55b-1317-4ece-a665-cd23502e9daa"
+            ],
+            "likes2": [
+                "cac92c98-1109-45a8-8953-838dc2f2b901",
+                "2479baf8-2895-4ddf-b850-58e36801e036",
+                "2488f13e-db08-40d2-a961-124f59db6d85"
+            ],
+            "hashTags": [
+                "Bitcoin"
+            ],
+            "comments": [
+                {
+                    "comment_id": "f83bdbc6-c3a4-437b-8e26-00cf8531556b",
+                    "content": "경제 지표가 좋아지니까 비트코인도 힘을 얻는 것 같아요!",
+                    "createdAt": "2024-09-26T14:34:38.000Z",
+                    "creator": {
+                        "user_id": "72438d50-8067-4d63-bcd3-ff28ae07ce58",
+                        "nick": "하늘빛"
+                    }
+                },
+                {
+                    "comment_id": "58227032-437e-421d-8a96-cc7bbcf27dd3",
+                    "content": "비트코인 상승 계속 기대됩니다!",
+                    "createdAt": "2024-09-08T14:34:38.000Z",
+                    "creator": {
+                        "user_id": "ed353f34-12d2-4866-b336-3a53a47890c0",
+                        "nick": "산책러"
+                    }
+                },
+                {
+                    "comment_id": "9759493a-7e91-4c0e-a23c-bfdcdda6e679",
+                    "content": "비트코인 계속 오르는 거 보니까 저도 투자 늘려야겠어요.",
+                    "createdAt": "2024-09-11T14:34:38.000Z",
+                    "creator": {
+                        "user_id": "1a4cf49e-677e-4965-a4bb-2156a9407bf1",
+                        "nick": "솔라플레이"
+                    }
+                },
+                {
+                    "comment_id": "099148ae-e947-4654-8e0a-979ea785f04c",
+                    "content": "비트코인 가격 상승에 정말 기대가 큽니다!",
+                    "createdAt": "2024-09-25T14:34:38.000Z",
+                    "creator": {
+                        "user_id": "9a5cf4e3-44fc-4703-91d6-c37c529eb702",
+                        "nick": "별빛소나타"
+                    }
+                }
+            ]
+        },
+        {
+            "post_id": "4c1693bf-5da7-4933-8348-271ada06e1d9",
+            "content": "비트코인 시장이 안정되면서 가격이 계속 오를 것 같아요! 최근 기술 업데이트도 긍정적이네요.",
+            "product_id": null,
+            "title": "비트코인 가격 전망 57",
+            "content1": "\"increase\"",
+            "content2": null,
+            "content3": null,
+            "content4": null,
+            "content5": null,
+            "createdAt": "2024-09-23T14:34:38.000Z",
+            "creator": {
+                "user_id": "1b6611d7-2442-4435-bff8-adac82134840",
+                "nick": "산책러"
+            },
+            "files": [
+                "https://example.com/image5.jpg"
+            ],
+            "likes": [],
+            "likes2": [
+                "48d768f5-5df3-4942-94db-884cdc4a2ae5"
+            ],
+            "hashTags": [
+                "Bitcoin"
+            ],
+            "comments": [
+                {
+                    "comment_id": "b35855f6-6400-41a8-a70f-f35fb82be85e",
+                    "content": "가격 오르는 거 보니까 좋네요!",
+                    "createdAt": "2024-09-11T14:34:38.000Z",
+                    "creator": {
+                        "user_id": "e7eae03c-259d-4544-be93-e4f3f741b095",
+                        "nick": "별빛소나타"
+                    }
+                },
+                {
+                    "comment_id": "6db59dab-432c-471c-92fd-09b5064fffdd",
+                    "content": "비트코인 계속 오를 것 같아요. 투자 타이밍 최고!",
+                    "createdAt": "2024-09-22T14:34:38.000Z",
+                    "creator": {
+                        "user_id": "5c2bb53f-9ebd-4b55-89ae-83111c2e16f7",
+                        "nick": "별무리"
+                    }
+                },
+                {
+                    "comment_id": "85a598c8-243d-4f64-a05d-fad28672f88e",
+                    "content": "비트코인 가격이 계속 오를 것 같아요. 기대됩니다!",
+                    "createdAt": "2024-09-28T14:34:38.000Z",
+                    "creator": {
+                        "user_id": "9c085df5-ad5b-45cf-a6f1-e5487ae7a308",
+                        "nick": "하늘빛"
+                    }
+                },
+                {
+                    "comment_id": "922d6ef4-b10b-4e51-97f6-291cd1d81f52",
+                    "content": "비트코인 가격 상승에 정말 기대돼요!",
+                    "createdAt": "2024-10-03T14:34:38.000Z",
+                    "creator": {
+                        "user_id": "385f325a-54ca-47b3-b5ee-62128f4ed0d1",
+                        "nick": "솔라플레이"
+                    }
+                }
+            ]
+        }
+    ]
+}
