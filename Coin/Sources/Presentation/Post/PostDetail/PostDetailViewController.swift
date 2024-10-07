@@ -25,24 +25,24 @@ final class PostDetailViewController: BaseViewController, ViewType {
         string: "의견을 남겨보세요",
         attributes: [
             .font: textViewFont,
-            .foregroundColor: Design.Color.secondary
+            .foregroundColor: Design.Color.whiteForeground
         ]
     )
     
     private lazy var tableView = PostDetailTableView().nt.configure {
-        $0.backgroundColor(Design.Color.clear)
+        $0.backgroundColor(Design.Color.background)
             .register(PostDetailPostTVCell.self)
             .register(PostDetailCommentTVCell.self)
             .delegate(self)
     }
     private lazy var commentTextView = UITextView().nt.configure {
         $0.attributedText(textViewPlaceholder)
-            .backgroundColor(Design.Color.clear)
+            .backgroundColor(Design.Color.background)
             .delegate(self)
     }
     private let commentBackgroundView = UIView().nt.configure {
         $0.layer.cornerRadius(Design.Radius.regular)
-            .backgroundColor(Design.Color.gray2)
+            .backgroundColor(Design.Color.background)
     }
     private lazy var commentDoneButton = UIButton(
         configuration: .plain()
@@ -54,7 +54,7 @@ final class PostDetailViewController: BaseViewController, ViewType {
             .configurationUpdateHandler(
                 { button in
                     button.tintColor = button.isEnabled ?
-                    Design.Color.secondary : Design.Color.gray1
+                    Design.Color.lightGray : Design.Color.background
                 }
             )
             .isEnabled(false)
@@ -176,7 +176,7 @@ extension PostDetailViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.attributedText == textViewPlaceholder {
             textView.text.removeAll()
-            textView.textColor = Design.Color.secondary
+            textView.textColor = Design.Color.lightGray
         }
     }
     
@@ -195,7 +195,7 @@ extension PostDetailViewController: UITableViewDelegate {
         switch PostDetailSection.allCases[section] {
         case .post:
             UIView().nt.configure {
-                $0.backgroundColor(Design.Color.gray1)
+                $0.backgroundColor(Design.Color.background)
             }
         case .comment:
             nil

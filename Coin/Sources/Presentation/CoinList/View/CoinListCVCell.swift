@@ -33,20 +33,34 @@ final class CoinListCVCell: BaseCVCell, RegistrableCell {
     let chartButtonTapEvent = PublishSubject<CryptoCurrencyResponse>()
     var disposeBag = DisposeBag()
     
-    private let rankLabel = UILabel()
+    private let rankLabel = UILabel().nt.configure {
+        $0.textColor(Design.Color.whiteForeground)
+            .font(Design.Font.title)
+    }
     private let iconImageView = UIImageView().nt.configure {
         $0.layer.cornerRadius(Design.Dimension.symbolSize / 2)
             .clipsToBounds(true)
     }
-    private let nameLabel = UILabel()
-    private let chartButton = UIButton().nt.configure {
-        $0.setImage(Design.ImageLiteral.chart, for: .normal)
+    private let nameLabel = UILabel().nt.configure {
+        $0.textColor(Design.Color.whiteForeground)
+            .font(Design.Font.heading)
     }
-    private let priceLabel = UILabel()
+    private let chartButton = UIButton(configuration: .plain()).nt.configure {
+        $0.configuration.image(Design.ImageLiteral.chart)
+            .configuration.baseForegroundColor(Design.Color.lightPink)
+    }
+    private let priceLabel = UILabel().nt.configure {
+        $0.textColor(Design.Color.whiteForeground)
+            .font(Design.Font.body2)
+    }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         disposeBag = DisposeBag()
+    }
+    
+    override func configureUI() {
+        contentView.backgroundColor = Design.Color.background
     }
     
     override func configureLayout() {

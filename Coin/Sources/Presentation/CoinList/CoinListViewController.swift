@@ -20,6 +20,7 @@ final class CoinListViewController: BaseViewController, ViewType {
                     .textAlignment(.center)
             }
         )
+        .backgroundColor(Design.Color.background)
     }
     
     init(viewModel: CoinListViewModel) {

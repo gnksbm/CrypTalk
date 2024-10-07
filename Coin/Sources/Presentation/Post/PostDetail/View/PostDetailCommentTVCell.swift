@@ -20,11 +20,11 @@ final class PostDetailCommentTVCell: BaseTVCell {
     private let profileImageView = UIImageView().nt.configure {
         $0.layer.cornerRadius(Design.Dimension.symbolSize / 2)
             .clipsToBounds(true)
-            .backgroundColor(Design.Color.secondary)
+            .backgroundColor(Design.Color.background)
     }
     private let nicknameButton = UIButton().nt.configure {
         $0.setTitleColor(
-            Design.Color.foreground,
+            Design.Color.whiteForeground,
             for: .normal
         )
     }

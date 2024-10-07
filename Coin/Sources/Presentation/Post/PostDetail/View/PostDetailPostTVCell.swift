@@ -21,7 +21,7 @@ final class PostDetailPostTVCell: BaseTVCell {
     private let profileImageView = UIImageView().nt.configure {
         $0.layer.cornerRadius(Design.Dimension.symbolSize / 2)
             .clipsToBounds(true)
-            .backgroundColor(Design.Color.secondary)
+            .backgroundColor(Design.Color.background)
             .setContentCompressionResistancePriority(
                 .required,
                 for: .vertical
@@ -29,7 +29,7 @@ final class PostDetailPostTVCell: BaseTVCell {
     }
     private let nicknameButton = UIButton().nt.configure {
         $0.setTitleColor(
-            Design.Color.foreground,
+            Design.Color.whiteForeground,
             for: .normal
         )
     }
@@ -43,7 +43,7 @@ final class PostDetailPostTVCell: BaseTVCell {
     private let contentLabel = UILabel()
     private let likeButton = UIButton(configuration: .plain()).nt.configure {
         $0.configuration.image(UIImage(systemName: "heart"))
-            .configuration.baseForegroundColor(Design.Color.red)
+            .configuration.baseForegroundColor(Design.Color.orangeAccent)
     }
     
     override func prepareForReuse() {

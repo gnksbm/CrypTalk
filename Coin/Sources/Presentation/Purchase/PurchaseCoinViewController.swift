@@ -25,7 +25,7 @@ final class PurchaseCoinViewController: BaseViewController, ViewType {
     }
     private let titleButton = UIButton(configuration: .plain()).nt.configure {
         $0.configuration.titleAlignment(.leading)
-            .configuration.baseForegroundColor(Design.Color.foreground)
+            .configuration.baseForegroundColor(Design.Color.whiteForeground)
             .setContentCompressionResistancePriority(
                 .required,
                 for: .horizontal

@@ -34,7 +34,7 @@ open class BaseViewController: UIViewController {
     open func configureLayout() { }
     open func configureNavigation() { }
     private func configureDefaultUI() {
-        view.backgroundColor = Design.Color.background
+        view.backgroundColor = Design.Color.blackBackground
     }
 }
 #endif

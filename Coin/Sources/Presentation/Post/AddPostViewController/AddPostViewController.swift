@@ -17,18 +17,18 @@ import Neat
 final class AddPostViewController: BaseViewController, ViewType {
     private let directionTitleLabel = UILabel().nt.configure {
         $0.text("의견")
-            .textColor(Design.Color.foreground)
+            .textColor(Design.Color.whiteForeground)
     }
     private let directionPicker = UIPickerView().nt.configure {
         $0
     }
     private let contentTitleLabel = UILabel().nt.configure {
         $0.text("내용")
-            .textColor(Design.Color.foreground)
+            .textColor(Design.Color.whiteForeground)
     }
     private let contentTextView = UITextView().nt.configure {
         $0.backgroundColor(Design.Color.background)
-            .textColor(Design.Color.foreground)
+            .textColor(Design.Color.darkText)
             .layer.cornerRadius(Design.Radius.regular)
             .layer.borderWidth(1)
     }

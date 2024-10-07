@@ -12,9 +12,9 @@ public extension Double {
     var toForegroundColorForNumeric: UIColor? {
         switch self {
         case ..<0:
-            return Design.Color.tint
+            return Design.Color.blue
         case 0:
-            return Design.Color.foreground
+            return Design.Color.whiteForeground
         default:
             return Design.Color.red
         }

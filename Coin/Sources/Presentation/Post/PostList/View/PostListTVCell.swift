@@ -22,7 +22,7 @@ extension MarketDirection {
         case .increase:
             Design.Color.red
         case .decrease:
-            Design.Color.tint
+            Design.Color.blue
         }
     }
     
@@ -41,36 +41,98 @@ final class PostListTVCell: BaseTVCell {
     let commentButtonTapEvent = PublishSubject<PostResponse>()
     var disposeBag = DisposeBag()
     
-    private let cardBackgroundView = UIView().nt.configure {
-        $0.layer.cornerRadius(Design.Radius.regular)
-            .clipsToBounds(true)
-            .backgroundColor(Design.Color.gray1)
-    }
+    private let cardBackgroundView: UIView = {
+        let view = UIView()
+        view.backgroundColor = Design.Color.lightGray.withAlphaComponent(0.1)
+        view.layer.cornerRadius = Design.Radius.regular
+        view.layer.shadowColor = Design.Color.background.cgColor
+        view.layer.shadowOpacity = 0.1
+        view.layer.shadowOffset = CGSize(width: 0, height: 2)
+        view.layer.shadowRadius = 4
+        return view
+    }()
     
-    private let profileImageView = UIImageView().nt.configure {
-        $0.layer.cornerRadius(Design.Dimension.symbolSize / 2)
-            .clipsToBounds(true)
-            .backgroundColor(Design.Color.secondary)
-    }
-    private let nicknameLabel = UILabel().nt.configure {
-        $0.textAlignment(.left)
-    }
-    private let directionLabel = UILabel()
-    private let contentLabel = UILabel().nt.configure {
-        $0.numberOfLines(3)
-    }
-    private let likeButton = UIButton(configuration: .plain()).nt.configure {
-        $0.configuration.image(UIImage(systemName: "heart"))
-            .configuration.baseForegroundColor(Design.Color.red)
-    }
-    private let commentButton = UIButton(configuration: .plain()).nt.configure {
-        $0.configuration.image(UIImage(systemName: "bubble.right"))
-            .configuration.baseForegroundColor(Design.Color.tint)
-    }
+    private let profileImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.layer.cornerRadius = Design.Dimension.symbolSize / 2
+        imageView.clipsToBounds = true
+        imageView.backgroundColor = Design.Color.background
+        imageView.contentMode = .scaleAspectFill
+        return imageView
+    }()
+    
+    private let nicknameLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.font = Design.Font.title
+        label.textColor = Design.Color.whiteForeground
+        label.accessibilityLabel = "닉네임"
+        return label
+    }()
+    
+    private let dateLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.font = Design.Font.body2
+        label.textColor = Design.Color.whiteForeground
+        label.accessibilityLabel = "날짜"
+        return label
+    }()
+    
+    private let directionLabel: UILabel = {
+        let label = UILabel()
+        label.font = Design.Font.body2
+        label.textColor = Design.Color.whiteForeground
+        label.accessibilityLabel = "방향"
+        return label
+    }()
+    
+    private let contentLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0 // 다중 라인 지원
+        label.font = Design.Font.body1
+        label.textColor = Design.Color.whiteForeground
+        label.accessibilityLabel = "콘텐츠"
+        return label
+    }()
+    
+    private let likeButton = {
+        let button = UIButton(configuration: .bordered())
+        button.setTitle(" 0", for: .normal)
+        button.titleLabel?.font = Design.Font.caption
+        button.configuration?.baseForegroundColor = Design.Color.red
+        button.configuration?.preferredSymbolConfigurationForImage =
+        UIImage.SymbolConfiguration(font: Design.Font.caption)
+        button.contentHorizontalAlignment = .leading
+        button.configuration?.cornerStyle = .capsule
+        button.accessibilityLabel = "좋아요 버튼"
+        button.setContentCompressionResistancePriority(
+            .required,
+            for: .horizontal
+        )
+        return button
+    }()
+    
+    private let commentButton: UIButton = {
+        let button = UIButton(configuration: .plain())
+        button.setTitle(" 0", for: .normal) // 텍스트와 이미지 간 공백 추가
+        button.configuration?.image = UIImage(systemName: "bubble.fill")
+        button.configuration?.baseForegroundColor = Design.Color.whiteForeground
+        button.configuration?.preferredSymbolConfigurationForImage =
+        UIImage.SymbolConfiguration(font: Design.Font.caption)
+        button.contentHorizontalAlignment = .leading
+        button.configuration?.cornerStyle = .capsule
+        button.accessibilityLabel = "댓글 버튼"
+        return button
+    }()
     
     override func prepareForReuse() {
         super.prepareForReuse()
         disposeBag = DisposeBag()
+    }
+    
+    override func configureUI() {
+        contentView.backgroundColor = Design.Color.background
     }
     
     override func configureLayout() {
@@ -78,6 +140,7 @@ final class PostListTVCell: BaseTVCell {
         [
             profileImageView,
             nicknameLabel,
+            dateLabel,
             directionLabel,
             contentLabel,
             likeButton,
@@ -86,7 +149,7 @@ final class PostListTVCell: BaseTVCell {
         
         cardBackgroundView.snp.makeConstraints { make in
             make.edges.equalTo(contentView)
-                .inset(Design.Padding.regular)
+                .inset(Design.Padding.small)
         }
         
         profileImageView.snp.makeConstraints { make in
@@ -101,9 +164,15 @@ final class PostListTVCell: BaseTVCell {
                 .offset(Design.Padding.regular)
         }
         
-        directionLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(profileImageView)
+        dateLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(nicknameLabel)
             make.leading.equalTo(nicknameLabel.snp.trailing)
+                .offset(Design.Padding.regular)
+        }
+        
+        directionLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(nicknameLabel)
+            make.leading.greaterThanOrEqualTo(dateLabel.snp.trailing)
                 .offset(Design.Padding.regular)
             make.trailing.equalTo(cardBackgroundView)
                 .inset(Design.Padding.regular)
@@ -112,7 +181,8 @@ final class PostListTVCell: BaseTVCell {
         contentLabel.snp.makeConstraints { make in
             make.top.equalTo(profileImageView.snp.bottom)
                 .offset(Design.Padding.regular)
-            make.leading.equalTo(nicknameLabel)
+            make.leading.equalTo(profileImageView)
+                .offset(Design.Padding.small)
             make.trailing.equalTo(directionLabel)
         }
         
@@ -121,14 +191,13 @@ final class PostListTVCell: BaseTVCell {
                 .offset(Design.Padding.regular)
             make.bottom.equalTo(cardBackgroundView)
                 .inset(Design.Padding.regular)
+            make.trailing.equalTo(cardBackgroundView)
+                .inset(Design.Padding.regular)
         }
         
         commentButton.snp.makeConstraints { make in
             make.centerY.equalTo(likeButton)
-            make.leading.equalTo(likeButton.snp.trailing)
-                .offset(Design.Padding.regular)
-            make.trailing.equalTo(cardBackgroundView)
-                .inset(Design.Padding.regular)
+            make.leading.equalTo(profileImageView)
         }
     }
     
@@ -137,13 +206,16 @@ final class PostListTVCell: BaseTVCell {
             profileImageView.image = UIImage(data: data)
         }
         nicknameLabel.text = item.writter.nickname
+        dateLabel.text = item.createdAt.relativeFormat
         directionLabel.text = item.direction.toString
         directionLabel.textColor = item.direction.color
         contentLabel.text = item.content
-        likeButton.configuration?.title = item.likerIDs.count.formatted()
-        commentButton.configuration?.title = item.comments.count.formatted()
-        likeButton.configuration?.image = item.isLikedPost ?
-        UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
+        likeButton.configuration?.title = " \(item.likerIDs.count)"
+        likeButton.configuration?.image =
+            item.isLikedPost ?
+            UIImage(systemName: "heart.fill")?.withTintColor(.red) :
+            UIImage(systemName: "heart.fill")?.withTintColor(.white)
+        commentButton.setTitle(" \(item.comments.count)", for: .normal)
         disposeBag.insert {
             likeButton.rx.tap
                 .map { _ in item }

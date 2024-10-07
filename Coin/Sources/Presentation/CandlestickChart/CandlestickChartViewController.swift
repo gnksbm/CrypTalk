@@ -14,7 +14,7 @@ final class CandlestickChartViewController: BaseViewController, ViewType {
         $0.appearance(
             .init(
                 whiteCandleColor: Design.Color.red,
-                blackCandleColor: Design.Color.tint,
+                blackCandleColor: Design.Color.blue,
                 backgroundColor: Design.Color.background
             )
         )

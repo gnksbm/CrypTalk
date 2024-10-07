@@ -12,42 +12,87 @@ import Domain
 
 import RxSwift
 import SnapKit
-import Neat
 
 final class PostListViewController: BaseViewController, ViewType {
     private let pageChangeEvent = BehaviorSubject(value: 0)
     
-    private let profileButton = UIBarButtonItem(
-        image: UIImage(systemName: "person")
-    )
-    private let plusButton = UIBarButtonItem(systemItem: .add)
-    private let headerView = PostListHeaderView()
-    private lazy var tableView = PostListTableView().nt.configure {
-        $0.tableHeaderView(headerView)
-            .backgroundColor(Design.Color.clear)
-            .register(PostListTVCell.self)
-            .separatorStyle(.none)
-            .emptyView(
-                UILabel().nt.configure {
-                    $0.text("등록된 게시글이 없습니다")
-                        .textAlignment(.center)
-                }
-            )
-    }
+    private let profileButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(
+            image: UIImage(systemName: "person"),
+            style: .plain,
+            target: nil,
+            action: nil
+        )
+        button.tintColor = Design.Color.whiteForeground // 버튼 색상 정의
+        button.accessibilityLabel = "프로필 버튼"
+        return button
+    }()
+
+    private let plusButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(systemItem: .add)
+        button.tintColor = Design.Color.whiteForeground // 색상 변경
+        button.accessibilityLabel = "추가 버튼"
+        return button
+    }()
+    
+    private lazy var tableView: PostListTableView = {
+        let tableView = PostListTableView()
+        tableView.backgroundColor = Design.Color.background
+        tableView.register(
+            PostListCoinCell.self,
+            forCellReuseIdentifier: String(describing: PostListCoinCell.self)
+        )
+        tableView.register(
+            PostListTVCell.self,
+            forCellReuseIdentifier: String(describing: PostListTVCell.self)
+        )
+        tableView.separatorStyle = .none
+        let emptyLabel = UILabel()
+        emptyLabel.text = Design.StringLiteral.emptyPostMessage
+        emptyLabel.textAlignment = .center
+        emptyLabel.font = Design.Font.body1
+        emptyLabel.textColor = Design.Color.background
+        emptyLabel.accessibilityLabel = "등록된 게시글이 없습니다"
+        tableView.emptyView = emptyLabel
+        
+        return tableView
+    }()
     
     init(viewModel: PostListViewModel) {
         super.init()
         self.viewModel = viewModel
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureNavigation()
+        configureLayout()
+    }
+    
     func bind(viewModel: PostListViewModel) {
         let output = viewModel.transform(
             input: PostListViewModel.Input(
-                viewWillAppearEvent: viewWillAppearEvent, 
+                viewWillAppearEvent: viewWillAppearEvent,
                 pageChangeEvent: pageChangeEvent,
-                plusButtonTapEvent: plusButton.rx.tap.asObservable(), 
-                titleTapEvent: headerView.titleTapEvent.asObservable(),
-                cellTapEvent: tableView.tapEvent,
+                plusButtonTapEvent: plusButton.rx.tap.asObservable(),
+                titleTapEvent: tableView.tapEvent.compactMap(
+                    { item in
+                    switch item {
+                    case .coin:
+                        return
+                    case .post(let item):
+                        break
+                    } }
+                ),
+                cellTapEvent: tableView.tapEvent.compactMap(
+                    { item in
+                    switch item {
+                    case .coin:
+                        return nil
+                    case .post(let item):
+                        return item
+                    } }
+                ),
                 likeButtonTapEvent: tableView.likeButtonTapEvent,
                 commentButtonTapEvent: tableView.commentButtonTapEvent,
                 profileButtonTapEvent: profileButton.rx.tap.asObservable()
@@ -59,63 +104,63 @@ final class PostListViewController: BaseViewController, ViewType {
             output.cryptoCurrency
                 .withUnretained(self)
                 .bind { vc, response in
-                    vc.headerView.updateView(response: response)
+                    vc.tableView.appendItem(
+                        for: .header,
+                        items: [.coin(response)]
+                    )
                 }
             
             output.cryptoPostResponse
                 .withUnretained(self)
                 .bind { vc, items in
-                    vc.tableView.applyItem(
-                        items: items,
-                        withAnimating: false
+                    vc.tableView.appendItem(
+                        for: .post,
+                        items: items.map({ .post($0) })
                     )
                 }
             
             output.likeChanged
                 .withUnretained(self)
                 .bind { vc, changedResponse in
-                    vc.tableView.updateItems(
-                        [changedResponse],
-                        withAnimating: false
-                    )
+//                    vc.tableView.updateItems(
+//                        [changedResponse],
+//                        withAnimating: false
+//                    )
                 }
             
             output.startAddFlow
                 .withUnretained(self)
                 .bind { vc, cryptoName in
-                    vc.navigationController?.pushViewController(
-                        AddPostViewController(
-                            viewModel: AddPostViewModel(
-                                cryptoName: cryptoName,
-                                cryptoPostUseCase: DefaultCryptoPostUseCase()
-                            )
-                        ),
-                        animated: true
+                    let addPostVC = AddPostViewController(
+                        viewModel: AddPostViewModel(
+                            cryptoName: cryptoName,
+                            cryptoPostUseCase: DefaultCryptoPostUseCase()
+                        )
                     )
+                    vc.navigationController?.pushViewController(addPostVC, animated: true)
                 }
             
             output.startDetailFlow
                 .withUnretained(self)
                 .bind { vc, response in
-                    vc.navigationController?.pushViewController(
-                        PostDetailViewController(
-                            viewModel: PostDetailViewModel(
-                                cryptoPostUseCase: DefaultCryptoPostUseCase(),
-                                response: response
-                            )
-                        ),
-                        animated: true
+                    let detailVC = PostDetailViewController(
+                        viewModel: PostDetailViewModel(
+                            cryptoPostUseCase: DefaultCryptoPostUseCase(),
+                            response: response
+                        )
                     )
+                    vc.navigationController?.pushViewController(detailVC, animated: true)
                 }
             
             output.startLoginFlow
                 .withUnretained(self)
                 .bind { vc, _ in
-                    vc.view.window?.rootViewController = LoginViewController(
+                    let loginVC = LoginViewController(
                         viewModel: LoginViewModel(
                             authUseCase: DefaultAuthUseCase()
                         )
                     )
+                    vc.view.window?.rootViewController = loginVC
                 }
             
             output.startSearchFlow
@@ -125,43 +170,42 @@ final class PostListViewController: BaseViewController, ViewType {
                         viewType: .dismiss
                     )
                     searchViewModel.delegate = viewModel
-                    vc.navigationController?.pushViewController(
-                        SearchCoinViewController(viewModel: searchViewModel),
-                        animated: true
-                    )
+                    let searchVC = SearchCoinViewController(viewModel: searchViewModel)
+                    vc.navigationController?.pushViewController(searchVC, animated: true)
                 }
             
             output.startProfileFlow
                 .bind(with: self) { vc, _ in
-                    vc.navigationController?.pushViewController(
-                        ProfileViewController(
-                            viewModel: ProfileViewModel(
-                                authUseCase: DefaultAuthUseCase(), 
-                                profileUseCase: DefaultProfileUseCase()
-                            )
-                        ),
-                        animated: true
+                    let profileVC = ProfileViewController(
+                        viewModel: ProfileViewModel(
+                            authUseCase: DefaultAuthUseCase(),
+                            profileUseCase: DefaultProfileUseCase()
+                        )
                     )
+                    vc.navigationController?.pushViewController(profileVC, animated: true)
                 }
         }
     }
     
     override func configureLayout() {
         [tableView].forEach { view.addSubview($0) }
-        headerView.translatesAutoresizingMaskIntoConstraints = false
         
         tableView.snp.makeConstraints { make in
             make.edges.equalTo(safeArea)
         }
-        
-        headerView.snp.makeConstraints { make in
-            make.width.equalTo(tableView)
-        }
     }
     
     override func configureNavigation() {
-        navigationItem.leftBarButtonItem = profileButton
-        navigationItem.rightBarButtonItem = plusButton
+        navigationItem.rightBarButtonItems = [profileButton, plusButton]
         navigationItem.title = Design.StringLiteral.postTab
+        navigationController?.navigationBar.titleTextAttributes = [
+            .font: Design.Font.title,
+            .foregroundColor: Design.Color.whiteForeground
+        ]
+        navigationController?.navigationBar.barTintColor = Design.Color.whiteForeground
+        navigationController?.navigationBar.isTranslucent = false
+        
+        // 네비게이션 바의 그림자 제거
+        navigationController?.navigationBar.shadowImage = UIImage()
     }
 }
