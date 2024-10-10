@@ -29,7 +29,7 @@ final class PostDetailPostTVCell: BaseTVCell {
     }
     private let nicknameButton = UIButton().nt.configure {
         $0.setTitleColor(
-            Design.Color.whiteForeground,
+            Design.Color.foreground,
             for: .normal
         )
     }
@@ -42,7 +42,7 @@ final class PostDetailPostTVCell: BaseTVCell {
     private let directionLabel = UILabel()
     private let contentLabel = UILabel()
     private let likeButton = UIButton(configuration: .plain()).nt.configure {
-        $0.configuration.image(UIImage(systemName: "heart"))
+        $0.configuration.image(Design.ImageLiteral.heart)
             .configuration.baseForegroundColor(Design.Color.orangeAccent)
     }
     
@@ -116,8 +116,10 @@ final class PostDetailPostTVCell: BaseTVCell {
         directionLabel.textColor = item.direction.color
         contentLabel.text = item.content
         likeButton.configuration?.title = item.likerIDs.count.formatted()
-        likeButton.configuration?.image = item.isLikedPost ?
-        UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
+        likeButton.configuration?.imageColorTransformer = UIConfigurationColorTransformer { color in
+            item.isLikedPost ?
+            Design.Color.red : Design.Color.foreground
+        }
         disposeBag.insert {
             likeButton.rx.tap
                 .map { _ in item }

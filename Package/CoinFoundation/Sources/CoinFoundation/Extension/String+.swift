@@ -14,7 +14,7 @@ public extension Double {
         case ..<0:
             return Design.Color.blue
         case 0:
-            return Design.Color.whiteForeground
+            return Design.Color.foreground
         default:
             return Design.Color.red
         }

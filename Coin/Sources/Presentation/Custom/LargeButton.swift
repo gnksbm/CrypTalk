@@ -27,7 +27,7 @@ extension UIButton {
                     AttributedString(
                         title,
                         attributes: AttributeContainer([
-                            .foregroundColor: Design.Color.blackBackground
+                            .foregroundColor: Design.Color.foreground
                         ])
                     )
                 )
@@ -35,7 +35,7 @@ extension UIButton {
                     switch button.state {
                     case .disabled:
                         button.configuration?.baseBackgroundColor =
-                        Design.Color.deepPurple
+                        Design.Color.disable
                     default:
                         button.configuration?.baseBackgroundColor =
                         Design.Color.orangeAccent

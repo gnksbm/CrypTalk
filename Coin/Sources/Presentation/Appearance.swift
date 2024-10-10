@@ -26,10 +26,10 @@ enum Appearance {
         UINavigationBar.appearance().standardAppearance = appearance
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
 
-        UINavigationBar.appearance().tintColor = Design.Color.whiteForeground
+        UINavigationBar.appearance().tintColor = Design.Color.foreground
         UINavigationBar.appearance().titleTextAttributes = [
             .font: Design.Font.heading,
-            .foregroundColor: Design.Color.whiteForeground
+            .foregroundColor: Design.Color.foreground
         ]
     }
     
@@ -41,7 +41,7 @@ enum Appearance {
         appearance.backgroundColor = Design.Color.background
         UITabBar.appearance().standardAppearance = appearance
         UITabBar.appearance().scrollEdgeAppearance = appearance
-        UITabBar.appearance().tintColor = Design.Color.whiteForeground
+        UITabBar.appearance().tintColor = Design.Color.foreground
     }
 }
 

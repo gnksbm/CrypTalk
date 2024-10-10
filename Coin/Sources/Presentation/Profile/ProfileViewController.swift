@@ -19,7 +19,7 @@ final class ProfileViewController: BaseViewController, ViewType {
     private let imageSelectedEvent = PublishSubject<Data?>()
     private let profileButton = UIButton().nt.configure {
         $0.clipsToBounds(true)
-            .setImage(UIImage(systemName: "plus"), for: .normal)
+            .setImage(Design.ImageLiteral.plus, for: .normal)
     }
     private let doneButton = UIBarButtonItem(title: "완료")
     private let logoutButton = UIBarButtonItem(title: "로그아웃")

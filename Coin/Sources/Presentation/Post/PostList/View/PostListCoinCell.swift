@@ -21,7 +21,7 @@ final class PostListCoinCell: BaseTVCell {
     
     private let cardBackgroundView: UIView = {
         let view = UIView()
-        view.backgroundColor = Design.Color.lightGray.withAlphaComponent(0.1)
+        view.backgroundColor = Design.Color.background.withAlphaComponent(0.1)
         view.layer.cornerRadius = Design.Radius.regular
         view.layer.shadowColor = Design.Color.background.cgColor
         view.layer.shadowOpacity = 0.1
@@ -40,7 +40,7 @@ final class PostListCoinCell: BaseTVCell {
     
     private let titleButton = UIButton(configuration: .plain()).nt.configure {
         $0.configuration.titleAlignment(.leading)
-            .configuration.baseForegroundColor(Design.Color.lightText)
+            .configuration.baseForegroundColor(Design.Color.foreground)
             .setContentCompressionResistancePriority(
                 .required,
                 for: .horizontal
@@ -51,13 +51,13 @@ final class PostListCoinCell: BaseTVCell {
     }
     
     private let priceLabel = UILabel().nt.configure {
-        $0.textColor(Design.Color.whiteForeground) // 텍스트 색상 변경
+        $0.textColor(Design.Color.foreground) // 텍스트 색상 변경
             .textAlignment(.right)
             .font(.systemFont(ofSize: 22, weight: .semibold)) // 폰트 사이즈와 굵기 변경
     }
     
     private let rateLabel = UILabel().nt.configure {
-        $0.textColor(Design.Color.whiteForeground) // 텍스트 색상 변경
+        $0.textColor(Design.Color.foreground) // 텍스트 색상 변경
             .textAlignment(.left) // 텍스트 정렬을 왼쪽으로 변경
             .font(.systemFont(ofSize: 18, weight: .medium)) // 폰트 크기와 굵기 조정
     }

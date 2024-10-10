@@ -43,7 +43,7 @@ final class PostListTVCell: BaseTVCell {
     
     private let cardBackgroundView: UIView = {
         let view = UIView()
-        view.backgroundColor = Design.Color.lightGray.withAlphaComponent(0.1)
+        view.backgroundColor = Design.Color.background.withAlphaComponent(0.1)
         view.layer.cornerRadius = Design.Radius.regular
         view.layer.shadowColor = Design.Color.background.cgColor
         view.layer.shadowOpacity = 0.1
@@ -65,7 +65,7 @@ final class PostListTVCell: BaseTVCell {
         let label = UILabel()
         label.textAlignment = .left
         label.font = Design.Font.title
-        label.textColor = Design.Color.whiteForeground
+        label.textColor = Design.Color.foreground
         label.accessibilityLabel = "닉네임"
         return label
     }()
@@ -74,7 +74,7 @@ final class PostListTVCell: BaseTVCell {
         let label = UILabel()
         label.textAlignment = .left
         label.font = Design.Font.body2
-        label.textColor = Design.Color.whiteForeground
+        label.textColor = Design.Color.foreground
         label.accessibilityLabel = "날짜"
         return label
     }()
@@ -82,7 +82,7 @@ final class PostListTVCell: BaseTVCell {
     private let directionLabel: UILabel = {
         let label = UILabel()
         label.font = Design.Font.body2
-        label.textColor = Design.Color.whiteForeground
+        label.textColor = Design.Color.foreground
         label.accessibilityLabel = "방향"
         return label
     }()
@@ -91,7 +91,7 @@ final class PostListTVCell: BaseTVCell {
         let label = UILabel()
         label.numberOfLines = 0 // 다중 라인 지원
         label.font = Design.Font.body1
-        label.textColor = Design.Color.whiteForeground
+        label.textColor = Design.Color.foreground
         label.accessibilityLabel = "콘텐츠"
         return label
     }()
@@ -100,6 +100,7 @@ final class PostListTVCell: BaseTVCell {
         let button = UIButton(configuration: .bordered())
         button.setTitle(" 0", for: .normal)
         button.titleLabel?.font = Design.Font.caption
+        button.configuration?.image = Design.ImageLiteral.heart
         button.configuration?.baseForegroundColor = Design.Color.red
         button.configuration?.preferredSymbolConfigurationForImage =
         UIImage.SymbolConfiguration(font: Design.Font.caption)
@@ -116,8 +117,8 @@ final class PostListTVCell: BaseTVCell {
     private let commentButton: UIButton = {
         let button = UIButton(configuration: .plain())
         button.setTitle(" 0", for: .normal) // 텍스트와 이미지 간 공백 추가
-        button.configuration?.image = UIImage(systemName: "bubble.fill")
-        button.configuration?.baseForegroundColor = Design.Color.whiteForeground
+        button.configuration?.image = Design.ImageLiteral.chat
+        button.configuration?.baseForegroundColor = Design.Color.foreground
         button.configuration?.preferredSymbolConfigurationForImage =
         UIImage.SymbolConfiguration(font: Design.Font.caption)
         button.contentHorizontalAlignment = .leading
@@ -211,10 +212,10 @@ final class PostListTVCell: BaseTVCell {
         directionLabel.textColor = item.direction.color
         contentLabel.text = item.content
         likeButton.configuration?.title = " \(item.likerIDs.count)"
-        likeButton.configuration?.image =
+        likeButton.configuration?.imageColorTransformer = UIConfigurationColorTransformer { color in
             item.isLikedPost ?
-            UIImage(systemName: "heart.fill")?.withTintColor(.red) :
-            UIImage(systemName: "heart.fill")?.withTintColor(.white)
+            Design.Color.red : Design.Color.foreground
+        }
         commentButton.setTitle(" \(item.comments.count)", for: .normal)
         disposeBag.insert {
             likeButton.rx.tap

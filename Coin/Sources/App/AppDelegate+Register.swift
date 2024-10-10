@@ -25,7 +25,7 @@ extension AppDelegate {
             FakePortfolioRepository(),
             type: PortfolioRepository.self
         )
-        #elseif DEBUG
+        #else
         DIContainer.register(DefaultPostRepository(), type: PostRepository.self)
         DIContainer.register(
             DefaultProfileRepository(),

@@ -25,7 +25,7 @@ final class PostDetailViewController: BaseViewController, ViewType {
         string: "의견을 남겨보세요",
         attributes: [
             .font: textViewFont,
-            .foregroundColor: Design.Color.whiteForeground
+            .foregroundColor: Design.Color.foreground
         ]
     )
     
@@ -54,7 +54,7 @@ final class PostDetailViewController: BaseViewController, ViewType {
             .configurationUpdateHandler(
                 { button in
                     button.tintColor = button.isEnabled ?
-                    Design.Color.lightGray : Design.Color.background
+                    Design.Color.orangeAccent : Design.Color.disable
                 }
             )
             .isEnabled(false)
@@ -176,7 +176,7 @@ extension PostDetailViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.attributedText == textViewPlaceholder {
             textView.text.removeAll()
-            textView.textColor = Design.Color.lightGray
+            textView.textColor = Design.Color.foreground
         }
     }
     

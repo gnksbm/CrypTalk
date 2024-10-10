@@ -24,7 +24,7 @@ final class PostDetailCommentTVCell: BaseTVCell {
     }
     private let nicknameButton = UIButton().nt.configure {
         $0.setTitleColor(
-            Design.Color.whiteForeground,
+            Design.Color.foreground,
             for: .normal
         )
     }

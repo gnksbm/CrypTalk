@@ -18,19 +18,19 @@ final class PostListViewController: BaseViewController, ViewType {
     
     private let profileButton: UIBarButtonItem = {
         let button = UIBarButtonItem(
-            image: UIImage(systemName: "person"),
+            image: Design.ImageLiteral.person,
             style: .plain,
             target: nil,
             action: nil
         )
-        button.tintColor = Design.Color.whiteForeground // 버튼 색상 정의
+        button.tintColor = Design.Color.foreground // 버튼 색상 정의
         button.accessibilityLabel = "프로필 버튼"
         return button
     }()
 
     private let plusButton: UIBarButtonItem = {
         let button = UIBarButtonItem(systemItem: .add)
-        button.tintColor = Design.Color.whiteForeground // 색상 변경
+        button.tintColor = Design.Color.foreground // 색상 변경
         button.accessibilityLabel = "추가 버튼"
         return button
     }()
@@ -200,9 +200,9 @@ final class PostListViewController: BaseViewController, ViewType {
         navigationItem.title = Design.StringLiteral.postTab
         navigationController?.navigationBar.titleTextAttributes = [
             .font: Design.Font.title,
-            .foregroundColor: Design.Color.whiteForeground
+            .foregroundColor: Design.Color.foreground
         ]
-        navigationController?.navigationBar.barTintColor = Design.Color.whiteForeground
+        navigationController?.navigationBar.barTintColor = Design.Color.foreground
         navigationController?.navigationBar.isTranslucent = false
         
         // 네비게이션 바의 그림자 제거

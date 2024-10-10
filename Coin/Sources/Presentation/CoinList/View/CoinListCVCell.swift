@@ -34,7 +34,7 @@ final class CoinListCVCell: BaseCVCell, RegistrableCell {
     var disposeBag = DisposeBag()
     
     private let rankLabel = UILabel().nt.configure {
-        $0.textColor(Design.Color.whiteForeground)
+        $0.textColor(Design.Color.foreground)
             .font(Design.Font.title)
     }
     private let iconImageView = UIImageView().nt.configure {
@@ -42,7 +42,7 @@ final class CoinListCVCell: BaseCVCell, RegistrableCell {
             .clipsToBounds(true)
     }
     private let nameLabel = UILabel().nt.configure {
-        $0.textColor(Design.Color.whiteForeground)
+        $0.textColor(Design.Color.foreground)
             .font(Design.Font.heading)
     }
     private let chartButton = UIButton(configuration: .plain()).nt.configure {
@@ -50,7 +50,7 @@ final class CoinListCVCell: BaseCVCell, RegistrableCell {
             .configuration.baseForegroundColor(Design.Color.lightPink)
     }
     private let priceLabel = UILabel().nt.configure {
-        $0.textColor(Design.Color.whiteForeground)
+        $0.textColor(Design.Color.foreground)
             .font(Design.Font.body2)
     }
     

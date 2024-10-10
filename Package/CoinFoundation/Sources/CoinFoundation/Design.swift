@@ -24,13 +24,6 @@ public enum Design {
         public static let regular: CGFloat = 12
     }
     
-    public enum Layout {
-        // 미니멀한 레이아웃을 위한 설정
-        public static let profileImageSize: CGFloat = 80
-        public static let buttonHeight: CGFloat = 48
-        public static let cardCornerRadius: CGFloat = 12
-    }
-    
     public enum Color {
         public static let colorKeys = [
             "background",
@@ -48,31 +41,24 @@ public enum Design {
         ]
         public static let allColor = [
             "background": background,
-            "lightGray": lightGray,
-            "blackBackground": blackBackground,
-            "whiteForeground": whiteForeground,
+            "whiteForeground": foreground,
             "orangeAccent": orangeAccent,
-            "deepPurple": deepPurple,
             "red": red,
             "blue": blue,
             "lightPink": lightPink,
             "softGreen": softGreen,
             "darkText": darkText,
-            "lightText": lightText
         ]
         
-        public static let background = UIColor(hex: "282828") // 다크 모드 배경색
-        public static let lightGray = UIColor(hex: "F5F5F5") // 라이트 모드 배경색
-        public static let blackBackground = UIColor(hex: "0C0C0C") // 검은색 배경
-        public static let whiteForeground = UIColor(hex: "FFFFFF") // 카드 배경 색상
-        public static let orangeAccent = UIColor(hex: "FFA500") // CTA 버튼용 오렌지색
-        public static let deepPurple = UIColor(hex: "9400D3") // 특별 이벤트 강조 색상
+        public static let foreground = UIColor(hex: "FFFFFF")
+        public static let background = UIColor(hex: "282828")
+        public static let orangeAccent = UIColor(hex: "FFA500")
         public static let red = UIColor(hex: "FF6B6B")
         public static let blue = UIColor(hex: "4A90E2")
-        public static let lightPink = UIColor(hex: "FFC0CB") // 부드러운 핑크, 세부 텍스트용
-        public static let softGreen = UIColor(hex: "00FF7F") // 긍정적인 피드백용
-        public static let darkText = UIColor(hex: "212121") // 검은 텍스트
-        public static let lightText = UIColor(hex: "FFFFFF") // 흰색 텍스트
+        public static let lightPink = UIColor(hex: "FFC0CB")
+        public static let softGreen = UIColor(hex: "00FF7F")
+        public static let darkText = UIColor(hex: "212121")
+        public static let disable = UIColor(hex: "212121")
     }
     
     public enum Font {
@@ -81,12 +67,6 @@ public enum Design {
         public static let body1 = UIFont(name: "AppleSDGothicNeo-Regular", size: 17) ?? UIFont.systemFont(ofSize: 17)
         public static let body2 = UIFont(name: "SpoqaHanSansNeo-Regular", size: 16) ?? UIFont.systemFont(ofSize: 16)
         public static let caption = UIFont(name: "NotoSansKR-Light", size: 13) ?? UIFont.systemFont(ofSize: 13)
-    }
-    
-    public enum Button {
-        public static let actionButtonHeight: CGFloat = 48
-        public static let actionButtonRadius: CGFloat = 24
-        public static let actionButtonColor = Design.Color.orangeAccent
     }
     
     public enum StringLiteral {
@@ -109,6 +89,10 @@ public enum Design {
         public static let addAsset = UIImage(systemName: "bag.fill.badge.plus")
         public static let bottomArrow = UIImage(systemName: "chevron.down")
         public static let chart = UIImage(systemName: "chart.bar.xaxis")
+        public static let plus = UIImage(systemName: "plus")
+        public static let heart = UIImage(systemName: "heart.fill")
+        public static let person = UIImage(systemName: "person")
+        public static let chat = UIImage(systemName: "bubble.fill")
     }
 }
 
