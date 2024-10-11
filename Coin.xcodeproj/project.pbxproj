@@ -37,6 +37,7 @@
 		8EA517982C6DB99E0029A356 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 8EA517972C6DB99E0029A356 /* .gitignore */; };
 		8EA5179A2C6DBA550029A356 /* .gitmessage.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8EA517992C6DBA550029A356 /* .gitmessage.txt */; };
 		8EB079FD2CB17D1B00C0F080 /* FakePostDTO.json in Resources */ = {isa = PBXBuildFile; fileRef = 8EB079FC2CB17D1B00C0F080 /* FakePostDTO.json */; };
+		8EB10DD32CB8FF520041EEC4 /* LineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB10DD22CB8FF520041EEC4 /* LineChartView.swift */; };
 		8EB506252C816B0B00AA060D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB506242C816B0B00AA060D /* LoginViewController.swift */; };
 		8EB506272C816C8600AA060D /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB506262C816C8600AA060D /* LoginViewModel.swift */; };
 		8EB5062A2C81917C00AA060D /* PostDetailTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB506292C81917C00AA060D /* PostDetailTableView.swift */; };
@@ -100,6 +101,7 @@
 		8EA517992C6DBA550029A356 /* .gitmessage.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitmessage.txt; sourceTree = "<group>"; };
 		8EA5179B2C6DBBE90029A356 /* Secret.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secret.xcconfig; sourceTree = "<group>"; };
 		8EB079FC2CB17D1B00C0F080 /* FakePostDTO.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FakePostDTO.json; sourceTree = "<group>"; };
+		8EB10DD22CB8FF520041EEC4 /* LineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartView.swift; sourceTree = "<group>"; };
 		8EB506242C816B0B00AA060D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8EB506262C816C8600AA060D /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		8EB506292C81917C00AA060D /* PostDetailTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailTableView.swift; sourceTree = "<group>"; };
@@ -294,7 +296,7 @@
 			isa = PBXGroup;
 			children = (
 				8E7233412C8455D800760D53 /* TabBarController.swift */,
-				BECB29D82C87323300671266 /* CandlestickChart */,
+				8EB10DD12CB8FF430041EEC4 /* Chart */,
 				BECB29CC2C86EB6C00671266 /* Profile */,
 				8E7233502C84DCA100760D53 /* CoinList */,
 				8E7233482C84AF8300760D53 /* Search */,
@@ -314,6 +316,15 @@
 				8EB079FC2CB17D1B00C0F080 /* FakePostDTO.json */,
 			);
 			path = Fake;
+			sourceTree = "<group>";
+		};
+		8EB10DD12CB8FF430041EEC4 /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				BECB29D82C87323300671266 /* CandlestickChart */,
+				8EB10DD22CB8FF520041EEC4 /* LineChartView.swift */,
+			);
+			path = Chart;
 			sourceTree = "<group>";
 		};
 		8EB506232C816B0500AA060D /* Login */ = {
@@ -473,6 +484,7 @@
 				8E72334C2C84AFE700760D53 /* SearchCoinViewModel.swift in Sources */,
 				8E72335B2C84EBD300760D53 /* Appearance.swift in Sources */,
 				8E7233422C8455D800760D53 /* TabBarController.swift in Sources */,
+				8EB10DD32CB8FF520041EEC4 /* LineChartView.swift in Sources */,
 				8EA517802C6DB0FB0029A356 /* AppDelegate.swift in Sources */,
 				8E7233542C84DD0000760D53 /* CoinListViewModel.swift in Sources */,
 				BEC0940B2C8051D3008AA991 /* PostListTVCell.swift in Sources */,

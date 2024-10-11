@@ -75,15 +75,7 @@ final class PostListViewController: BaseViewController, ViewType {
                 viewWillAppearEvent: viewWillAppearEvent,
                 pageChangeEvent: pageChangeEvent,
                 plusButtonTapEvent: plusButton.rx.tap.asObservable(),
-                titleTapEvent: tableView.tapEvent.compactMap(
-                    { item in
-                    switch item {
-                    case .coin:
-                        return
-                    case .post(let item):
-                        break
-                    } }
-                ),
+                titleTapEvent: tableView.titleTapEvent,
                 cellTapEvent: tableView.tapEvent.compactMap(
                     { item in
                     switch item {
@@ -104,7 +96,7 @@ final class PostListViewController: BaseViewController, ViewType {
             output.cryptoCurrency
                 .withUnretained(self)
                 .bind { vc, response in
-                    vc.tableView.appendItem(
+                    vc.tableView.replaceItem(
                         for: .header,
                         items: [.coin(response)]
                     )
@@ -113,7 +105,7 @@ final class PostListViewController: BaseViewController, ViewType {
             output.cryptoPostResponse
                 .withUnretained(self)
                 .bind { vc, items in
-                    vc.tableView.appendItem(
+                    vc.tableView.replaceItem(
                         for: .post,
                         items: items.map({ .post($0) })
                     )

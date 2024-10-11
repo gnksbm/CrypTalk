@@ -111,7 +111,7 @@ final class PostDetailPostTVCell: BaseTVCell {
             item.writter.nickname,
             for: .normal
         )
-        dateLabel.text = item.createdAt.formatted(dateFormat: .createdAtOutput)
+        dateLabel.text = item.createdAt.relativeFormat
         directionLabel.text = item.direction.toString
         directionLabel.textColor = item.direction.color
         contentLabel.text = item.content
