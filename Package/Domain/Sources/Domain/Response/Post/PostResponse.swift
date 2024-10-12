@@ -16,6 +16,7 @@ public struct PostResponse: Hashable {
     public var likerIDs: [String]
     public var comments: [CommentResponse]
     public var isLikedPost = false
+    public var imageURLs: [String]
     
     public init(
         postID: String,
@@ -24,7 +25,8 @@ public struct PostResponse: Hashable {
         content: String,
         direction: MarketDirection,
         likerIDs: [String],
-        comments: [CommentResponse]
+        comments: [CommentResponse],
+        imageURLs: [String]
     ) {
         self.postID = postID
         self.writter = writter
@@ -33,6 +35,7 @@ public struct PostResponse: Hashable {
         self.direction = direction
         self.likerIDs = likerIDs
         self.comments = comments
+        self.imageURLs = imageURLs
     }
 }
 

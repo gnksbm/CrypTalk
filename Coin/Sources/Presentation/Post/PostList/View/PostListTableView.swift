@@ -19,7 +19,7 @@ final class PostListTableView: ModernTableView<PostListSection, PostListItem> {
     
     override func createCellProvider() -> CellProvider {
         { [weak self] tableView, indexPath, item in
-            guard let self else { return PostListTVCell() }
+            guard let self else { return PostItemTVCell() }
             switch item {
             case .coin(let coin):
                 let cell = tableView.dequeueReusableCell(
@@ -41,7 +41,7 @@ final class PostListTableView: ModernTableView<PostListSection, PostListItem> {
                 return cell
             case .post(let item):
                 let cell = tableView.dequeueReusableCell(
-                    cellType: PostListTVCell.self,
+                    cellType: PostItemTVCell.self,
                     for: indexPath
                 )
                 cell.configureCell(item: item)

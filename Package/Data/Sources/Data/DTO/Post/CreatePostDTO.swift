@@ -42,7 +42,8 @@ extension CreatePostDTO {
             content: content,
             direction: direction,
             likerIDs: likes,
-            comments: comments
+            comments: comments,
+            imageURLs: files
         )
     }
     

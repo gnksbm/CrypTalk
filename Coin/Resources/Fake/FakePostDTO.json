@@ -12,11 +12,12 @@
             "content5": null,
             "createdAt": "2024-09-30T14:34:38.000Z",
             "creator": {
+                "profileImage": "https://i.namu.wiki/i/1L_8d7FSBchLDnx7zLaxWs-HvUa6wQzLy2trSu0fGIqjWYQDWjEIEyxxoNJyDaIq_FF1QKFsu8nMNpDbJn_QSQ.webp",
                 "user_id": "a0790706-3956-429a-8416-94ad9cb57ad8",
                 "nick": "하늘빛"
             },
             "files": [
-                "https://example.com/image2.jpg"
+                "https://coincode.kr/wp-content/uploads/2023/10/image-34.jpg"
             ],
             "likes": [
                 "d1e5e9ff-1ee4-4a80-baed-49b96562c7c9",
@@ -31,10 +32,12 @@
             ],
             "comments": [
                 {
+                    "profileImage": "https://i.namu.wiki/i/1L_8d7FSBchLDnx7zLaxWs-HvUa6wQzLy2trSu0fGIqjWYQDWjEIEyxxoNJyDaIq_FF1QKFsu8nMNpDbJn_QSQ.webp",
                     "comment_id": "8dcd42f3-c39e-4881-a830-52164b9ee9e2",
                     "content": "반감기 때마다 가격이 어떻게 움직였는지 분석해봐야겠네요.",
                     "createdAt": "2024-09-24T14:34:38.000Z",
                     "creator": {
+                        "profileImage": "https://i.namu.wiki/i/1L_8d7FSBchLDnx7zLaxWs-HvUa6wQzLy2trSu0fGIqjWYQDWjEIEyxxoNJyDaIq_FF1QKFsu8nMNpDbJn_QSQ.webp",
                         "user_id": "cb3ed2bf-496b-42a6-b71b-00eceb156e89",
                         "nick": "별사탕"
                     }
@@ -44,6 +47,7 @@
                     "content": "과거 반감기 후에는 상승세였던 것 같은데 이번엔 다를까?",
                     "createdAt": "2024-09-13T14:34:38.000Z",
                     "creator": {
+                        "profileImage": "https://i.namu.wiki/i/1L_8d7FSBchLDnx7zLaxWs-HvUa6wQzLy2trSu0fGIqjWYQDWjEIEyxxoNJyDaIq_FF1QKFsu8nMNpDbJn_QSQ.webp",
                         "user_id": "af37cb25-be55-4da2-b7c3-350e1b05e627",
                         "nick": "산책러"
                     }
@@ -53,6 +57,7 @@
                     "content": "이번 반감기는 시장 상황이 달라서 하락할 수도 있을 것 같아요.",
                     "createdAt": "2024-09-29T14:34:38.000Z",
                     "creator": {
+                        "profileImage": "https://i.namu.wiki/i/1L_8d7FSBchLDnx7zLaxWs-HvUa6wQzLy2trSu0fGIqjWYQDWjEIEyxxoNJyDaIq_FF1QKFsu8nMNpDbJn_QSQ.webp",
                         "user_id": "11c934a4-39b6-4e15-b6b3-0d46eac3a58f",
                         "nick": "코인마스터"
                     }
@@ -71,12 +76,11 @@
             "content5": null,
             "createdAt": "2024-09-29T14:34:38.000Z",
             "creator": {
+                "profileImage": "https://i.namu.wiki/i/1L_8d7FSBchLDnx7zLaxWs-HvUa6wQzLy2trSu0fGIqjWYQDWjEIEyxxoNJyDaIq_FF1QKFsu8nMNpDbJn_QSQ.webp",
                 "user_id": "f125920f-3fb8-4a12-ba7a-426eddabbc6b",
                 "nick": "별무리"
             },
-            "files": [
-                "https://example.com/image3.jpg"
-            ],
+            "files": [],
             "likes": [
                 "cf209866-b3eb-42b2-a455-b868fc7b38f2",
                 "a5c2d3c8-f6fb-4633-8791-36d07a4ac6d5",
@@ -98,6 +102,7 @@
                     "content": "규제 완화는 큰 영향을 줄 것 같아요. 긍정적입니다!",
                     "createdAt": "2024-09-17T14:34:38.000Z",
                     "creator": {
+                        "profileImage": "https://i.namu.wiki/i/1L_8d7FSBchLDnx7zLaxWs-HvUa6wQzLy2trSu0fGIqjWYQDWjEIEyxxoNJyDaIq_FF1QKFsu8nMNpDbJn_QSQ.webp",
                         "user_id": "7217182e-9329-4250-bae7-a54d0523b625",
                         "nick": "달빛소나타"
                     }
@@ -107,6 +112,7 @@
                     "content": "규제가 완화되면 더 많은 사람들이 참여할 것 같아요.",
                     "createdAt": "2024-09-29T14:34:38.000Z",
                     "creator": {
+                        "profileImage": "https://i.namu.wiki/i/1L_8d7FSBchLDnx7zLaxWs-HvUa6wQzLy2trSu0fGIqjWYQDWjEIEyxxoNJyDaIq_FF1QKFsu8nMNpDbJn_QSQ.webp",
                         "user_id": "8774f3d2-62d6-4a44-98d5-979cf876355b",
                         "nick": "솔라플레이"
                     }
@@ -116,6 +122,7 @@
                     "content": "규제 완화가 실질적으로 어떤 변화를 가져올지 궁금하네요.",
                     "createdAt": "2024-10-01T14:34:38.000Z",
                     "creator": {
+                        "profileImage": "https://i.namu.wiki/i/1L_8d7FSBchLDnx7zLaxWs-HvUa6wQzLy2trSu0fGIqjWYQDWjEIEyxxoNJyDaIq_FF1QKFsu8nMNpDbJn_QSQ.webp",
                         "user_id": "287b5062-db0c-4cc9-a95a-b262f59805f9",
                         "nick": "바람의노래"
                     }
@@ -125,6 +132,7 @@
                     "content": "규제 완화 덕분에 비트코인 접근성이 높아질 것 같아요!",
                     "createdAt": "2024-09-08T14:34:38.000Z",
                     "creator": {
+                        "profileImage": "https://i.namu.wiki/i/1L_8d7FSBchLDnx7zLaxWs-HvUa6wQzLy2trSu0fGIqjWYQDWjEIEyxxoNJyDaIq_FF1QKFsu8nMNpDbJn_QSQ.webp",
                         "user_id": "d25517ef-7334-4436-b8fa-d7c8b5006b07",
                         "nick": "별빛소녀"
                     }
@@ -143,11 +151,12 @@
             "content5": null,
             "createdAt": "2024-09-30T14:34:38.000Z",
             "creator": {
+                "profileImage": "https://i.namu.wiki/i/1L_8d7FSBchLDnx7zLaxWs-HvUa6wQzLy2trSu0fGIqjWYQDWjEIEyxxoNJyDaIq_FF1QKFsu8nMNpDbJn_QSQ.webp",
                 "user_id": "5e21b1a3-b440-457e-b35c-26cdd792a999",
                 "nick": "별무리"
             },
             "files": [
-                "https://example.com/image2.jpg"
+                "https://coincode.kr/wp-content/uploads/2023/10/image-34.jpg"
             ],
             "likes": [
                 "3f11bcc3-c68d-4c51-b3b9-58eade93108f",
@@ -163,6 +172,7 @@
                     "content": "응, 최근 오르는 추세가 확실하네요!",
                     "createdAt": "2024-09-22T14:34:38.000Z",
                     "creator": {
+                        "profileImage": "https://i.namu.wiki/i/1L_8d7FSBchLDnx7zLaxWs-HvUa6wQzLy2trSu0fGIqjWYQDWjEIEyxxoNJyDaIq_FF1QKFsu8nMNpDbJn_QSQ.webp",
                         "user_id": "ab220204-9412-4afb-8e7a-6bf531afea5d",
                         "nick": "달빛소나타"
                     }
@@ -172,6 +182,7 @@
                     "content": "계속 오를 것 같아서 투자 늘리려구요.",
                     "createdAt": "2024-10-03T14:34:38.000Z",
                     "creator": {
+                        "profileImage": "https://i.namu.wiki/i/1L_8d7FSBchLDnx7zLaxWs-HvUa6wQzLy2trSu0fGIqjWYQDWjEIEyxxoNJyDaIq_FF1QKFsu8nMNpDbJn_QSQ.webp",
                         "user_id": "1f12017e-6c03-47aa-a779-ab53727cad4c",
                         "nick": "바람의노래"
                     }
@@ -181,6 +192,7 @@
                     "content": "가격 상승세가 지속될 것 같아요!",
                     "createdAt": "2024-10-01T14:34:38.000Z",
                     "creator": {
+                        "profileImage": "https://i.namu.wiki/i/1L_8d7FSBchLDnx7zLaxWs-HvUa6wQzLy2trSu0fGIqjWYQDWjEIEyxxoNJyDaIq_FF1QKFsu8nMNpDbJn_QSQ.webp",
                         "user_id": "24d030cb-304e-4411-b5aa-535657689758",
                         "nick": "솔라플레이"
                     }
@@ -190,6 +202,7 @@
                     "content": "비트코인 오르는 거 보니까 저도 포지션 늘려야겠어요.",
                     "createdAt": "2024-09-30T14:34:38.000Z",
                     "creator": {
+                        "profileImage": "https://i.namu.wiki/i/1L_8d7FSBchLDnx7zLaxWs-HvUa6wQzLy2trSu0fGIqjWYQDWjEIEyxxoNJyDaIq_FF1QKFsu8nMNpDbJn_QSQ.webp",
                         "user_id": "f21dce29-1065-4a06-ad48-1d7b3d5cf20e",
                         "nick": "바람의노래"
                     }
@@ -208,11 +221,12 @@
             "content5": null,
             "createdAt": "2024-09-23T14:34:38.000Z",
             "creator": {
+                "profileImage": "https://i.namu.wiki/i/1L_8d7FSBchLDnx7zLaxWs-HvUa6wQzLy2trSu0fGIqjWYQDWjEIEyxxoNJyDaIq_FF1QKFsu8nMNpDbJn_QSQ.webp",
                 "user_id": "f5399b8c-d492-469a-baa8-1109d757f009",
                 "nick": "별무리"
             },
             "files": [
-                "https://example.com/image1.jpg"
+                "https://coincode.kr/wp-content/uploads/2023/10/image-34.jpg"
             ],
             "likes": [
                 "2cfa4ee1-c561-44d7-91c6-9d617401b1e8",
@@ -234,6 +248,7 @@
                     "content": "경제 지표가 좋아지니까 비트코인도 힘을 얻는 것 같아요!",
                     "createdAt": "2024-09-26T14:34:38.000Z",
                     "creator": {
+                        "profileImage": "https://i.namu.wiki/i/1L_8d7FSBchLDnx7zLaxWs-HvUa6wQzLy2trSu0fGIqjWYQDWjEIEyxxoNJyDaIq_FF1QKFsu8nMNpDbJn_QSQ.webp",
                         "user_id": "72438d50-8067-4d63-bcd3-ff28ae07ce58",
                         "nick": "하늘빛"
                     }
@@ -243,6 +258,7 @@
                     "content": "비트코인 상승 계속 기대됩니다!",
                     "createdAt": "2024-09-08T14:34:38.000Z",
                     "creator": {
+                        "profileImage": "https://i.namu.wiki/i/1L_8d7FSBchLDnx7zLaxWs-HvUa6wQzLy2trSu0fGIqjWYQDWjEIEyxxoNJyDaIq_FF1QKFsu8nMNpDbJn_QSQ.webp",
                         "user_id": "ed353f34-12d2-4866-b336-3a53a47890c0",
                         "nick": "산책러"
                     }
@@ -252,6 +268,7 @@
                     "content": "비트코인 계속 오르는 거 보니까 저도 투자 늘려야겠어요.",
                     "createdAt": "2024-09-11T14:34:38.000Z",
                     "creator": {
+                        "profileImage": "https://i.namu.wiki/i/1L_8d7FSBchLDnx7zLaxWs-HvUa6wQzLy2trSu0fGIqjWYQDWjEIEyxxoNJyDaIq_FF1QKFsu8nMNpDbJn_QSQ.webp",
                         "user_id": "1a4cf49e-677e-4965-a4bb-2156a9407bf1",
                         "nick": "솔라플레이"
                     }
@@ -261,6 +278,7 @@
                     "content": "비트코인 가격 상승에 정말 기대가 큽니다!",
                     "createdAt": "2024-09-25T14:34:38.000Z",
                     "creator": {
+                        "profileImage": "https://i.namu.wiki/i/1L_8d7FSBchLDnx7zLaxWs-HvUa6wQzLy2trSu0fGIqjWYQDWjEIEyxxoNJyDaIq_FF1QKFsu8nMNpDbJn_QSQ.webp",
                         "user_id": "9a5cf4e3-44fc-4703-91d6-c37c529eb702",
                         "nick": "별빛소나타"
                     }
@@ -279,11 +297,12 @@
             "content5": null,
             "createdAt": "2024-09-23T14:34:38.000Z",
             "creator": {
+                "profileImage": "https://i.namu.wiki/i/1L_8d7FSBchLDnx7zLaxWs-HvUa6wQzLy2trSu0fGIqjWYQDWjEIEyxxoNJyDaIq_FF1QKFsu8nMNpDbJn_QSQ.webp",
                 "user_id": "1b6611d7-2442-4435-bff8-adac82134840",
                 "nick": "산책러"
             },
             "files": [
-                "https://example.com/image5.jpg"
+                "https://coincode.kr/wp-content/uploads/2023/10/image-34.jpg"
             ],
             "likes": [],
             "likes2": [
@@ -298,6 +317,7 @@
                     "content": "가격 오르는 거 보니까 좋네요!",
                     "createdAt": "2024-09-11T14:34:38.000Z",
                     "creator": {
+                        "profileImage": "https://i.namu.wiki/i/1L_8d7FSBchLDnx7zLaxWs-HvUa6wQzLy2trSu0fGIqjWYQDWjEIEyxxoNJyDaIq_FF1QKFsu8nMNpDbJn_QSQ.webp",
                         "user_id": "e7eae03c-259d-4544-be93-e4f3f741b095",
                         "nick": "별빛소나타"
                     }
@@ -307,6 +327,7 @@
                     "content": "비트코인 계속 오를 것 같아요. 투자 타이밍 최고!",
                     "createdAt": "2024-09-22T14:34:38.000Z",
                     "creator": {
+                        "profileImage": "https://i.namu.wiki/i/1L_8d7FSBchLDnx7zLaxWs-HvUa6wQzLy2trSu0fGIqjWYQDWjEIEyxxoNJyDaIq_FF1QKFsu8nMNpDbJn_QSQ.webp",
                         "user_id": "5c2bb53f-9ebd-4b55-89ae-83111c2e16f7",
                         "nick": "별무리"
                     }
@@ -316,6 +337,7 @@
                     "content": "비트코인 가격이 계속 오를 것 같아요. 기대됩니다!",
                     "createdAt": "2024-09-28T14:34:38.000Z",
                     "creator": {
+                        "profileImage": "https://i.namu.wiki/i/1L_8d7FSBchLDnx7zLaxWs-HvUa6wQzLy2trSu0fGIqjWYQDWjEIEyxxoNJyDaIq_FF1QKFsu8nMNpDbJn_QSQ.webp",
                         "user_id": "9c085df5-ad5b-45cf-a6f1-e5487ae7a308",
                         "nick": "하늘빛"
                     }
@@ -325,6 +347,7 @@
                     "content": "비트코인 가격 상승에 정말 기대돼요!",
                     "createdAt": "2024-10-03T14:34:38.000Z",
                     "creator": {
+                        "profileImage": "https://i.namu.wiki/i/1L_8d7FSBchLDnx7zLaxWs-HvUa6wQzLy2trSu0fGIqjWYQDWjEIEyxxoNJyDaIq_FF1QKFsu8nMNpDbJn_QSQ.webp",
                         "user_id": "385f325a-54ca-47b3-b5ee-62128f4ed0d1",
                         "nick": "솔라플레이"
                     }

@@ -24,6 +24,33 @@ extension CoinGeckoTargetType {
     public var port: Int? { nil }
     public var path: String { "/api/v\(version)\(targetPath)" }
     public var commonHeaders: [String : String] {
-        ["x_cg_pro_api_key": Secret.coinGeckoApiKey]
+        @UserDefaultsWrapper(
+            key: .coinGeckoKey,
+            defaultValue: CoinGeckoAPIKey.normal
+        )
+        var coinGeckoKey
+        return ["x_cg_pro_api_key": coinGeckoKey.key]
+    }
+}
+
+public enum CoinGeckoAPIKey: Codable {
+    case normal, extra
+    
+    var key: String {
+        switch self {
+        case .normal:
+            Secret.coinGeckoApiKey
+        case .extra:
+            Secret.coinGeckoApiKey2
+        }
+    }
+    
+    func getOtherCase() -> Self {
+        switch self {
+        case .normal:
+            .extra
+        case .extra:
+            .normal
+        }
     }
 }

@@ -27,7 +27,8 @@ public final class DefaultCryptoCurrencyRepository: CryptoCurrencyRepository {
             )
         )
         .decode(type: ReadCryptoCurrencyWithIDDTO.self)
-        .map { try $0.toResponse() }   
+        .map { try $0.toResponse() }
+        .retryWithKeyChanging()
     }
     
     public func readCryptoCurrencies(
@@ -40,6 +41,7 @@ public final class DefaultCryptoCurrencyRepository: CryptoCurrencyRepository {
         )
         .decode(type: ReadCryptoCurrenciesDTO.self)
         .map { $0.toResponse() }
+        .retryWithKeyChanging()
     }
     
     public func searchCoin(query: String) -> Single<[SearchCoinResponse]> {
@@ -52,6 +54,7 @@ public final class DefaultCryptoCurrencyRepository: CryptoCurrencyRepository {
         )
         .decode(type: SearchCoinWithIDDTO.self)
         .map { $0.toResponse() }
+        .retryWithKeyChanging()
     }
     
     public func readChartData(
@@ -69,5 +72,18 @@ public final class DefaultCryptoCurrencyRepository: CryptoCurrencyRepository {
         )
         .decode(type: ReadChartDataDTO.self)
         .map { try $0.toResponse() }
+        .retryWithKeyChanging()
+    }
+}
+
+fileprivate extension Single {
+    func retryWithKeyChanging() -> Self {
+        @UserDefaultsWrapper(
+            key: .coinGeckoKey,
+            defaultValue: CoinGeckoAPIKey.normal
+        ) 
+        var coinGeckoKey
+        coinGeckoKey = coinGeckoKey.getOtherCase()
+        return retry(1)
     }
 }

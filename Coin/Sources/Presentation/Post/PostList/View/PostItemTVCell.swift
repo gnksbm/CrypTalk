@@ -1,5 +1,5 @@
 //
-//  PostListTVCell.swift
+//  PostItemTVCell.swift
 //  Coin
 //
 //  Created by gnksbm on 8/29/24.
@@ -36,7 +36,7 @@ extension MarketDirection {
     }
 }
 
-final class PostListTVCell: BaseTVCell {
+final class PostItemTVCell: BaseTVCell {
     let likeButtonTapEvent = PublishSubject<PostResponse>()
     let commentButtonTapEvent = PublishSubject<PostResponse>()
     var disposeBag = DisposeBag()
@@ -56,7 +56,7 @@ final class PostListTVCell: BaseTVCell {
         let imageView = UIImageView()
         imageView.layer.cornerRadius = Design.Dimension.symbolSize / 2
         imageView.clipsToBounds = true
-        imageView.backgroundColor = Design.Color.background
+        imageView.backgroundColor = Design.Color.disable
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
@@ -96,12 +96,14 @@ final class PostListTVCell: BaseTVCell {
         return label
     }()
     
+    private let multiImageView = MultiImageScrollView()
+    
     private let likeButton = {
         let button = UIButton(configuration: .bordered())
         button.setTitle(" 0", for: .normal)
         button.titleLabel?.font = Design.Font.caption
         button.configuration?.image = Design.ImageLiteral.heart
-        button.configuration?.baseForegroundColor = Design.Color.red
+        button.configuration?.baseForegroundColor = Design.Color.foreground
         button.configuration?.preferredSymbolConfigurationForImage =
         UIImage.SymbolConfiguration(font: Design.Font.caption)
         button.contentHorizontalAlignment = .leading
@@ -128,7 +130,7 @@ final class PostListTVCell: BaseTVCell {
     }()
     
     private let dividerView = UIView().nt.configure {
-        $0.backgroundColor(Design.Color.red)
+        $0.backgroundColor(Design.Color.disable)
     }
     
     private let descriptionView = UIButton(
@@ -169,6 +171,7 @@ final class PostListTVCell: BaseTVCell {
             dateLabel,
             directionLabel,
             contentLabel,
+            multiImageView,
             likeButton,
             commentButton,
             dividerView,
@@ -214,8 +217,16 @@ final class PostListTVCell: BaseTVCell {
             make.trailing.equalTo(directionLabel)
         }
         
-        likeButton.snp.makeConstraints { make in
+        multiImageView.snp.makeConstraints { make in
             make.top.equalTo(contentLabel.snp.bottom)
+                .offset(Design.Padding.regular)
+            make.horizontalEdges.equalTo(cardBackgroundView)
+                .inset(Design.Padding.medium)
+            make.height.equalTo(0)
+        }
+        
+        likeButton.snp.makeConstraints { make in
+            make.top.equalTo(multiImageView.snp.bottom)
                 .offset(Design.Padding.regular)
             make.trailing.equalTo(cardBackgroundView)
                 .inset(Design.Padding.regular)
@@ -236,7 +247,7 @@ final class PostListTVCell: BaseTVCell {
         
         descriptionView.snp.makeConstraints { make in
             make.top.equalTo(dividerView.snp.bottom)
-                .offset(Design.Padding.regular)
+                .offset(Design.Padding.small)
             make.trailing.bottom.equalTo(cardBackgroundView)
                 .inset(Design.Padding.regular)
         }
@@ -251,10 +262,16 @@ final class PostListTVCell: BaseTVCell {
         directionLabel.text = item.direction.toString
         directionLabel.textColor = item.direction.color
         contentLabel.text = item.content
+        multiImageView.updateView(with: item.imageURLs)
+        multiImageView.snp.updateConstraints { make in
+            make.top.equalTo(contentLabel.snp.bottom)
+                .offset(item.imageURLs.isEmpty ? 0 : Design.Padding.regular)
+            make.height.equalTo(item.imageURLs.isEmpty ? 0 : bounds.width * 0.25)
+        }
         likeButton.configuration?.title = " \(item.likerIDs.count)"
         likeButton.configuration?.imageColorTransformer = UIConfigurationColorTransformer { color in
             item.isLikedPost ?
-            Design.Color.red : Design.Color.foreground
+            Design.Color.red : Design.Color.disable
         }
         commentButton.setTitle(" \(item.comments.count)", for: .normal)
         disposeBag.insert {
@@ -268,3 +285,4 @@ final class PostListTVCell: BaseTVCell {
         }
     }
 }
+

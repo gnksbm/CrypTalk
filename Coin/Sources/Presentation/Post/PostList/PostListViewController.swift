@@ -49,8 +49,8 @@ final class PostListViewController: BaseViewController, ViewType {
             forCellReuseIdentifier: String(describing: PostRatioCell.self)
         )
         tableView.register(
-            PostListTVCell.self,
-            forCellReuseIdentifier: String(describing: PostListTVCell.self)
+            PostItemTVCell.self,
+            forCellReuseIdentifier: String(describing: PostItemTVCell.self)
         )
         tableView.separatorStyle = .none
         let emptyLabel = UILabel()

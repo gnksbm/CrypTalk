@@ -32,7 +32,7 @@ final class PostRatioCell: BaseTVCell {
     
     override func configureUI() {
         backgroundColor = Design.Color.background
-        layer.cornerRadius = Design.Radius.medium
+        layer.cornerRadius = Design.Radius.large
         layer.maskedCorners = CACornerMask(
             arrayLiteral: .layerMinXMaxYCorner, .layerMaxXMaxYCorner
         )

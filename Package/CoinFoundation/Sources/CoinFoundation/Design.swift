@@ -13,7 +13,7 @@ public enum Design {
         public static let symbolSize: CGFloat = 40
         public static let tableViewFooter: CGFloat = 20
         public static let coinChartHeight: CGFloat = 60
-        public static let progressViewHeight: CGFloat = 10
+        public static let progressViewHeight: CGFloat = 15
     }
     
     public enum Padding {
@@ -26,6 +26,7 @@ public enum Design {
     public enum Radius {
         public static let regular: CGFloat = 12
         public static let medium: CGFloat = 18
+        public static let large: CGFloat = 25
     }
     
     public enum Color {
@@ -62,7 +63,7 @@ public enum Design {
         public static let lightPink = UIColor(hex: "FFC0CB")
         public static let softGreen = UIColor(hex: "00FF7F")
         public static let darkText = UIColor(hex: "212121")
-        public static let disable = UIColor(hex: "212121")
+        public static let disable = UIColor(hex: "BDBDBF")
         public static let clear = UIColor.clear
         public static let teal = UIColor.systemTeal
     }

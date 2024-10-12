@@ -39,12 +39,13 @@
 		8EB079FD2CB17D1B00C0F080 /* FakePostDTO.json in Resources */ = {isa = PBXBuildFile; fileRef = 8EB079FC2CB17D1B00C0F080 /* FakePostDTO.json */; };
 		8EB10DD32CB8FF520041EEC4 /* LineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB10DD22CB8FF520041EEC4 /* LineChartView.swift */; };
 		8EB10DD72CBA6F2D0041EEC4 /* PostRatioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB10DD62CBA6F2D0041EEC4 /* PostRatioCell.swift */; };
+		8EB10DD92CBA76F20041EEC4 /* MultiImageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB10DD82CBA76F20041EEC4 /* MultiImageScrollView.swift */; };
 		8EB506252C816B0B00AA060D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB506242C816B0B00AA060D /* LoginViewController.swift */; };
 		8EB506272C816C8600AA060D /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB506262C816C8600AA060D /* LoginViewModel.swift */; };
 		8EB5062A2C81917C00AA060D /* PostDetailTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB506292C81917C00AA060D /* PostDetailTableView.swift */; };
 		8EB5062C2C8191C000AA060D /* PostDetailPostTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB5062B2C8191C000AA060D /* PostDetailPostTVCell.swift */; };
 		8ED3DE982C761BDD00126BD4 /* AppDelegate+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3DE972C761BDD00126BD4 /* AppDelegate+Register.swift */; };
-		BEC0940B2C8051D3008AA991 /* PostListTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC0940A2C8051D3008AA991 /* PostListTVCell.swift */; };
+		BEC0940B2C8051D3008AA991 /* PostItemTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC0940A2C8051D3008AA991 /* PostItemTVCell.swift */; };
 		BEC0940D2C805BF9008AA991 /* PostListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC0940C2C805BF8008AA991 /* PostListTableView.swift */; };
 		BEC094112C806982008AA991 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC094102C806982008AA991 /* PostDetailViewController.swift */; };
 		BEC094132C808DFC008AA991 /* PostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC094122C808DFC008AA991 /* PostDetailViewModel.swift */; };
@@ -104,12 +105,13 @@
 		8EB079FC2CB17D1B00C0F080 /* FakePostDTO.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FakePostDTO.json; sourceTree = "<group>"; };
 		8EB10DD22CB8FF520041EEC4 /* LineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartView.swift; sourceTree = "<group>"; };
 		8EB10DD62CBA6F2D0041EEC4 /* PostRatioCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRatioCell.swift; sourceTree = "<group>"; };
+		8EB10DD82CBA76F20041EEC4 /* MultiImageScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiImageScrollView.swift; sourceTree = "<group>"; };
 		8EB506242C816B0B00AA060D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8EB506262C816C8600AA060D /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		8EB506292C81917C00AA060D /* PostDetailTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailTableView.swift; sourceTree = "<group>"; };
 		8EB5062B2C8191C000AA060D /* PostDetailPostTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailPostTVCell.swift; sourceTree = "<group>"; };
 		8ED3DE972C761BDD00126BD4 /* AppDelegate+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Register.swift"; sourceTree = "<group>"; };
-		BEC0940A2C8051D3008AA991 /* PostListTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListTVCell.swift; sourceTree = "<group>"; };
+		BEC0940A2C8051D3008AA991 /* PostItemTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostItemTVCell.swift; sourceTree = "<group>"; };
 		BEC0940C2C805BF8008AA991 /* PostListTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostListTableView.swift; sourceTree = "<group>"; };
 		BEC094102C806982008AA991 /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		BEC094122C808DFC008AA991 /* PostDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewModel.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				8E634C522C7F927F006115E9 /* LargeButton.swift */,
+				8EB10DD82CBA76F20041EEC4 /* MultiImageScrollView.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -223,7 +226,7 @@
 				BEC0940C2C805BF8008AA991 /* PostListTableView.swift */,
 				8E792A772C7F8486009142D3 /* PostListCoinCell.swift */,
 				8EB10DD62CBA6F2D0041EEC4 /* PostRatioCell.swift */,
-				BEC0940A2C8051D3008AA991 /* PostListTVCell.swift */,
+				BEC0940A2C8051D3008AA991 /* PostItemTVCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -490,7 +493,7 @@
 				8EB10DD32CB8FF520041EEC4 /* LineChartView.swift in Sources */,
 				8EA517802C6DB0FB0029A356 /* AppDelegate.swift in Sources */,
 				8E7233542C84DD0000760D53 /* CoinListViewModel.swift in Sources */,
-				BEC0940B2C8051D3008AA991 /* PostListTVCell.swift in Sources */,
+				BEC0940B2C8051D3008AA991 /* PostItemTVCell.swift in Sources */,
 				BEC094132C808DFC008AA991 /* PostDetailViewModel.swift in Sources */,
 				8E792A782C7F8486009142D3 /* PostListCoinCell.swift in Sources */,
 				8E7233592C84E27100760D53 /* CoinListCVCell.swift in Sources */,
@@ -511,6 +514,7 @@
 				8E72334A2C84AF9E00760D53 /* SearchCoinViewController.swift in Sources */,
 				8E72334F2C84B2CD00760D53 /* SearchCoinCollectionView.swift in Sources */,
 				8E792A752C7F3F74009142D3 /* PostListViewModel.swift in Sources */,
+				8EB10DD92CBA76F20041EEC4 /* MultiImageScrollView.swift in Sources */,
 				8E792A7B2C7F8D10009142D3 /* AddPostViewController.swift in Sources */,
 				8E7233572C84DEAE00760D53 /* CoinListCollectionView.swift in Sources */,
 				8E634C532C7F927F006115E9 /* LargeButton.swift in Sources */,
