@@ -29,9 +29,9 @@ extension MarketDirection {
     var toString: String {
         switch self {
         case .increase:
-            "상승"
+            "매수"
         case .decrease:
-            "하락"
+            "매도"
         }
     }
 }
@@ -43,10 +43,10 @@ final class PostListTVCell: BaseTVCell {
     
     private let cardBackgroundView: UIView = {
         let view = UIView()
-        view.backgroundColor = Design.Color.background.withAlphaComponent(0.1)
+        view.backgroundColor = Design.Color.background
         view.layer.cornerRadius = Design.Radius.regular
-        view.layer.shadowColor = Design.Color.background.cgColor
-        view.layer.shadowOpacity = 0.1
+        view.layer.shadowColor = Design.Color.foreground.cgColor
+        view.layer.shadowOpacity = 0.3
         view.layer.shadowOffset = CGSize(width: 0, height: 2)
         view.layer.shadowRadius = 4
         return view
@@ -120,12 +120,36 @@ final class PostListTVCell: BaseTVCell {
         button.configuration?.image = Design.ImageLiteral.chat
         button.configuration?.baseForegroundColor = Design.Color.foreground
         button.configuration?.preferredSymbolConfigurationForImage =
-        UIImage.SymbolConfiguration(font: Design.Font.caption)
+        UIImage.SymbolConfiguration(font: Design.Font.caption2)
         button.contentHorizontalAlignment = .leading
         button.configuration?.cornerStyle = .capsule
         button.accessibilityLabel = "댓글 버튼"
         return button
     }()
+    
+    private let dividerView = UIView().nt.configure {
+        $0.backgroundColor(Design.Color.red)
+    }
+    
+    private let descriptionView = UIButton(
+        configuration: .plain()
+    ).nt.configure {
+        $0.configuration.baseForegroundColor(Design.Color.foreground)
+            .configuration.image(Design.ImageLiteral.rightArrow)
+            .configuration.imagePlacement(.trailing)
+            .configuration.imagePadding(Design.Padding.extraSmall)
+            .configuration.preferredSymbolConfigurationForImage(
+                UIImage.SymbolConfiguration(font: Design.Font.caption2)
+            )
+            .configuration.attributedTitle(
+                AttributedString(
+                    "자세히보기",
+                    attributes: AttributeContainer([
+                        .font: Design.Font.label
+                    ])
+                )
+            )
+    }
     
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -133,7 +157,8 @@ final class PostListTVCell: BaseTVCell {
     }
     
     override func configureUI() {
-        contentView.backgroundColor = Design.Color.background
+        backgroundColor = Design.Color.clear
+        contentView.backgroundColor = Design.Color.clear
     }
     
     override func configureLayout() {
@@ -145,12 +170,14 @@ final class PostListTVCell: BaseTVCell {
             directionLabel,
             contentLabel,
             likeButton,
-            commentButton
+            commentButton,
+            dividerView,
+            descriptionView
         ].forEach { cardBackgroundView.addSubview($0) }
         
         cardBackgroundView.snp.makeConstraints { make in
             make.edges.equalTo(contentView)
-                .inset(Design.Padding.small)
+                .inset(Design.Padding.regular)
         }
         
         profileImageView.snp.makeConstraints { make in
@@ -168,7 +195,7 @@ final class PostListTVCell: BaseTVCell {
         dateLabel.snp.makeConstraints { make in
             make.centerY.equalTo(nicknameLabel)
             make.leading.equalTo(nicknameLabel.snp.trailing)
-                .offset(Design.Padding.regular)
+                .offset(Design.Padding.medium)
         }
         
         directionLabel.snp.makeConstraints { make in
@@ -190,8 +217,6 @@ final class PostListTVCell: BaseTVCell {
         likeButton.snp.makeConstraints { make in
             make.top.equalTo(contentLabel.snp.bottom)
                 .offset(Design.Padding.regular)
-            make.bottom.equalTo(cardBackgroundView)
-                .inset(Design.Padding.regular)
             make.trailing.equalTo(cardBackgroundView)
                 .inset(Design.Padding.regular)
         }
@@ -199,6 +224,21 @@ final class PostListTVCell: BaseTVCell {
         commentButton.snp.makeConstraints { make in
             make.centerY.equalTo(likeButton)
             make.leading.equalTo(profileImageView)
+        }
+        
+        dividerView.snp.makeConstraints { make in
+            make.top.equalTo(likeButton.snp.bottom)
+                .offset(Design.Padding.regular)
+            make.height.equalTo(1)
+            make.horizontalEdges.equalTo(cardBackgroundView)
+                .inset(Design.Padding.regular)
+        }
+        
+        descriptionView.snp.makeConstraints { make in
+            make.top.equalTo(dividerView.snp.bottom)
+                .offset(Design.Padding.regular)
+            make.trailing.bottom.equalTo(cardBackgroundView)
+                .inset(Design.Padding.regular)
         }
     }
     

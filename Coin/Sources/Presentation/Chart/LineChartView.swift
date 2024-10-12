@@ -32,46 +32,48 @@ final class LineChartViewModel: ObservableObject {
     }
 }
 
-@available(iOS 16.0, *)
 struct LineChartView: View {
-    let color: Color
+    let chartColor: Color
     @StateObject var viewModel: LineChartViewModel
     
     var body: some View {
-        Chart(viewModel.chartDatas) {
-            AreaMark(
-                x: .value("Date", $0.date),
-                yStart: .value("Price", viewModel.lowestPrice),
-                yEnd: .value("Price", $0.closingPrice)
-            )
-            .foregroundStyle(
-                .linearGradient(
-                    colors: [
-                        color,
-                        .clear
-                    ],
-                    startPoint: .top,
-                    endPoint: .bottom
+        if #available(iOS 16.0, *) {
+            Chart(viewModel.chartDatas) {
+                AreaMark(
+                    x: .value("Date", $0.date),
+                    yStart: .value("Price", viewModel.lowestPrice),
+                    yEnd: .value("Price", $0.closingPrice)
                 )
+                .foregroundStyle(
+                    .linearGradient(
+                        colors: [
+                            chartColor,
+                            .clear
+                        ],
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                )
+                LineMark(
+                    x: .value("Date", $0.date),
+                    y: .value("Price", $0.closingPrice)
+                )
+                .foregroundStyle(chartColor)
+            }
+            .chartXAxis(.hidden)
+            .chartYAxis(.hidden)
+            .contentTransition(.interpolate)
+            .clipped()
+            .chartYScale(
+                domain: viewModel.chartRange,
+                range: .plotDimension(padding: 10)
             )
-            LineMark(
-                x: .value("Date", $0.date),
-                y: .value("Price", $0.closingPrice)
-            )
-            .foregroundStyle(color)
+            .background(.clear)
         }
-        .chartXAxis(.hidden)
-        .chartYAxis(.hidden)
-        .contentTransition(.interpolate)
-        .clipped()
-        .chartYScale(
-            domain: viewModel.chartRange,
-            range: .plotDimension(padding: 10)
-        )
     }
     
     init(color: Color = .teal, viewModel: LineChartViewModel) {
-        self.color = color
+        self.chartColor = color
         self._viewModel = StateObject(wrappedValue: viewModel)
     }
 }

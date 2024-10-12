@@ -56,9 +56,9 @@ struct ColorTestView: View {
         ScrollView {
             LazyVGrid(columns: columns) {
                 ForEach(Design.Color.colorKeys, id: \.self) { name in
-                    if let color = Design.Color.allColor[name] {
+                    if let chartColor = Design.Color.allColor[name] {
                         VStack {
-                            Color(uiColor: color)
+                            Color(uiColor: chartColor)
                                 .clipShape(.rect(cornerRadius: 12))
                                 .frame(height: 100)
                             Text(name)

@@ -12,16 +12,20 @@ public enum Design {
     public enum Dimension {
         public static let symbolSize: CGFloat = 40
         public static let tableViewFooter: CGFloat = 20
+        public static let coinChartHeight: CGFloat = 60
+        public static let progressViewHeight: CGFloat = 10
     }
     
     public enum Padding {
-        public static let small: CGFloat = 10
         public static let regular: CGFloat = 20
         public static let medium: CGFloat = 12
+        public static let small: CGFloat = 10
+        public static let extraSmall: CGFloat = 5
     }
     
     public enum Radius {
         public static let regular: CGFloat = 12
+        public static let medium: CGFloat = 18
     }
     
     public enum Color {
@@ -50,8 +54,8 @@ public enum Design {
             "darkText": darkText,
         ]
         
-        public static let foreground = UIColor(hex: "FFFFFF")
-        public static let background = UIColor(hex: "282828")
+        public static let foreground = UIColor(hex: "282828")
+        public static let background = UIColor(hex: "FFFFFF")
         public static let orangeAccent = UIColor(hex: "FFA500")
         public static let red = UIColor(hex: "FF6B6B")
         public static let blue = UIColor(hex: "4A90E2")
@@ -59,6 +63,8 @@ public enum Design {
         public static let softGreen = UIColor(hex: "00FF7F")
         public static let darkText = UIColor(hex: "212121")
         public static let disable = UIColor(hex: "212121")
+        public static let clear = UIColor.clear
+        public static let teal = UIColor.systemTeal
     }
     
     public enum Font {
@@ -66,7 +72,9 @@ public enum Design {
         public static let title = UIFont(name: "AppleSDGothicNeo-Bold", size: 19) ?? UIFont.boldSystemFont(ofSize: 19)
         public static let body1 = UIFont(name: "AppleSDGothicNeo-Regular", size: 17) ?? UIFont.systemFont(ofSize: 17)
         public static let body2 = UIFont(name: "SpoqaHanSansNeo-Regular", size: 16) ?? UIFont.systemFont(ofSize: 16)
+        public static let label = UIFont(name: "SpoqaHanSansNeo-Regular", size: 16) ?? UIFont.systemFont(ofSize: 14)
         public static let caption = UIFont(name: "NotoSansKR-Light", size: 13) ?? UIFont.systemFont(ofSize: 13)
+        public static let caption2 = UIFont(name: "NotoSansKR-Light", size: 13) ?? UIFont.systemFont(ofSize: 12)
     }
     
     public enum StringLiteral {
@@ -87,6 +95,7 @@ public enum Design {
         public static let profile = UIImage(systemName: "person.fill")
         public static let sendComment = UIImage(systemName: "arrow.up.message.fill")
         public static let addAsset = UIImage(systemName: "bag.fill.badge.plus")
+        public static let rightArrow = UIImage(systemName: "chevron.right")
         public static let bottomArrow = UIImage(systemName: "chevron.down")
         public static let chart = UIImage(systemName: "chart.bar.xaxis")
         public static let plus = UIImage(systemName: "plus")

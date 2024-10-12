@@ -9,7 +9,7 @@ import Foundation
 
 import CoinFoundation
 
-public struct ChartDataResponse: CandlestickRepresentable, Equatable {
+public struct ChartDataResponse: CandlestickRepresentable, Hashable {
     public let date: Date
     public let openingPrice: Price
     public let highestPrice: Price

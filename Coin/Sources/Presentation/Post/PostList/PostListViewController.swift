@@ -16,6 +16,8 @@ import SnapKit
 final class PostListViewController: BaseViewController, ViewType {
     private let pageChangeEvent = BehaviorSubject(value: 0)
     
+    private let gradientLayer = CAGradientLayer()
+    
     private let profileButton: UIBarButtonItem = {
         let button = UIBarButtonItem(
             image: Design.ImageLiteral.person,
@@ -37,10 +39,14 @@ final class PostListViewController: BaseViewController, ViewType {
     
     private lazy var tableView: PostListTableView = {
         let tableView = PostListTableView()
-        tableView.backgroundColor = Design.Color.background
+        tableView.backgroundColor = Design.Color.clear
         tableView.register(
             PostListCoinCell.self,
             forCellReuseIdentifier: String(describing: PostListCoinCell.self)
+        )
+        tableView.register(
+            PostRatioCell.self,
+            forCellReuseIdentifier: String(describing: PostRatioCell.self)
         )
         tableView.register(
             PostListTVCell.self,
@@ -69,6 +75,11 @@ final class PostListViewController: BaseViewController, ViewType {
         configureLayout()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        gradientLayer.frame = view.bounds
+    }
+    
     func bind(viewModel: PostListViewModel) {
         let output = viewModel.transform(
             input: PostListViewModel.Input(
@@ -78,12 +89,13 @@ final class PostListViewController: BaseViewController, ViewType {
                 titleTapEvent: tableView.titleTapEvent,
                 cellTapEvent: tableView.tapEvent.compactMap(
                     { item in
-                    switch item {
-                    case .coin:
-                        return nil
-                    case .post(let item):
-                        return item
-                    } }
+                        switch item {
+                        case .post(let item):
+                            return item
+                        default:
+                            return nil
+                        }
+                    }
                 ),
                 likeButtonTapEvent: tableView.likeButtonTapEvent,
                 commentButtonTapEvent: tableView.commentButtonTapEvent,
@@ -98,13 +110,24 @@ final class PostListViewController: BaseViewController, ViewType {
                 .bind { vc, response in
                     vc.tableView.replaceItem(
                         for: .header,
-                        items: [.coin(response)]
+                        items: [
+                            .coin(
+                                PostListHeaderCellItem(
+                                    info: response.0,
+                                    charts: response.1
+                                )
+                            )
+                        ]
                     )
                 }
             
             output.cryptoPostResponse
                 .withUnretained(self)
                 .bind { vc, items in
+                    vc.tableView.replaceItem(
+                        for: .ratio,
+                        items: [.ratio(items)]
+                    )
                     vc.tableView.replaceItem(
                         for: .post,
                         items: items.map({ .post($0) })
@@ -177,6 +200,18 @@ final class PostListViewController: BaseViewController, ViewType {
                     vc.navigationController?.pushViewController(profileVC, animated: true)
                 }
         }
+    }
+    
+    override func configureUI() {
+        gradientLayer.colors = [
+            Design.Color.teal.withAlphaComponent(0.05).cgColor,
+            Design.Color.background.cgColor,
+        ]
+        gradientLayer.locations = [0, 1]
+//        gradientLayer.type = .radial
+//        gradientLayer.startPoint = CGPoint(x: 0.1, y: 0.1)
+//        gradientLayer.endPoint = CGPoint(x: 1, y: 1)
+        view.layer.addSublayer(gradientLayer)
     }
     
     override func configureLayout() {

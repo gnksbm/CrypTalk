@@ -5,7 +5,7 @@
 //  Created by gnksbm on 8/29/24.
 //
 
-import UIKit
+import SwiftUI
 
 import CoinFoundation
 import Domain
@@ -19,9 +19,11 @@ final class PostListCoinCell: BaseTVCell {
     lazy var titleTapEvent = titleButton.rx.tap
     var disposeBag = DisposeBag()
     
+    private let lineChartViewModel = LineChartViewModel()
+    
     private let cardBackgroundView: UIView = {
         let view = UIView()
-        view.backgroundColor = Design.Color.background.withAlphaComponent(0.1)
+//        view.backgroundColor = Design.Color.foreground.withAlphaComponent(0.1)
         view.layer.cornerRadius = Design.Radius.regular
         view.layer.shadowColor = Design.Color.background.cgColor
         view.layer.shadowOpacity = 0.1
@@ -62,26 +64,19 @@ final class PostListCoinCell: BaseTVCell {
             .font(.systemFont(ofSize: 18, weight: .medium)) // 폰트 크기와 굵기 조정
     }
     
+    private lazy var chartVC = {
+        let chartVC = LineChartView(viewModel: lineChartViewModel).toUIKitVC
+        chartVC.view.backgroundColor = .clear
+        return chartVC
+    }()
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         disposeBag = DisposeBag()
     }
     
-    func configureCell(coin: CryptoCurrencyResponse) {
-        iconImageView.kf.setImage(with: coin.imageURL)
-        titleButton.configuration?.attributedTitle = AttributedString(
-            coin.name,
-            attributes: AttributeContainer([
-                .font: UIFont.systemFont(ofSize: 26, weight: .medium),
-            ])
-        )
-        priceLabel.text = coin.price.formatted() + "원"
-        rateLabel.text = coin.rateToString
-        rateLabel.textColor = coin.rate.toForegroundColorForNumeric
-    }
-    
     override func configureUI() {
-        contentView.backgroundColor = Design.Color.background
+        backgroundColor = Design.Color.background
     }
     
     override func configureLayout() {
@@ -90,7 +85,8 @@ final class PostListCoinCell: BaseTVCell {
             iconImageView,
             titleButton,
             priceLabel,
-            rateLabel
+            rateLabel,
+            chartVC.view
         ].forEach { cardBackgroundView.addSubview($0) }
         
         cardBackgroundView.snp.makeConstraints { make in
@@ -122,8 +118,29 @@ final class PostListCoinCell: BaseTVCell {
             make.top.equalTo(priceLabel.snp.bottom)
                 .offset(Design.Padding.medium).priority(.required)
             make.trailing.equalTo(priceLabel)
-            make.bottom.equalTo(cardBackgroundView)
-                .inset(Design.Padding.medium).priority(.required)
         }
+        
+        chartVC.view.snp.makeConstraints { make in
+            make.top.equalTo(rateLabel.snp.bottom)
+                .offset(Design.Padding.regular)
+            make.leading.equalTo(iconImageView)
+            make.trailing.equalTo(rateLabel)
+            make.height.equalTo(Design.Dimension.coinChartHeight)
+            make.bottom.equalTo(cardBackgroundView).inset(Design.Padding.medium)
+        }
+    }
+    
+    func configureCell(coin: PostListHeaderCellItem) {
+        iconImageView.kf.setImage(with: coin.info.imageURL)
+        titleButton.configuration?.attributedTitle = AttributedString(
+            coin.info.name,
+            attributes: AttributeContainer([
+                .font: UIFont.systemFont(ofSize: 26, weight: .medium),
+            ])
+        )
+        priceLabel.text = coin.info.price.formatted() + "원"
+        rateLabel.text = coin.info.rateToString
+        rateLabel.textColor = coin.info.rate.toForegroundColorForNumeric
+        lineChartViewModel.chartDatas = coin.charts
     }
 }

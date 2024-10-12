@@ -52,7 +52,7 @@ final class PurchaseCoinViewModel: ViewModelType {
                 .withLatestFrom(
                     Observable.combineLatest(
                         input.amountChangeEvent.compactMap { Double($0) },
-                        output.selectedCoin
+                        output.selectedCoin.map { $0.0 }
                     )
                 )
                 .map { amount, coin in
@@ -75,7 +75,7 @@ final class PurchaseCoinViewModel: ViewModelType {
                 .withLatestFrom(
                     Observable.combineLatest(
                         input.amountChangeEvent.compactMap { Double($0) },
-                        output.selectedCoin
+                        output.selectedCoin.map { $0.0 }
                     )
                 ) { iam, tuple in
                     let (amount, coin) = tuple
@@ -113,7 +113,8 @@ extension PurchaseCoinViewModel {
     }
     
     struct Output {
-        let selectedCoin: PublishSubject<CryptoCurrencyResponse>
+        let selectedCoin:
+        PublishSubject<(CryptoCurrencyResponse, [ChartDataResponse])>
         let startSearchFlow: Observable<Void>
         let startPurchaseFlow: PublishSubject<IamportPayment>
         let finishFlow: PublishSubject<Void>

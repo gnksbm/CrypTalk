@@ -38,6 +38,7 @@
 		8EA5179A2C6DBA550029A356 /* .gitmessage.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8EA517992C6DBA550029A356 /* .gitmessage.txt */; };
 		8EB079FD2CB17D1B00C0F080 /* FakePostDTO.json in Resources */ = {isa = PBXBuildFile; fileRef = 8EB079FC2CB17D1B00C0F080 /* FakePostDTO.json */; };
 		8EB10DD32CB8FF520041EEC4 /* LineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB10DD22CB8FF520041EEC4 /* LineChartView.swift */; };
+		8EB10DD72CBA6F2D0041EEC4 /* PostRatioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB10DD62CBA6F2D0041EEC4 /* PostRatioCell.swift */; };
 		8EB506252C816B0B00AA060D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB506242C816B0B00AA060D /* LoginViewController.swift */; };
 		8EB506272C816C8600AA060D /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB506262C816C8600AA060D /* LoginViewModel.swift */; };
 		8EB5062A2C81917C00AA060D /* PostDetailTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB506292C81917C00AA060D /* PostDetailTableView.swift */; };
@@ -102,6 +103,7 @@
 		8EA5179B2C6DBBE90029A356 /* Secret.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secret.xcconfig; sourceTree = "<group>"; };
 		8EB079FC2CB17D1B00C0F080 /* FakePostDTO.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FakePostDTO.json; sourceTree = "<group>"; };
 		8EB10DD22CB8FF520041EEC4 /* LineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartView.swift; sourceTree = "<group>"; };
+		8EB10DD62CBA6F2D0041EEC4 /* PostRatioCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRatioCell.swift; sourceTree = "<group>"; };
 		8EB506242C816B0B00AA060D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8EB506262C816C8600AA060D /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		8EB506292C81917C00AA060D /* PostDetailTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailTableView.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 			children = (
 				BEC0940C2C805BF8008AA991 /* PostListTableView.swift */,
 				8E792A772C7F8486009142D3 /* PostListCoinCell.swift */,
+				8EB10DD62CBA6F2D0041EEC4 /* PostRatioCell.swift */,
 				BEC0940A2C8051D3008AA991 /* PostListTVCell.swift */,
 			);
 			path = View;
@@ -491,6 +494,7 @@
 				BEC094132C808DFC008AA991 /* PostDetailViewModel.swift in Sources */,
 				8E792A782C7F8486009142D3 /* PostListCoinCell.swift in Sources */,
 				8E7233592C84E27100760D53 /* CoinListCVCell.swift in Sources */,
+				8EB10DD72CBA6F2D0041EEC4 /* PostRatioCell.swift in Sources */,
 				8EA517822C6DB0FB0029A356 /* SceneDelegate.swift in Sources */,
 				8EB506272C816C8600AA060D /* LoginViewModel.swift in Sources */,
 				8E7233522C84DCB700760D53 /* CoinListViewController.swift in Sources */,

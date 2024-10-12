@@ -12,7 +12,9 @@ import RxSwift
 public protocol CryptoPostUseCase {
     func fetchCryptoCurrencies(page: Int) -> Single<[CryptoCurrencyResponse]>
     
-    func fetchCryptoCurrency(coinID: String?) -> Single<CryptoCurrencyResponse>
+    func fetchCryptoCurrency(
+        coinID: String?
+    ) -> Single<(CryptoCurrencyResponse, [ChartDataResponse])> 
     
     func fetchPosts(
         cryptoName: String,

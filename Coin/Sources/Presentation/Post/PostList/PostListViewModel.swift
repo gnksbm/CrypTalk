@@ -48,10 +48,10 @@ final class PostListViewModel: ViewModelType {
                 .withLatestFrom(input.pageChangeEvent) { ($0, $1) }
                 .withUnretained(self)
                 .flatMap { vm, tuple in
-                    let (currencyResponse, page) = tuple
-                    output.cryptoCurrency.onNext(currencyResponse)
+                    let (response, page) = tuple
+                    output.cryptoCurrency.onNext(response)
                     return vm.useCase.fetchPosts(
-                        cryptoName: currencyResponse.name,
+                        cryptoName: response.0.name,
                         page: page,
                         limit: 5
                     )
@@ -67,9 +67,10 @@ final class PostListViewModel: ViewModelType {
                 .bind { responses in
                     output.cryptoPostResponse.onNext(responses)
                 }
+            
             input.plusButtonTapEvent
                 .withLatestFrom(output.cryptoCurrency)
-                .map { $0.name }
+                .map { $0.0.name }
                 .bind(to: output.startAddFlow)
             
             input.likeButtonTapEvent
@@ -109,7 +110,8 @@ extension PostListViewModel {
     }
     
     struct Output {
-        let cryptoCurrency: PublishSubject<CryptoCurrencyResponse>
+        let cryptoCurrency:
+        PublishSubject<(CryptoCurrencyResponse, [ChartDataResponse])>
         let cryptoPostResponse: PublishSubject<[PostResponse]>
         let likeChanged: PublishSubject<PostResponse>
         let startAddFlow: PublishSubject<String>

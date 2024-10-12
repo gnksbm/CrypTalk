@@ -32,6 +32,13 @@ final class PostListTableView: ModernTableView<PostListSection, PostListItem> {
                         .bind(to: self.titleTapEvent)
                 }
                 return cell
+            case .ratio(let items):
+                let cell = tableView.dequeueReusableCell(
+                    cellType: PostRatioCell.self,
+                    for: indexPath
+                )
+                cell.configureCell(items: items)
+                return cell
             case .post(let item):
                 let cell = tableView.dequeueReusableCell(
                     cellType: PostListTVCell.self,
@@ -52,9 +59,14 @@ final class PostListTableView: ModernTableView<PostListSection, PostListItem> {
 }
 
 enum PostListSection: CaseIterable {
-    case header, post
+    case header, ratio, post
 }
 
 enum PostListItem: Hashable {
-    case coin(CryptoCurrencyResponse), post(PostResponse)
+    case coin(PostListHeaderCellItem), ratio([PostResponse]), post(PostResponse)
+}
+
+struct PostListHeaderCellItem: Hashable {
+    let info: CryptoCurrencyResponse
+    let charts: [ChartDataResponse]
 }

@@ -77,8 +77,8 @@ final class PurchaseCoinViewController: BaseViewController, ViewType {
             
             output.selectedCoin
                 .bind(with: self) { vc, response in
-                    vc.iconImageView.kf.setImage(with: response.imageURL)
-                    vc.titleButton.configuration?.title = response.name
+                    vc.iconImageView.kf.setImage(with: response.0.imageURL)
+                    vc.titleButton.configuration?.title = response.0.name
                 }
             
             output.startPurchaseFlow

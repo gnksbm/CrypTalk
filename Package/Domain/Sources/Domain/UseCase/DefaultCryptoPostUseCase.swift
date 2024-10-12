@@ -89,15 +89,17 @@ public final class DefaultCryptoPostUseCase: CryptoPostUseCase {
     
     public func fetchCryptoCurrency(
         coinID: String?
-    ) -> Single<CryptoCurrencyResponse> {
+    ) -> Single<(CryptoCurrencyResponse, [ChartDataResponse])> {
         let coinID = coinID ?? latestViewedID
-        return cryptoCurrencyRepository.readCryptoCurrency(
-            coinID: coinID
+        return Observable.zip(
+            cryptoCurrencyRepository.readCryptoCurrency(coinID: coinID)
+                .asObservable(),
+            cryptoCurrencyRepository.readChartData(coinID: coinID, days: 1)
+                .asObservable()
         )
-        .asObservable()
         .withUnretained(self)
         .map { useCase, response in
-            useCase.latestViewedID = response.id
+            useCase.latestViewedID = coinID
             return response
         }
         .asSingle()

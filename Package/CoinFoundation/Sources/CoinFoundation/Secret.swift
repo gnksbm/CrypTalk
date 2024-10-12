@@ -12,6 +12,10 @@ public enum Secret {
     Bundle.main.object(
         forInfoDictionaryKey: "COIN_GECKO_API_KEY"
     ) as? String ?? ""
+    public static let coinGeckoApiKey2 =
+    Bundle.main.object(
+        forInfoDictionaryKey: "COIN_GECKO_API_KEY2"
+    ) as? String ?? ""
     public static let apiKey =
     Bundle.main.object(forInfoDictionaryKey: "API_KEY") as? String ?? ""
     public static var apiKeyHeader =
