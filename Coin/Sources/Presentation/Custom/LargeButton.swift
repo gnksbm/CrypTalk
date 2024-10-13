@@ -35,7 +35,7 @@ extension UIButton {
                     switch button.state {
                     case .disabled:
                         button.configuration?.baseBackgroundColor =
-                        Design.Color.disable
+                        Design.Color.gray
                     default:
                         button.configuration?.baseBackgroundColor =
                         Design.Color.orangeAccent

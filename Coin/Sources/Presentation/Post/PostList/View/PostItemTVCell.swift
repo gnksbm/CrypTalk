@@ -56,7 +56,7 @@ final class PostItemTVCell: BaseTVCell {
         let imageView = UIImageView()
         imageView.layer.cornerRadius = Design.Dimension.symbolSize / 2
         imageView.clipsToBounds = true
-        imageView.backgroundColor = Design.Color.disable
+        imageView.backgroundColor = Design.Color.gray
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
@@ -89,7 +89,7 @@ final class PostItemTVCell: BaseTVCell {
     
     private let contentLabel: UILabel = {
         let label = UILabel()
-        label.numberOfLines = 0 // 다중 라인 지원
+        label.numberOfLines = 2 // 다중 라인 지원
         label.font = Design.Font.body1
         label.textColor = Design.Color.foreground
         label.accessibilityLabel = "콘텐츠"
@@ -130,7 +130,7 @@ final class PostItemTVCell: BaseTVCell {
     }()
     
     private let dividerView = UIView().nt.configure {
-        $0.backgroundColor(Design.Color.disable)
+        $0.backgroundColor(Design.Color.gray)
     }
     
     private let descriptionView = UIButton(
@@ -271,7 +271,7 @@ final class PostItemTVCell: BaseTVCell {
         likeButton.configuration?.title = " \(item.likerIDs.count)"
         likeButton.configuration?.imageColorTransformer = UIConfigurationColorTransformer { color in
             item.isLikedPost ?
-            Design.Color.red : Design.Color.disable
+            Design.Color.red : Design.Color.gray
         }
         commentButton.setTitle(" \(item.comments.count)", for: .normal)
         disposeBag.insert {

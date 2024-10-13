@@ -72,7 +72,10 @@ struct LineChartView: View {
         }
     }
     
-    init(color: Color = .teal, viewModel: LineChartViewModel) {
+    init(
+        color: Color = Color(uiColor: Design.Color.teal),
+        viewModel: LineChartViewModel
+    ) {
         self.chartColor = color
         self._viewModel = StateObject(wrappedValue: viewModel)
     }

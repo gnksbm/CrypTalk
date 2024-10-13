@@ -37,12 +37,12 @@ final class PostDetailViewController: BaseViewController, ViewType {
     }
     private lazy var commentTextView = UITextView().nt.configure {
         $0.attributedText(textViewPlaceholder)
-            .backgroundColor(Design.Color.background)
+            .backgroundColor(Design.Color.clear)
             .delegate(self)
     }
     private let commentBackgroundView = UIView().nt.configure {
         $0.layer.cornerRadius(Design.Radius.regular)
-            .backgroundColor(Design.Color.background)
+            .backgroundColor(Design.Color.lightGray)
     }
     private lazy var commentDoneButton = UIButton(
         configuration: .plain()
@@ -54,7 +54,7 @@ final class PostDetailViewController: BaseViewController, ViewType {
             .configurationUpdateHandler(
                 { button in
                     button.tintColor = button.isEnabled ?
-                    Design.Color.orangeAccent : Design.Color.disable
+                    Design.Color.orangeAccent : Design.Color.gray
                 }
             )
             .isEnabled(false)

@@ -20,20 +20,26 @@ final class PostDetailCommentTVCell: BaseTVCell {
     private let profileImageView = UIImageView().nt.configure {
         $0.layer.cornerRadius(Design.Dimension.symbolSize / 2)
             .clipsToBounds(true)
-            .backgroundColor(Design.Color.background)
+            .backgroundColor(Design.Color.gray)
+            .setContentCompressionResistancePriority(
+                .required,
+                for: .vertical
+            )
     }
-    private let nicknameButton = UIButton().nt.configure {
-        $0.setTitleColor(
-            Design.Color.foreground,
-            for: .normal
-        )
+    
+    private let nicknameLabel = UILabel().nt.configure {
+        $0.textAlignment(.left)
+            .font(Design.Font.title)
+            .textColor(Design.Color.foreground)
     }
+    
     private let dateLabel = UILabel().nt.configure {
         $0.setContentCompressionResistancePriority(
             .required,
             for: .horizontal
         )
     }
+    
     private let contentLabel = UILabel().nt.configure {
         $0.numberOfLines(0)
     }
@@ -46,7 +52,7 @@ final class PostDetailCommentTVCell: BaseTVCell {
     override func configureLayout() {
         [
             profileImageView,
-            nicknameButton,
+            nicknameLabel,
             dateLabel,
             contentLabel
         ].forEach { contentView.addSubview($0) }
@@ -57,15 +63,15 @@ final class PostDetailCommentTVCell: BaseTVCell {
             make.size.equalTo(Design.Dimension.symbolSize)
         }
         
-        nicknameButton.snp.makeConstraints { make in
+        nicknameLabel.snp.makeConstraints { make in
             make.centerY.equalTo(profileImageView)
             make.leading.equalTo(profileImageView.snp.trailing)
                 .offset(Design.Padding.regular)
         }
         
         dateLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(nicknameButton)
-            make.leading.equalTo(nicknameButton.snp.trailing)
+            make.centerY.equalTo(nicknameLabel)
+            make.leading.equalTo(nicknameLabel.snp.trailing)
                 .offset(Design.Padding.regular)
             make.trailing.equalTo(contentView)
                 .inset(Design.Padding.regular)
@@ -80,18 +86,17 @@ final class PostDetailCommentTVCell: BaseTVCell {
     }
     
     func configureCell(item: CommentResponse) {
-        if let data = item.writter.imageData {
-            profileImageView.image = UIImage(data: data)
+        if let urlStr = item.writter.profileImagePath {
+            profileImageView.kf.setImage(with: URL(string: urlStr))
         }
-        nicknameButton.setTitle(
-            item.writter.nickname,
-            for: .normal
-        )
-        dateLabel.text = item.createdAt.formatted(dateFormat: .createdAtOutput)
+        nicknameLabel.text = item.writter.nickname
+        dateLabel.text = item.createdAt.relativeFormat
         contentLabel.text = item.comment
         
+        let tapGesture = UITapGestureRecognizer()
+        nicknameLabel.addGestureRecognizer(tapGesture)
         disposeBag.insert {
-            nicknameButton.rx.tap
+            tapGesture.rx.event
                 .map { _ in item.writter }
                 .bind(to: nicknameButtonTapEvent)
         }

@@ -31,12 +31,17 @@ final class PostRatioCell: BaseTVCell {
     }()
     
     override func configureUI() {
-        backgroundColor = Design.Color.background
-        layer.cornerRadius = Design.Radius.large
-        layer.maskedCorners = CACornerMask(
+        contentView.backgroundColor = Design.Color.background
+        contentView.layer.cornerRadius = Design.Radius.large
+        contentView.layer.maskedCorners = CACornerMask(
             arrayLiteral: .layerMinXMaxYCorner, .layerMaxXMaxYCorner
         )
-        clipsToBounds = true
+        contentView.clipsToBounds = true
+        backgroundColor = Design.Color.clear
+        layer.shadowColor = Design.Color.foreground.cgColor
+        layer.shadowOpacity = 0.3
+        layer.shadowOffset = CGSize(width: 0, height: 2)
+        layer.shadowRadius = 4
     }
     
     override func configureLayout() {

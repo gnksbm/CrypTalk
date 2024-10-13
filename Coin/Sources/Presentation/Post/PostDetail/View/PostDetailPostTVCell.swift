@@ -21,29 +21,64 @@ final class PostDetailPostTVCell: BaseTVCell {
     private let profileImageView = UIImageView().nt.configure {
         $0.layer.cornerRadius(Design.Dimension.symbolSize / 2)
             .clipsToBounds(true)
-            .backgroundColor(Design.Color.background)
+            .backgroundColor(Design.Color.gray)
             .setContentCompressionResistancePriority(
                 .required,
                 for: .vertical
             )
     }
-    private let nicknameButton = UIButton().nt.configure {
-        $0.setTitleColor(
-            Design.Color.foreground,
-            for: .normal
-        )
+    
+    private let nicknameLabel = UILabel().nt.configure {
+        $0.textAlignment(.left)
+            .font(Design.Font.title)
+            .textColor(Design.Color.foreground)
     }
+    
     private let dateLabel = UILabel().nt.configure {
         $0.setContentCompressionResistancePriority(
             .required,
             for: .horizontal
         )
+        .textAlignment(.left)
+        .font(Design.Font.body2)
+        .textColor(Design.Color.foreground)
     }
-    private let directionLabel = UILabel()
-    private let contentLabel = UILabel()
-    private let likeButton = UIButton(configuration: .plain()).nt.configure {
-        $0.configuration.image(Design.ImageLiteral.heart)
-            .configuration.baseForegroundColor(Design.Color.orangeAccent)
+    
+    private let directionLabel = UILabel().nt.configure {
+        $0.font(Design.Font.body2)
+            .textColor(Design.Color.foreground)
+    }
+    
+    private let contentLabel = UILabel().nt.configure {
+        $0.numberOfLines(0)
+            .font(Design.Font.body1)
+            .textColor(Design.Color.foreground)
+    }
+    
+    private let likeButton = {
+        let button = UIButton(configuration: .bordered())
+        button.setTitle(" 0", for: .normal)
+        button.titleLabel?.font = Design.Font.caption
+        button.configuration?.image = Design.ImageLiteral.heart
+        button.configuration?.imagePadding = Design.Padding.extraSmall
+        button.configuration?.baseForegroundColor = Design.Color.foreground
+        button.configuration?.preferredSymbolConfigurationForImage =
+        UIImage.SymbolConfiguration(font: Design.Font.caption)
+        button.contentHorizontalAlignment = .leading
+        button.configuration?.cornerStyle = .capsule
+        button.accessibilityLabel = "좋아요 버튼"
+        button.setContentCompressionResistancePriority(
+            .required,
+            for: .horizontal
+        )
+        return button
+    }()
+    
+    private let multiImageView = MultiImageScrollView()
+    
+    private let commentCountLabel = UILabel().nt.configure {
+        $0.font(Design.Font.body2)
+            .textColor(Design.Color.foreground)
     }
     
     override func prepareForReuse() {
@@ -54,11 +89,13 @@ final class PostDetailPostTVCell: BaseTVCell {
     override func configureLayout() {
         [
             profileImageView,
-            nicknameButton,
+            nicknameLabel,
             dateLabel,
             directionLabel,
             contentLabel,
-            likeButton
+            likeButton,
+            multiImageView,
+            commentCountLabel
         ].forEach { contentView.addSubview($0) }
         
         profileImageView.snp.makeConstraints { make in
@@ -67,28 +104,27 @@ final class PostDetailPostTVCell: BaseTVCell {
                 .priority(.required)
         }
         
-        nicknameButton.snp.makeConstraints { make in
-            make.bottom.equalTo(profileImageView.snp.centerY)
-            make.leading.equalTo(profileImageView.snp.trailing)
-                .offset(Design.Padding.regular)
-        }
-        
-        directionLabel.snp.makeConstraints { make in
-            make.top.equalTo(profileImageView.snp.centerY)
-                .inset(Design.Padding.small)
+        nicknameLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(profileImageView)
             make.leading.equalTo(profileImageView.snp.trailing)
                 .offset(Design.Padding.regular)
         }
         
         dateLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(nicknameButton)
-            make.leading.equalTo(nicknameButton.snp.trailing)
+            make.centerY.equalTo(nicknameLabel)
+            make.leading.equalTo(nicknameLabel.snp.trailing)
+                .offset(Design.Padding.regular)
+        }
+        
+        directionLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(dateLabel)
+            make.leading.equalTo(dateLabel.snp.trailing)
                 .offset(Design.Padding.regular)
         }
         
         likeButton.snp.makeConstraints { make in
             make.centerY.equalTo(dateLabel)
-            make.leading.equalTo(dateLabel.snp.trailing)
+            make.leading.greaterThanOrEqualTo(directionLabel.snp.trailing)
                 .offset(Design.Padding.regular)
             make.trailing.equalTo(contentView)
                 .inset(Design.Padding.regular)
@@ -97,8 +133,22 @@ final class PostDetailPostTVCell: BaseTVCell {
         contentLabel.snp.makeConstraints { make in
             make.top.greaterThanOrEqualTo(profileImageView.snp.bottom)
                 .offset(Design.Padding.regular)
-            make.leading.equalTo(profileImageView)
-            make.trailing.equalTo(directionLabel)
+            make.horizontalEdges.equalTo(contentView)
+                .inset(Design.Padding.regular)
+        }
+        
+        multiImageView.snp.makeConstraints { make in
+            make.top.equalTo(contentLabel.snp.bottom)
+                .offset(Design.Padding.regular)
+            make.horizontalEdges.equalTo(contentView)
+                .inset(Design.Padding.medium)
+            make.height.equalTo(0)
+        }
+        
+        commentCountLabel.snp.makeConstraints { make in
+            make.leading.equalTo(contentLabel)
+            make.top.equalTo(multiImageView.snp.bottom)
+                .offset(Design.Padding.regular)
             make.bottom.equalTo(contentView).inset(Design.Padding.regular)
         }
     }
@@ -107,10 +157,7 @@ final class PostDetailPostTVCell: BaseTVCell {
         if let data = item.writter.imageData {
             profileImageView.image = UIImage(data: data)
         }
-        nicknameButton.setTitle(
-            item.writter.nickname,
-            for: .normal
-        )
+        nicknameLabel.text = item.writter.nickname
         dateLabel.text = item.createdAt.relativeFormat
         directionLabel.text = item.direction.toString
         directionLabel.textColor = item.direction.color
@@ -120,12 +167,21 @@ final class PostDetailPostTVCell: BaseTVCell {
             item.isLikedPost ?
             Design.Color.red : Design.Color.foreground
         }
+        multiImageView.updateView(with: item.imageURLs)
+        multiImageView.snp.updateConstraints { make in
+            make.top.equalTo(contentLabel.snp.bottom)
+                .offset(item.imageURLs.isEmpty ? 0 : Design.Padding.regular)
+            make.height.equalTo(item.imageURLs.isEmpty ? 0 : bounds.width * 0.8)
+        }
+        commentCountLabel.text = "댓글 \(item.comments.count)"
+        let tapGesture = UITapGestureRecognizer()
+        nicknameLabel.addGestureRecognizer(tapGesture)
         disposeBag.insert {
             likeButton.rx.tap
                 .map { _ in item }
                 .bind(to: likeButtonTapEvent)
             
-            nicknameButton.rx.tap
+            tapGesture.rx.event
                 .map { _ in item.writter }
                 .bind(to: nicknameButtonTapEvent)
         }

@@ -342,11 +342,22 @@ public final class DefaultCryptoPostUseCase: CryptoPostUseCase {
                         )
                     )
                     .asObservable()
-                    
                     .map { data in
                         var copy = item
                         copy.writter.imageData = data
                         return copy
+                    }
+                    .withUnretained(self)
+                    .flatMap { useCase, response in
+                        useCase.replaceImages(
+                            items: response.comments,
+                            accessToken: accessToken
+                        )
+                        .map { comments in
+                            var copy = response
+                            copy.comments = comments
+                            return response
+                        }
                     }
                     .catchAndReturn(item)
                 } else {
@@ -375,7 +386,10 @@ public final class DefaultCryptoPostUseCase: CryptoPostUseCase {
                         copy.writter.imageData = data
                         return copy
                     }
-                    .catchAndReturn(item)
+                    .catch { error in
+                        dump(error)
+                        return .just(item)
+                    }
                 } else {
                     return .just(item)
                 }

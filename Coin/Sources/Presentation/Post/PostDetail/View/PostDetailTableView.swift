@@ -47,6 +47,10 @@ final class PostDetailTableView:
             }
         }
     }
+    
+    override func configureDataSource() {
+        super.configureDataSource()
+    }
 }
 
 enum PostDetailSection: CaseIterable {

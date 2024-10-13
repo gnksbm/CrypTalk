@@ -63,9 +63,10 @@ public enum Design {
         public static let lightPink = UIColor(hex: "FFC0CB")
         public static let softGreen = UIColor(hex: "00FF7F")
         public static let darkText = UIColor(hex: "212121")
-        public static let disable = UIColor(hex: "BDBDBF")
+        public static let gray = UIColor(hex: "BDBDBF")
         public static let clear = UIColor.clear
-        public static let teal = UIColor.systemTeal
+        public static let teal = UIColor.orange
+        public static let lightGray = UIColor(hex: "F2F2F2")
     }
     
     public enum Font {
