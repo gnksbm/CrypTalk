@@ -41,7 +41,7 @@ final class MockAuthRepository: AuthRepository {
             if request.email == "Fail" {
                 observer(.failure(BackEndError.accessTokenExpired))
             } else {
-                observer(.success(LoginResponse(accessToken: "", refreshToken: "")))
+                observer(.success(LoginResponse(userID: "", accessToken: "", refreshToken: "")))
             }
             return Disposables.create()
         }

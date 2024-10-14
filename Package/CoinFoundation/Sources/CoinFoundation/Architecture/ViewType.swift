@@ -20,9 +20,11 @@ public protocol ViewType: AnyObject {
 
 public extension ViewType {
     var viewModel: ViewModel?  {
-        get { ViewModelStorage.storage.value(key: self) as? ViewModel }
+        get {
+            ViewModelStorage.value(view: self, viewModelType: ViewModel.self)
+        }
         set {
-            ViewModelStorage.storage.setValue(key: self, value: newValue)
+            ViewModelStorage.setValue(view: self, viewModel: newValue)
             if let newValue { bind(viewModel: newValue) }
         }
     }

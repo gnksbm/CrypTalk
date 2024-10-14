@@ -62,6 +62,7 @@ final class CryptoPostUseCaseTests: XCTestCase {
         let expectation = XCTestExpectation(description: "addPost")
         var isSuccess = false
         sut.addPost(
+            cryptoName: "",
             direction: .decrease,
             content: "",
             imageData: []
@@ -162,14 +163,20 @@ final class CryptoPostUseCaseTests: XCTestCase {
         let expectation = XCTestExpectation(description: "deleteComment")
         var isSuccess = false
         sut.likePost(
-            postID: "",
-            currentLikeStatus: false
+            post: PostResponse(
+                postID: "test",
+                writter: User(id: "", nickname: "", profileImagePath: ""),
+                createdAt: Date(),
+                content: "",
+                direction: .decrease,
+                likerIDs: [],
+                comments: [],
+                imageURLs: []
+            )
         )
         .subscribe(
             onSuccess: { response in
-                if response.likeStatus == false {
-                    isSuccess = true
-                }
+                XCTAssertFalse(response.likerIDs.isEmpty)
                 expectation.fulfill()
             },
             onFailure: { error in

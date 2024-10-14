@@ -14,7 +14,7 @@ final class MockCommentRepository: CommentRepository {
     private let mockComment = CommentResponse(
         id: "",
         comment: "test",
-        createdAt: .now,
+        createdAt: Date(),
         writter: User(
             id: "",
             nickname: "",

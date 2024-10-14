@@ -11,6 +11,7 @@ import CoinFoundation
 import Domain
 
 import RxSwift
+import Moya
 
 public final class FakeProfileRepository: ProfileRepository {
     @Injected private var networkService: NetworkService
@@ -65,5 +66,3 @@ public final class FakeProfileRepository: ProfileRepository {
         public var task: Moya.Task { .requestPlain }
     }
 }
-
-import Moya

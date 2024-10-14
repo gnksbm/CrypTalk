@@ -19,11 +19,12 @@ final class MockPostRepository: PostRepository {
             nickname: "test",
             profileImagePath: ""
         ),
-        createdAt: .now,
+        createdAt: Date(),
         content: "",
         direction: .decrease,
         likerIDs: [],
-        comments: []
+        comments: [],
+        imageURLs: []
     )
     
     func uploadImage(

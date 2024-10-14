@@ -49,10 +49,13 @@ struct PieChartView: View {
                         "Weight",
                         asset.value.price * asset.value.amount
                     ),
+                    innerRadius: .ratio(0.65),
                     angularInset: 2.0
                 )
-                .annotation(position: .overlay) {
+                .cornerRadius(Design.Radius.regular)
+                .annotation(position: .overlay, alignment: .center) {
                     Text(asset.value.name)
+                        .font(Design.Font.caption)
                 }
                 .foregroundStyle(
                     by: .value(
@@ -67,19 +70,58 @@ struct PieChartView: View {
     
     private func listView(assets: [CryptoAsset]) -> some View {
         ForEach(assets) { asset in
-            HStack {
-                Text(asset.value.name)
-                    .padding(.leading)
-                Spacer()
-                Text("\(asset.value.amount.removeDecimal)개")
-                    .padding(.trailing)
+            VStack(spacing: Design.Padding.regular) {
+                HStack {
+                    Text(asset.value.name)
+                        .font(Design.Font.title)
+                    Spacer()
+                    Text("\(asset.value.amount.removeDecimal)개")
+                }
+                .padding(.horizontal)
+                .padding(.top)
+                HStack {
+                    let ratio = CGFloat.random(in: -20...20)
+                    let color = switch ratio {
+                    case ..<0:
+                        Design.Color.blue.swiftUIColor
+                    case 0:
+                        Design.Color.foreground.swiftUIColor
+                    default:
+                        Design.Color.red.swiftUIColor
+                    }
+                    Text("수익률")
+                        .font(Design.Font.body1)
+                    Spacer()
+                    Text(String(format: "%.2f%%", ratio))
+                        .foregroundStyle(color)
+                }
+                .padding(.horizontal)
+                .padding(.bottom)
             }
-            .padding(.vertical)
+            .font(Design.Font.body2)
         }
-        .background(.tertiary)
+        .background(
+            LinearGradient(
+                colors: [
+                    Design.Color.orangeAccent.swiftUIColor.opacity(0.3),
+                    Design.Color.background.swiftUIColor
+                ],
+                startPoint: .center,
+                endPoint: .leading
+            )
+//            Gradient(
+//                colors: [
+//                    Design.Color.orangeAccent.swiftUIColor.opacity(0.3),
+//                    Design.Color.background.swiftUIColor
+//                ]
+//            )
+        )
+        .background(Design.Color.background.swiftUIColor)
         .clipShape(
             RoundedRectangle(cornerRadius: Design.Radius.regular)
         )
+        .shadow(radius: 3)
+        .padding(.bottom)
     }
     
     init(viewModel: PieChartViewModel) {
@@ -89,4 +131,10 @@ struct PieChartView: View {
 
 #Preview {
     PieChartView(viewModel: PieChartViewModel())
+}
+
+extension View {
+    func font(_ uiFont: UIFont) -> some View {
+        font(Font(uiFont))
+    }
 }
