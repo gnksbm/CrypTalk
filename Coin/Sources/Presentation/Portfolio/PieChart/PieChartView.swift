@@ -65,6 +65,15 @@ struct PieChartView: View {
                 )
             }
         }
+        .chartBackground { proxy in
+            VStack {
+                let total = assets.reduce(0, { $0 + $1.value.price * $1.value.amount})
+                Text("총 자산")
+                    .font(Design.Font.heading)
+                Text("\(total.formatted(.currency(code: "KRW")))")
+                    .font(Design.Font.heading)
+            }
+        }
         .frame(height: UIScreen.main.bounds.width)
     }
     
