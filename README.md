@@ -7,12 +7,16 @@
 
 | 게시판 | 게시글 및 댓글 | 시가총액 상위 | 포트폴리오 |
 | --- | --- | --- | --- |
-|![Simulator Screenshot - iPhone 15 Pro - 2024-09-04 at 16 54 55](https://github.com/user-attachments/assets/bd9deebf-1c8a-43f8-b04a-cd7bff642bd2)|![Simulator Screenshot - iPhone 15 Pro - 2024-09-04 at 17 10 30](https://github.com/user-attachments/assets/66493781-a37a-41eb-8a72-e44f473089c9)|![Simulator Screenshot - iPhone 15 Pro - 2024-09-04 at 16 55 13](https://github.com/user-attachments/assets/c96f291d-e18c-476c-8f6f-7df9484837b4)|![Simulator Screenshot - iPhone 15 Pro - 2024-09-04 at 17 12 26](https://github.com/user-attachments/assets/5d77e4e6-c576-40ce-b7d0-52d348184cb5)|
+|![Paste your design here-1](https://github.com/user-attachments/assets/f975e933-974f-4817-abe9-7a8e99fef2e9)|![Paste your design here](https://github.com/user-attachments/assets/78566e8d-0f6f-4c8f-8e69-b134919d19f8)|![Paste your design here-1](https://github.com/user-attachments/assets/3eebbb50-2c92-458c-a096-29862dce365b)|![Paste your design here](https://github.com/user-attachments/assets/2727ef53-8711-4816-9144-144c626d23b7)|
 
 ### 핵심기능
-- 회원 인증(회원가입/로그인/토큰 갱신)
+
+- 회원 인증(회원가입/로그인)
 - 게시글 및 댓글 등록/수정/삭제
-- 카드사 결제 및 결제내역 조회
+- 시가총액 기준 코인목록 조회 / 검색
+- 암호화폐 카드사 결제 및 구매내역 조회
+- 다른 유저의 포트폴리오 조회
+
 ### 아키텍처
 
 | MVVM | Clean Architecture |
